@@ -23,6 +23,16 @@ describe("content model validation", () => {
     expect(() => assertContentModel(createValidContentModel())).not.toThrow();
   });
 
+  it("accepts a zero-mile trail entry without creating a gap", () => {
+    const fixture = cloneFixture();
+    const firstDay = fixture.days[0] as Record<string, unknown>;
+    const secondDay = fixture.days[1] as Record<string, unknown>;
+    firstDay.mileEnd = 0;
+    secondDay.mileStart = 0;
+
+    expect(() => assertContentModel(fixture)).not.toThrow();
+  });
+
   it("reports duplicate identifiers and broken references", () => {
     const fixture = cloneFixture();
     fixture.sections = [...fixture.sections, fixture.sections[0]];
@@ -34,6 +44,8 @@ describe("content model validation", () => {
         title: "Missing day",
         locationLabel: "Unknown",
         photoIds: [],
+        sourceRefs: (fixture.journalEntries[0] as Record<string, unknown>)
+          .sourceRefs,
       },
     ];
 
@@ -107,6 +119,65 @@ describe("content model validation", () => {
           code: "schema.invalid",
           path: "days[0].ascentMeters",
         }),
+      ]),
+    );
+  });
+
+  it("rejects an extraction report that drifts from generated content", () => {
+    const fixture = cloneFixture();
+    const report = fixture.extractionReports[0] as Record<string, unknown>;
+    report.counts = {
+      ...(report.counts as Record<string, unknown>),
+      photoPlacements: 2,
+    };
+
+    const result = validateContentModel(fixture);
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "extraction-report.count.mismatch",
+          path: "extractionReports[0].counts.photoPlacements",
+        }),
+      ]),
+    );
+  });
+
+  it("allows reused media assets but rejects broken placement order", () => {
+    const fixture = cloneFixture();
+    fixture.photos = [
+      ...fixture.photos,
+      {
+        ...(fixture.photos[0] as Record<string, unknown>),
+        id: "photo-001002",
+        order: 2,
+      },
+    ];
+    const firstJournal = fixture.journalEntries[0] as Record<string, unknown>;
+    firstJournal.photoIds = ["photo-001001", "photo-001002"];
+    const report = fixture.extractionReports[0] as Record<string, unknown>;
+    report.counts = {
+      ...(report.counts as Record<string, unknown>),
+      photoPlacements: 2,
+      reusedMediaAssets: 1,
+      trailPhotoPlacements: 2,
+    };
+    const source = fixture.sourceDocuments[0] as Record<string, unknown>;
+    source.counts = {
+      ...(source.counts as Record<string, unknown>),
+      photoPlacements: 2,
+    };
+
+    const result = validateContentModel(fixture);
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: "photo.order" }),
+      ]),
+    );
+    expect(result.issues).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: "id.duplicate" }),
       ]),
     );
   });

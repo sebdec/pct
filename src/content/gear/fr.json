@@ -1,0 +1,388 @@
+{
+  "fr/gear-big-4-sac": {
+    "gearItemId": "gear-big-4-sac",
+    "locale": "fr",
+    "name": "Sac",
+    "detail": "Hyperlite Junction 55 L"
+  },
+  "fr/gear-big-4-tente": {
+    "gearItemId": "gear-big-4-tente",
+    "locale": "fr",
+    "name": "Tente",
+    "detail": "Zpacks Plex Solo + sac"
+  },
+  "fr/gear-big-4-sac-de-couchage": {
+    "gearItemId": "gear-big-4-sac-de-couchage",
+    "locale": "fr",
+    "name": "Sac de couchage",
+    "detail": "Zpacks Classic -7 °C + sac"
+  },
+  "fr/gear-big-4-matelas": {
+    "gearItemId": "gear-big-4-matelas",
+    "locale": "fr",
+    "name": "Matelas",
+    "detail": "Therm-a-Rest NeoAir Xlite NXT"
+  },
+  "fr/gear-big-4-sardine-x3": {
+    "gearItemId": "gear-big-4-sardine-x3",
+    "locale": "fr",
+    "name": "Sardine x3",
+    "detail": "Le Vieux Campeur"
+  },
+  "fr/gear-big-4-sardine-x5": {
+    "gearItemId": "gear-big-4-sardine-x5",
+    "locale": "fr",
+    "name": "Sardine x5",
+    "detail": "MSR"
+  },
+  "fr/gear-big-4-sac-a-sardines": {
+    "gearItemId": "gear-big-4-sac-a-sardines",
+    "locale": "fr",
+    "name": "Sac à sardines",
+    "detail": "Zpacks"
+  },
+  "fr/gear-vetements-chaussettes-x2": {
+    "gearItemId": "gear-vetements-chaussettes-x2",
+    "locale": "fr",
+    "name": "Chaussettes x2",
+    "detail": "Darn Tough"
+  },
+  "fr/gear-vetements-sous-vetement-x2": {
+    "gearItemId": "gear-vetements-sous-vetement-x2",
+    "locale": "fr",
+    "name": "Sous-vêtement x2",
+    "detail": "Decathlon mérinos"
+  },
+  "fr/gear-vetements-t-shirt": {
+    "gearItemId": "gear-vetements-t-shirt",
+    "locale": "fr",
+    "name": "T-shirt",
+    "detail": "Decathlon mérinos"
+  },
+  "fr/gear-vetements-short": {
+    "gearItemId": "gear-vetements-short",
+    "locale": "fr",
+    "name": "Short",
+    "detail": "Odlo"
+  },
+  "fr/gear-vetements-chemise": {
+    "gearItemId": "gear-vetements-chemise",
+    "locale": "fr",
+    "name": "Chemise",
+    "detail": "Craghoppers"
+  },
+  "fr/gear-vetements-polaire": {
+    "gearItemId": "gear-vetements-polaire",
+    "locale": "fr",
+    "name": "Polaire",
+    "detail": "Millet Ubic Lightgrid"
+  },
+  "fr/gear-vetements-doudoune": {
+    "gearItemId": "gear-vetements-doudoune",
+    "locale": "fr",
+    "name": "Doudoune",
+    "detail": "Rab"
+  },
+  "fr/gear-vetements-veste-de-pluie": {
+    "gearItemId": "gear-vetements-veste-de-pluie",
+    "locale": "fr",
+    "name": "Veste de pluie",
+    "detail": "Decathlon"
+  },
+  "fr/gear-vetements-pantalon-de-pluie": {
+    "gearItemId": "gear-vetements-pantalon-de-pluie",
+    "locale": "fr",
+    "name": "Pantalon de pluie",
+    "detail": "Decathlon"
+  },
+  "fr/gear-vetements-sandales-de-camp": {
+    "gearItemId": "gear-vetements-sandales-de-camp",
+    "locale": "fr",
+    "name": "Sandales de camp",
+    "detail": "Decathlon"
+  },
+  "fr/gear-vetements-buff": {
+    "gearItemId": "gear-vetements-buff",
+    "locale": "fr",
+    "name": "Buff",
+    "detail": "UTCAM"
+  },
+  "fr/gear-vetements-casquette-anti-soleil": {
+    "gearItemId": "gear-vetements-casquette-anti-soleil",
+    "locale": "fr",
+    "name": "Casquette anti-soleil",
+    "detail": "Decathlon, style saharien"
+  },
+  "fr/gear-vetements-bonnet": {
+    "gearItemId": "gear-vetements-bonnet",
+    "locale": "fr",
+    "name": "Bonnet",
+    "detail": "Decathlon"
+  },
+  "fr/gear-vetements-gants-de-course": {
+    "gearItemId": "gear-vetements-gants-de-course",
+    "locale": "fr",
+    "name": "Gants de course",
+    "detail": "Decathlon"
+  },
+  "fr/gear-vetements-gants-pour-batons": {
+    "gearItemId": "gear-vetements-gants-pour-batons",
+    "locale": "fr",
+    "name": "Gants pour bâtons",
+    "detail": "Leki"
+  },
+  "fr/gear-vetements-sac-de-rangement-oreiller": {
+    "gearItemId": "gear-vetements-sac-de-rangement-oreiller",
+    "locale": "fr",
+    "name": "Sac de rangement / oreiller",
+    "detail": "Zpacks"
+  },
+  "fr/gear-vetements-chaussures": {
+    "gearItemId": "gear-vetements-chaussures",
+    "locale": "fr",
+    "name": "Chaussures",
+    "detail": "Altra Lone Peak x2 et Topo Traverse x1"
+  },
+  "fr/gear-vetements-guetres": {
+    "gearItemId": "gear-vetements-guetres",
+    "locale": "fr",
+    "name": "Guêtres",
+    "detail": "Altra et Dirty Girl"
+  },
+  "fr/gear-vetements-lunettes-de-soleil": {
+    "gearItemId": "gear-vetements-lunettes-de-soleil",
+    "locale": "fr",
+    "name": "Lunettes de soleil",
+    "detail": "Eagle Eye"
+  },
+  "fr/gear-eau-et-cuisine-filtre-a-eau": {
+    "gearItemId": "gear-eau-et-cuisine-filtre-a-eau",
+    "locale": "fr",
+    "name": "Filtre à eau",
+    "detail": "Sawyer Squeeze"
+  },
+  "fr/gear-eau-et-cuisine-bouteille": {
+    "gearItemId": "gear-eau-et-cuisine-bouteille",
+    "locale": "fr",
+    "name": "Bouteille",
+    "detail": "Smartwater x2 (x4 dans le désert)"
+  },
+  "fr/gear-eau-et-cuisine-cartouche-de-gaz": {
+    "gearItemId": "gear-eau-et-cuisine-cartouche-de-gaz",
+    "locale": "fr",
+    "name": "Cartouche de gaz",
+    "detail": "100 g"
+  },
+  "fr/gear-eau-et-cuisine-popote": {
+    "gearItemId": "gear-eau-et-cuisine-popote",
+    "locale": "fr",
+    "name": "Popote",
+    "detail": "Toaks 750 ml"
+  },
+  "fr/gear-eau-et-cuisine-cuillere": {
+    "gearItemId": "gear-eau-et-cuisine-cuillere",
+    "locale": "fr",
+    "name": "Cuillère",
+    "detail": "Toaks"
+  },
+  "fr/gear-eau-et-cuisine-couteau-suisse": {
+    "gearItemId": "gear-eau-et-cuisine-couteau-suisse",
+    "locale": "fr",
+    "name": "Couteau suisse",
+    "detail": "Mini victorinox"
+  },
+  "fr/gear-eau-et-cuisine-briquet": {
+    "gearItemId": "gear-eau-et-cuisine-briquet",
+    "locale": "fr",
+    "name": "Briquet",
+    "detail": "Bic"
+  },
+  "fr/gear-eau-et-cuisine-eponge": {
+    "gearItemId": "gear-eau-et-cuisine-eponge",
+    "locale": "fr",
+    "name": "Éponge"
+  },
+  "fr/gear-eau-et-cuisine-sac-de-nourriture": {
+    "gearItemId": "gear-eau-et-cuisine-sac-de-nourriture",
+    "locale": "fr",
+    "name": "Sac de nourriture",
+    "detail": "Zpacks 8 L"
+  },
+  "fr/gear-electronique-telephone": {
+    "gearItemId": "gear-electronique-telephone",
+    "locale": "fr",
+    "name": "Téléphone",
+    "detail": "Pixel 8"
+  },
+  "fr/gear-electronique-batterie-externe": {
+    "gearItemId": "gear-electronique-batterie-externe",
+    "locale": "fr",
+    "name": "Batterie externe",
+    "detail": "Nitecore 6 000 mAh"
+  },
+  "fr/gear-electronique-batterie-externe-2": {
+    "gearItemId": "gear-electronique-batterie-externe-2",
+    "locale": "fr",
+    "name": "Batterie externe",
+    "detail": "Nitecore 10 000 mAh"
+  },
+  "fr/gear-electronique-chargeur-mural": {
+    "gearItemId": "gear-electronique-chargeur-mural",
+    "locale": "fr",
+    "name": "Chargeur mural",
+    "detail": "40 W, 2 ports USB-C et 1 port USB"
+  },
+  "fr/gear-electronique-frontale": {
+    "gearItemId": "gear-electronique-frontale",
+    "locale": "fr",
+    "name": "Frontale",
+    "detail": "Petzl Actik"
+  },
+  "fr/gear-electronique-montre": {
+    "gearItemId": "gear-electronique-montre",
+    "locale": "fr",
+    "name": "Montre",
+    "detail": "Garmin Fenix 6 Pro"
+  },
+  "fr/gear-electronique-ecouteurs": {
+    "gearItemId": "gear-electronique-ecouteurs",
+    "locale": "fr",
+    "name": "Écouteurs",
+    "detail": "Apple EarPods"
+  },
+  "fr/gear-electronique-cable-usb-c-vers-usb-c-x2": {
+    "gearItemId": "gear-electronique-cable-usb-c-vers-usb-c-x2",
+    "locale": "fr",
+    "name": "Câble USB-C vers USB-C x2"
+  },
+  "fr/gear-electronique-cable-usb-c-garmin": {
+    "gearItemId": "gear-electronique-cable-usb-c-garmin",
+    "locale": "fr",
+    "name": "Câble USB-C + Garmin"
+  },
+  "fr/gear-electronique-sac-electronique": {
+    "gearItemId": "gear-electronique-sac-electronique",
+    "locale": "fr",
+    "name": "Sac électronique",
+    "detail": "Zpacks 2,2 L"
+  },
+  "fr/gear-hygiene-serviette": {
+    "gearItemId": "gear-hygiene-serviette",
+    "locale": "fr",
+    "name": "Serviette",
+    "detail": "Le Vieux Campeur"
+  },
+  "fr/gear-hygiene-dentifrice": {
+    "gearItemId": "gear-hygiene-dentifrice",
+    "locale": "fr",
+    "name": "Dentifrice"
+  },
+  "fr/gear-hygiene-brosse-a-dents": {
+    "gearItemId": "gear-hygiene-brosse-a-dents",
+    "locale": "fr",
+    "name": "Brosse à dents"
+  },
+  "fr/gear-hygiene-gel-hydroalcoolique": {
+    "gearItemId": "gear-hygiene-gel-hydroalcoolique",
+    "locale": "fr",
+    "name": "Gel hydroalcoolique"
+  },
+  "fr/gear-hygiene-truelle": {
+    "gearItemId": "gear-hygiene-truelle",
+    "locale": "fr",
+    "name": "Truelle",
+    "detail": "Zpacks"
+  },
+  "fr/gear-hygiene-papier-toilette": {
+    "gearItemId": "gear-hygiene-papier-toilette",
+    "locale": "fr",
+    "name": "Papier toilette"
+  },
+  "fr/gear-premiers-soins-compeed": {
+    "gearItemId": "gear-premiers-soins-compeed",
+    "locale": "fr",
+    "name": "Compeed",
+    "detail": "10 pansements ampoules"
+  },
+  "fr/gear-premiers-soins-pastilles-de-purification": {
+    "gearItemId": "gear-premiers-soins-pastilles-de-purification",
+    "locale": "fr",
+    "name": "Pastilles de purification",
+    "detail": "Aquatabs x30"
+  },
+  "fr/gear-premiers-soins-tire-tique": {
+    "gearItemId": "gear-premiers-soins-tire-tique",
+    "locale": "fr",
+    "name": "Tire-tique"
+  },
+  "fr/gear-premiers-soins-loperamide": {
+    "gearItemId": "gear-premiers-soins-loperamide",
+    "locale": "fr",
+    "name": "Lopéramide",
+    "detail": "12 comprimés"
+  },
+  "fr/gear-premiers-soins-leukotape": {
+    "gearItemId": "gear-premiers-soins-leukotape",
+    "locale": "fr",
+    "name": "Leukotape",
+    "detail": "Tarmak"
+  },
+  "fr/gear-divers-batons": {
+    "gearItemId": "gear-divers-batons",
+    "locale": "fr",
+    "name": "Bâtons",
+    "detail": "Ozark Trail"
+  },
+  "fr/gear-divers-moustiquaire-de-tete": {
+    "gearItemId": "gear-divers-moustiquaire-de-tete",
+    "locale": "fr",
+    "name": "Moustiquaire de tête",
+    "detail": "Sea to Summit"
+  },
+  "fr/gear-divers-patchs-de-reparation": {
+    "gearItemId": "gear-divers-patchs-de-reparation",
+    "locale": "fr",
+    "name": "Patchs de réparation"
+  },
+  "fr/gear-divers-portefeuille": {
+    "gearItemId": "gear-divers-portefeuille",
+    "locale": "fr",
+    "name": "Portefeuille",
+    "detail": "Osprey"
+  },
+  "fr/gear-divers-passeport-permis-et-cartes": {
+    "gearItemId": "gear-divers-passeport-permis-et-cartes",
+    "locale": "fr",
+    "name": "Passeport, permis et cartes"
+  },
+  "fr/gear-divers-sacs-ziploc": {
+    "gearItemId": "gear-divers-sacs-ziploc",
+    "locale": "fr",
+    "name": "Sacs Ziploc",
+    "detail": "x?"
+  },
+  "fr/gear-divers-sac-etanche": {
+    "gearItemId": "gear-divers-sac-etanche",
+    "locale": "fr",
+    "name": "Sac étanche",
+    "detail": "Zpacks 5,6 L"
+  },
+  "fr/gear-sierra-piolet": {
+    "gearItemId": "gear-sierra-piolet",
+    "locale": "fr",
+    "name": "Piolet",
+    "detail": "CAMP Corsa"
+  },
+  "fr/gear-sierra-microspikes": {
+    "gearItemId": "gear-sierra-microspikes",
+    "locale": "fr",
+    "name": "Microspikes",
+    "detail": "Kahtoola"
+  },
+  "fr/gear-sierra-bear-canister": {
+    "gearItemId": "gear-sierra-bear-canister",
+    "locale": "fr",
+    "name": "Bear canister",
+    "detail": "Bear Vault BV500, location"
+  }
+}

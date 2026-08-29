@@ -2,7 +2,7 @@
 
 Static-first interactive journal for a 2026 Pacific Crest Trail thru-hike.
 
-This repository contains the technical and visual foundations plus the approved build-time content contracts. Real journal entries and the original photo library are intentionally excluded.
+This repository contains the technical and visual foundations plus the approved French journal extracted from its Word source. The Word document and original photo library remain outside Git.
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ See `AGENTS.md` for the complete project conventions.
 
 `src/content.config.ts` defines the Astro collections and their Zod schemas. The data is deliberately split into 2 layers:
 
-- `src/data`: language-neutral facts such as regions, sections, days, canonical mile bounds, gear weights, photo metadata and corrections.
+- `src/data`: language-neutral facts such as regions, sections, days, gear weights, photo metadata and corrections. PCT section mile bounds remain optional until verified route geometry is available.
 - `src/content`: localized editorial copy such as journal prose, page content, glossary definitions, gear labels, alternative text and captions.
 
 French is the required initial locale. English entries reuse the same neutral entity IDs and can be added incrementally. Public routes will use stable locale prefixes and neutral slugs such as `/fr/journal/day-001` and `/en/journal/day-001`.
@@ -84,9 +84,22 @@ pnpm content:validate
 
 See `src/content/README.md` for directory and editing rules.
 
-## Content sources and media
+## Word journal extraction
 
-Real journal entries and original photos will be introduced through dedicated issues. Do not commit private exports, unoptimized source photos or credentials.
+The generated French content comes from the approved `PCT 2026 - Sebdec.docx` source identified by SHA-256 `f57f19abb6360609f7f517ea53c1acbd824ef6a69faed3b599911800fd81eb4d`.
+
+Keep the source outside the repository and regenerate with:
+
+```sh
+pnpm content:extract -- --input "/absolute/path/to/PCT 2026 - Sebdec.docx"
+pnpm content:validate
+```
+
+The TypeScript extractor reads ordered OOXML directly. It verifies the source hash and structural counts, validates the complete generated model in memory, stages every output and only then replaces generated paths. Repeating the command against the approved source is byte-for-byte deterministic.
+
+`src/data/source/word-source.json` records source identity and verified structural counts. `src/data/source/word-extraction-report.json` records generated counts, validation results and known source exceptions. Review both files plus representative journal entries after regeneration.
+
+The extractor generates placement metadata for every embedded Word image without writing an image binary. Do not commit the Word source, private exports, original photos, unoptimized source photos or credentials.
 
 Imported entities keep references to their source blocks in the Word document. Approved editorial changes live in `src/data/source/corrections.json` instead of overwriting source history silently.
 

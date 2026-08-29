@@ -84,10 +84,14 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Preserve the author's voice when correcting journal text. Separate editorial corrections from technical migrations.
 - Keep French as the initial source language while allowing a future English variant in the content model.
 - Store language-neutral facts in `src/data` and localized editorial copy in `src/content/{area}/{locale}`. Never duplicate trail metrics for a translation.
+- Store short structured gear and glossary translations in 1 keyed JSON file per locale, such as `src/content/gear/fr.json`. Keep long-form journal and supporting pages as separate Markdown files.
 - Keep entity IDs and public slugs locale-neutral. A translated entry must reference the same neutral day, photo, glossary concept or gear item.
 - Treat miles as canonical. Derive daily distance, cumulative distance and kilometers through `src/lib/content/metrics.ts`.
+- Scope photo placement IDs to their owner. Use `photo-074001` for the first photo of `day-074` and `photo-introduction-001` for the first photo of the introduction page. Keep global source order in the separate `order` field.
 - Mark neutral entities as published only when their required French entry exists.
 - Retain Word block references on imported entities. Record proposed, approved or rejected editorial changes in `src/data/source/corrections.json`.
+- Regenerate Word-derived files only through `pnpm content:extract -- --input <path>`. Do not hand-edit generated journal, page, gear, glossary, trail, photo, source-manifest or extraction-report files.
+- Treat the approved source hash and `src/data/source/word-extraction-report.json` as extraction invariants. A source change requires a newly approved issue before updating the hash or structural counts.
 - Run `pnpm content:validate` after every content change. Add a focused invalid fixture whenever a new cross-entry invariant is introduced.
 - Do not place original full-resolution photos in Git. Commit only approved optimized derivatives with stable names and attribution metadata where needed.
 - Never import the Word source or Google Photos export wholesale into this repository.

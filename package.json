@@ -17,6 +17,7 @@
     "lint": "eslint .",
     "check": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check",
     "content:validate": "node scripts/validate-content.mjs",
+    "content:extract": "node scripts/content/word/extractWordJournal.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm content:validate && pnpm test:run && pnpm build"
@@ -32,11 +33,15 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@eslint/js": "10.0.1",
+    "@types/node": "24.13.3",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.5",
+    "@xmldom/xmldom": "0.9.12",
     "cross-env": "10.1.0",
     "eslint": "10.0.1",
     "eslint-plugin-astro": "3.1.0",
+    "fflate": "0.8.3",
+    "image-size": "2.0.2",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "0.14.1",
     "typescript": "6.0.3",
