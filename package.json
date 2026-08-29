@@ -24,6 +24,8 @@
     "media:generate": "node scripts/media/generate.ts",
     "media:validate": "node scripts/media/validate.ts",
     "media:upload": "node scripts/media/upload.ts",
+    "route:import": "node scripts/map/importPctRoute.ts",
+    "route:preview": "node scripts/map/renderRoutePreview.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm content:validate && pnpm test:run && pnpm build"

@@ -107,6 +107,12 @@ The local media pipeline extracts the images embedded in the approved Word sourc
 
 See `scripts/media/README.md` for the review, generation, validation and dry-run upload workflow. No real upload is performed without a separate explicit authorization.
 
+## PCT route data
+
+The future Explorer uses a committed offline snapshot of the official 2026 Pacific Crest Trail Association centerline and half-mile markers. The public site never depends on ArcGIS at runtime. Journal miles remain canonical and the rounded final mile 2,656 maps explicitly to the official 2,655.84-mile northern terminus.
+
+See `scripts/map/README.md` for source provenance, CC BY 4.0 attribution, deterministic import, validation and static preview commands. Raw GIS responses and review artifacts stay outside Git.
+
 Imported entities keep references to their source blocks in the Word document. Approved editorial changes live in `src/data/source/corrections.json` instead of overwriting source history silently.
 
 ## Vercel preparation
