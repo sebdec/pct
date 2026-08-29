@@ -5,6 +5,7 @@ export const site = {
   language: "fr",
   navigation: [
     { label: "Journal", href: "/journal/day-001" },
+    { label: "Carte", href: "/map" },
     { label: "Équipement", href: "/#equipement" },
     { label: "Glossaire", href: "/#glossaire" },
   ],

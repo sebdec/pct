@@ -7,6 +7,8 @@ dist/
 !.env.example
 .vercel/
 coverage/
+playwright-report/
+test-results/
 .content-extraction-staging-*
 *.content-extraction-backup-*
 .media-workspace/

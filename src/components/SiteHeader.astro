@@ -36,16 +36,22 @@ function isActive(href: string): boolean {
     </ul>
   </nav>
 
-  <a
-    class:list={[
-      "mobile-journal",
-      { active: currentPath.startsWith("/journal") },
-    ]}
-    href="/journal/day-001"
-    aria-current={currentPath.startsWith("/journal") ? "page" : undefined}
-  >
-    Journal
-  </a>
+  <nav class="mobile-navigation" aria-label="Navigation principale mobile">
+    <a
+      class:list={{ active: currentPath.startsWith("/journal") }}
+      href="/journal/day-001"
+      aria-current={currentPath.startsWith("/journal") ? "page" : undefined}
+    >
+      Journal
+    </a>
+    <a
+      class:list={{ active: currentPath === "/map" }}
+      href="/map"
+      aria-current={currentPath === "/map" ? "page" : undefined}
+    >
+      Carte
+    </a>
+  </nav>
 </header>
 
 <style>
@@ -100,8 +106,7 @@ function isActive(href: string): boolean {
     color: var(--pct-color-pine-glow);
   }
 
-  nav a::after,
-  .mobile-journal::after {
+  nav a::after {
     position: absolute;
     right: 0;
     bottom: -0.55rem;
@@ -117,19 +122,22 @@ function isActive(href: string): boolean {
   }
 
   nav a.active,
-  .mobile-journal.active {
+  nav a.active {
     color: var(--pct-color-pine-glow);
   }
 
-  nav a.active::after,
-  .mobile-journal.active::after {
+  nav a.active::after {
     opacity: 1;
     transform: scaleX(1);
   }
 
-  .mobile-journal {
-    position: relative;
+  .mobile-navigation {
     display: none;
+    gap: 1rem;
+  }
+
+  .mobile-navigation a {
+    position: relative;
     color: var(--pct-color-pine-glow);
     font-size: 0.58rem;
     letter-spacing: 0.12em;
@@ -146,8 +154,12 @@ function isActive(href: string): boolean {
       display: none;
     }
 
-    .mobile-journal {
-      display: inline-flex;
+    .site-header > nav:not(.mobile-navigation) {
+      display: none;
+    }
+
+    .mobile-navigation {
+      display: flex;
     }
   }
 </style>
