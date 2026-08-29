@@ -21,8 +21,16 @@ const current = entries[currentIndex];
 const previous = currentIndex > 0 ? entries[currentIndex - 1] : null;
 const next =
   currentIndex < entries.length - 1 ? entries[currentIndex + 1] : null;
-const progress =
-  entries.length > 1 ? (currentIndex / (entries.length - 1)) * 100 : 100;
+function progressStop(index: number, entryCount: number): string {
+  const ratio = entryCount > 1 ? index / (entryCount - 1) : 1;
+  const percent = Number((ratio * 100).toFixed(4));
+  const thumbCorrection = Number((0.75 * (1 - 2 * ratio)).toFixed(4));
+  const operator = thumbCorrection >= 0 ? "+" : "-";
+
+  return `calc(${percent}% ${operator} ${Math.abs(thumbCorrection)}rem)`;
+}
+
+const currentProgressStop = progressStop(currentIndex, entries.length);
 const navigatorEntries = entries.map((entry) => ({
   sequence: entry.sequence,
   regionId: entry.regionId,
@@ -32,15 +40,15 @@ const navigatorEntries = entries.map((entry) => ({
   href: journalDayUrl(entry.dayId),
 }));
 
-function mileLabel(entry: JournalNavigatorItem): string | null {
+function positionLabel(entry: JournalNavigatorItem): string | null {
   if (entry.mileStart === null || entry.mileEnd === null) {
     return null;
   }
 
-  return `Miles ${entry.mileStart.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} → ${entry.mileEnd.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}`;
+  return `${entry.mileStart.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} → ${entry.mileEnd.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} mi`;
 }
 
-const currentMileLabel = mileLabel(current);
+const currentPositionLabel = positionLabel(current);
 ---
 
 <nav
@@ -49,17 +57,16 @@ const currentMileLabel = mileLabel(current);
   data-journal-navigator
   data-entries={JSON.stringify(navigatorEntries)}
   data-preview-region={current.regionId ?? "after-trail"}
-  style={`--day-progress: ${progress}%`}
+  style={`--day-progress: ${currentProgressStop}`}
 >
   {
     previous ? (
       <a
         class="step-link previous"
         href={journalDayUrl(previous.dayId)}
-        aria-label={`Journée précédente, jour ${previous.sequence}`}
+        aria-label={`Jour précédent, jour ${previous.sequence}`}
       >
         <span aria-hidden="true">←</span>
-        <small>Jour {previous.sequence}</small>
       </a>
     ) : (
       <span class="step-boundary" aria-hidden="true" />
@@ -70,8 +77,8 @@ const currentMileLabel = mileLabel(current);
     <div class="range-copy">
       <strong data-day-label>Jour {current.sequence}</strong>
       <span data-region-label>{current.regionLabel}</span>
-      <small data-mile-label hidden={!currentMileLabel}>
-        {currentMileLabel}
+      <small data-position-label hidden={!currentPositionLabel}>
+        {currentPositionLabel}
       </small>
     </div>
 
@@ -87,7 +94,7 @@ const currentMileLabel = mileLabel(current);
       aria-valuetext={[
         `Jour ${current.sequence}`,
         current.regionLabel,
-        currentMileLabel,
+        currentPositionLabel,
       ]
         .filter(Boolean)
         .join(", ")}
@@ -101,9 +108,8 @@ const currentMileLabel = mileLabel(current);
       <a
         class="step-link next"
         href={journalDayUrl(next.dayId)}
-        aria-label={`Journée suivante, jour ${next.sequence}`}
+        aria-label={`Jour suivant, jour ${next.sequence}`}
       >
-        <small>Jour {next.sequence}</small>
         <span aria-hidden="true">→</span>
       </a>
     ) : (
@@ -126,12 +132,21 @@ const currentMileLabel = mileLabel(current);
     maximumFractionDigits: 1,
   });
 
-  function entryMileLabel(entry: NavigatorEntry): string | null {
+  function entryPositionLabel(entry: NavigatorEntry): string | null {
     if (entry.mileStart === null || entry.mileEnd === null) {
       return null;
     }
 
-    return `Miles ${formatMile.format(entry.mileStart)} → ${formatMile.format(entry.mileEnd)}`;
+    return `${formatMile.format(entry.mileStart)} → ${formatMile.format(entry.mileEnd)} mi`;
+  }
+
+  function progressStop(index: number, entryCount: number): string {
+    const ratio = entryCount > 1 ? index / (entryCount - 1) : 1;
+    const percent = Number((ratio * 100).toFixed(4));
+    const thumbCorrection = Number((0.75 * (1 - 2 * ratio)).toFixed(4));
+    const operator = thumbCorrection >= 0 ? "+" : "-";
+
+    return `calc(${percent}% ${operator} ${Math.abs(thumbCorrection)}rem)`;
   }
 
   for (const navigator of document.querySelectorAll<HTMLElement>(
@@ -142,10 +157,12 @@ const currentMileLabel = mileLabel(current);
     const regionLabel = navigator.querySelector<HTMLElement>(
       "[data-region-label]",
     );
-    const mileLabel = navigator.querySelector<HTMLElement>("[data-mile-label]");
+    const positionLabel = navigator.querySelector<HTMLElement>(
+      "[data-position-label]",
+    );
     const rawEntries = navigator.dataset.entries;
 
-    if (!range || !dayLabel || !regionLabel || !mileLabel || !rawEntries) {
+    if (!range || !dayLabel || !regionLabel || !positionLabel || !rawEntries) {
       continue;
     }
 
@@ -157,22 +174,23 @@ const currentMileLabel = mileLabel(current);
     const preview = (index: number) => {
       const boundedIndex = Math.max(0, Math.min(entries.length - 1, index));
       const entry = entries[boundedIndex];
-      const progress =
-        entries.length > 1 ? (boundedIndex / (entries.length - 1)) * 100 : 100;
-      const miles = entryMileLabel(entry);
+      const position = entryPositionLabel(entry);
 
       dayLabel.textContent = `Jour ${entry.sequence}`;
       regionLabel.textContent = entry.regionLabel;
       navigator.dataset.previewRegion = entry.regionId ?? "after-trail";
-      mileLabel.textContent = miles ?? "";
-      mileLabel.hidden = miles === null;
+      positionLabel.textContent = position ?? "";
+      positionLabel.hidden = position === null;
+      navigator.style.setProperty(
+        "--day-progress",
+        progressStop(boundedIndex, entries.length),
+      );
       range.setAttribute(
         "aria-valuetext",
-        [`Jour ${entry.sequence}`, entry.regionLabel, miles]
+        [`Jour ${entry.sequence}`, entry.regionLabel, position]
           .filter(Boolean)
           .join(", "),
       );
-      navigator.style.setProperty("--day-progress", `${progress}%`);
     };
 
     range.addEventListener("input", () => preview(Number(range.value) - 1));
@@ -189,20 +207,6 @@ const currentMileLabel = mileLabel(current);
         window.location.assign(entry.href);
       }
     });
-    range.addEventListener("pointermove", (event) => {
-      if (event.buttons !== 0) {
-        return;
-      }
-
-      const bounds = range.getBoundingClientRect();
-      const ratio = Math.max(
-        0,
-        Math.min(1, (event.clientX - bounds.left) / bounds.width),
-      );
-
-      preview(Math.round(ratio * (entries.length - 1)));
-    });
-    range.addEventListener("pointerleave", () => preview(currentIndex));
     range.addEventListener("blur", () => {
       delete range.dataset.pointerFocus;
       preview(currentIndex);
@@ -212,23 +216,22 @@ const currentMileLabel = mileLabel(current);
 
 <style>
   .day-navigator {
-    --navigator-color: var(--pct-color-pine-glow);
+    --navigator-color: var(--pct-color-muted);
+    --progress-color: var(--pct-color-pine-glow);
 
     position: sticky;
     z-index: 8;
     top: var(--pct-space-3);
     display: grid;
-    grid-template-columns: minmax(5.5rem, auto) 1fr minmax(5.5rem, auto);
-    gap: var(--pct-space-5);
+    grid-template-columns: 2rem minmax(0, 1fr) 2rem;
+    gap: var(--pct-space-3);
     align-items: center;
+    width: min(100%, 48rem);
     margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+    margin-inline: auto;
     padding: var(--pct-space-3) var(--pct-space-4);
-    border: 1px solid var(--pct-color-faint);
     border-radius: var(--pct-radius-small);
-    background: color-mix(in srgb, var(--pct-color-deep-camp) 90%, transparent);
-    box-shadow: 0 1rem 3rem
-      color-mix(in srgb, var(--pct-color-deep-camp) 75%, transparent);
-    backdrop-filter: blur(1rem);
+    background: var(--pct-color-night-trail);
   }
 
   .day-navigator[data-preview-region="desert"] {
@@ -253,36 +256,22 @@ const currentMileLabel = mileLabel(current);
 
   .step-link,
   .step-boundary {
-    min-width: 0;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
   }
 
   .step-link {
-    display: inline-flex;
-    gap: var(--pct-space-2);
-    align-items: center;
     color: var(--pct-color-muted);
+    font-size: 1.1rem;
+    line-height: 1;
     text-decoration: none;
     transition: color 160ms ease;
   }
 
-  .step-link.next {
-    justify-content: flex-end;
-    text-align: right;
-  }
-
   .step-link:hover {
-    color: var(--navigator-color);
-  }
-
-  .step-link span {
-    color: var(--navigator-color);
-    font-size: 1rem;
-  }
-
-  .step-link small {
-    font-size: 0.56rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    color: var(--pct-color-pine-glow);
   }
 
   .range-control {
@@ -296,9 +285,7 @@ const currentMileLabel = mileLabel(current);
     justify-content: center;
     min-height: 1.25rem;
     color: var(--pct-color-muted);
-    font-size: 0.54rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.72rem;
   }
 
   .range-copy strong {
@@ -326,43 +313,51 @@ const currentMileLabel = mileLabel(current);
   }
 
   input[type="range"]::-webkit-slider-runnable-track {
-    height: 2px;
+    height: 3px;
     border-radius: 999px;
     background: linear-gradient(
       to right,
-      var(--navigator-color) 0 var(--day-progress),
+      var(--progress-color) 0 var(--day-progress),
       var(--pct-color-faint) var(--day-progress) 100%
     );
   }
 
   input[type="range"]::-moz-range-track {
-    height: 2px;
+    height: 3px;
     border-radius: 999px;
     background: linear-gradient(
       to right,
-      var(--navigator-color) 0 var(--day-progress),
+      var(--progress-color) 0 var(--day-progress),
       var(--pct-color-faint) var(--day-progress) 100%
     );
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    width: 0.8rem;
-    height: 0.8rem;
-    margin-top: -0.36rem;
-    border: 2px solid var(--pct-color-deep-camp);
-    border-radius: 50%;
-    background: var(--navigator-color);
-    box-shadow: 0 0 0 1px var(--navigator-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: -0.67rem;
+    border: 0;
+    background: url("/icons/trail-hiker.svg") center / contain no-repeat;
+    filter: drop-shadow(0 0 0.25rem var(--pct-color-night-trail));
     appearance: none;
   }
 
   input[type="range"]::-moz-range-thumb {
-    width: 0.8rem;
-    height: 0.8rem;
-    border: 2px solid var(--pct-color-deep-camp);
-    border-radius: 50%;
-    background: var(--navigator-color);
-    box-shadow: 0 0 0 1px var(--navigator-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0;
+    background: url("/icons/trail-hiker.svg") center / contain no-repeat;
+    filter: drop-shadow(0 0 0.25rem var(--pct-color-night-trail));
+  }
+
+  .day-navigator[data-preview-region="after-trail"]
+    input[type="range"]::-webkit-slider-thumb {
+    background-image: url("/icons/trail-hiker-post-trail.svg");
+  }
+
+  .day-navigator[data-preview-region="after-trail"]
+    input[type="range"]::-moz-range-thumb {
+    background-image: url("/icons/trail-hiker-post-trail.svg");
   }
 
   input[type="range"]:disabled {
@@ -386,32 +381,15 @@ const currentMileLabel = mileLabel(current);
 
   @media (max-width: 46rem) {
     .day-navigator {
-      grid-template-columns: 2rem 1fr 2rem;
-      gap: var(--pct-space-3);
+      grid-template-columns: 1.75rem minmax(0, 1fr) 1.75rem;
+      gap: var(--pct-space-2);
       margin-top: var(--pct-space-4);
-      padding-inline: var(--pct-space-3);
-    }
-
-    .step-link small {
-      display: none;
-    }
-
-    .step-link.previous {
-      justify-content: flex-start;
+      padding-inline: var(--pct-space-2);
     }
 
     .range-copy {
       gap: var(--pct-space-2);
-    }
-
-    .range-copy small {
-      display: none;
-    }
-  }
-
-  @media (max-width: 28rem) {
-    .range-copy span {
-      display: none;
+      flex-wrap: wrap;
     }
   }
 </style>

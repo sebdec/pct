@@ -141,7 +141,11 @@ export function selectMapDay(
 
 export function initialMapSelection(
   days: readonly MapDayViewModel[],
+  dayId?: string,
 ): MapSelection {
   requireDays(days);
+
+  if (dayId) return selectMapDay(days, dayId);
+
   return { dayId: days[0]!.id, mile: days[0]!.mileStart };
 }

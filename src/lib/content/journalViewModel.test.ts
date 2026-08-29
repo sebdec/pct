@@ -44,7 +44,7 @@ describe("journal view models", () => {
     expect(pages[0].photos.map(({ id }) => id)).toEqual(["photo-001001"]);
     expect(pages[2]).toMatchObject({
       day: { id: "day-003", kind: "post-trail" },
-      regionLabel: "Après le trail",
+      regionLabel: "Post trail",
       metrics: null,
       next: null,
       previous: { dayId: "day-002", sequence: 2 },
@@ -74,7 +74,7 @@ describe("journal view models", () => {
         sequence: 3,
         locationLabel: "Vancouver",
         regionId: null,
-        regionLabel: "Après le trail",
+        regionLabel: "Post trail",
         mileStart: null,
         mileEnd: null,
       },

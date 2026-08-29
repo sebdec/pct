@@ -11,3 +11,7 @@ export function journalDayUrl(dayId: string): string {
 export function mapUrl(): string {
   return "/map";
 }
+
+export function mapDayUrl(dayId: string): string {
+  return `/map/${dayIdSchema.parse(dayId)}`;
+}

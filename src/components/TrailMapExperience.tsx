@@ -17,6 +17,7 @@ interface Props {
   days: readonly MapDayViewModel[];
   route: TrailRoute;
   mapStyleUrl: string;
+  initialDayId?: string;
 }
 
 function createLocalMapStyle(route: TrailRoute) {
@@ -77,8 +78,12 @@ export default function TrailMapExperience({
   days,
   route,
   mapStyleUrl,
+  initialDayId,
 }: Props) {
-  const initialSelection = useMemo(() => initialMapSelection(days), [days]);
+  const initialSelection = useMemo(
+    () => initialMapSelection(days, initialDayId),
+    [days, initialDayId],
+  );
   const [selection, setSelection] = useState(initialSelection);
   const [mapUnavailable, setMapUnavailable] = useState(false);
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -117,7 +122,9 @@ export default function TrailMapExperience({
         markerElement.className = "trail-map-marker";
         markerElement.setAttribute("aria-hidden", "true");
         const marker = new maplibre.Marker({ element: markerElement })
-          .setLngLat(route.termini.south)
+          .setLngLat(
+            getCoordinateAtMile(route, initialSelection.mile, routeIndex),
+          )
           .addTo(map);
         markerRef.current = marker;
 
@@ -179,7 +186,7 @@ export default function TrailMapExperience({
       markerRef.current = null;
       mapRef.current = null;
     };
-  }, [mapStyleUrl, route]);
+  }, [initialSelection.mile, mapStyleUrl, route, routeIndex]);
 
   useEffect(() => {
     markerRef.current?.setLngLat(

@@ -8,7 +8,19 @@ function isActive(href: string): boolean {
     return currentPath.startsWith("/journal");
   }
 
+  if (href === "/map") {
+    return currentPath.startsWith("/map");
+  }
+
   return !href.includes("#") && href === currentPath;
+}
+
+function navigationHref(label: string, href: string): string {
+  if (label === "Journal" && currentPath.startsWith("/journal/")) {
+    return currentPath;
+  }
+
+  return href;
 }
 ---
 
@@ -24,7 +36,7 @@ function isActive(href: string): boolean {
         site.navigation.map(({ label, href }) => (
           <li>
             <a
-              href={href}
+              href={navigationHref(label, href)}
               class:list={{ active: isActive(href) }}
               aria-current={isActive(href) ? "page" : undefined}
             >
@@ -39,15 +51,17 @@ function isActive(href: string): boolean {
   <nav class="mobile-navigation" aria-label="Navigation principale mobile">
     <a
       class:list={{ active: currentPath.startsWith("/journal") }}
-      href="/journal/day-001"
+      href={currentPath.startsWith("/journal/")
+        ? currentPath
+        : "/journal/day-001"}
       aria-current={currentPath.startsWith("/journal") ? "page" : undefined}
     >
       Journal
     </a>
     <a
-      class:list={{ active: currentPath === "/map" }}
+      class:list={{ active: currentPath.startsWith("/map") }}
       href="/map"
-      aria-current={currentPath === "/map" ? "page" : undefined}
+      aria-current={currentPath.startsWith("/map") ? "page" : undefined}
     >
       Carte
     </a>
@@ -72,7 +86,7 @@ function isActive(href: string): boolean {
     align-items: baseline;
     gap: var(--pct-space-2);
     color: var(--pct-color-pine-glow);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: -0.03em;
     text-decoration: none;
@@ -80,7 +94,7 @@ function isActive(href: string): boolean {
 
   .wordmark small {
     color: var(--pct-color-muted);
-    font-size: 0.62rem;
+    font-size: 0.68rem;
     letter-spacing: 0.13em;
   }
 
@@ -95,7 +109,7 @@ function isActive(href: string): boolean {
   nav a {
     position: relative;
     color: var(--pct-color-muted);
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-decoration: none;
     text-transform: uppercase;
@@ -121,7 +135,6 @@ function isActive(href: string): boolean {
       transform 160ms ease;
   }
 
-  nav a.active,
   nav a.active {
     color: var(--pct-color-pine-glow);
   }
@@ -139,7 +152,7 @@ function isActive(href: string): boolean {
   .mobile-navigation a {
     position: relative;
     color: var(--pct-color-pine-glow);
-    font-size: 0.58rem;
+    font-size: 0.66rem;
     letter-spacing: 0.12em;
     text-decoration: none;
     text-transform: uppercase;
