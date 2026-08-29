@@ -12,7 +12,7 @@ test("keeps French dates, the current Journal URL and the map deep link", async 
     page.getByRole("link", { name: "Journal", exact: true }).first(),
   ).toHaveAttribute("href", "/journal/day-001");
   await expect(
-    page.getByRole("link", { name: "Voir sur la carte" }),
+    page.getByRole("link", { name: "Voir sur la carte", exact: true }),
   ).toHaveAttribute("href", "/map/day-001");
   await expect(page.getByLabel("Repères de la journée")).toBeVisible();
   await expect(page.getByLabel("Repères de la journée")).toContainText(
@@ -46,7 +46,7 @@ test("removes trail metrics and the map action after day 97", async ({
   await expect(page.getByRole("heading", { name: "Jour 98" })).toBeVisible();
   await expect(page.getByLabel("Repères de la journée")).toHaveCount(0);
   await expect(
-    page.getByRole("link", { name: "Voir sur la carte" }),
+    page.getByRole("link", { name: "Voir sur la carte", exact: true }),
   ).toHaveCount(0);
 });
 
@@ -86,7 +86,7 @@ test("aligns the progress fill with the hiker near the end of the journal", asyn
 
   await expect(page.getByLabel("Accès rapide aux journées")).toHaveAttribute(
     "style",
-    /--day-progress: calc\([^)]*rem\)/,
+    /--trail-progress:\s*calc\([^)]*rem\)/,
   );
 });
 
@@ -96,8 +96,12 @@ test("keeps region and section aligned without joining their separators", async 
   await page.goto("/journal/day-005");
 
   const contextLayout = await page.evaluate(() => {
-    const region = document.querySelector<HTMLElement>(".region-metric");
-    const section = document.querySelector<HTMLElement>(".section-metric");
+    const region = document.querySelector<HTMLElement>(
+      ".trail-metrics__region",
+    );
+    const section = document.querySelector<HTMLElement>(
+      ".trail-metrics__section",
+    );
 
     if (!region || !section) {
       throw new Error("Missing journal context metrics.");

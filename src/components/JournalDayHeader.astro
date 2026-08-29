@@ -1,114 +1,22 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
 import { mapDayUrl } from "../lib/content/urls.ts";
-import LocalizedDate from "./LocalizedDate.astro";
+import TrailDaySummary from "./TrailDaySummary.tsx";
 
 interface Props {
   page: JournalPageViewModel;
 }
 
 const { page } = Astro.props;
-const sequence = page.day.sequence;
 const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
 ---
 
-<header class="day-header">
-  <div class="title-line">
-    <h1 aria-label={`Jour ${sequence}, ${page.entry.locationLabel}`}>
-      Jour {sequence}
-      <span class="location">{page.entry.locationLabel}</span>
-    </h1>
-  </div>
-
-  <div class="meta-line">
-    <p class="date">
-      <LocalizedDate start={page.day.date} end={endDate} />
-    </p>
-    {
-      page.day.kind === "trail" && (
-        <a class="map-link" href={mapDayUrl(page.day.id)}>
-          Voir sur la carte <span aria-hidden="true">→</span>
-        </a>
-      )
-    }
-  </div>
-</header>
-
-<style>
-  .day-header {
-    width: min(100%, var(--pct-content-reading));
-    margin: 0 auto;
-    padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
-    text-align: left;
-  }
-
-  .title-line {
-    display: flex;
-    align-items: baseline;
-  }
-
-  .date,
-  .location {
-    margin: 0;
-  }
-
-  h1 {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: var(--pct-space-2) var(--pct-space-3);
-    align-items: baseline;
-    margin: 0;
-    color: var(--pct-color-white);
-    font-size: clamp(1.9rem, 3vw, 2.35rem);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.035em;
-  }
-
-  .location {
-    min-width: 0;
-    overflow: hidden;
-    font-family: var(--pct-font-journal);
-    font-size: 0.48em;
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.5;
-    color: var(--pct-color-copy);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .meta-line {
-    display: flex;
-    gap: var(--pct-space-4);
-    align-items: center;
-    justify-content: space-between;
-    margin-top: var(--pct-space-2);
-  }
-
-  .date {
-    color: var(--pct-color-muted);
-    font-size: 0.75rem;
-    line-height: 1.5;
-  }
-
-  .map-link {
-    display: inline-flex;
-    gap: var(--pct-space-2);
-    align-items: center;
-    color: var(--pct-color-pine-glow);
-    font-size: 0.75rem;
-    text-decoration: none;
-  }
-
-  .map-link:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.35em;
-  }
-
-  @media (max-width: 40rem) {
-    .day-header {
-      padding-block: var(--pct-space-6);
-    }
-  }
-</style>
+<TrailDaySummary
+  sequence={page.day.sequence}
+  locationLabel={page.entry.locationLabel}
+  date={page.day.date}
+  endDate={endDate}
+  action={page.day.kind === "trail"
+    ? { href: mapDayUrl(page.day.id), label: "Voir sur la carte" }
+    : undefined}
+/>

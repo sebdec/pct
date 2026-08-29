@@ -1,0 +1,291 @@
+[
+  {
+    "id": "campo",
+    "labelFr": "Campo",
+    "labelEn": "Campo",
+    "type": "terminus",
+    "coordinates": [-116.469, 32.607],
+    "priority": 1,
+    "minZoom": 2,
+    "journalDayId": "day-001"
+  },
+  {
+    "id": "idyllwild",
+    "labelFr": "Idyllwild",
+    "labelEn": "Idyllwild",
+    "type": "town",
+    "coordinates": [-116.718, 33.746],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "big-bear-lake",
+    "labelFr": "Big Bear Lake",
+    "labelEn": "Big Bear Lake",
+    "type": "town",
+    "coordinates": [-116.911, 34.244],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "wrightwood",
+    "labelFr": "Wrightwood",
+    "labelEn": "Wrightwood",
+    "type": "town",
+    "coordinates": [-117.633, 34.361],
+    "priority": 3,
+    "minZoom": 7
+  },
+  {
+    "id": "tehachapi",
+    "labelFr": "Tehachapi",
+    "labelEn": "Tehachapi",
+    "type": "resupply",
+    "coordinates": [-118.449, 35.132],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "kennedy-meadows-south",
+    "labelFr": "Kennedy Meadows South",
+    "labelEn": "Kennedy Meadows South",
+    "type": "resupply",
+    "coordinates": [-118.128, 36.012],
+    "priority": 1,
+    "minZoom": 2
+  },
+  {
+    "id": "lone-pine",
+    "labelFr": "Lone Pine",
+    "labelEn": "Lone Pine",
+    "type": "resupply",
+    "coordinates": [-118.063, 36.606],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "mammoth-lakes",
+    "labelFr": "Mammoth Lakes",
+    "labelEn": "Mammoth Lakes",
+    "type": "town",
+    "coordinates": [-118.972, 37.648],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "south-lake-tahoe",
+    "labelFr": "South Lake Tahoe",
+    "labelEn": "South Lake Tahoe",
+    "type": "town",
+    "coordinates": [-119.978, 38.94],
+    "priority": 1,
+    "minZoom": 3
+  },
+  {
+    "id": "truckee",
+    "labelFr": "Truckee",
+    "labelEn": "Truckee",
+    "type": "town",
+    "coordinates": [-120.184, 39.328],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "burney",
+    "labelFr": "Burney",
+    "labelEn": "Burney",
+    "type": "resupply",
+    "coordinates": [-121.66, 40.883],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "mount-shasta",
+    "labelFr": "Mount Shasta",
+    "labelEn": "Mount Shasta",
+    "type": "town",
+    "coordinates": [-122.311, 41.31],
+    "priority": 1,
+    "minZoom": 2
+  },
+  {
+    "id": "etna",
+    "labelFr": "Etna",
+    "labelEn": "Etna",
+    "type": "resupply",
+    "coordinates": [-122.894, 41.457],
+    "priority": 3,
+    "minZoom": 7
+  },
+  {
+    "id": "ashland",
+    "labelFr": "Ashland",
+    "labelEn": "Ashland",
+    "type": "town",
+    "coordinates": [-122.709, 42.195],
+    "priority": 1,
+    "minZoom": 3
+  },
+  {
+    "id": "cascade-locks",
+    "labelFr": "Cascade Locks",
+    "labelEn": "Cascade Locks",
+    "type": "town",
+    "coordinates": [-121.899, 45.669],
+    "priority": 1,
+    "minZoom": 2
+  },
+  {
+    "id": "trout-lake",
+    "labelFr": "Trout Lake",
+    "labelEn": "Trout Lake",
+    "type": "resupply",
+    "coordinates": [-121.528, 45.997],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "white-pass",
+    "labelFr": "White Pass",
+    "labelEn": "White Pass",
+    "type": "pass",
+    "coordinates": [-121.391, 46.638],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "snoqualmie-pass",
+    "labelFr": "Snoqualmie Pass",
+    "labelEn": "Snoqualmie Pass",
+    "type": "pass",
+    "coordinates": [-121.413, 47.423],
+    "priority": 1,
+    "minZoom": 3
+  },
+  {
+    "id": "stevens-pass",
+    "labelFr": "Stevens Pass",
+    "labelEn": "Stevens Pass",
+    "type": "pass",
+    "coordinates": [-121.088, 47.746],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "stehekin",
+    "labelFr": "Stehekin",
+    "labelEn": "Stehekin",
+    "type": "resupply",
+    "coordinates": [-120.656, 48.309],
+    "priority": 1,
+    "minZoom": 3
+  },
+  {
+    "id": "warner-springs",
+    "labelFr": "Warner Springs",
+    "labelEn": "Warner Springs",
+    "type": "resupply",
+    "coordinates": [-116.64, 33.282],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "agua-dulce",
+    "labelFr": "Agua Dulce",
+    "labelEn": "Agua Dulce",
+    "type": "resupply",
+    "coordinates": [-118.325, 34.496],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "sierra-city",
+    "labelFr": "Sierra City",
+    "labelEn": "Sierra City",
+    "type": "resupply",
+    "coordinates": [-120.636, 39.56],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "chester",
+    "labelFr": "Chester",
+    "labelEn": "Chester",
+    "type": "resupply",
+    "coordinates": [-121.231, 40.306],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "old-station",
+    "labelFr": "Old Station",
+    "labelEn": "Old Station",
+    "type": "resupply",
+    "coordinates": [-121.433, 40.677],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "dunsmuir",
+    "labelFr": "Dunsmuir",
+    "labelEn": "Dunsmuir",
+    "type": "resupply",
+    "coordinates": [-122.271, 41.208],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "seiad-valley",
+    "labelFr": "Seiad Valley",
+    "labelEn": "Seiad Valley",
+    "type": "resupply",
+    "coordinates": [-123.192, 41.838],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "crater-lake",
+    "labelFr": "Crater Lake",
+    "labelEn": "Crater Lake",
+    "type": "resupply",
+    "coordinates": [-122.109, 42.944],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "shelter-cove",
+    "labelFr": "Shelter Cove",
+    "labelEn": "Shelter Cove",
+    "type": "resupply",
+    "coordinates": [-121.985, 43.579],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "sisters",
+    "labelFr": "Sisters",
+    "labelEn": "Sisters",
+    "type": "town",
+    "coordinates": [-121.55, 44.29],
+    "priority": 2,
+    "minZoom": 6
+  },
+  {
+    "id": "timberline-lodge",
+    "labelFr": "Timberline Lodge",
+    "labelEn": "Timberline Lodge",
+    "type": "resupply",
+    "coordinates": [-121.711, 45.331],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "manning-park",
+    "labelFr": "Manning Park",
+    "labelEn": "Manning Park",
+    "type": "terminus",
+    "coordinates": [-120.781, 49.064],
+    "priority": 1,
+    "minZoom": 2
+  }
+]

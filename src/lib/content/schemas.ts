@@ -305,6 +305,44 @@ export const trailRouteSchema = z.object({
   }),
 });
 
+export const mapPointSchema = z.object({
+  id: stableIdSchema,
+  labelFr: z.string().min(1),
+  labelEn: z.string().min(1),
+  type: z.enum(["town", "resupply", "pass", "terminus"]),
+  coordinates: routeCoordinateSchema,
+  priority: z.number().int().min(1).max(3),
+  minZoom: z.number().min(2).max(12),
+  journalDayId: dayIdSchema.optional(),
+});
+
+const polygonCoordinatesSchema = z
+  .array(z.array(routeCoordinateSchema).min(4))
+  .min(1);
+
+export const mapAreaSchema = z.object({
+  id: stableIdSchema,
+  kind: z.enum(["country", "state"]),
+  code: z.string().min(2),
+  name: z.string().min(1),
+  geometry: z.discriminatedUnion("type", [
+    z.object({
+      type: z.literal("Polygon"),
+      coordinates: polygonCoordinatesSchema,
+    }),
+    z.object({
+      type: z.literal("MultiPolygon"),
+      coordinates: z.array(polygonCoordinatesSchema).min(1),
+    }),
+  ]),
+  source: z.object({
+    dataset: z.literal("Natural Earth"),
+    scale: z.enum(["1:50m", "1:110m"]),
+    url: z.url(),
+    license: z.literal("Public domain"),
+  }),
+});
+
 export const glossaryConceptSchema = z.object({
   id: stableIdSchema,
   published: z.boolean().default(false),
@@ -392,6 +430,8 @@ export type MediaAsset = z.infer<typeof mediaAssetSchema>;
 export type ApprovedMediaMatch = z.infer<typeof approvedMediaMatchSchema>;
 export type RouteCoordinate = z.infer<typeof routeCoordinateSchema>;
 export type TrailRoute = z.infer<typeof trailRouteSchema>;
+export type MapPoint = z.infer<typeof mapPointSchema>;
+export type MapArea = z.infer<typeof mapAreaSchema>;
 export type GlossaryConcept = z.infer<typeof glossaryConceptSchema>;
 export type LocalizedGlossaryEntry = z.infer<
   typeof localizedGlossaryEntrySchema

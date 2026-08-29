@@ -1,0 +1,167 @@
+.trail-progress {
+  --navigator-color: var(--pct-color-muted);
+  --progress-color: var(--pct-color-pine-glow);
+
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) 2rem;
+  gap: var(--pct-space-3);
+  align-items: center;
+  width: min(100%, 48rem);
+  margin-inline: auto;
+  padding: var(--pct-space-3) var(--pct-space-4);
+  border-radius: var(--pct-radius-small);
+  background: var(--pct-color-night-trail);
+}
+
+.trail-progress[data-region="desert"] {
+  --navigator-color: var(--pct-color-desert-dust);
+}
+
+.trail-progress[data-region="sierra"] {
+  --navigator-color: var(--pct-color-sierra-snow);
+}
+
+.trail-progress[data-region="norcal"] {
+  --navigator-color: var(--pct-color-norcal-forest);
+}
+
+.trail-progress[data-region="oregon"] {
+  --navigator-color: var(--pct-color-oregon-lake);
+}
+
+.trail-progress[data-region="washington"] {
+  --navigator-color: var(--pct-color-washington-mist);
+}
+
+.trail-progress__step,
+.trail-progress__boundary {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+}
+
+.trail-progress__step {
+  padding: 0;
+  border: 0;
+  color: var(--pct-color-muted);
+  background: transparent;
+  font-size: 1.1rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.trail-progress__step:hover {
+  color: var(--pct-color-pine-glow);
+}
+
+.trail-progress__control {
+  min-width: 0;
+}
+
+.trail-progress__copy {
+  display: flex;
+  gap: var(--pct-space-3);
+  align-items: baseline;
+  justify-content: center;
+  min-height: 1.25rem;
+  color: var(--pct-color-muted);
+  font-size: 0.72rem;
+}
+
+.trail-progress__copy strong {
+  color: var(--pct-color-white);
+  font-weight: 500;
+}
+
+.trail-progress__copy span {
+  color: var(--navigator-color);
+  transition: color 160ms ease;
+}
+
+.trail-progress__copy small {
+  font-size: inherit;
+}
+
+.trail-progress input[type="range"] {
+  width: 100%;
+  height: 1.25rem;
+  margin: var(--pct-space-1) 0 0;
+  padding: 0;
+  cursor: ew-resize;
+  appearance: none;
+  background: transparent;
+}
+
+.trail-progress input[type="range"]::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--progress-color) 0 var(--trail-progress),
+    var(--pct-color-faint) var(--trail-progress) 100%
+  );
+}
+
+.trail-progress input[type="range"]::-moz-range-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--progress-color) 0 var(--trail-progress),
+    var(--pct-color-faint) var(--trail-progress) 100%
+  );
+}
+
+.trail-progress input[type="range"]::-webkit-slider-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -0.67rem;
+  border: 0;
+  background: url("/icons/trail-hiker.svg") center / contain no-repeat;
+  filter: drop-shadow(0 0 0.25rem var(--pct-color-night-trail));
+  appearance: none;
+}
+
+.trail-progress input[type="range"]::-moz-range-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0;
+  background: url("/icons/trail-hiker.svg") center / contain no-repeat;
+  filter: drop-shadow(0 0 0.25rem var(--pct-color-night-trail));
+}
+
+.trail-progress[data-region="after-trail"]
+  input[type="range"]::-webkit-slider-thumb {
+  background-image: url("/icons/trail-hiker-post-trail.svg");
+}
+
+.trail-progress[data-region="after-trail"]
+  input[type="range"]::-moz-range-thumb {
+  background-image: url("/icons/trail-hiker-post-trail.svg");
+}
+
+.trail-progress__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 46rem) {
+  .trail-progress {
+    grid-template-columns: 1.75rem minmax(0, 1fr) 1.75rem;
+    gap: var(--pct-space-2);
+    padding-inline: var(--pct-space-2);
+  }
+
+  .trail-progress__copy {
+    gap: var(--pct-space-2);
+    flex-wrap: wrap;
+  }
+}

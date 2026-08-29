@@ -10,6 +10,8 @@ import {
   localizedGearEntrySchema,
   localizedGlossaryEntrySchema,
   localizedPhotoSchema,
+  mapAreaSchema,
+  mapPointSchema,
   mediaAssetSchema,
   photoSchema,
   regionSchema,
@@ -37,6 +39,16 @@ const days = defineCollection({
 const routes = defineCollection({
   loader: file("src/data/map/routes.json"),
   schema: trailRouteSchema,
+});
+
+const mapPoints = defineCollection({
+  loader: file("src/data/map/points-of-interest.json"),
+  schema: mapPointSchema,
+});
+
+const mapAreas = defineCollection({
+  loader: file("src/data/map/geography.json"),
+  schema: mapAreaSchema,
 });
 
 const glossaryConcepts = defineCollection({
@@ -99,6 +111,8 @@ export const collections = {
   sections,
   days,
   routes,
+  mapPoints,
+  mapAreas,
   glossaryConcepts,
   gearItems,
   photos,

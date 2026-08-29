@@ -96,6 +96,84 @@ export function getRouteProgressAtMile(
   );
 }
 
+export function getJournalMileAtRouteProgress(
+  route: TrailRoute,
+  routeProgress: number,
+): number {
+  if (
+    !Number.isFinite(routeProgress) ||
+    routeProgress < 0 ||
+    routeProgress > 1
+  ) {
+    throw new RangeError("Route progress must be between 0 and 1.");
+  }
+
+  const anchors = route.anchors;
+  if (routeProgress <= anchors[0]!.routeProgress) return anchors[0]!.mile;
+  if (routeProgress >= anchors.at(-1)!.routeProgress) {
+    return route.journalMaxMile;
+  }
+
+  let low = 0;
+  let high = anchors.length - 1;
+  while (low + 1 < high) {
+    const middle = Math.floor((low + high) / 2);
+    if (anchors[middle]!.routeProgress <= routeProgress) low = middle;
+    else high = middle;
+  }
+  const start = anchors[low]!;
+  const end = anchors[high]!;
+  const ratio =
+    (routeProgress - start.routeProgress) /
+    (end.routeProgress - start.routeProgress);
+
+  return start.mile + ratio * (end.mile - start.mile);
+}
+
+export function getNearestMileOnRoute(
+  route: TrailRoute,
+  coordinate: RouteCoordinate,
+  routeIndex = createRouteIndex(route.coordinates),
+): number {
+  const latitudeScale = Math.cos(degreesToRadians(coordinate[1]));
+  let closestDistance = Number.POSITIVE_INFINITY;
+  let closestProgress = 0;
+
+  for (let index = 0; index < route.coordinates.length - 1; index += 1) {
+    const start = route.coordinates[index]!;
+    const end = route.coordinates[index + 1]!;
+    const startX = (start[0] - coordinate[0]) * latitudeScale;
+    const startY = start[1] - coordinate[1];
+    const segmentX = (end[0] - start[0]) * latitudeScale;
+    const segmentY = end[1] - start[1];
+    const segmentLengthSquared = segmentX ** 2 + segmentY ** 2;
+    const ratio =
+      segmentLengthSquared > 0
+        ? Math.max(
+            0,
+            Math.min(
+              1,
+              -(startX * segmentX + startY * segmentY) / segmentLengthSquared,
+            ),
+          )
+        : 0;
+    const offsetX = startX + ratio * segmentX;
+    const offsetY = startY + ratio * segmentY;
+    const distance = offsetX ** 2 + offsetY ** 2;
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      const startMeters = routeIndex.cumulativeMeters[index]!;
+      const endMeters = routeIndex.cumulativeMeters[index + 1]!;
+      closestProgress =
+        (startMeters + ratio * (endMeters - startMeters)) /
+        routeIndex.totalMeters;
+    }
+  }
+
+  return getJournalMileAtRouteProgress(route, closestProgress);
+}
+
 export function getCoordinateAtProgress(
   route: TrailRoute,
   routeProgress: number,
