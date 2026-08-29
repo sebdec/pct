@@ -149,12 +149,12 @@ describe("content model validation", () => {
       ...fixture.photos,
       {
         ...(fixture.photos[0] as Record<string, unknown>),
-        id: "photo-0002",
+        id: "photo-001002",
         order: 2,
       },
     ];
     const firstJournal = fixture.journalEntries[0] as Record<string, unknown>;
-    firstJournal.photoIds = ["photo-0001", "photo-0002"];
+    firstJournal.photoIds = ["photo-001001", "photo-001002"];
     const report = fixture.extractionReports[0] as Record<string, unknown>;
     report.counts = {
       ...(report.counts as Record<string, unknown>),

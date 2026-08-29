@@ -14,6 +14,23 @@ export interface ParsedMedia {
   reusedMediaAssets: number;
 }
 
+type PhotoAssociation =
+  | { dayId: string; pageId?: never }
+  | { dayId?: never; pageId: "introduction" | "analysis" };
+
+function createPhotoId(
+  association: PhotoAssociation,
+  associationIndex: number,
+): string {
+  const suffix = String(associationIndex).padStart(3, "0");
+
+  if (association.dayId) {
+    return `photo-${association.dayId.replace("day-", "")}${suffix}`;
+  }
+
+  return `photo-${association.pageId}-${suffix}`;
+}
+
 function findHeading(
   blocks: readonly OoxmlBlock[],
   text: string,
@@ -57,6 +74,7 @@ export function parseMedia(
   const photos: Photo[] = [];
   const photoIdsByDay = new Map<string, string[]>();
   const mediaOccurrences = new Map<string, number>();
+  const associationOccurrences = new Map<string, number>();
 
   for (const block of document.blocks) {
     for (const image of block.images) {
@@ -71,8 +89,6 @@ export function parseMedia(
         throw new Error(`Unable to read dimensions for ${image.mediaPath}.`);
       }
 
-      const placementNumber = photos.length + 1;
-      const id = `photo-${String(placementNumber).padStart(4, "0")}`;
       const sourceHash = createHash("sha256").update(media).digest("hex");
       const occurrence = (mediaOccurrences.get(image.mediaPath) ?? 0) + 1;
       mediaOccurrences.set(image.mediaPath, occurrence);
@@ -81,7 +97,7 @@ export function parseMedia(
           block.blockIndex >= startBlock &&
           block.blockIndex < endBlockExclusive,
       );
-      const association = dayRange
+      const association: PhotoAssociation = dayRange
         ? { dayId: dayRange.dayId }
         : {
             pageId: pageForIntroductoryImage(
@@ -91,6 +107,14 @@ export function parseMedia(
               journalStart,
             ),
           };
+      const associationKey = dayRange
+        ? `day:${association.dayId}`
+        : `page:${association.pageId}`;
+      const associationIndex =
+        (associationOccurrences.get(associationKey) ?? 0) + 1;
+      associationOccurrences.set(associationKey, associationIndex);
+      const placementNumber = photos.length + 1;
+      const id = createPhotoId(association, associationIndex);
 
       photos.push({
         id,

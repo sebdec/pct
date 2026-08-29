@@ -163,7 +163,7 @@ export function createValidContentModel(): ContentModelSource {
         locale: "fr",
         title: "Le départ",
         locationLabel: "Campo",
-        photoIds: ["photo-0001"],
+        photoIds: ["photo-001001"],
         sourceRefs: [sourceRef],
       },
       {
@@ -185,7 +185,7 @@ export function createValidContentModel(): ContentModelSource {
     ],
     photos: [
       {
-        id: "photo-0001",
+        id: "photo-001001",
         dayId: "day-001",
         order: 0,
         assetKey: "pct-2026-day-001-001",
@@ -197,7 +197,7 @@ export function createValidContentModel(): ContentModelSource {
     ],
     localizedPhotos: [
       {
-        photoId: "photo-0001",
+        photoId: "photo-001001",
         locale: "fr",
         alt: "Le monument du terminus sud à Campo",
       },

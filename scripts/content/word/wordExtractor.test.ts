@@ -213,7 +213,43 @@ describe("Word journal extraction", () => {
       mediaAssetCount: 1,
       reusedMediaAssets: 1,
     });
+    expect(media.photos.map(({ id }) => id)).toEqual([
+      "photo-001001",
+      "photo-001002",
+    ]);
     expect(media.photos[0]?.assetKey).toBe(media.photos[1]?.assetKey);
+  });
+
+  it("scopes pre-journal placement IDs to their supporting page", () => {
+    const image = {
+      relationshipId: "rId1",
+      mediaPath: "word/media/image1.png",
+    };
+    const blocks: OoxmlDocument["blocks"] = [
+      { ...paragraph(0, "", "normal"), images: [image] },
+      paragraph(1, "🔢 Le PCT en quelques chiffres", "Heading2"),
+      { ...paragraph(2, "", "normal"), images: [image] },
+      paragraph(3, "🎒 Équipement", "Heading2"),
+      paragraph(4, "Journal", "Heading1"),
+    ];
+    const document: OoxmlDocument = {
+      filename: "PCT 2026 - Sebdec.docx",
+      sha256: "0".repeat(64),
+      sizeBytes: 1,
+      blocks,
+      paragraphCount: 5,
+      tableCount: 0,
+      documentSectionCount: 1,
+      relationships: new Map(),
+      media: new Map([["word/media/image1.png", png]]),
+    };
+
+    const media = parseMedia(document, []);
+
+    expect(media.photos.map(({ id }) => id)).toEqual([
+      "photo-introduction-001",
+      "photo-analysis-001",
+    ]);
   });
 
   it("does not replace generated files when staging validation fails", async () => {

@@ -27,6 +27,8 @@ The source hash and verified structural counts are fixed in the approved extract
 
 Generated outputs include 100 journal Markdown files, 5 supporting pages, neutral trail data, 66 gear records, 39 glossary records, 344 photo placements, the source manifest and the extraction report. Do not edit these files directly because regeneration replaces them.
 
+Photo placement IDs are scoped to their associated content. `photo-074001` is the first photo of `day-074`. Placements outside the journal use the supporting page ID, for example `photo-introduction-001`. The independent `order` field preserves global Word source order.
+
 ## Faithful serialization
 
 The extractor preserves source paragraph order, punctuation, accents, apostrophes, emphasis and hyperlinks. It applies only these presentation-independent serializations:

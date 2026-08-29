@@ -4,6 +4,7 @@ import { localeSchema } from "./locales.ts";
 
 const stableIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const dayIdPattern = /^day-\d{3}$/;
+const photoIdPattern = /^photo-(?:\d{6}|[a-z0-9]+(?:-[a-z0-9]+)*-\d{3})$/;
 
 function isIsoDate(value: string): boolean {
   const parsed = new Date(`${value}T00:00:00.000Z`);
@@ -187,7 +188,7 @@ export const journalEntrySchema = z.object({
 
 export const photoSchema = z
   .object({
-    id: z.string().regex(/^photo-\d{4}$/),
+    id: z.string().regex(photoIdPattern),
     dayId: dayIdSchema.optional(),
     pageId: stableIdSchema.optional(),
     order: z.number().int().nonnegative(),
@@ -203,7 +204,7 @@ export const photoSchema = z
   });
 
 export const localizedPhotoSchema = z.object({
-  photoId: z.string().regex(/^photo-\d{4}$/),
+  photoId: z.string().regex(photoIdPattern),
   locale: localeSchema,
   alt: z.string().min(1),
   caption: z.string().min(1).optional(),
