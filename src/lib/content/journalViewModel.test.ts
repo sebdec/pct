@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 
 import { createValidContentModel } from "./contentFixtures.ts";
-import { buildJournalViewModels } from "./journalViewModel.ts";
+import {
+  buildJournalNavigatorItems,
+  buildJournalViewModels,
+} from "./journalViewModel.ts";
 import { daySchema, journalEntrySchema, photoSchema } from "./schemas.ts";
 
 function createValidJournalSource() {
@@ -46,6 +49,33 @@ describe("journal view models", () => {
       next: null,
       previous: { dayId: "day-002", sequence: 2 },
     });
+
+    expect(buildJournalNavigatorItems(pages)).toEqual([
+      {
+        dayId: "day-001",
+        sequence: 1,
+        locationLabel: "Campo",
+        regionLabel: "Désert",
+        mileStart: 0,
+        mileEnd: 10,
+      },
+      {
+        dayId: "day-002",
+        sequence: 2,
+        locationLabel: "Lake Morena",
+        regionLabel: "Sierra",
+        mileStart: 10,
+        mileEnd: 20,
+      },
+      {
+        dayId: "day-003",
+        sequence: 3,
+        locationLabel: "Vancouver",
+        regionLabel: "Après le trail",
+        mileStart: null,
+        mileEnd: null,
+      },
+    ]);
   });
 
   it("rejects a published day without localized content", () => {

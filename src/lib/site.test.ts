@@ -13,6 +13,7 @@ describe("site foundation", () => {
       ),
     ).toBe(true);
     expect(targets).toContain("/journal/day-001");
+    expect(site.navigation.map(({ label }) => label)).not.toContain("Explorer");
   });
 
   it("models the five editorial trail sections", () => {

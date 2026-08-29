@@ -1,0 +1,56 @@
+---
+interface Props {
+  name: "mile" | "distance" | "ascent" | "descent";
+}
+
+const { name } = Astro.props;
+---
+
+<svg class="metric-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  {
+    name === "mile" && (
+      <>
+        <path d="M7.5 20V6.8c0-1 .8-1.8 1.8-1.8h5.4c1 0 1.8.8 1.8 1.8V20" />
+        <path d="M5 20h14M10 9.2h4M10 12.5h2.7" />
+      </>
+    )
+  }
+  {
+    name === "distance" && (
+      <>
+        <circle cx="5" cy="17.5" r="1.8" />
+        <circle cx="19" cy="6.5" r="1.8" />
+        <path d="M6.8 17.5c3.5 0 2.8-5 6.4-5s2.8-6 4-6" />
+      </>
+    )
+  }
+  {
+    name === "ascent" && (
+      <>
+        <path d="m3.5 19 6.3-8.6 3 3.7 2.4-2.8 5.3 7.7" />
+        <path d="M16.5 9V3.8m0 0-2.2 2.3m2.2-2.3 2.2 2.3" />
+      </>
+    )
+  }
+  {
+    name === "descent" && (
+      <>
+        <path d="m3.5 19 6.3-8.6 3 3.7 2.4-2.8 5.3 7.7" />
+        <path d="M16.5 3.8V9m0 0-2.2-2.3M16.5 9l2.2-2.3" />
+      </>
+    )
+  }
+</svg>
+
+<style>
+  .metric-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: 0 0 auto;
+    color: var(--pct-color-pine-glow);
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.35;
+  }
+</style>

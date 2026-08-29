@@ -19,6 +19,12 @@ export interface JournalNavigationItem {
   locationLabel: string;
 }
 
+export interface JournalNavigatorItem extends JournalNavigationItem {
+  regionLabel: string;
+  mileStart: number | null;
+  mileEnd: number | null;
+}
+
 export interface JournalTrailMetrics {
   mileStart: number;
   mileEnd: number;
@@ -37,6 +43,17 @@ export interface JournalPageViewModel {
   regionLabel: string;
   previous: JournalNavigationItem | null;
   next: JournalNavigationItem | null;
+}
+
+export function buildJournalNavigatorItems(
+  pages: readonly JournalPageViewModel[],
+): JournalNavigatorItem[] {
+  return pages.map((page) => ({
+    ...navigationItem(page),
+    regionLabel: page.regionLabel,
+    mileStart: page.metrics?.mileStart ?? null,
+    mileEnd: page.metrics?.mileEnd ?? null,
+  }));
 }
 
 interface JournalViewModelSource {

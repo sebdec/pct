@@ -2,6 +2,7 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 
 import JournalDayHeader from "../../components/JournalDayHeader.astro";
+import JournalDayNavigator from "../../components/JournalDayNavigator.astro";
 import JournalMediaSequence from "../../components/JournalMediaSequence.astro";
 import JournalMetrics from "../../components/JournalMetrics.astro";
 import JournalNavigation from "../../components/JournalNavigation.astro";
@@ -9,6 +10,8 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   buildJournalViewModels,
+  buildJournalNavigatorItems,
+  type JournalNavigatorItem,
   type JournalPageViewModel,
 } from "../../lib/content/journalViewModel.ts";
 import { defaultLocale } from "../../lib/content/locales.ts";
@@ -18,6 +21,7 @@ interface Props {
   page: JournalPageViewModel;
   journalEntry: CollectionEntry<"journal">;
   totalEntries: number;
+  navigatorEntries: readonly JournalNavigatorItem[];
 }
 
 export async function getStaticPaths() {
@@ -37,6 +41,7 @@ export async function getStaticPaths() {
   const entryByDayId = new Map(
     frenchEntries.map((entry) => [entry.data.dayId, entry]),
   );
+  const navigatorEntries = buildJournalNavigatorItems(pages);
 
   return pages.map((page) => ({
     params: { dayId: page.day.id },
@@ -44,11 +49,12 @@ export async function getStaticPaths() {
       page,
       journalEntry: entryByDayId.get(page.day.id),
       totalEntries: pages.length,
+      navigatorEntries,
     },
   }));
 }
 
-const { page, journalEntry, totalEntries } = Astro.props;
+const { page, journalEntry, totalEntries, navigatorEntries } = Astro.props;
 const { Content } = await render(journalEntry);
 const pageTitle = `${page.day.kind === "trail" ? `Jour ${page.day.sequence}` : "Après le trail"} · ${page.entry.locationLabel} | ${site.title}`;
 const pageDescription =
@@ -65,6 +71,7 @@ const regionClass = page.regionId
   <main class:list={["journal-page", regionClass]}>
     <article>
       <JournalDayHeader page={page} totalEntries={totalEntries} />
+      <JournalDayNavigator page={page} entries={navigatorEntries} />
 
       <div class="journal-layout">
         <JournalMetrics page={page} />
@@ -165,11 +172,7 @@ const regionClass = page.regionId
 
   .journal-copy :global(strong) {
     color: var(--pct-color-white);
-    font-weight: 400;
-    text-decoration-color: var(--pct-color-pine-glow);
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
+    font-weight: 600;
   }
 
   .journal-copy :global(a) {

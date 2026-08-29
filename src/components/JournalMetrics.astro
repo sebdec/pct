@@ -1,5 +1,6 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import MetricIcon from "./MetricIcon.astro";
 
 interface Props {
   page: JournalPageViewModel;
@@ -19,25 +20,45 @@ const integerFormatter = new Intl.NumberFormat("fr-FR", {
     page.metrics ? (
       <dl>
         <div>
-          <dt>Miles</dt>
+          <dt>
+            <>
+              <MetricIcon name="mile" />
+              <span>Miles</span>
+            </>
+          </dt>
           <dd>
             {decimalFormatter.format(page.metrics.mileStart)} →{" "}
             {decimalFormatter.format(page.metrics.mileEnd)}
           </dd>
         </div>
         <div>
-          <dt>Distance</dt>
+          <dt>
+            <>
+              <MetricIcon name="distance" />
+              <span>Distance</span>
+            </>
+          </dt>
           <dd>{decimalFormatter.format(page.metrics.distanceMiles)} mi</dd>
           <dd class="secondary">
             {decimalFormatter.format(page.metrics.distanceKilometers)} km
           </dd>
         </div>
         <div>
-          <dt>Ascension</dt>
+          <dt>
+            <>
+              <MetricIcon name="ascent" />
+              <span>Ascension</span>
+            </>
+          </dt>
           <dd>+{integerFormatter.format(page.metrics.ascentMeters)} m</dd>
         </div>
         <div>
-          <dt>Descente</dt>
+          <dt>
+            <>
+              <MetricIcon name="descent" />
+              <span>Descente</span>
+            </>
+          </dt>
           <dd>−{integerFormatter.format(page.metrics.descentMeters)} m</dd>
         </div>
       </dl>
@@ -65,6 +86,9 @@ const integerFormatter = new Intl.NumberFormat("fr-FR", {
   }
 
   dt {
+    display: flex;
+    gap: var(--pct-space-2);
+    align-items: center;
     margin-bottom: var(--pct-space-2);
     color: var(--pct-color-muted);
     font-size: 0.52rem;

@@ -31,7 +31,6 @@ function orientation(width: number, height: number): string {
       aria-labelledby="media-title"
     >
       <header>
-        <p>Photographies</p>
         <h2 id="media-title">Les images viendront retrouver leur place ici.</h2>
       </header>
 
@@ -96,21 +95,12 @@ function orientation(width: number, height: number): string {
     --media-color: var(--pct-color-washington-mist);
   }
 
-  header p,
   header h2 {
     margin: 0;
   }
 
-  header p {
-    color: var(--pct-color-pine-glow);
-    font-size: 0.52rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
   header h2 {
     max-width: 26rem;
-    margin-top: var(--pct-space-3);
     color: var(--pct-color-muted);
     font-family: var(--pct-font-journal);
     font-size: clamp(1rem, 2vw, 1.25rem);
