@@ -201,6 +201,7 @@ async function extract(inputPath: string): Promise<void> {
     days: generated.days,
     journalEntries: generated.journalEntries,
     photos: generated.photos,
+    mediaAssets: [],
     localizedPhotos: [],
     glossaryConcepts: generated.glossaryConcepts,
     localizedGlossaryEntries: generated.localizedGlossaryEntries,

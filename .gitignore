@@ -9,3 +9,4 @@ dist/
 coverage/
 .content-extraction-staging-*
 *.content-extraction-backup-*
+.media-workspace/

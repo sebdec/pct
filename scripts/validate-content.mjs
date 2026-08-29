@@ -58,18 +58,6 @@ function assertMatchingLocale(path, baseDirectory, data) {
   }
 }
 
-async function readLocalizedJson(directory) {
-  const files = await listFiles(directory, new Set([".json"]));
-
-  return Promise.all(
-    files.map(async (path) => {
-      const data = JSON.parse(await readFile(path, "utf8"));
-      assertMatchingLocale(path, directory, data);
-      return data;
-    }),
-  );
-}
-
 async function readLocalizedJsonByLocale(directory) {
   const files = await listFiles(directory, new Set([".json"]));
   const entries = [];
@@ -152,7 +140,10 @@ assertContentModel({
     resolve(contentDirectory, "journal"),
   ),
   photos: await readJsonArray(resolve(dataDirectory, "media/photos.json")),
-  localizedPhotos: await readLocalizedJson(resolve(contentDirectory, "media")),
+  mediaAssets: await readJsonArray(resolve(dataDirectory, "media/assets.json")),
+  localizedPhotos: await readLocalizedJsonByLocale(
+    resolve(contentDirectory, "media"),
+  ),
   glossaryConcepts: await readJsonArray(
     resolve(dataDirectory, "glossary/concepts.json"),
   ),

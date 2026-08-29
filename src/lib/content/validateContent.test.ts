@@ -106,6 +106,22 @@ describe("content model validation", () => {
     );
   });
 
+  it("requires a complete published media asset for a published photo", () => {
+    const fixture = cloneFixture();
+    fixture.mediaAssets = [];
+
+    const result = validateContentModel(fixture);
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "reference.photo-asset",
+          path: "photos.photo-001001.assetKey",
+        }),
+      ]),
+    );
+  });
+
   it("rejects negative elevation data at the schema boundary", () => {
     const fixture = cloneFixture();
     const firstDay = fixture.days[0] as Record<string, unknown>;
