@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import { createValidContentModel } from "../content/contentFixtures.ts";
-import { daySchema, journalEntrySchema } from "../content/schemas.ts";
+import {
+  daySchema,
+  journalEntrySchema,
+  sectionSchema,
+} from "../content/schemas.ts";
 import {
   buildMapDayViewModels,
   getMapDayForMile,
@@ -16,6 +20,7 @@ function fixtureDays() {
   return buildMapDayViewModels({
     days: daySchema.array().parse(source.days),
     journalEntries: journalEntrySchema.array().parse(source.journalEntries),
+    sections: sectionSchema.array().parse(source.sections),
   });
 }
 
@@ -29,6 +34,7 @@ describe("map experience", () => {
       locationLabel: "Campo",
       distanceMiles: 10,
       cumulativeMiles: 10,
+      sections: [{ code: "A", properName: "Campo to Lake Morena" }],
       journalHref: "/journal/day-001",
     });
     expect(days.some(({ id }) => id === "day-003")).toBe(false);

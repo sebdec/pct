@@ -1,6 +1,7 @@
 .trail-map-experience {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(19rem, 0.9fr);
+  grid-template-columns: minmax(0, 1.65fr) minmax(25rem, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
   width: min(100% - 3rem, var(--pct-content-wide));
   min-height: calc(100vh - 7.5rem);
   margin: 0 auto;
@@ -9,10 +10,9 @@
 
 .trail-map-stage {
   position: relative;
-  min-height: 38rem;
+  min-height: 42rem;
   overflow: hidden;
-  border: 1px solid var(--pct-color-faint);
-  border-radius: var(--pct-radius-medium) 0 0 var(--pct-radius-medium);
+  border-radius: var(--pct-radius-medium);
   background: var(--pct-color-night-trail);
 }
 
@@ -35,146 +35,113 @@
 
 .trail-map-panel {
   display: flex;
+  min-width: 0;
   flex-direction: column;
-  padding: clamp(1.5rem, 3vw, 3rem);
-  border: 1px solid var(--pct-color-faint);
-  border-left: 0;
-  border-radius: 0 var(--pct-radius-medium) var(--pct-radius-medium) 0;
-  background: color-mix(in srgb, var(--pct-color-deep-camp) 92%, transparent);
-}
-
-.trail-map-heading p,
-.trail-map-controls label,
-.trail-map-stats dt {
-  color: var(--pct-color-pine-glow);
-  font-size: 0.55rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.trail-map-heading p {
-  margin: 0 0 var(--pct-space-3);
-}
-
-.trail-map-heading h1 {
-  margin: 0;
-  color: var(--pct-color-white);
-  font-size: clamp(2.2rem, 4vw, 4rem);
-  font-weight: 500;
-  letter-spacing: -0.055em;
-}
-
-.trail-map-heading time,
-.trail-map-heading strong {
-  display: block;
-  margin-top: var(--pct-space-2);
-}
-
-.trail-map-heading time {
-  color: var(--pct-color-muted);
-  font-family: var(--pct-font-journal);
-  font-size: 0.75rem;
-}
-
-.trail-map-heading strong {
-  color: var(--pct-color-copy);
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-.trail-map-controls {
-  margin-top: clamp(2rem, 5vh, 4rem);
-}
-
-.trail-map-controls label {
-  display: block;
-  margin-bottom: var(--pct-space-2);
-}
-
-.trail-map-controls select {
-  width: 100%;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid var(--pct-color-faint);
-  border-radius: var(--pct-radius-small);
-  color: var(--pct-color-copy);
+  padding: 0 clamp(0rem, 1vw, 1rem);
   background: var(--pct-color-night-trail);
-  font: inherit;
-  font-size: 0.72rem;
 }
 
-.trail-map-mile-label {
-  display: flex;
-  justify-content: space-between;
-  margin-top: var(--pct-space-5);
-}
-
-.trail-map-mile-label output {
-  color: var(--pct-color-white);
-  font-size: 0.7rem;
-}
-
-.trail-map-controls input[type="range"] {
+.trail-map-panel .trail-day-summary {
   width: 100%;
-  accent-color: var(--pct-color-pine-glow);
+  padding: var(--pct-space-5) 0 var(--pct-space-4);
 }
 
-.trail-map-termini {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.3rem;
-  color: var(--pct-color-muted);
-  font-size: 0.5rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.trail-map-panel .trail-day-summary h1 {
+  font-size: clamp(1.65rem, 2.5vw, 2rem);
 }
 
-.trail-map-stats {
-  display: grid;
+.trail-map-progress {
+  width: 100%;
+  margin: var(--pct-space-3) 0 var(--pct-space-5);
+  padding-inline: 0;
+}
+
+.trail-map-metrics {
+  width: 100%;
+  margin: 0;
+  padding: var(--pct-space-4) 0;
+}
+
+.trail-map-metrics dl {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--pct-space-5) var(--pct-space-4);
-  margin: var(--pct-space-6) 0 0;
-  padding-top: var(--pct-space-5);
-  border-top: 1px solid var(--pct-color-faint);
+  column-gap: var(--pct-space-5);
 }
 
-.trail-map-stats dt {
-  color: var(--pct-color-muted);
+.trail-map-metrics .trail-metrics__metric,
+.trail-map-metrics .trail-metrics__context {
+  padding-inline: 0;
+  border-right: 0;
 }
 
-.trail-map-stats dd {
-  margin: 0.5rem 0 0;
-  color: var(--pct-color-white);
-  font-size: 1rem;
+.trail-map-metrics .trail-metrics__context {
+  min-height: 6.8rem;
+  border-bottom: 0;
 }
 
-.trail-map-stats small {
-  color: var(--pct-color-muted);
-  font-family: var(--pct-font-journal);
-  font-size: 0.65rem;
+.trail-map-metrics .trail-metrics__region::after {
+  display: block;
 }
 
-.trail-map-journal-link {
-  display: inline-flex;
-  gap: 0.6rem;
-  align-items: center;
-  align-self: flex-start;
-  margin-top: auto;
-  padding-top: var(--pct-space-6);
-  color: var(--pct-color-pine-glow);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  text-transform: uppercase;
+.trail-map-metrics .trail-metrics__region {
+  grid-column: 1;
+}
+
+.trail-map-metrics .trail-metrics__section {
+  grid-column: 2;
+}
+
+.trail-map-metrics .trail-metrics__section-list {
+  display: grid;
+  grid-template-rows: repeat(2, 1.5em);
+  height: 3.4em;
+  overflow: hidden;
+}
+
+.trail-map-metrics .trail-metrics__section-list span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trail-map-metrics .trail-metrics__section-list span + span::before {
+  display: none;
+}
+
+.trail-map-metrics .trail-metrics__position,
+.trail-map-metrics .trail-metrics__ascent {
+  grid-column: 1;
+  padding-left: 0;
+}
+
+.trail-map-metrics .trail-metrics__distance,
+.trail-map-metrics .trail-metrics__descent {
+  grid-column: 2;
+  padding-right: 0;
+  border-right: 0;
+}
+
+.trail-map-metrics .trail-metrics__ascent,
+.trail-map-metrics .trail-metrics__descent {
+  margin-top: var(--pct-space-5);
 }
 
 .trail-map-marker {
   display: block;
-  width: 1rem;
-  height: 1rem;
-  border: 3px solid var(--pct-color-white);
-  border-radius: 50%;
-  background: var(--pct-color-pine-glow);
-  box-shadow: 0 0 0 5px rgb(145 230 165 / 20%);
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--pct-color-white);
+  cursor: grab;
+  filter: drop-shadow(0 0 1px var(--pct-color-night-trail))
+    drop-shadow(0 0 3px var(--pct-color-night-trail))
+    drop-shadow(0 0.2rem 0.25rem rgb(0 0 0 / 60%));
+  -webkit-mask: url("/icons/trail-hiker.svg") center / contain no-repeat;
+  mask: url("/icons/trail-hiker.svg") center / contain no-repeat;
+  z-index: 10 !important;
+}
+
+.trail-map-marker:active {
+  cursor: grabbing;
 }
 
 .maplibregl-ctrl-top-right {
@@ -186,36 +153,47 @@
   overflow: hidden;
   border: 1px solid var(--pct-color-faint);
   border-radius: var(--pct-radius-small);
-  background: var(--pct-color-deep-camp);
+  background: var(--pct-color-night-trail);
 }
 
 .maplibregl-ctrl-group button {
   filter: invert(1);
 }
 
-@media (max-width: 46rem) {
+.trail-map-fit-button::before {
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: auto;
+  border: 1.5px solid currentcolor;
+  border-radius: 0.12rem;
+  box-shadow: inset 0 0 0 2px var(--pct-color-night-trail);
+  content: "";
+}
+
+@media (max-width: 58rem) {
   .trail-map-experience {
     grid-template-columns: 1fr;
     width: min(100% - 2rem, var(--pct-content-wide));
+    gap: var(--pct-space-5);
     padding-top: var(--pct-space-4);
   }
 
   .trail-map-stage {
-    min-height: min(58vh, 30rem);
-    border-radius: var(--pct-radius-medium) var(--pct-radius-medium) 0 0;
+    min-height: min(58vh, 34rem);
   }
 
   .trail-map-panel {
-    border-top: 0;
-    border-left: 1px solid var(--pct-color-faint);
-    border-radius: 0 0 var(--pct-radius-medium) var(--pct-radius-medium);
+    padding: 0;
   }
 
-  .trail-map-heading h1 {
-    font-size: 2.4rem;
+  .trail-map-panel .trail-day-summary {
+    padding-top: 0;
   }
+}
 
-  .trail-map-journal-link {
-    margin-top: var(--pct-space-5);
+@media (max-width: 40rem) {
+  .trail-map-stage {
+    min-height: 25rem;
   }
 }

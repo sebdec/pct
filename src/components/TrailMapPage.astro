@@ -14,17 +14,30 @@ interface Props {
 }
 
 const { initialDayId } = Astro.props;
-const [dayEntries, journalEntries, routeEntries] = await Promise.all([
+const [
+  dayEntries,
+  journalEntries,
+  sectionEntries,
+  routeEntries,
+  pointEntries,
+  areaEntries,
+] = await Promise.all([
   getCollection("days"),
   getCollection("journal"),
+  getCollection("sections"),
   getCollection("routes"),
+  getCollection("mapPoints"),
+  getCollection("mapAreas"),
 ]);
 const days = buildMapDayViewModels({
   days: dayEntries.map(({ data }) => data),
   journalEntries: journalEntries.map(({ data }) => data),
+  sections: sectionEntries.map(({ data }) => data),
   locale: defaultLocale,
 });
 const route = routeEntries[0]?.data;
+const points = pointEntries.map(({ data }) => data);
+const areas = areaEntries.map(({ data }) => data);
 const initialDay = initialDayId
   ? days.find(({ id }) => id === initialDayId)
   : undefined;
@@ -39,7 +52,7 @@ if (initialDayId && !initialDay) {
 
 const mapStyleUrl =
   import.meta.env.PUBLIC_MAP_STYLE_URL ??
-  "https://tiles.openfreemap.org/styles/dark";
+  "https://tiles.openfreemap.org/styles/fiord";
 const title = initialDay
   ? `Jour ${initialDay.sequence} sur la carte | ${site.title}`
   : `Carte du parcours | ${site.title}`;
@@ -48,12 +61,15 @@ const title = initialDay
 <BaseLayout
   title={title}
   description="Parcourir les 2 656 miles du Pacific Crest Trail jour après jour."
+  bodyClass="trail-shell"
 >
   <SiteHeader />
   <main>
     <TrailMapExperience
       days={days}
       route={route}
+      points={points}
+      areas={areas}
       mapStyleUrl={mapStyleUrl}
       initialDayId={initialDayId}
       client:load
@@ -63,12 +79,21 @@ const title = initialDay
   <footer>
     <p>
       <a href={route.source.centerlineUrl}>{route.source.attribution}</a>,
+      {" "}
       <a href={route.source.licenseUrl}>{route.source.license}</a>
     </p>
     <p>
       Fond de carte <a href="https://openfreemap.org/">OpenFreeMap</a>, données
+      {" "}
       <a href="https://openmaptiles.org/">OpenMapTiles</a> et
+      {" "}
       <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+    </p>
+    <p>
+      Limites administratives
+      {" "}
+      <a href="https://www.naturalearthdata.com/">Natural Earth</a>, domaine
+      public
     </p>
   </footer>
 </BaseLayout>

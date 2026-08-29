@@ -6,6 +6,8 @@ import {
   clampJournalMile,
   createRouteIndex,
   getCoordinateAtMile,
+  getJournalMileAtRouteProgress,
+  getNearestMileOnRoute,
   getRouteProgressAtMile,
   getTrailDayRouteRange,
 } from "./route.ts";
@@ -36,6 +38,18 @@ describe("route mileage mapping", () => {
     ];
 
     expect(getRouteProgressAtMile(route, 50)).toBeCloseTo(0.1);
+    expect(getJournalMileAtRouteProgress(route, 0.1)).toBeCloseTo(50);
+  });
+
+  it("finds the nearest journal mile for a map coordinate", () => {
+    const route = fixtureRoute();
+    const index = createRouteIndex(route.coordinates);
+    const coordinate = getCoordinateAtMile(route, 1200, index);
+
+    expect(getNearestMileOnRoute(route, coordinate, index)).toBeCloseTo(
+      1200,
+      0,
+    );
   });
 
   it("represents a zero-mile trail day as one route position", () => {

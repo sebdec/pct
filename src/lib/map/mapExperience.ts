@@ -6,7 +6,12 @@ import {
 } from "../content/metrics.ts";
 import { regionLabels } from "../content/regions.ts";
 import type { Locale } from "../content/locales.ts";
-import type { Day, JournalEntry, TrailDay } from "../content/schemas.ts";
+import type {
+  Day,
+  JournalEntry,
+  TrailDay,
+  TrailSection,
+} from "../content/schemas.ts";
 
 export interface MapDayViewModel {
   id: string;
@@ -16,6 +21,7 @@ export interface MapDayViewModel {
   locationLabel: string;
   regionId: TrailDay["regionId"];
   regionLabel: string;
+  sections: { code: string; properName: string }[];
   mileStart: number;
   mileEnd: number;
   distanceMiles: number;
@@ -30,6 +36,7 @@ export interface MapDayViewModel {
 interface BuildMapDaysSource {
   days: readonly Day[];
   journalEntries: readonly JournalEntry[];
+  sections: readonly TrailSection[];
   locale?: Locale;
 }
 
@@ -58,9 +65,13 @@ function indexLocations(
 export function buildMapDayViewModels({
   days,
   journalEntries,
+  sections,
   locale = "fr",
 }: BuildMapDaysSource): MapDayViewModel[] {
   const locations = indexLocations(journalEntries, locale);
+  const sectionIndex = new Map(
+    sections.map((section) => [section.id, section]),
+  );
 
   return days
     .filter((day): day is TrailDay => day.kind === "trail" && day.published)
@@ -73,6 +84,13 @@ export function buildMapDayViewModels({
           `Published trail day ${day.id} is missing its ${locale} location label.`,
         );
       }
+      const daySections = day.sectionIds.map((sectionId) => {
+        const section = sectionIndex.get(sectionId);
+        if (!section) {
+          throw new Error(`Missing section ${sectionId} for ${day.id}.`);
+        }
+        return { code: section.code, properName: section.properName };
+      });
 
       return {
         id: day.id,
@@ -82,6 +100,7 @@ export function buildMapDayViewModels({
         locationLabel,
         regionId: day.regionId,
         regionLabel: regionLabels[day.regionId],
+        sections: daySections,
         mileStart: day.mileStart,
         mileEnd: day.mileEnd,
         distanceMiles: getTrailDayDistanceMiles(day),

@@ -1,0 +1,86 @@
+.trail-day-summary {
+  width: min(100%, var(--pct-content-reading));
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
+  text-align: left;
+}
+
+.trail-day-summary h1 {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--pct-space-2) var(--pct-space-3);
+  align-items: baseline;
+  margin: 0;
+  color: var(--pct-color-white);
+  font-size: clamp(1.9rem, 3vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.trail-day-summary h1 > span:first-child {
+  min-width: 6.2ch;
+  font-variant-numeric: tabular-nums;
+}
+
+.trail-day-summary__location {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--pct-color-copy);
+  font-family: var(--pct-font-journal);
+  font-size: 0.48em;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trail-day-summary--stable h1 {
+  min-height: 3.15rem;
+  align-items: baseline;
+}
+
+.trail-day-summary--stable .trail-day-summary__location {
+  display: -webkit-box;
+  min-height: 3em;
+  overflow: hidden;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.trail-day-summary__meta {
+  display: flex;
+  gap: var(--pct-space-4);
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--pct-space-2);
+}
+
+.trail-day-summary__date {
+  margin: 0;
+  color: var(--pct-color-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.trail-day-summary__action {
+  display: inline-flex;
+  gap: var(--pct-space-2);
+  align-items: center;
+  color: var(--pct-color-pine-glow);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.trail-day-summary__action:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+@media (max-width: 40rem) {
+  .trail-day-summary {
+    padding-block: var(--pct-space-6);
+  }
+}

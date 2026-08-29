@@ -1,0 +1,173 @@
+.trail-metrics {
+  --region-color: var(--pct-color-pine-glow);
+
+  width: min(100%, var(--pct-content-reading));
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  padding: var(--pct-space-4) 0;
+}
+
+.trail-metrics[data-region="desert"] {
+  --region-color: var(--pct-color-desert-dust);
+}
+
+.trail-metrics[data-region="sierra"] {
+  --region-color: var(--pct-color-sierra-snow);
+}
+
+.trail-metrics[data-region="norcal"] {
+  --region-color: var(--pct-color-norcal-forest);
+}
+
+.trail-metrics[data-region="oregon"] {
+  --region-color: var(--pct-color-oregon-lake);
+}
+
+.trail-metrics[data-region="washington"] {
+  --region-color: var(--pct-color-washington-mist);
+}
+
+.trail-metrics dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+}
+
+.trail-metrics__metric,
+.trail-metrics__context {
+  display: grid;
+  grid-template-rows: 1.25rem auto;
+  gap: var(--pct-space-1);
+  min-width: 0;
+  padding-inline: var(--pct-space-4);
+  border-right: 1px solid var(--pct-color-faint);
+}
+
+.trail-metrics__position {
+  padding-left: 0;
+}
+
+.trail-metrics__descent {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.trail-metrics__context {
+  grid-template-rows: auto auto;
+  margin-bottom: var(--pct-space-4);
+  padding-bottom: var(--pct-space-4);
+  border-bottom: 1px solid var(--pct-color-faint);
+}
+
+.trail-metrics__region {
+  position: relative;
+  grid-column: 1;
+  padding-left: 0;
+  border-right: 0;
+}
+
+.trail-metrics__region::after {
+  position: absolute;
+  top: var(--pct-space-1);
+  right: 0;
+  bottom: var(--pct-space-2);
+  width: 1px;
+  background: var(--pct-color-faint);
+  content: "";
+}
+
+.trail-metrics__section {
+  grid-column: 2 / -1;
+  padding-right: 0;
+  border-right: 0;
+}
+
+.trail-metrics dd.trail-metrics__region-name {
+  color: var(--region-color);
+}
+
+.trail-metrics__section-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pct-space-2) var(--pct-space-4);
+}
+
+.trail-metrics__section-list span + span::before {
+  margin-right: var(--pct-space-4);
+  color: var(--pct-color-faint);
+  content: "/";
+}
+
+.trail-metrics__section-list strong {
+  margin-right: var(--pct-space-1);
+  color: var(--pct-color-white);
+  font-weight: 700;
+}
+
+.trail-metrics dt {
+  display: flex;
+  gap: var(--pct-space-2);
+  align-items: center;
+  margin: 0;
+  color: var(--pct-color-muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.trail-metrics dd {
+  margin: 0;
+  color: var(--pct-color-copy);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.trail-metric-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  color: var(--pct-color-pine-glow);
+  stroke: currentcolor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 46rem) {
+  .trail-metrics dl {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--pct-space-5) 0;
+  }
+
+  .trail-metrics__position,
+  .trail-metrics__ascent {
+    grid-column: 1 / span 2;
+  }
+
+  .trail-metrics__distance,
+  .trail-metrics__descent {
+    grid-column: 3 / span 2;
+  }
+
+  .trail-metrics__distance {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .trail-metrics__ascent {
+    padding-left: 0;
+  }
+
+  .trail-metrics__descent {
+    border-right: 0;
+  }
+
+  .trail-metrics__section-list {
+    display: grid;
+    gap: var(--pct-space-2);
+  }
+
+  .trail-metrics__section-list span + span::before {
+    display: none;
+  }
+}

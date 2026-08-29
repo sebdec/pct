@@ -49,7 +49,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-body.journal-shell {
+body.journal-shell,
+body.trail-shell {
   background: var(--pct-color-night-trail);
 }
 

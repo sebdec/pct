@@ -14,7 +14,10 @@ const {
   description = site.description,
   bodyClass,
 } = Astro.props;
-const themeColor = bodyClass?.includes("journal-shell") ? "#282c35" : "#191d27";
+const usesFlatTrailBackground = ["journal-shell", "trail-shell"].some(
+  (className) => bodyClass?.includes(className),
+);
+const themeColor = usesFlatTrailBackground ? "#282c35" : "#191d27";
 ---
 
 <!doctype html>
