@@ -13,6 +13,7 @@ import {
   photoSchema,
   regionSchema,
   sectionSchema,
+  sourceDocumentSchema,
   supportingPageSchema,
 } from "./lib/content/schemas.ts";
 
@@ -51,6 +52,11 @@ const corrections = defineCollection({
   schema: correctionSchema,
 });
 
+const sourceDocuments = defineCollection({
+  loader: file("src/data/source/word-source.json"),
+  schema: sourceDocumentSchema,
+});
+
 const journal = defineCollection({
   loader: glob({ pattern: "**/day-*.md", base: "./src/content/journal" }),
   schema: journalEntrySchema,
@@ -84,6 +90,7 @@ export const collections = {
   gearItems,
   photos,
   corrections,
+  sourceDocuments,
   journal,
   pages,
   glossary,

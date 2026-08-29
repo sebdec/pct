@@ -1,1 +1,2676 @@
-[]
+[
+  {
+    "id": "day-001",
+    "sequence": 1,
+    "kind": "trail",
+    "date": "2026-04-18",
+    "regionId": "desert",
+    "sectionIds": ["section-california-a"],
+    "mileStart": 0,
+    "mileEnd": 16.5,
+    "ascentMeters": 751,
+    "descentMeters": 684,
+    "locationId": "campo-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 56
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 57,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-002",
+    "sequence": 2,
+    "kind": "trail",
+    "date": "2026-04-19",
+    "regionId": "desert",
+    "sectionIds": ["section-california-a"],
+    "mileStart": 16.5,
+    "mileEnd": 38,
+    "ascentMeters": 1410,
+    "descentMeters": 561,
+    "locationId": "mount-laguna-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 66
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 67,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-003",
+    "sequence": 3,
+    "kind": "trail",
+    "date": "2026-04-20",
+    "regionId": "desert",
+    "sectionIds": ["section-california-a"],
+    "mileStart": 38,
+    "mileEnd": 68,
+    "ascentMeters": 902,
+    "descentMeters": 1664,
+    "locationId": "comte-de-san-diego-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 73
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 74,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-004",
+    "sequence": 4,
+    "kind": "trail",
+    "date": "2026-04-21",
+    "regionId": "desert",
+    "sectionIds": ["section-california-a"],
+    "mileStart": 68,
+    "mileEnd": 89,
+    "ascentMeters": 868,
+    "descentMeters": 821,
+    "locationId": "comte-de-san-diego-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 81
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 82,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-005",
+    "sequence": 5,
+    "kind": "trail",
+    "date": "2026-04-22",
+    "regionId": "desert",
+    "sectionIds": ["section-california-a", "section-california-b"],
+    "mileStart": 89,
+    "mileEnd": 113,
+    "ascentMeters": 785,
+    "descentMeters": 862,
+    "locationId": "warner-springs-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 89
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 90,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-006",
+    "sequence": 6,
+    "kind": "trail",
+    "date": "2026-04-23",
+    "regionId": "desert",
+    "sectionIds": ["section-california-b"],
+    "mileStart": 113,
+    "mileEnd": 142,
+    "ascentMeters": 1492,
+    "descentMeters": 1162,
+    "locationId": "anza-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 99
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 100,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-007",
+    "sequence": 7,
+    "kind": "trail",
+    "date": "2026-04-24",
+    "regionId": "desert",
+    "sectionIds": ["section-california-b"],
+    "mileStart": 142,
+    "mileEnd": 168.5,
+    "ascentMeters": 1960,
+    "descentMeters": 1134,
+    "locationId": "san-jacinto-mountain-center-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 107
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 108,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-008",
+    "sequence": 8,
+    "kind": "trail",
+    "date": "2026-04-25",
+    "regionId": "desert",
+    "sectionIds": ["section-california-b"],
+    "mileStart": 168.5,
+    "mileEnd": 197,
+    "ascentMeters": 1410,
+    "descentMeters": 2453,
+    "locationId": "idyllwild-pine-cove-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 116
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 117,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-009",
+    "sequence": 9,
+    "kind": "trail",
+    "date": "2026-04-26",
+    "regionId": "desert",
+    "sectionIds": ["section-california-b", "section-california-c"],
+    "mileStart": 197,
+    "mileEnd": 226,
+    "ascentMeters": 1553,
+    "descentMeters": 1465,
+    "locationId": "morongo-valley-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 124
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 125,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-010",
+    "sequence": 10,
+    "kind": "trail",
+    "date": "2026-04-27",
+    "regionId": "desert",
+    "sectionIds": ["section-california-c"],
+    "mileStart": 226,
+    "mileEnd": 256,
+    "ascentMeters": 2126,
+    "descentMeters": 1186,
+    "locationId": "big-bear-city-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 130
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 131,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-011",
+    "sequence": 11,
+    "kind": "trail",
+    "date": "2026-04-28",
+    "regionId": "desert",
+    "sectionIds": ["section-california-c"],
+    "mileStart": 256,
+    "mileEnd": 266,
+    "ascentMeters": 435,
+    "descentMeters": 312,
+    "locationId": "big-bear-lake-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 139
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 140,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-012",
+    "sequence": 12,
+    "kind": "trail",
+    "date": "2026-04-29",
+    "regionId": "desert",
+    "sectionIds": ["section-california-c"],
+    "mileStart": 266,
+    "mileEnd": 295,
+    "ascentMeters": 750,
+    "descentMeters": 1641,
+    "locationId": "running-springs-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 147
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 148,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-013",
+    "sequence": 13,
+    "kind": "trail",
+    "date": "2026-04-30",
+    "regionId": "desert",
+    "sectionIds": ["section-california-c"],
+    "mileStart": 295,
+    "mileEnd": 320,
+    "ascentMeters": 887,
+    "descentMeters": 1221,
+    "locationId": "hesperia-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 155
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 156,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-014",
+    "sequence": 14,
+    "kind": "trail",
+    "date": "2026-05-01",
+    "regionId": "desert",
+    "sectionIds": ["section-california-c", "section-california-d"],
+    "mileStart": 320,
+    "mileEnd": 352,
+    "ascentMeters": 2007,
+    "descentMeters": 1080,
+    "locationId": "lytle-creek-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 165
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 166,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-015",
+    "sequence": 15,
+    "kind": "trail",
+    "date": "2026-05-02",
+    "regionId": "desert",
+    "sectionIds": ["section-california-d"],
+    "mileStart": 352,
+    "mileEnd": 372,
+    "ascentMeters": 1815,
+    "descentMeters": 988,
+    "locationId": "valyermo-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 176
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 177,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-016",
+    "sequence": 16,
+    "kind": "trail",
+    "date": "2026-05-03",
+    "regionId": "desert",
+    "sectionIds": ["section-california-d"],
+    "mileStart": 372,
+    "mileEnd": 399,
+    "ascentMeters": 1375,
+    "descentMeters": 2465,
+    "locationId": "pearblossom-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 185
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 186,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-017",
+    "sequence": 17,
+    "kind": "trail",
+    "date": "2026-05-04",
+    "regionId": "desert",
+    "sectionIds": ["section-california-d"],
+    "mileStart": 399,
+    "mileEnd": 430,
+    "ascentMeters": 1596,
+    "descentMeters": 2073,
+    "locationId": "palmdale-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 194
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 195,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-018",
+    "sequence": 18,
+    "kind": "trail",
+    "date": "2026-05-05",
+    "regionId": "desert",
+    "sectionIds": ["section-california-d"],
+    "mileStart": 430,
+    "mileEnd": 454,
+    "ascentMeters": 1326,
+    "descentMeters": 1349,
+    "locationId": "agua-dulce-santa-clarita-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 203
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 204,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-019",
+    "sequence": 19,
+    "kind": "trail",
+    "date": "2026-05-06",
+    "regionId": "desert",
+    "sectionIds": ["section-california-d", "section-california-e"],
+    "mileStart": 454,
+    "mileEnd": 488,
+    "ascentMeters": 2006,
+    "descentMeters": 1691,
+    "locationId": "lake-hughes-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 212
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 213,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-020",
+    "sequence": 20,
+    "kind": "trail",
+    "date": "2026-05-07",
+    "regionId": "desert",
+    "sectionIds": ["section-california-e"],
+    "mileStart": 488,
+    "mileEnd": 517,
+    "ascentMeters": 1064,
+    "descentMeters": 1650,
+    "locationId": "lancaster-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 221
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 222,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-021",
+    "sequence": 21,
+    "kind": "trail",
+    "date": "2026-05-08",
+    "regionId": "desert",
+    "sectionIds": ["section-california-e"],
+    "mileStart": 517,
+    "mileEnd": 541,
+    "ascentMeters": 1328,
+    "descentMeters": 414,
+    "locationId": "los-angeles-aqueduct-comte-de-kern-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 229
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 230,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-022",
+    "sequence": 22,
+    "kind": "trail",
+    "date": "2026-05-09",
+    "regionId": "desert",
+    "sectionIds": ["section-california-e", "section-california-f"],
+    "mileStart": 541,
+    "mileEnd": 569,
+    "ascentMeters": 1478,
+    "descentMeters": 1568,
+    "locationId": "mojave-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 238
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 239,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-023",
+    "sequence": 23,
+    "kind": "trail",
+    "date": "2026-05-10",
+    "regionId": "desert",
+    "sectionIds": ["section-california-f"],
+    "mileStart": 569,
+    "mileEnd": 594,
+    "ascentMeters": 1402,
+    "descentMeters": 1382,
+    "locationId": "caliente-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 246
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 247,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-024",
+    "sequence": 24,
+    "kind": "trail",
+    "date": "2026-05-11",
+    "regionId": "desert",
+    "sectionIds": ["section-california-f"],
+    "mileStart": 594,
+    "mileEnd": 625,
+    "ascentMeters": 1507,
+    "descentMeters": 1637,
+    "locationId": "weldon-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 255
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 256,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-025",
+    "sequence": 25,
+    "kind": "trail",
+    "date": "2026-05-12",
+    "regionId": "desert",
+    "sectionIds": ["section-california-f", "section-california-g"],
+    "mileStart": 625,
+    "mileEnd": 655,
+    "ascentMeters": 1839,
+    "descentMeters": 1435,
+    "locationId": "comte-de-kern-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 264
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 265,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-026",
+    "sequence": 26,
+    "kind": "trail",
+    "date": "2026-05-13",
+    "regionId": "desert",
+    "sectionIds": ["section-california-g"],
+    "mileStart": 655,
+    "mileEnd": 684,
+    "ascentMeters": 1824,
+    "descentMeters": 1760,
+    "locationId": "comte-de-tulare-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 273
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 274,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-027",
+    "sequence": 27,
+    "kind": "trail",
+    "date": "2026-05-14",
+    "regionId": "desert",
+    "sectionIds": ["section-california-g"],
+    "mileStart": 684,
+    "mileEnd": 703,
+    "ascentMeters": 771,
+    "descentMeters": 762,
+    "locationId": "kennedy-meadows-inyokern-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 282
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 283,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-028",
+    "sequence": 28,
+    "kind": "trail",
+    "date": "2026-05-15",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-g"],
+    "mileStart": 703,
+    "mileEnd": 703,
+    "ascentMeters": 0,
+    "descentMeters": 0,
+    "locationId": "kennedy-meadows-inyokern-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 293
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 294,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-029",
+    "sequence": 29,
+    "kind": "trail",
+    "date": "2026-05-16",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-g"],
+    "mileStart": 703,
+    "mileEnd": 733,
+    "ascentMeters": 1967,
+    "descentMeters": 1019,
+    "locationId": "olancha-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 302
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 303,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-030",
+    "sequence": 30,
+    "kind": "trail",
+    "date": "2026-05-17",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-g"],
+    "mileStart": 733,
+    "mileEnd": 757,
+    "ascentMeters": 1233,
+    "descentMeters": 1026,
+    "locationId": "comte-de-tulare-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 308
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 309,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-031",
+    "sequence": 31,
+    "kind": "trail",
+    "date": "2026-05-18",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-g", "section-california-h"],
+    "mileStart": 757,
+    "mileEnd": 776,
+    "ascentMeters": 1376,
+    "descentMeters": 1102,
+    "locationId": "comte-de-tulare-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 316
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 317,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-032",
+    "sequence": 32,
+    "kind": "trail",
+    "date": "2026-05-19",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h"],
+    "mileStart": 776,
+    "mileEnd": 798,
+    "ascentMeters": 1290,
+    "descentMeters": 1849,
+    "locationId": "independence-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 323
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 324,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-033",
+    "sequence": 33,
+    "kind": "trail",
+    "date": "2026-05-20",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h"],
+    "mileStart": 798,
+    "mileEnd": 816,
+    "ascentMeters": 1351,
+    "descentMeters": 1102,
+    "locationId": "big-pine-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 332
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 333,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-034",
+    "sequence": 34,
+    "kind": "trail",
+    "date": "2026-05-21",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h"],
+    "mileStart": 816,
+    "mileEnd": 837,
+    "ascentMeters": 1277,
+    "descentMeters": 1039,
+    "locationId": "comte-de-fresno-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 341
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 342,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-035",
+    "sequence": 35,
+    "kind": "trail",
+    "date": "2026-05-22",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h"],
+    "mileStart": 837,
+    "mileEnd": 865,
+    "ascentMeters": 1152,
+    "descentMeters": 1582,
+    "locationId": "lakeshore-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 350
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 351,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-036",
+    "sequence": 36,
+    "kind": "trail",
+    "date": "2026-05-23",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h"],
+    "mileStart": 865,
+    "mileEnd": 875,
+    "ascentMeters": 318,
+    "descentMeters": 676,
+    "locationId": "vermilion-valley-resort-lakeshore-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 359
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 360,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-037",
+    "sequence": 37,
+    "kind": "trail",
+    "date": "2026-05-24",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h"],
+    "mileStart": 875,
+    "mileEnd": 893,
+    "ascentMeters": 1539,
+    "descentMeters": 1117,
+    "locationId": "lakeshore-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 369
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 370,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-038",
+    "sequence": 38,
+    "kind": "trail",
+    "date": "2026-05-25",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h"],
+    "mileStart": 893,
+    "mileEnd": 918,
+    "ascentMeters": 1070,
+    "descentMeters": 1268,
+    "locationId": "comte-de-madera-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 379
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 380,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-039",
+    "sequence": 39,
+    "kind": "trail",
+    "date": "2026-05-26",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-h", "section-california-i"],
+    "mileStart": 918,
+    "mileEnd": 949,
+    "ascentMeters": 1097,
+    "descentMeters": 1558,
+    "locationId": "yosemite-parc-national-de-yosemite-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 388
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 389,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-040",
+    "sequence": 40,
+    "kind": "trail",
+    "date": "2026-05-27",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-i"],
+    "mileStart": 949,
+    "mileEnd": 972,
+    "ascentMeters": 1483,
+    "descentMeters": 1500,
+    "locationId": "comte-de-tuolumne-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 396
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 397,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-041",
+    "sequence": 41,
+    "kind": "trail",
+    "date": "2026-05-28",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-i"],
+    "mileStart": 972,
+    "mileEnd": 997,
+    "ascentMeters": 1751,
+    "descentMeters": 1298,
+    "locationId": "bridgeport-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 405
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 406,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-042",
+    "sequence": 42,
+    "kind": "trail",
+    "date": "2026-05-29",
+    "regionId": "sierra",
+    "sectionIds": ["section-california-i", "section-california-j"],
+    "mileStart": 997,
+    "mileEnd": 1018,
+    "ascentMeters": 1135,
+    "descentMeters": 1059,
+    "locationId": "kennedy-meadows-north-pinecrest-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 415
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 416,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-043",
+    "sequence": 43,
+    "kind": "trail",
+    "date": "2026-05-30",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-j"],
+    "mileStart": 1018,
+    "mileEnd": 1029,
+    "ascentMeters": 566,
+    "descentMeters": 904,
+    "locationId": "comte-d-alpine-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 426
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 427,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-044",
+    "sequence": 44,
+    "kind": "trail",
+    "date": "2026-05-31",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-j"],
+    "mileStart": 1029,
+    "mileEnd": 1058,
+    "ascentMeters": 1687,
+    "descentMeters": 1735,
+    "locationId": "markleeville-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 436
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 437,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-045",
+    "sequence": 45,
+    "kind": "trail",
+    "date": "2026-06-01",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-j"],
+    "mileStart": 1058,
+    "mileEnd": 1085,
+    "ascentMeters": 1454,
+    "descentMeters": 1384,
+    "locationId": "kirkwood-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 451
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 452,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-046",
+    "sequence": 46,
+    "kind": "trail",
+    "date": "2026-06-02",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-j", "section-california-k"],
+    "mileStart": 1085,
+    "mileEnd": 1096,
+    "ascentMeters": 458,
+    "descentMeters": 769,
+    "locationId": "pause-a-lake-tahoe-echo-lake-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 461
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 462,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-047",
+    "sequence": 47,
+    "kind": "trail",
+    "date": "2026-06-03",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-k"],
+    "mileStart": 1096,
+    "mileEnd": 1131,
+    "ascentMeters": 1796,
+    "descentMeters": 1620,
+    "locationId": "homewood-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 471
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 472,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-048",
+    "sequence": 48,
+    "kind": "trail",
+    "date": "2026-06-04",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-k"],
+    "mileStart": 1131,
+    "mileEnd": 1157,
+    "ascentMeters": 1357,
+    "descentMeters": 1693,
+    "locationId": "truckee-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 480
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 481,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-049",
+    "sequence": 49,
+    "kind": "trail",
+    "date": "2026-06-05",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-k", "section-california-l"],
+    "mileStart": 1157,
+    "mileEnd": 1192,
+    "ascentMeters": 1459,
+    "descentMeters": 2128,
+    "locationId": "sierra-city-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 489
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 490,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-050",
+    "sequence": 50,
+    "kind": "trail",
+    "date": "2026-06-06",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-l", "section-california-m"],
+    "mileStart": 1192,
+    "mileEnd": 1208,
+    "ascentMeters": 1098,
+    "descentMeters": 737,
+    "locationId": "sierra-city-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 498
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 499,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-051",
+    "sequence": 51,
+    "kind": "trail",
+    "date": "2026-06-07",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-m"],
+    "mileStart": 1208,
+    "mileEnd": 1243,
+    "ascentMeters": 1820,
+    "descentMeters": 1985,
+    "locationId": "little-grass-valley-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 509
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 510,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-052",
+    "sequence": 52,
+    "kind": "trail",
+    "date": "2026-06-08",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-m"],
+    "mileStart": 1243,
+    "mileEnd": 1273,
+    "ascentMeters": 2017,
+    "descentMeters": 1641,
+    "locationId": "meadow-valley-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 518
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 519,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-053",
+    "sequence": 53,
+    "kind": "trail",
+    "date": "2026-06-09",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-m", "section-california-n"],
+    "mileStart": 1273,
+    "mileEnd": 1301,
+    "ascentMeters": 1976,
+    "descentMeters": 1910,
+    "locationId": "comte-de-butte-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 528
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 529,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-054",
+    "sequence": 54,
+    "kind": "trail",
+    "date": "2026-06-10",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-n"],
+    "mileStart": 1301,
+    "mileEnd": 1336,
+    "ascentMeters": 1545,
+    "descentMeters": 1932,
+    "locationId": "mi-parcours-chester-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 538
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 539,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-055",
+    "sequence": 55,
+    "kind": "trail",
+    "date": "2026-06-11",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-n"],
+    "mileStart": 1336,
+    "mileEnd": 1371,
+    "ascentMeters": 1329,
+    "descentMeters": 1644,
+    "locationId": "old-station-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 547
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 548,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-056",
+    "sequence": 56,
+    "kind": "trail",
+    "date": "2026-06-12",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-n"],
+    "mileStart": 1371,
+    "mileEnd": 1404,
+    "ascentMeters": 674,
+    "descentMeters": 1090,
+    "locationId": "comte-de-shasta-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 557
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 558,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-057",
+    "sequence": 57,
+    "kind": "trail",
+    "date": "2026-06-13",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-n", "section-california-o"],
+    "mileStart": 1404,
+    "mileEnd": 1426,
+    "ascentMeters": 619,
+    "descentMeters": 632,
+    "locationId": "burney-mountain-guest-ranch-big-bend-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 567
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 568,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-058",
+    "sequence": 58,
+    "kind": "trail",
+    "date": "2026-06-14",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-o"],
+    "mileStart": 1426,
+    "mileEnd": 1458,
+    "ascentMeters": 1904,
+    "descentMeters": 1246,
+    "locationId": "big-bend-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 577
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 578,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-059",
+    "sequence": 59,
+    "kind": "trail",
+    "date": "2026-06-15",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-o"],
+    "mileStart": 1458,
+    "mileEnd": 1494,
+    "ascentMeters": 1825,
+    "descentMeters": 2182,
+    "locationId": "dunsmuir-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 586
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 587,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-060",
+    "sequence": 60,
+    "kind": "trail",
+    "date": "2026-06-16",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-o", "section-california-p"],
+    "mileStart": 1494,
+    "mileEnd": 1523,
+    "ascentMeters": 1959,
+    "descentMeters": 1240,
+    "locationId": "dunsmuir-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 595
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 596,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-061",
+    "sequence": 61,
+    "kind": "trail",
+    "date": "2026-06-17",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-p"],
+    "mileStart": 1523,
+    "mileEnd": 1557,
+    "ascentMeters": 976,
+    "descentMeters": 1131,
+    "locationId": "gazelle-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 605
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 606,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-062",
+    "sequence": 62,
+    "kind": "trail",
+    "date": "2026-06-18",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-p"],
+    "mileStart": 1557,
+    "mileEnd": 1592,
+    "ascentMeters": 2015,
+    "descentMeters": 1819,
+    "locationId": "etna-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 614
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 615,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-063",
+    "sequence": 63,
+    "kind": "trail",
+    "date": "2026-06-19",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-p", "section-california-q"],
+    "mileStart": 1592,
+    "mileEnd": 1603,
+    "ascentMeters": 683,
+    "descentMeters": 745,
+    "locationId": "etna-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 623
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 624,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-064",
+    "sequence": 64,
+    "kind": "trail",
+    "date": "2026-06-20",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-q"],
+    "mileStart": 1603,
+    "mileEnd": 1640,
+    "ascentMeters": 1943,
+    "descentMeters": 2657,
+    "locationId": "seiad-valley-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 633
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 634,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-065",
+    "sequence": 65,
+    "kind": "trail",
+    "date": "2026-06-21",
+    "regionId": "norcal",
+    "sectionIds": ["section-california-q", "section-california-r"],
+    "mileStart": 1640,
+    "mileEnd": 1676,
+    "ascentMeters": 2586,
+    "descentMeters": 2062,
+    "locationId": "comte-de-siskiyou-californie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 642
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 643,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-066",
+    "sequence": 66,
+    "kind": "trail",
+    "date": "2026-06-22",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-a"],
+    "mileStart": 1676,
+    "mileEnd": 1711,
+    "ascentMeters": 1919,
+    "descentMeters": 1809,
+    "locationId": "frontiere-de-l-oregon-ashland-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 653
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 654,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-067",
+    "sequence": 67,
+    "kind": "trail",
+    "date": "2026-06-23",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-a", "section-oregon-b"],
+    "mileStart": 1711,
+    "mileEnd": 1720,
+    "ascentMeters": 234,
+    "descentMeters": 856,
+    "locationId": "ashland-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 662
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 663,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-068",
+    "sequence": 68,
+    "kind": "trail",
+    "date": "2026-06-24",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-b"],
+    "mileStart": 1720,
+    "mileEnd": 1745,
+    "ascentMeters": 1418,
+    "descentMeters": 1158,
+    "locationId": "ashland-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 672
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 673,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-069",
+    "sequence": 69,
+    "kind": "trail",
+    "date": "2026-06-25",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-b", "section-oregon-c"],
+    "mileStart": 1745,
+    "mileEnd": 1783,
+    "ascentMeters": 1653,
+    "descentMeters": 1402,
+    "locationId": "klamath-falls-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 681
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 682,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-070",
+    "sequence": 70,
+    "kind": "trail",
+    "date": "2026-06-26",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-c"],
+    "mileStart": 1783,
+    "mileEnd": 1817,
+    "ascentMeters": 1379,
+    "descentMeters": 1278,
+    "locationId": "comte-de-klamath-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 689
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 690,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-071",
+    "sequence": 71,
+    "kind": "trail",
+    "date": "2026-06-27",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-c", "section-oregon-d"],
+    "mileStart": 1817,
+    "mileEnd": 1850,
+    "ascentMeters": 861,
+    "descentMeters": 963,
+    "locationId": "crescent-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 698
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 699,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-072",
+    "sequence": 72,
+    "kind": "trail",
+    "date": "2026-06-28",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-d"],
+    "mileStart": 1850,
+    "mileEnd": 1886,
+    "ascentMeters": 1697,
+    "descentMeters": 1577,
+    "locationId": "comte-de-douglas-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 707
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 708,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-073",
+    "sequence": 73,
+    "kind": "trail",
+    "date": "2026-06-29",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-d", "section-oregon-e"],
+    "mileStart": 1886,
+    "mileEnd": 1908,
+    "ascentMeters": 711,
+    "descentMeters": 1078,
+    "locationId": "crescent-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 716
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 717,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-074",
+    "sequence": 74,
+    "kind": "trail",
+    "date": "2026-06-30",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-e"],
+    "mileStart": 1908,
+    "mileEnd": 1944,
+    "ascentMeters": 1312,
+    "descentMeters": 1355,
+    "locationId": "blue-river-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 725
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 726,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-075",
+    "sequence": 75,
+    "kind": "trail",
+    "date": "2026-07-01",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-e"],
+    "mileStart": 1944,
+    "mileEnd": 1981,
+    "ascentMeters": 1695,
+    "descentMeters": 1399,
+    "locationId": "blue-river-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 733
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 734,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-076",
+    "sequence": 76,
+    "kind": "trail",
+    "date": "2026-07-02",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-e", "section-oregon-f"],
+    "mileStart": 1981,
+    "mileEnd": 2010,
+    "ascentMeters": 1232,
+    "descentMeters": 1183,
+    "locationId": "sisters-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 742
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 743,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-077",
+    "sequence": 77,
+    "kind": "trail",
+    "date": "2026-07-03",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-f"],
+    "mileStart": 2010,
+    "mileEnd": 2043,
+    "ascentMeters": 1749,
+    "descentMeters": 1887,
+    "locationId": "detroit-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 751
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 752,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-078",
+    "sequence": 78,
+    "kind": "trail",
+    "date": "2026-07-04",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-f"],
+    "mileStart": 2043,
+    "mileEnd": 2083,
+    "ascentMeters": 1135,
+    "descentMeters": 1871,
+    "locationId": "comte-de-clackamas-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 759
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 760,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-079",
+    "sequence": 79,
+    "kind": "trail",
+    "date": "2026-07-05",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-f", "section-oregon-g"],
+    "mileStart": 2083,
+    "mileEnd": 2119,
+    "ascentMeters": 2289,
+    "descentMeters": 2094,
+    "locationId": "timberline-lodge-mount-hood-parkdale-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 769
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 770,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-080",
+    "sequence": 80,
+    "kind": "trail",
+    "date": "2026-07-06",
+    "regionId": "oregon",
+    "sectionIds": ["section-oregon-g", "section-washington-h"],
+    "mileStart": 2119,
+    "mileEnd": 2150,
+    "ascentMeters": 1323,
+    "descentMeters": 2512,
+    "locationId": "cascade-locks-oregon",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 779
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 780,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-081",
+    "sequence": 81,
+    "kind": "trail",
+    "date": "2026-07-07",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-h"],
+    "mileStart": 2150,
+    "mileEnd": 2180,
+    "ascentMeters": 2187,
+    "descentMeters": 1853,
+    "locationId": "carson-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 790
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 791,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-082",
+    "sequence": 82,
+    "kind": "trail",
+    "date": "2026-07-08",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-h"],
+    "mileStart": 2180,
+    "mileEnd": 2210,
+    "ascentMeters": 2095,
+    "descentMeters": 995,
+    "locationId": "comte-de-skamania-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 798
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 799,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-083",
+    "sequence": 83,
+    "kind": "trail",
+    "date": "2026-07-09",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-h"],
+    "mileStart": 2210,
+    "mileEnd": 2245,
+    "ascentMeters": 1755,
+    "descentMeters": 1362,
+    "locationId": "comte-de-skamania-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 807
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 808,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-084",
+    "sequence": 84,
+    "kind": "trail",
+    "date": "2026-07-10",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-h"],
+    "mileStart": 2245,
+    "mileEnd": 2282,
+    "ascentMeters": 1951,
+    "descentMeters": 1781,
+    "locationId": "comte-de-lewis-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 814
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 815,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-085",
+    "sequence": 85,
+    "kind": "trail",
+    "date": "2026-07-11",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-h", "section-washington-i"],
+    "mileStart": 2282,
+    "mileEnd": 2310,
+    "ascentMeters": 1206,
+    "descentMeters": 1798,
+    "locationId": "naches-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 824
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 825,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-086",
+    "sequence": 86,
+    "kind": "trail",
+    "date": "2026-07-12",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-i"],
+    "mileStart": 2310,
+    "mileEnd": 2346,
+    "ascentMeters": 2148,
+    "descentMeters": 1966,
+    "locationId": "naches-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 833
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 834,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-087",
+    "sequence": 87,
+    "kind": "trail",
+    "date": "2026-07-13",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-i"],
+    "mileStart": 2346,
+    "mileEnd": 2382,
+    "ascentMeters": 2085,
+    "descentMeters": 2599,
+    "locationId": "easton-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 843
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 844,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-088",
+    "sequence": 88,
+    "kind": "trail",
+    "date": "2026-07-14",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-i", "section-washington-j"],
+    "mileStart": 2382,
+    "mileEnd": 2396,
+    "ascentMeters": 899,
+    "descentMeters": 1075,
+    "locationId": "snoqualmie-pass-north-bend-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 853
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 854,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-089",
+    "sequence": 89,
+    "kind": "trail",
+    "date": "2026-07-15",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-j"],
+    "mileStart": 2396,
+    "mileEnd": 2425,
+    "ascentMeters": 2566,
+    "descentMeters": 1837,
+    "locationId": "snoqualmie-pass-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 863
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 864,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-090",
+    "sequence": 90,
+    "kind": "trail",
+    "date": "2026-07-16",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-j"],
+    "mileStart": 2425,
+    "mileEnd": 2455,
+    "ascentMeters": 2001,
+    "descentMeters": 1976,
+    "locationId": "skykomish-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 872
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 873,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-091",
+    "sequence": 91,
+    "kind": "trail",
+    "date": "2026-07-17",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-j", "section-washington-k"],
+    "mileStart": 2455,
+    "mileEnd": 2488,
+    "ascentMeters": 2332,
+    "descentMeters": 2360,
+    "locationId": "comte-de-snohomish-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 881
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 882,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-092",
+    "sequence": 92,
+    "kind": "trail",
+    "date": "2026-07-18",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-k"],
+    "mileStart": 2488,
+    "mileEnd": 2519,
+    "ascentMeters": 2180,
+    "descentMeters": 2096,
+    "locationId": "darrington-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 890
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 891,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-093",
+    "sequence": 93,
+    "kind": "trail",
+    "date": "2026-07-19",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-k"],
+    "mileStart": 2519,
+    "mileEnd": 2547,
+    "ascentMeters": 1565,
+    "descentMeters": 2486,
+    "locationId": "darrington-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 899
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 900,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-094",
+    "sequence": 94,
+    "kind": "trail",
+    "date": "2026-07-20",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-k"],
+    "mileStart": 2547,
+    "mileEnd": 2580,
+    "ascentMeters": 1889,
+    "descentMeters": 2050,
+    "locationId": "stehekin-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 909
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 910,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-095",
+    "sequence": 95,
+    "kind": "trail",
+    "date": "2026-07-21",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-k", "section-washington-l"],
+    "mileStart": 2580,
+    "mileEnd": 2607,
+    "ascentMeters": 2100,
+    "descentMeters": 1076,
+    "locationId": "comte-d-okanogan-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 919
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 920,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-096",
+    "sequence": 96,
+    "kind": "trail",
+    "date": "2026-07-22",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-l"],
+    "mileStart": 2607,
+    "mileEnd": 2641,
+    "ascentMeters": 2062,
+    "descentMeters": 1865,
+    "locationId": "mazama-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 930
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 931,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-097",
+    "sequence": 97,
+    "kind": "trail",
+    "date": "2026-07-23",
+    "regionId": "washington",
+    "sectionIds": ["section-washington-l"],
+    "mileStart": 2641,
+    "mileEnd": 2656,
+    "ascentMeters": 626,
+    "descentMeters": 1203,
+    "locationId": "terminus-canadien-comte-d-okanogan-washington",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 939
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 940,
+        "detail": "daily metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-098",
+    "sequence": 98,
+    "kind": "post-trail",
+    "date": "2026-07-24",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 954
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 955,
+        "detail": "post-trail metadata"
+      }
+    ]
+  },
+  {
+    "id": "day-099",
+    "sequence": 99,
+    "kind": "post-trail",
+    "date": "2026-07-25",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 970
+      }
+    ]
+  },
+  {
+    "id": "day-100",
+    "sequence": 100,
+    "kind": "post-trail",
+    "date": "2026-07-26",
+    "endDate": "2026-07-27",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 977
+      },
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 978,
+        "detail": "post-trail metadata"
+      }
+    ]
+  }
+]

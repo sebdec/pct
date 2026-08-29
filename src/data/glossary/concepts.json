@@ -1,1 +1,470 @@
-[]
+[
+  {
+    "id": "at",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=1; term=AT"
+      }
+    ]
+  },
+  {
+    "id": "bear-box",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=2; term=Bear box"
+      }
+    ]
+  },
+  {
+    "id": "bear-canister",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=3; term=Bear canister"
+      }
+    ]
+  },
+  {
+    "id": "blowdown",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=4; term=Blowdown"
+      }
+    ]
+  },
+  {
+    "id": "boot-track",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=5; term=Boot track"
+      }
+    ]
+  },
+  {
+    "id": "breakfast-burrito",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=6; term=Breakfast burrito"
+      }
+    ]
+  },
+  {
+    "id": "bubble",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=7; term=Bubble"
+      }
+    ]
+  },
+  {
+    "id": "california-campfire-permit-stove",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=8; term=California Campfire Permit / stove"
+      }
+    ]
+  },
+  {
+    "id": "cdt",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=9; term=CDT"
+      }
+    ]
+  },
+  {
+    "id": "cowboy-camping",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=10; term=Cowboy camping"
+      }
+    ]
+  },
+  {
+    "id": "darn-tough",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=11; term=Darn Tough"
+      }
+    ]
+  },
+  {
+    "id": "farout",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=12; term=FarOut"
+      }
+    ]
+  },
+  {
+    "id": "filtre-a-eau",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=13; term=Filtre à eau"
+      }
+    ]
+  },
+  {
+    "id": "flip-flop",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=14; term=Flip-flop"
+      }
+    ]
+  },
+  {
+    "id": "hanging-bag-bear-hang",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=15; term=Hanging bag / bear hang"
+      }
+    ]
+  },
+  {
+    "id": "hiker",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=16; term=Hiker"
+      }
+    ]
+  },
+  {
+    "id": "hiker-box",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=17; term=Hiker box"
+      }
+    ]
+  },
+  {
+    "id": "hitchhiking",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=18; term=Hitchhiking"
+      }
+    ]
+  },
+  {
+    "id": "leukotape",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=19; term=Leukotape"
+      }
+    ]
+  },
+  {
+    "id": "nobo-sobo",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=20; term=NOBO / SOBO"
+      }
+    ]
+  },
+  {
+    "id": "pct",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=21; term=PCT"
+      }
+    ]
+  },
+  {
+    "id": "poison-oak",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=22; term=Poison oak"
+      }
+    ]
+  },
+  {
+    "id": "ranger",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=23; term=Ranger"
+      }
+    ]
+  },
+  {
+    "id": "resupply",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=24; term=Resupply"
+      }
+    ]
+  },
+  {
+    "id": "resupply-box-supply-box",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=25; term=Resupply box / supply box"
+      }
+    ]
+  },
+  {
+    "id": "smartwater",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=26; term=Smartwater"
+      }
+    ]
+  },
+  {
+    "id": "sun-hoodie",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=27; term=Sun hoodie"
+      }
+    ]
+  },
+  {
+    "id": "thru-hiking",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=28; term=Thru-hiking"
+      }
+    ]
+  },
+  {
+    "id": "topo-altra",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=29; term=Topo / Altra"
+      }
+    ]
+  },
+  {
+    "id": "trail-angel",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=30; term=Trail angel"
+      }
+    ]
+  },
+  {
+    "id": "trailhead",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=31; term=Trailhead"
+      }
+    ]
+  },
+  {
+    "id": "trail-mix",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=32; term=Trail mix"
+      }
+    ]
+  },
+  {
+    "id": "trail-hiker-name",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=33; term=Trail/Hiker name"
+      }
+    ]
+  },
+  {
+    "id": "trail-registry",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=34; term=Trail registry"
+      }
+    ]
+  },
+  {
+    "id": "tramily",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=35; term=Tramily"
+      }
+    ]
+  },
+  {
+    "id": "triple-crown",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=36; term=Triple Crown"
+      }
+    ]
+  },
+  {
+    "id": "ultralight",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=37; term=Ultralight"
+      }
+    ]
+  },
+  {
+    "id": "water-cache",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=38; term=Water cache"
+      }
+    ]
+  },
+  {
+    "id": "zero-nero-day",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 47,
+        "detail": "row=39; term=Zero / Nero day"
+      }
+    ]
+  }
+]

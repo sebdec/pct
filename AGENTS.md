@@ -88,6 +88,8 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Treat miles as canonical. Derive daily distance, cumulative distance and kilometers through `src/lib/content/metrics.ts`.
 - Mark neutral entities as published only when their required French entry exists.
 - Retain Word block references on imported entities. Record proposed, approved or rejected editorial changes in `src/data/source/corrections.json`.
+- Regenerate Word-derived files only through `pnpm content:extract -- --input <path>`. Do not hand-edit generated journal, page, gear, glossary, trail, photo, source-manifest or extraction-report files.
+- Treat the approved source hash and `src/data/source/word-extraction-report.json` as extraction invariants. A source change requires a newly approved issue before updating the hash or structural counts.
 - Run `pnpm content:validate` after every content change. Add a focused invalid fixture whenever a new cross-entry invariant is introduced.
 - Do not place original full-resolution photos in Git. Commit only approved optimized derivatives with stable names and attribution metadata where needed.
 - Never import the Word source or Google Photos export wholesale into this repository.

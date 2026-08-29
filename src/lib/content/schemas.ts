@@ -49,9 +49,56 @@ export const sourceReferenceSchema = z.object({
   detail: z.string().min(1).optional(),
 });
 
+export const sourceDocumentSchema = z.object({
+  id: stableIdSchema,
+  filename: z.string().min(1),
+  sha256: z.string().regex(/^[a-f0-9]{64}$/),
+  sizeBytes: z.number().int().positive(),
+  counts: z.object({
+    bodyBlocks: z.number().int().nonnegative(),
+    paragraphs: z.number().int().nonnegative(),
+    tables: z.number().int().nonnegative(),
+    documentSections: z.number().int().positive(),
+    trailEntries: z.number().int().nonnegative(),
+    postTrailEntries: z.number().int().nonnegative(),
+    gearItems: z.number().int().nonnegative(),
+    glossaryConcepts: z.number().int().nonnegative(),
+    photoPlacements: z.number().int().nonnegative(),
+    mediaAssets: z.number().int().nonnegative(),
+  }),
+});
+
+export const wordExtractionReportSchema = z.object({
+  sourceDocumentId: stableIdSchema,
+  generator: z.string().min(1),
+  counts: z.object({
+    trailEntries: z.number().int().nonnegative(),
+    postTrailEntries: z.number().int().nonnegative(),
+    gearItems: z.number().int().nonnegative(),
+    glossaryConcepts: z.number().int().nonnegative(),
+    photoPlacements: z.number().int().nonnegative(),
+    mediaAssets: z.number().int().nonnegative(),
+    reusedMediaAssets: z.number().int().nonnegative(),
+    trailPhotoPlacements: z.number().int().nonnegative(),
+    postTrailPhotoPlacements: z.number().int().nonnegative(),
+    pagePhotoPlacements: z.number().int().nonnegative(),
+    trailEntriesWithoutPhotos: z.number().int().nonnegative(),
+  }),
+  validations: z.object({
+    sourceHashVerified: z.literal(true),
+    structuralCountsVerified: z.literal(true),
+    declaredMilesVerified: z.literal(true),
+    displayedKilometersVerified: z.literal(true),
+    trailMileageContinuous: z.literal(true),
+    mediaRelationshipsMatched: z.literal(true),
+    contentModelValidated: z.literal(true),
+  }),
+  structuralExceptions: z.array(z.string().min(1)),
+});
+
 const publishedEntityFields = {
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).default([]),
+  sourceRefs: z.array(sourceReferenceSchema).min(1),
 };
 
 export const regionSchema = z.object({
@@ -61,31 +108,57 @@ export const regionSchema = z.object({
   ...publishedEntityFields,
 });
 
-export const sectionSchema = z.object({
-  id: z.string().regex(/^section-[a-z0-9]+$/),
-  code: z.string().min(1),
-  regionId: regionIdSchema,
-  mileStart: z.number().nonnegative(),
-  mileEnd: z.number().positive(),
-  properName: z.string().min(1),
-  ...publishedEntityFields,
-});
+export const sectionIdSchema = z
+  .string()
+  .regex(/^section-(?:california|oregon|washington)-[a-z0-9]+$/);
+
+export const sectionSchema = z
+  .object({
+    id: sectionIdSchema,
+    code: z.string().min(1),
+    regionId: regionIdSchema,
+    mileStart: z.number().nonnegative().optional(),
+    mileEnd: z.number().positive().optional(),
+    properName: z.string().min(1),
+    ...publishedEntityFields,
+  })
+  .superRefine(({ mileStart, mileEnd }, context) => {
+    if ((mileStart === undefined) !== (mileEnd === undefined)) {
+      context.addIssue({
+        code: "custom",
+        message: "Provide both section mile bounds or neither.",
+        path: [mileStart === undefined ? "mileStart" : "mileEnd"],
+      });
+    }
+
+    if (
+      mileStart !== undefined &&
+      mileEnd !== undefined &&
+      mileEnd <= mileStart
+    ) {
+      context.addIssue({
+        code: "custom",
+        message: "Section mileEnd must be greater than mileStart.",
+        path: ["mileEnd"],
+      });
+    }
+  });
 
 const dayBaseFields = {
   id: dayIdSchema,
   sequence: z.number().int().positive(),
   date: isoDateSchema,
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).default([]),
+  sourceRefs: z.array(sourceReferenceSchema).min(1),
 };
 
 export const trailDaySchema = z.object({
   ...dayBaseFields,
   kind: z.literal("trail"),
   regionId: regionIdSchema,
-  sectionIds: z.array(z.string().regex(/^section-[a-z0-9]+$/)).min(1),
+  sectionIds: z.array(sectionIdSchema).min(1),
   mileStart: z.number().nonnegative(),
-  mileEnd: z.number().positive(),
+  mileEnd: z.number().nonnegative(),
   ascentMeters: z.number().nonnegative(),
   descentMeters: z.number().nonnegative(),
   locationId: stableIdSchema,
@@ -94,6 +167,7 @@ export const trailDaySchema = z.object({
 export const postTrailDaySchema = z.object({
   ...dayBaseFields,
   kind: z.literal("post-trail"),
+  endDate: isoDateSchema.optional(),
 });
 
 export const daySchema = z.discriminatedUnion("kind", [
@@ -108,7 +182,7 @@ export const journalEntrySchema = z.object({
   locationLabel: z.string().min(1),
   summary: z.string().min(1).optional(),
   photoIds: z.array(stableIdSchema).default([]),
-  sourceRefs: z.array(sourceReferenceSchema).default([]),
+  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
 export const photoSchema = z
@@ -138,7 +212,7 @@ export const localizedPhotoSchema = z.object({
 export const glossaryConceptSchema = z.object({
   id: stableIdSchema,
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).default([]),
+  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
 export const localizedGlossaryEntrySchema = z.object({
@@ -157,7 +231,7 @@ export const gearItemSchema = z.object({
   weightGrams: z.number().nonnegative(),
   tripPhase: regionIdSchema.optional(),
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).default([]),
+  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
 export const localizedGearEntrySchema = z.object({
@@ -170,6 +244,7 @@ export const localizedGearEntrySchema = z.object({
 export const supportingPageKindSchema = z.enum([
   "introduction",
   "analysis",
+  "gear",
   "people",
   "after-terminus",
   "closing",
@@ -182,7 +257,7 @@ export const supportingPageSchema = z.object({
   title: z.string().min(1),
   summary: z.string().min(1).optional(),
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).default([]),
+  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
 export const correctionSchema = z.object({
@@ -206,6 +281,8 @@ export const correctionSchema = z.object({
 });
 
 export type SourceReference = z.infer<typeof sourceReferenceSchema>;
+export type SourceDocument = z.infer<typeof sourceDocumentSchema>;
+export type WordExtractionReport = z.infer<typeof wordExtractionReportSchema>;
 export type Region = z.infer<typeof regionSchema>;
 export type TrailSection = z.infer<typeof sectionSchema>;
 export type TrailDay = z.infer<typeof trailDaySchema>;

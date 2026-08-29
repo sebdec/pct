@@ -7,4 +7,5 @@ dist/
 !.env.example
 .vercel/
 coverage/
-
+.content-extraction-staging-*
+*.content-extraction-backup-*

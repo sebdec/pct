@@ -1,1 +1,452 @@
-[]
+[
+  {
+    "id": "section-california-a",
+    "code": "A",
+    "regionId": "desert",
+    "properName": "Mexican Border → Warner Springs",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 57,
+        "detail": "row=1; label=Section; code=A; properName=Mexican Border → Warner Springs"
+      }
+    ]
+  },
+  {
+    "id": "section-california-b",
+    "code": "B",
+    "regionId": "desert",
+    "properName": "Warner Springs → I-10/San Gorgonio Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 90,
+        "detail": "row=1; label=Section; code=B; properName=Warner Springs → I-10/San Gorgonio Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-california-c",
+    "code": "C",
+    "regionId": "desert",
+    "properName": "I-10/San Gorgonio Pass → I-15/Cajon Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 125,
+        "detail": "row=1; label=Section; code=C; properName=I-10/San Gorgonio Pass → I-15/Cajon Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-california-d",
+    "code": "D",
+    "regionId": "desert",
+    "properName": "I-15/Cajon Pass → Hwy-14/Agua Dulce",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 166,
+        "detail": "row=1; label=Section; code=D; properName=I-15/Cajon Pass → Hwy-14/Agua Dulce"
+      }
+    ]
+  },
+  {
+    "id": "section-california-e",
+    "code": "E",
+    "regionId": "desert",
+    "properName": "Hwy-14/Agua Dulce → Hwy-58/Mojave-Tehachapi",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 213,
+        "detail": "row=1; label=Section; code=E; properName=Hwy-14/Agua Dulce → Hwy-58/Mojave-Tehachapi"
+      }
+    ]
+  },
+  {
+    "id": "section-california-f",
+    "code": "F",
+    "regionId": "desert",
+    "properName": "Hwy-58/Mojave-Tehachapi → Hwy-178/Walker Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 239,
+        "detail": "row=1; label=Section; code=F; properName=Hwy-58/Mojave-Tehachapi → Hwy-178/Walker Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-california-g",
+    "code": "G",
+    "regionId": "desert",
+    "properName": "Hwy-178/Walker Pass → Mt. Whitney",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 265,
+        "detail": "row=1; label=Section; code=G; properName=Hwy-178/Walker Pass → Mt. Whitney"
+      }
+    ]
+  },
+  {
+    "id": "section-california-h",
+    "code": "H",
+    "regionId": "sierra",
+    "properName": "Mt. Whitney → Tuolumne Meadows",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 317,
+        "detail": "row=1; label=Section; code=H; properName=Mt. Whitney → Tuolumne Meadows"
+      }
+    ]
+  },
+  {
+    "id": "section-california-i",
+    "code": "I",
+    "regionId": "sierra",
+    "properName": "Tuolumne Meadows → Sonora Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 389,
+        "detail": "row=1; label=Section; code=I; properName=Tuolumne Meadows → Sonora Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-california-j",
+    "code": "J",
+    "regionId": "sierra",
+    "properName": "Sonora Pass → Echo Lake",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 416,
+        "detail": "row=1; label=Section; code=J; properName=Sonora Pass → Echo Lake"
+      }
+    ]
+  },
+  {
+    "id": "section-california-k",
+    "code": "K",
+    "regionId": "norcal",
+    "properName": "Echo Lake → I-80/Truckee",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 462,
+        "detail": "row=1; label=Section; code=K; properName=Echo Lake → I-80/Truckee"
+      }
+    ]
+  },
+  {
+    "id": "section-california-l",
+    "code": "L",
+    "regionId": "norcal",
+    "properName": "I-80/Truckee → Hwy-49/Sierra City",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 490,
+        "detail": "row=1; label=Section; code=L; properName=I-80/Truckee → Hwy-49/Sierra City"
+      }
+    ]
+  },
+  {
+    "id": "section-california-m",
+    "code": "M",
+    "regionId": "norcal",
+    "properName": "Hwy-49/Sierra City → Hwy-70/Belden",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 499,
+        "detail": "row=1; label=Section; code=M; properName=Hwy-49/Sierra City → Hwy-70/Belden"
+      }
+    ]
+  },
+  {
+    "id": "section-california-n",
+    "code": "N",
+    "regionId": "norcal",
+    "properName": "Hwy-70/Belden → Burney Falls",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 529,
+        "detail": "row=1; label=Section; code=N; properName=Hwy-70/Belden → Burney Falls"
+      }
+    ]
+  },
+  {
+    "id": "section-california-o",
+    "code": "O",
+    "regionId": "norcal",
+    "properName": "Burney Falls → I-5/Castle Crags",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 568,
+        "detail": "row=1; label=Section; code=O; properName=Burney Falls → I-5/Castle Crags"
+      }
+    ]
+  },
+  {
+    "id": "section-california-p",
+    "code": "P",
+    "regionId": "norcal",
+    "properName": "I-5/Castle Crags → Etna Summit",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 596,
+        "detail": "row=1; label=Section; code=P; properName=I-5/Castle Crags → Etna Summit"
+      }
+    ]
+  },
+  {
+    "id": "section-california-q",
+    "code": "Q",
+    "regionId": "norcal",
+    "properName": "Etna Summit → Seiad Valley",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 624,
+        "detail": "row=1; label=Section; code=Q; properName=Etna Summit → Seiad Valley"
+      }
+    ]
+  },
+  {
+    "id": "section-california-r",
+    "code": "R",
+    "regionId": "norcal",
+    "properName": "Seiad Valley → I-5/Ashland",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 643,
+        "detail": "row=1; label=Section; code=R; properName=Seiad Valley → I-5/Ashland"
+      }
+    ]
+  },
+  {
+    "id": "section-oregon-a",
+    "code": "A",
+    "regionId": "oregon",
+    "properName": "Seiad Valley → I-5/Ashland",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 654,
+        "detail": "row=1; label=Section; code=A; properName=Seiad Valley → I-5/Ashland"
+      }
+    ]
+  },
+  {
+    "id": "section-oregon-b",
+    "code": "B",
+    "regionId": "oregon",
+    "properName": "I-5/Ashland → Hwy-140/Fish Lake",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 663,
+        "detail": "row=1; label=Section; code=B; properName=I-5/Ashland → Hwy-140/Fish Lake"
+      }
+    ]
+  },
+  {
+    "id": "section-oregon-c",
+    "code": "C",
+    "regionId": "oregon",
+    "properName": "Hwy-140/Fish Lake → Hwy-138/Mt. Thielsen",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 682,
+        "detail": "row=1; label=Section; code=C; properName=Hwy-140/Fish Lake → Hwy-138/Mt. Thielsen"
+      }
+    ]
+  },
+  {
+    "id": "section-oregon-d",
+    "code": "D",
+    "regionId": "oregon",
+    "properName": "Hwy-138/Mt. Thielsen → Hwy-58/Willamette Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 699,
+        "detail": "row=1; label=Section; code=D; properName=Hwy-138/Mt. Thielsen → Hwy-58/Willamette Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-oregon-e",
+    "code": "E",
+    "regionId": "oregon",
+    "properName": "Hwy-58/Willamette Pass → Hwy-242/McKenzie Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 717,
+        "detail": "row=1; label=Section; code=E; properName=Hwy-58/Willamette Pass → Hwy-242/McKenzie Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-oregon-f",
+    "code": "F",
+    "regionId": "oregon",
+    "properName": "Hwy-242/McKenzie Pass → Hwy-35/Barlow Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 743,
+        "detail": "row=1; label=Section; code=F; properName=Hwy-242/McKenzie Pass → Hwy-35/Barlow Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-oregon-g",
+    "code": "G",
+    "regionId": "oregon",
+    "properName": "Hwy-35/Barlow Pass → I-84/Cascade Locks",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 770,
+        "detail": "row=1; label=Section; code=G; properName=Hwy-35/Barlow Pass → I-84/Cascade Locks"
+      }
+    ]
+  },
+  {
+    "id": "section-washington-h",
+    "code": "H",
+    "regionId": "washington",
+    "properName": "Hwy-14/Cascade Locks → Hwy-12/White Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 780,
+        "detail": "row=1; label=Section; code=H; properName=Hwy-14/Cascade Locks → Hwy-12/White Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-washington-i",
+    "code": "I",
+    "regionId": "washington",
+    "properName": "Hwy-12/White Pass → I-90/Snoqualmie Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 825,
+        "detail": "row=1; label=Section; code=I; properName=Hwy-12/White Pass → I-90/Snoqualmie Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-washington-j",
+    "code": "J",
+    "regionId": "washington",
+    "properName": "I-90/Snoqualmie Pass → Hwy-2/Stevens Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 854,
+        "detail": "row=1; label=Section; code=J; properName=I-90/Snoqualmie Pass → Hwy-2/Stevens Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-washington-k",
+    "code": "K",
+    "regionId": "washington",
+    "properName": "Hwy-2/Stevens Pass → Hwy-20/Rainy Pass",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 882,
+        "detail": "row=1; label=Section; code=K; properName=Hwy-2/Stevens Pass → Hwy-20/Rainy Pass"
+      }
+    ]
+  },
+  {
+    "id": "section-washington-l",
+    "code": "L",
+    "regionId": "washington",
+    "properName": "Hwy-20/Rainy Pass → Manning Park, Canada",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "table",
+        "blockIndex": 920,
+        "detail": "row=1; label=Section; code=L; properName=Hwy-20/Rainy Pass → Manning Park, Canada"
+      }
+    ]
+  }
+]

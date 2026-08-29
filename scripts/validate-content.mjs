@@ -20,6 +20,18 @@ async function readJsonArray(path) {
   return value;
 }
 
+async function readJsonObject(path) {
+  const value = JSON.parse(await readFile(path, "utf8"));
+
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new TypeError(
+      `${relative(repositoryRoot, path)} must contain an object.`,
+    );
+  }
+
+  return value;
+}
+
 async function listFiles(directory, extensions) {
   const entries = await readdir(directory, { withFileTypes: true });
   const files = [];
@@ -93,6 +105,14 @@ const dataDirectory = resolve(repositoryRoot, "src/data");
 const contentDirectory = resolve(repositoryRoot, "src/content");
 
 assertContentModel({
+  sourceDocuments: await readJsonArray(
+    resolve(dataDirectory, "source/word-source.json"),
+  ),
+  extractionReports: [
+    await readJsonObject(
+      resolve(dataDirectory, "source/word-extraction-report.json"),
+    ),
+  ],
   regions: await readJsonArray(resolve(dataDirectory, "trail/regions.json")),
   sections: await readJsonArray(resolve(dataDirectory, "trail/sections.json")),
   days: await readJsonArray(resolve(dataDirectory, "trail/days.json")),

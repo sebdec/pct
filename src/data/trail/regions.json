@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "id": "desert",
+    "order": 1,
+    "trailMarkKey": "cactus",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 55
+      }
+    ]
+  },
+  {
+    "id": "sierra",
+    "order": 2,
+    "trailMarkKey": "mountain",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 292
+      }
+    ]
+  },
+  {
+    "id": "norcal",
+    "order": 3,
+    "trailMarkKey": "bear",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 425
+      }
+    ]
+  },
+  {
+    "id": "oregon",
+    "order": 4,
+    "trailMarkKey": "lake-mosquito",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 652
+      }
+    ]
+  },
+  {
+    "id": "washington",
+    "order": 5,
+    "trailMarkKey": "mountain-goat",
+    "published": true,
+    "sourceRefs": [
+      {
+        "document": "PCT 2026 - Sebdec.docx",
+        "blockType": "heading",
+        "blockIndex": 789
+      }
+    ]
+  }
+]

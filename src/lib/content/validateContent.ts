@@ -13,6 +13,8 @@ import {
   photoSchema,
   regionSchema,
   sectionSchema,
+  sourceDocumentSchema,
+  wordExtractionReportSchema,
   supportingPageSchema,
   type Correction,
   type Day,
@@ -25,6 +27,8 @@ import {
   type Photo,
   type Region,
   type SupportingPage,
+  type SourceDocument,
+  type WordExtractionReport,
   type TrailDay,
   type TrailSection,
 } from "./schemas.ts";
@@ -32,6 +36,8 @@ import {
 const mileTolerance = 0.001;
 
 export interface ContentModelSource {
+  sourceDocuments: readonly unknown[];
+  extractionReports: readonly unknown[];
   regions: readonly unknown[];
   sections: readonly unknown[];
   days: readonly unknown[];
@@ -58,6 +64,8 @@ export interface ContentValidationResult {
 }
 
 interface ParsedContentModel {
+  sourceDocuments: SourceDocument[];
+  extractionReports: WordExtractionReport[];
   regions: Region[];
   sections: TrailSection[];
   days: Day[];
@@ -152,6 +160,18 @@ function parseContentModel(
   issues: ContentValidationIssue[],
 ): ParsedContentModel {
   return {
+    sourceDocuments: parseCollection(
+      "sourceDocuments",
+      source.sourceDocuments,
+      sourceDocumentSchema,
+      issues,
+    ),
+    extractionReports: parseCollection(
+      "extractionReports",
+      source.extractionReports,
+      wordExtractionReportSchema,
+      issues,
+    ),
     regions: parseCollection("regions", source.regions, regionSchema, issues),
     sections: parseCollection(
       "sections",
@@ -216,6 +236,18 @@ function validateUniqueIdentifiers(
   content: ParsedContentModel,
   issues: ContentValidationIssue[],
 ): void {
+  findDuplicates(
+    content.sourceDocuments,
+    "sourceDocuments",
+    ({ id }) => id,
+    issues,
+  );
+  findDuplicates(
+    content.extractionReports,
+    "extractionReports",
+    ({ sourceDocumentId }) => sourceDocumentId,
+    issues,
+  );
   findDuplicates(content.regions, "regions", ({ id }) => id, issues);
   findDuplicates(content.sections, "sections", ({ id }) => id, issues);
   findDuplicates(content.days, "days", ({ id }) => id, issues);
@@ -297,15 +329,6 @@ function validateSectionReferences(
         `Unknown region "${section.regionId}".`,
       );
     }
-
-    if (section.mileEnd <= section.mileStart) {
-      addIssue(
-        issues,
-        "mileage.range",
-        `sections[${index}]`,
-        "Section mileEnd must be greater than mileStart.",
-      );
-    }
   });
 }
 
@@ -340,15 +363,186 @@ function validateDaySequence(
     }
 
     const previousDay = orderedDays[index - 1];
-    if (previousDay && day.date < previousDay.date) {
+    const previousEndDate =
+      previousDay?.kind === "post-trail"
+        ? (previousDay.endDate ?? previousDay.date)
+        : previousDay?.date;
+    if (previousDay && previousEndDate && day.date < previousEndDate) {
       addIssue(
         issues,
         "day.date.order",
         `days.${day.id}.date`,
-        `Date ${day.date} is before previous day date ${previousDay.date}.`,
+        `Date ${day.date} is before previous entry end date ${previousEndDate}.`,
+      );
+    }
+
+    if (
+      day.kind === "post-trail" &&
+      day.endDate !== undefined &&
+      day.endDate < day.date
+    ) {
+      addIssue(
+        issues,
+        "day.date.range",
+        `days.${day.id}.endDate`,
+        `End date ${day.endDate} is before start date ${day.date}.`,
       );
     }
   });
+}
+
+function validateSourceReferences(
+  content: ParsedContentModel,
+  issues: ContentValidationIssue[],
+): void {
+  const sourceFilenames = new Set(
+    content.sourceDocuments.map(({ filename }) => filename),
+  );
+
+  const references: Array<{ path: string; document: string }> = [];
+  const collect = (
+    path: string,
+    values: readonly { document: string }[],
+  ): void => {
+    values.forEach(({ document }, index) => {
+      references.push({ path: `${path}.sourceRefs[${index}]`, document });
+    });
+  };
+
+  content.regions.forEach((item) =>
+    collect(`regions.${item.id}`, item.sourceRefs),
+  );
+  content.sections.forEach((item) =>
+    collect(`sections.${item.id}`, item.sourceRefs),
+  );
+  content.days.forEach((item) => collect(`days.${item.id}`, item.sourceRefs));
+  content.journalEntries.forEach((item) =>
+    collect(`journalEntries.${item.locale}:${item.dayId}`, item.sourceRefs),
+  );
+  content.photos.forEach((item) =>
+    collect(`photos.${item.id}`, item.sourceRefs),
+  );
+  content.glossaryConcepts.forEach((item) =>
+    collect(`glossaryConcepts.${item.id}`, item.sourceRefs),
+  );
+  content.gearItems.forEach((item) =>
+    collect(`gearItems.${item.id}`, item.sourceRefs),
+  );
+  content.supportingPages.forEach((item) =>
+    collect(`supportingPages.${item.locale}:${item.pageId}`, item.sourceRefs),
+  );
+  content.corrections.forEach((item) =>
+    collect(`corrections.${item.id}`, [item.sourceRef]),
+  );
+
+  references.forEach(({ path, document }) => {
+    if (!sourceFilenames.has(document)) {
+      addIssue(
+        issues,
+        "reference.source-document",
+        path,
+        `Unknown source document "${document}".`,
+      );
+    }
+  });
+}
+
+function validateExtractionReport(
+  content: ParsedContentModel,
+  issues: ContentValidationIssue[],
+): void {
+  if (content.sourceDocuments.length !== 1) {
+    addIssue(
+      issues,
+      "source-document.count",
+      "sourceDocuments",
+      `Expected 1 source document and received ${content.sourceDocuments.length}.`,
+    );
+  }
+  if (content.extractionReports.length !== 1) {
+    addIssue(
+      issues,
+      "extraction-report.count",
+      "extractionReports",
+      `Expected 1 extraction report and received ${content.extractionReports.length}.`,
+    );
+  }
+
+  const report = content.extractionReports[0];
+  const sourceDocument = content.sourceDocuments[0];
+  if (!report || !sourceDocument) return;
+  if (report.sourceDocumentId !== sourceDocument.id) {
+    addIssue(
+      issues,
+      "reference.source-document",
+      "extractionReports[0].sourceDocumentId",
+      `Unknown source document "${report.sourceDocumentId}".`,
+    );
+  }
+
+  const trailDayIds = new Set(
+    content.days.filter(({ kind }) => kind === "trail").map(({ id }) => id),
+  );
+  const postTrailDayIds = new Set(
+    content.days
+      .filter(({ kind }) => kind === "post-trail")
+      .map(({ id }) => id),
+  );
+  const assetCounts = new Map<string, number>();
+  content.photos.forEach(({ assetKey }) => {
+    assetCounts.set(assetKey, (assetCounts.get(assetKey) ?? 0) + 1);
+  });
+  const actualCounts: WordExtractionReport["counts"] = {
+    trailEntries: trailDayIds.size,
+    postTrailEntries: postTrailDayIds.size,
+    gearItems: content.gearItems.length,
+    glossaryConcepts: content.glossaryConcepts.length,
+    photoPlacements: content.photos.length,
+    mediaAssets: assetCounts.size,
+    reusedMediaAssets: [...assetCounts.values()].filter((count) => count > 1)
+      .length,
+    trailPhotoPlacements: content.photos.filter(
+      ({ dayId }) => dayId && trailDayIds.has(dayId),
+    ).length,
+    postTrailPhotoPlacements: content.photos.filter(
+      ({ dayId }) => dayId && postTrailDayIds.has(dayId),
+    ).length,
+    pagePhotoPlacements: content.photos.filter(({ pageId }) => pageId).length,
+    trailEntriesWithoutPhotos: content.journalEntries.filter(
+      ({ dayId, photoIds }) => trailDayIds.has(dayId) && photoIds.length === 0,
+    ).length,
+  };
+  for (const [key, actual] of Object.entries(actualCounts) as Array<
+    [keyof WordExtractionReport["counts"], number]
+  >) {
+    if (report.counts[key] !== actual) {
+      addIssue(
+        issues,
+        "extraction-report.count.mismatch",
+        `extractionReports[0].counts.${key}`,
+        `Expected generated count ${actual} and received ${report.counts[key]}.`,
+      );
+    }
+  }
+
+  const manifestCountKeys = [
+    "trailEntries",
+    "postTrailEntries",
+    "gearItems",
+    "glossaryConcepts",
+    "photoPlacements",
+    "mediaAssets",
+  ] as const;
+  for (const key of manifestCountKeys) {
+    if (sourceDocument.counts[key] !== report.counts[key]) {
+      addIssue(
+        issues,
+        "source-document.count.mismatch",
+        `sourceDocuments[0].counts.${key}`,
+        `Manifest count ${sourceDocument.counts[key]} does not match report count ${report.counts[key]}.`,
+      );
+    }
+  }
 }
 
 function validateTrailDays(
@@ -391,12 +585,12 @@ function validateTrailDays(
       }
     });
 
-    if (day.mileEnd <= day.mileStart) {
+    if (day.mileEnd < day.mileStart) {
       addIssue(
         issues,
         "mileage.range",
         `days.${day.id}`,
-        "Trail day mileEnd must be greater than mileStart.",
+        "Trail day mileEnd must be greater than or equal to mileStart.",
       );
     }
 
@@ -431,6 +625,7 @@ function validateEditorialReferences(
   const conceptIds = new Set(content.glossaryConcepts.map(({ id }) => id));
   const gearItemIds = new Set(content.gearItems.map(({ id }) => id));
   const pageIds = new Set(content.supportingPages.map(({ pageId }) => pageId));
+  const photosById = new Map(content.photos.map((photo) => [photo.id, photo]));
 
   content.journalEntries.forEach((entry) => {
     if (!dayIds.has(entry.dayId)) {
@@ -458,6 +653,16 @@ function validateEditorialReferences(
           "reference.photo",
           `journalEntries.${entry.locale}:${entry.dayId}.photoIds`,
           `Unknown photo "${photoId}".`,
+        );
+        return;
+      }
+
+      if (photosById.get(photoId)?.dayId !== entry.dayId) {
+        addIssue(
+          issues,
+          "reference.photo.day",
+          `journalEntries.${entry.locale}:${entry.dayId}.photoIds`,
+          `Photo "${photoId}" is not associated with day "${entry.dayId}".`,
         );
       }
     });
@@ -511,6 +716,42 @@ function validateEditorialReferences(
         "reference.gear",
         `localizedGearEntries.${locale}:${gearItemId}`,
         `Unknown gear item "${gearItemId}".`,
+      );
+    }
+  });
+}
+
+function validatePhotoPlacements(
+  content: ParsedContentModel,
+  issues: ContentValidationIssue[],
+): void {
+  const ordered = [...content.photos].sort(
+    (left, right) => left.order - right.order,
+  );
+  ordered.forEach((photo, index) => {
+    if (photo.order !== index) {
+      addIssue(
+        issues,
+        "photo.order",
+        `photos.${photo.id}.order`,
+        `Expected placement order ${index} and received ${photo.order}.`,
+      );
+    }
+  });
+
+  const frenchPhotoIdsByDay = new Map<string, Set<string>>();
+  content.journalEntries
+    .filter(({ locale }) => locale === publishedLocales[0])
+    .forEach(({ dayId, photoIds }) => {
+      frenchPhotoIdsByDay.set(dayId, new Set(photoIds));
+    });
+  content.photos.forEach(({ id, dayId }) => {
+    if (dayId && !frenchPhotoIdsByDay.get(dayId)?.has(id)) {
+      addIssue(
+        issues,
+        "reference.photo.journal",
+        `photos.${id}.dayId`,
+        `Photo "${id}" is missing from the French journal entry for "${dayId}".`,
       );
     }
   });
@@ -651,10 +892,13 @@ export function validateContentModel(
   const content = parseContentModel(source, issues);
 
   validateUniqueIdentifiers(content, issues);
+  validateSourceReferences(content, issues);
+  validateExtractionReport(content, issues);
   validateSectionReferences(content, issues);
   validateDaySequence(content.days, issues);
   validateTrailDays(content, issues);
   validateEditorialReferences(content, issues);
+  validatePhotoPlacements(content, issues);
   validateRequiredFrenchCopy(content, issues);
   validateCorrections(content, issues);
 
