@@ -72,25 +72,38 @@ input {
   navigation: auto;
 }
 
+/* Keep the global shell fixed while journal content changes underneath it. */
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-group(journal-day) {
+  animation: none;
+}
+
 ::view-transition-old(root) {
-  animation: 120ms ease-in both pct-page-out;
+  opacity: 0;
 }
 
 ::view-transition-new(root) {
-  animation: 200ms ease-out both pct-page-in;
+  opacity: 1;
 }
 
-@keyframes pct-page-out {
+::view-transition-old(journal-day) {
+  animation: 90ms ease-in both pct-journal-out;
+}
+
+::view-transition-new(journal-day) {
+  animation: 170ms 30ms ease-out both pct-journal-in;
+}
+
+@keyframes pct-journal-out {
   to {
     opacity: 0;
-    transform: translateY(calc(var(--pct-space-1) * -1));
   }
 }
 
-@keyframes pct-page-in {
+@keyframes pct-journal-in {
   from {
     opacity: 0;
-    transform: translateY(var(--pct-space-1));
   }
 }
 
@@ -106,8 +119,8 @@ input {
     transition-duration: 0.01ms !important;
   }
 
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
+  ::view-transition-old(journal-day),
+  ::view-transition-new(journal-day) {
     animation: none;
   }
 }
