@@ -176,6 +176,12 @@ const currentMileLabel = mileLabel(current);
     };
 
     range.addEventListener("input", () => preview(Number(range.value) - 1));
+    range.addEventListener("pointerdown", () => {
+      range.dataset.pointerFocus = "true";
+    });
+    range.addEventListener("keydown", () => {
+      delete range.dataset.pointerFocus;
+    });
     range.addEventListener("change", () => {
       const entry = entries[Number(range.value) - 1];
 
@@ -197,7 +203,10 @@ const currentMileLabel = mileLabel(current);
       preview(Math.round(ratio * (entries.length - 1)));
     });
     range.addEventListener("pointerleave", () => preview(currentIndex));
-    range.addEventListener("blur", () => preview(currentIndex));
+    range.addEventListener("blur", () => {
+      delete range.dataset.pointerFocus;
+      preview(currentIndex);
+    });
   }
 </script>
 
@@ -359,6 +368,10 @@ const currentMileLabel = mileLabel(current);
   input[type="range"]:disabled {
     cursor: default;
     opacity: 0.72;
+  }
+
+  input[type="range"][data-pointer-focus]:focus-visible {
+    outline: none;
   }
 
   .visually-hidden {

@@ -69,21 +69,27 @@ const regionClass = page.regionId
   <main class:list={["journal-page", regionClass]}>
     <article>
       <JournalDayNavigator page={page} entries={navigatorEntries} />
-      <JournalDayHeader page={page} />
 
-      <div class="journal-layout">
-        <JournalMetrics page={page} />
+      <div class="journal-transition-surface">
+        <JournalDayHeader page={page} />
 
-        <div class="reading-column">
-          <div class="journal-copy">
-            <Content />
+        <div class="journal-layout">
+          <JournalMetrics page={page} />
+
+          <div class="reading-column">
+            <div class="journal-copy">
+              <Content />
+            </div>
+
+            <JournalMediaSequence
+              photos={page.photos}
+              regionId={page.regionId}
+            />
           </div>
-
-          <JournalMediaSequence photos={page.photos} regionId={page.regionId} />
         </div>
-      </div>
 
-      <JournalNavigation previous={page.previous} next={page.next} />
+        <JournalNavigation previous={page.previous} next={page.next} />
+      </div>
     </article>
   </main>
 </BaseLayout>
@@ -95,6 +101,9 @@ const regionClass = page.regionId
     position: relative;
     min-height: 100vh;
     overflow: hidden;
+  }
+
+  .journal-transition-surface {
     view-transition-name: journal-day;
   }
 
