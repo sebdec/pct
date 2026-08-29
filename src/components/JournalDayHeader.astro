@@ -4,33 +4,15 @@ import LocalizedDate from "./LocalizedDate.astro";
 
 interface Props {
   page: JournalPageViewModel;
-  totalEntries: number;
 }
 
-const { page, totalEntries } = Astro.props;
+const { page } = Astro.props;
 const sequence = page.day.sequence;
 const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
 ---
 
 <header class="day-header">
-  <div class="day-context">
-    <p class="journal-position">
-      Journal <span>{sequence} / {totalEntries}</span>
-    </p>
-    <p class="region-label">{page.regionLabel}</p>
-  </div>
-
-  <div class="heading-row">
-    <p class="day-kicker">
-      {page.day.kind === "trail" ? "Jour de marche" : "Après le terminus"}
-    </p>
-    <h1>
-      <span class="day-word">
-        {page.day.kind === "trail" ? "Jour" : "Étape"}
-      </span>
-      <span class="day-number">{sequence}</span>
-    </h1>
-  </div>
+  <h1>Jour <span class="day-number">{sequence}</span></h1>
 
   <div class="day-place">
     <p class="date">
@@ -43,11 +25,9 @@ const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
 <style>
   .day-header {
     position: relative;
-    padding: clamp(4rem, 9vw, 8rem) 0 clamp(3rem, 7vw, 6rem);
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 5.5rem);
   }
 
-  .day-context,
-  .heading-row,
   .day-place {
     display: flex;
     align-items: flex-end;
@@ -55,58 +35,26 @@ const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
     gap: var(--pct-space-6);
   }
 
-  .journal-position,
-  .region-label,
-  .day-kicker,
   .date,
   .location {
     margin: 0;
   }
 
-  .journal-position,
-  .region-label,
-  .day-kicker {
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .journal-position {
-    color: var(--pct-color-muted);
-  }
-
-  .journal-position span,
-  .day-kicker {
-    color: var(--pct-color-pine-glow);
-  }
-
-  .region-label {
-    color: var(--section-color);
-  }
-
-  .heading-row {
-    display: block;
-    margin-top: clamp(2.5rem, 6vw, 4.5rem);
-  }
-
   h1 {
     display: flex;
     align-items: baseline;
-    gap: clamp(1rem, 3vw, 2.4rem);
-    margin: 0.55rem 0 0;
+    gap: clamp(0.7rem, 1.8vw, 1.3rem);
+    margin: 0;
     color: var(--pct-color-white);
+    font-size: clamp(2.6rem, 4.6vw, 4rem);
     font-weight: 500;
-    line-height: 0.82;
-    letter-spacing: -0.075em;
-  }
-
-  .day-word {
-    font-size: clamp(3.25rem, 8vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.065em;
   }
 
   .day-number {
     color: transparent;
-    font-size: clamp(2.8rem, 6.4vw, 6.2rem);
+    font-size: 0.88em;
     -webkit-text-stroke: 1px var(--pct-color-muted);
   }
 
@@ -131,26 +79,7 @@ const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
 
   @media (max-width: 40rem) {
     .day-header {
-      padding-top: 3rem;
-    }
-
-    .heading-row {
-      margin-top: var(--pct-space-7);
-    }
-
-    h1 {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.35rem;
-      line-height: 0.88;
-    }
-
-    .day-word {
-      font-size: clamp(3rem, 15vw, 4.3rem);
-    }
-
-    .day-number {
-      font-size: clamp(2.35rem, 12vw, 3.6rem);
+      padding-block: var(--pct-space-7);
     }
 
     .day-place {

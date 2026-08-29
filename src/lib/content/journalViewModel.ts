@@ -20,6 +20,7 @@ export interface JournalNavigationItem {
 }
 
 export interface JournalNavigatorItem extends JournalNavigationItem {
+  regionId: TrailDay["regionId"] | null;
   regionLabel: string;
   mileStart: number | null;
   mileEnd: number | null;
@@ -50,6 +51,7 @@ export function buildJournalNavigatorItems(
 ): JournalNavigatorItem[] {
   return pages.map((page) => ({
     ...navigationItem(page),
+    regionId: page.regionId,
     regionLabel: page.regionLabel,
     mileStart: page.metrics?.mileStart ?? null,
     mileEnd: page.metrics?.mileEnd ?? null,

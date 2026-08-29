@@ -68,6 +68,32 @@ input {
   outline-offset: 4px;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 120ms ease-in both pct-page-out;
+}
+
+::view-transition-new(root) {
+  animation: 200ms ease-out both pct-page-in;
+}
+
+@keyframes pct-page-out {
+  to {
+    opacity: 0;
+    transform: translateY(calc(var(--pct-space-1) * -1));
+  }
+}
+
+@keyframes pct-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--pct-space-1));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -78,5 +104,10 @@ input {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 }

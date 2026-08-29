@@ -20,7 +20,6 @@ import { site } from "../../lib/site.ts";
 interface Props {
   page: JournalPageViewModel;
   journalEntry: CollectionEntry<"journal">;
-  totalEntries: number;
   navigatorEntries: readonly JournalNavigatorItem[];
 }
 
@@ -48,15 +47,14 @@ export async function getStaticPaths() {
     props: {
       page,
       journalEntry: entryByDayId.get(page.day.id),
-      totalEntries: pages.length,
       navigatorEntries,
     },
   }));
 }
 
-const { page, journalEntry, totalEntries, navigatorEntries } = Astro.props;
+const { page, journalEntry, navigatorEntries } = Astro.props;
 const { Content } = await render(journalEntry);
-const pageTitle = `${page.day.kind === "trail" ? `Jour ${page.day.sequence}` : "Après le trail"} · ${page.entry.locationLabel} | ${site.title}`;
+const pageTitle = `Jour ${page.day.sequence} · ${page.entry.locationLabel} | ${site.title}`;
 const pageDescription =
   page.entry.summary ??
   `Journal du Pacific Crest Trail 2026 à ${page.entry.locationLabel}.`;
@@ -70,8 +68,8 @@ const regionClass = page.regionId
 
   <main class:list={["journal-page", regionClass]}>
     <article>
-      <JournalDayHeader page={page} totalEntries={totalEntries} />
       <JournalDayNavigator page={page} entries={navigatorEntries} />
+      <JournalDayHeader page={page} />
 
       <div class="journal-layout">
         <JournalMetrics page={page} />

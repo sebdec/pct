@@ -25,6 +25,7 @@ const progress =
   entries.length > 1 ? (currentIndex / (entries.length - 1)) * 100 : 100;
 const navigatorEntries = entries.map((entry) => ({
   sequence: entry.sequence,
+  regionId: entry.regionId,
   regionLabel: entry.regionLabel,
   mileStart: entry.mileStart,
   mileEnd: entry.mileEnd,
@@ -47,6 +48,7 @@ const currentMileLabel = mileLabel(current);
   aria-label="Accès rapide aux journées"
   data-journal-navigator
   data-entries={JSON.stringify(navigatorEntries)}
+  data-preview-region={current.regionId ?? "after-trail"}
   style={`--day-progress: ${progress}%`}
 >
   {
@@ -113,6 +115,7 @@ const currentMileLabel = mileLabel(current);
 <script>
   interface NavigatorEntry {
     sequence: number;
+    regionId: "desert" | "sierra" | "norcal" | "oregon" | "washington" | null;
     regionLabel: string;
     mileStart: number | null;
     mileEnd: number | null;
@@ -160,6 +163,7 @@ const currentMileLabel = mileLabel(current);
 
       dayLabel.textContent = `Jour ${entry.sequence}`;
       regionLabel.textContent = entry.regionLabel;
+      navigator.dataset.previewRegion = entry.regionId ?? "after-trail";
       mileLabel.textContent = miles ?? "";
       mileLabel.hidden = miles === null;
       range.setAttribute(
@@ -199,6 +203,8 @@ const currentMileLabel = mileLabel(current);
 
 <style>
   .day-navigator {
+    --navigator-color: var(--pct-color-pine-glow);
+
     position: sticky;
     z-index: 8;
     top: var(--pct-space-3);
@@ -206,7 +212,7 @@ const currentMileLabel = mileLabel(current);
     grid-template-columns: minmax(5.5rem, auto) 1fr minmax(5.5rem, auto);
     gap: var(--pct-space-5);
     align-items: center;
-    margin: 0 0 clamp(3rem, 7vw, 6rem);
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
     padding: var(--pct-space-3) var(--pct-space-4);
     border: 1px solid var(--pct-color-faint);
     border-radius: var(--pct-radius-small);
@@ -214,6 +220,26 @@ const currentMileLabel = mileLabel(current);
     box-shadow: 0 1rem 3rem
       color-mix(in srgb, var(--pct-color-deep-camp) 75%, transparent);
     backdrop-filter: blur(1rem);
+  }
+
+  .day-navigator[data-preview-region="desert"] {
+    --navigator-color: var(--pct-color-desert-dust);
+  }
+
+  .day-navigator[data-preview-region="sierra"] {
+    --navigator-color: var(--pct-color-sierra-snow);
+  }
+
+  .day-navigator[data-preview-region="norcal"] {
+    --navigator-color: var(--pct-color-norcal-forest);
+  }
+
+  .day-navigator[data-preview-region="oregon"] {
+    --navigator-color: var(--pct-color-oregon-lake);
+  }
+
+  .day-navigator[data-preview-region="washington"] {
+    --navigator-color: var(--pct-color-washington-mist);
   }
 
   .step-link,
@@ -236,11 +262,11 @@ const currentMileLabel = mileLabel(current);
   }
 
   .step-link:hover {
-    color: var(--pct-color-pine-glow);
+    color: var(--navigator-color);
   }
 
   .step-link span {
-    color: var(--pct-color-pine-glow);
+    color: var(--navigator-color);
     font-size: 1rem;
   }
 
@@ -272,7 +298,8 @@ const currentMileLabel = mileLabel(current);
   }
 
   .range-copy span {
-    color: var(--section-color);
+    color: var(--navigator-color);
+    transition: color 160ms ease;
   }
 
   .range-copy small {
@@ -294,7 +321,7 @@ const currentMileLabel = mileLabel(current);
     border-radius: 999px;
     background: linear-gradient(
       to right,
-      var(--pct-color-pine-glow) 0 var(--day-progress),
+      var(--navigator-color) 0 var(--day-progress),
       var(--pct-color-faint) var(--day-progress) 100%
     );
   }
@@ -304,7 +331,7 @@ const currentMileLabel = mileLabel(current);
     border-radius: 999px;
     background: linear-gradient(
       to right,
-      var(--pct-color-pine-glow) 0 var(--day-progress),
+      var(--navigator-color) 0 var(--day-progress),
       var(--pct-color-faint) var(--day-progress) 100%
     );
   }
@@ -315,8 +342,8 @@ const currentMileLabel = mileLabel(current);
     margin-top: -0.36rem;
     border: 2px solid var(--pct-color-deep-camp);
     border-radius: 50%;
-    background: var(--pct-color-pine-glow);
-    box-shadow: 0 0 0 1px var(--pct-color-pine-glow);
+    background: var(--navigator-color);
+    box-shadow: 0 0 0 1px var(--navigator-color);
     appearance: none;
   }
 
@@ -325,8 +352,8 @@ const currentMileLabel = mileLabel(current);
     height: 0.8rem;
     border: 2px solid var(--pct-color-deep-camp);
     border-radius: 50%;
-    background: var(--pct-color-pine-glow);
-    box-shadow: 0 0 0 1px var(--pct-color-pine-glow);
+    background: var(--navigator-color);
+    box-shadow: 0 0 0 1px var(--navigator-color);
   }
 
   input[type="range"]:disabled {
@@ -348,7 +375,7 @@ const currentMileLabel = mileLabel(current);
     .day-navigator {
       grid-template-columns: 2rem 1fr 2rem;
       gap: var(--pct-space-3);
-      margin-bottom: var(--pct-space-7);
+      margin-top: var(--pct-space-4);
       padding-inline: var(--pct-space-3);
     }
 
