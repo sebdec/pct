@@ -1,5 +1,6 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import { mapDayUrl } from "../lib/content/urls.ts";
 import LocalizedDate from "./LocalizedDate.astro";
 
 interface Props {
@@ -12,27 +13,38 @@ const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
 ---
 
 <header class="day-header">
-  <h1>Jour <span class="day-number">{sequence}</span></h1>
+  <div class="title-line">
+    <h1 aria-label={`Jour ${sequence}, ${page.entry.locationLabel}`}>
+      Jour {sequence}
+      <span class="location">{page.entry.locationLabel}</span>
+    </h1>
+  </div>
 
-  <div class="day-place">
+  <div class="meta-line">
     <p class="date">
       <LocalizedDate start={page.day.date} end={endDate} />
     </p>
-    <p class="location">{page.entry.locationLabel}</p>
+    {
+      page.day.kind === "trail" && (
+        <a class="map-link" href={mapDayUrl(page.day.id)}>
+          Voir sur la carte <span aria-hidden="true">→</span>
+        </a>
+      )
+    }
   </div>
 </header>
 
 <style>
   .day-header {
-    position: relative;
-    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 5.5rem);
+    width: min(100%, var(--pct-content-reading));
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
+    text-align: left;
   }
 
-  .day-place {
+  .title-line {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--pct-space-6);
+    align-items: baseline;
   }
 
   .date,
@@ -42,54 +54,61 @@ const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
 
   h1 {
     display: flex;
+    flex-wrap: nowrap;
+    gap: var(--pct-space-2) var(--pct-space-3);
     align-items: baseline;
-    gap: clamp(0.7rem, 1.8vw, 1.3rem);
     margin: 0;
     color: var(--pct-color-white);
-    font-size: clamp(2.6rem, 4.6vw, 4rem);
-    font-weight: 500;
-    line-height: 0.95;
-    letter-spacing: -0.065em;
-  }
-
-  .day-number {
-    color: transparent;
-    font-size: 0.88em;
-    -webkit-text-stroke: 1px var(--pct-color-muted);
-  }
-
-  .day-place {
-    margin-top: clamp(2rem, 4vw, 3.5rem);
-  }
-
-  .date {
-    color: var(--pct-color-copy);
-    font-family: var(--pct-font-journal);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    font-style: italic;
+    font-size: clamp(1.9rem, 3vw, 2.35rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
   }
 
   .location {
-    max-width: 30rem;
-    color: var(--pct-color-muted);
-    font-size: 0.72rem;
+    min-width: 0;
+    overflow: hidden;
+    font-family: var(--pct-font-journal);
+    font-size: 0.48em;
+    font-weight: 400;
+    letter-spacing: -0.015em;
     line-height: 1.5;
-    text-align: right;
+    color: var(--pct-color-copy);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .meta-line {
+    display: flex;
+    gap: var(--pct-space-4);
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--pct-space-2);
+  }
+
+  .date {
+    color: var(--pct-color-muted);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .map-link {
+    display: inline-flex;
+    gap: var(--pct-space-2);
+    align-items: center;
+    color: var(--pct-color-pine-glow);
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+
+  .map-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
   }
 
   @media (max-width: 40rem) {
     .day-header {
-      padding-block: var(--pct-space-7);
-    }
-
-    .day-place {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: var(--pct-space-3);
-    }
-
-    .location {
-      text-align: left;
+      padding-block: var(--pct-space-6);
     }
   }
 </style>

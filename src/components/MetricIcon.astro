@@ -1,12 +1,28 @@
 ---
 interface Props {
-  name: "mile" | "distance" | "ascent" | "descent";
+  name: "region" | "section" | "mile" | "distance" | "ascent" | "descent";
 }
 
 const { name } = Astro.props;
 ---
 
 <svg class="metric-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  {
+    name === "region" && (
+      <>
+        <path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z" />
+        <circle cx="12" cy="10" r="2" />
+      </>
+    )
+  }
+  {
+    name === "section" && (
+      <>
+        <path d="M6 21V4" />
+        <path d="M6 6h10l2 3-2 3H6" />
+      </>
+    )
+  }
   {
     name === "mile" && (
       <>

@@ -1,6 +1,6 @@
 .astro/
 dist/
+public/icons/*.svg
 coverage/
 node_modules/
 pnpm-lock.yaml
-

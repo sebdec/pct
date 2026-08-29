@@ -15,20 +15,24 @@ import {
   type JournalPageViewModel,
 } from "../../lib/content/journalViewModel.ts";
 import { defaultLocale } from "../../lib/content/locales.ts";
+import type { TrailSection } from "../../lib/content/schemas.ts";
 import { site } from "../../lib/site.ts";
 
 interface Props {
   page: JournalPageViewModel;
   journalEntry: CollectionEntry<"journal">;
   navigatorEntries: readonly JournalNavigatorItem[];
+  sections: readonly TrailSection[];
 }
 
 export async function getStaticPaths() {
-  const [dayEntries, journalEntries, photoEntries] = await Promise.all([
-    getCollection("days"),
-    getCollection("journal"),
-    getCollection("photos"),
-  ]);
+  const [dayEntries, journalEntries, photoEntries, sectionEntries] =
+    await Promise.all([
+      getCollection("days"),
+      getCollection("journal"),
+      getCollection("photos"),
+      getCollection("sections"),
+    ]);
   const frenchEntries = journalEntries.filter(
     ({ data }) => data.locale === defaultLocale,
   );
@@ -41,6 +45,9 @@ export async function getStaticPaths() {
     frenchEntries.map((entry) => [entry.data.dayId, entry]),
   );
   const navigatorEntries = buildJournalNavigatorItems(pages);
+  const sectionById = new Map(
+    sectionEntries.map(({ data }) => [data.id, data]),
+  );
 
   return pages.map((page) => ({
     params: { dayId: page.day.id },
@@ -48,34 +55,48 @@ export async function getStaticPaths() {
       page,
       journalEntry: entryByDayId.get(page.day.id),
       navigatorEntries,
+      sections:
+        page.day.kind === "trail"
+          ? page.day.sectionIds.map((sectionId) => {
+              const section = sectionById.get(sectionId);
+
+              if (!section) {
+                throw new Error(
+                  `Missing section ${sectionId} for ${page.day.id}.`,
+                );
+              }
+
+              return section;
+            })
+          : [],
     },
   }));
 }
 
-const { page, journalEntry, navigatorEntries } = Astro.props;
+const { page, journalEntry, navigatorEntries, sections } = Astro.props;
 const { Content } = await render(journalEntry);
 const pageTitle = `Jour ${page.day.sequence} · ${page.entry.locationLabel} | ${site.title}`;
 const pageDescription =
   page.entry.summary ??
   `Journal du Pacific Crest Trail 2026 à ${page.entry.locationLabel}.`;
-const regionClass = page.regionId
-  ? `journal-${page.regionId}`
-  : "journal-after-trail";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  bodyClass="journal-shell"
+>
   <SiteHeader />
 
-  <main class:list={["journal-page", regionClass]}>
+  <main class="journal-page">
     <article>
       <JournalDayNavigator page={page} entries={navigatorEntries} />
 
       <div class="journal-transition-surface">
         <JournalDayHeader page={page} />
+        <JournalMetrics page={page} sections={sections} />
 
         <div class="journal-layout">
-          <JournalMetrics page={page} />
-
           <div class="reading-column">
             <div class="journal-copy">
               <Content />
@@ -96,49 +117,13 @@ const regionClass = page.regionId
 
 <style>
   .journal-page {
-    --section-color: var(--pct-color-pine-glow);
-
-    position: relative;
     min-height: 100vh;
     overflow: hidden;
+    background: var(--pct-color-night-trail);
   }
 
   .journal-transition-surface {
     view-transition-name: journal-day;
-  }
-
-  .journal-page::before {
-    position: absolute;
-    z-index: -1;
-    top: -8rem;
-    right: -10rem;
-    width: min(42rem, 70vw);
-    height: min(42rem, 70vw);
-    border-radius: 50%;
-    background: color-mix(in srgb, var(--section-color) 8%, transparent);
-    filter: blur(7rem);
-    content: "";
-    pointer-events: none;
-  }
-
-  .journal-desert {
-    --section-color: var(--pct-color-desert-dust);
-  }
-
-  .journal-sierra {
-    --section-color: var(--pct-color-sierra-snow);
-  }
-
-  .journal-norcal {
-    --section-color: var(--pct-color-norcal-forest);
-  }
-
-  .journal-oregon {
-    --section-color: var(--pct-color-oregon-lake);
-  }
-
-  .journal-washington {
-    --section-color: var(--pct-color-washington-mist);
   }
 
   article {
@@ -148,14 +133,8 @@ const regionClass = page.regionId
   }
 
   .journal-layout {
-    display: grid;
-    grid-template-columns: minmax(9rem, 13rem) minmax(
-        0,
-        var(--pct-content-reading)
-      );
-    gap: clamp(3rem, 8vw, 8rem);
-    align-items: start;
-    justify-content: center;
+    width: min(100%, var(--pct-content-reading));
+    margin: 0 auto;
   }
 
   .reading-column {
@@ -165,8 +144,8 @@ const regionClass = page.regionId
   .journal-copy {
     color: var(--pct-color-copy);
     font-family: var(--pct-font-journal);
-    font-size: clamp(1rem, 1.3vw, 1.1rem);
-    line-height: 1.95;
+    font-size: clamp(1.06rem, 1.25vw, 1.12rem);
+    line-height: 1.78;
   }
 
   .journal-copy :global(p) {
@@ -175,7 +154,7 @@ const regionClass = page.regionId
 
   .journal-copy :global(p:first-child) {
     color: var(--pct-color-white);
-    font-size: 1.06em;
+    font-size: 1em;
   }
 
   .journal-copy :global(strong) {
@@ -211,17 +190,12 @@ const regionClass = page.regionId
     article {
       width: min(100% - 2rem, var(--pct-content-wide));
     }
-
-    .journal-layout {
-      grid-template-columns: 1fr;
-      gap: var(--pct-space-7);
-    }
   }
 
   @media (max-width: 36rem) {
     .journal-copy {
-      font-size: 0.98rem;
-      line-height: 1.85;
+      font-size: 1.05rem;
+      line-height: 1.78;
     }
   }
 </style>

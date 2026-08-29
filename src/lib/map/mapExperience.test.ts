@@ -43,6 +43,15 @@ describe("map experience", () => {
     });
   });
 
+  it("starts a day deep link at the final mile of that day", () => {
+    const days = fixtureDays();
+
+    expect(initialMapSelection(days, "day-002")).toEqual({
+      dayId: "day-002",
+      mile: 20,
+    });
+  });
+
   it("uses the day just completed at a shared mile boundary", () => {
     const days = fixtureDays();
 

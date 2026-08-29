@@ -171,7 +171,7 @@ export function buildJournalViewModels({
       metrics,
       regionId: day.kind === "trail" ? day.regionId : null,
       regionLabel:
-        day.kind === "trail" ? regionLabels[day.regionId] : "Après le trail",
+        day.kind === "trail" ? regionLabels[day.regionId] : "Post trail",
       previous: null,
       next: null,
     };

@@ -16,6 +16,18 @@ test("selects a day and a mile without changing the URL", async ({ page }) => {
   await expect(page).toHaveURL(/\/map$/);
 });
 
+test("opens a stable day URL at that day's final mile", async ({ page }) => {
+  await page.goto("/map/day-028");
+
+  await expect(page).toHaveURL(/\/map\/day-028$/);
+  await expect(page.getByRole("heading", { name: "Jour 28" })).toBeVisible();
+  await expect(page.locator("#map-day")).toHaveValue("day-028");
+  await expect(page.locator("#map-mile")).toHaveValue("703");
+  await expect(
+    page.getByRole("link", { name: "Carte", exact: true }),
+  ).toHaveAttribute("aria-current", "page");
+});
+
 test("keeps the map page within the mobile viewport", async ({ page }) => {
   await page.goto("/map");
   await expect(page.getByRole("heading", { name: "Jour 1" })).toBeVisible();
