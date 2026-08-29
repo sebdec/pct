@@ -1,0 +1,92 @@
+---
+import { getCollection } from "astro:content";
+import "maplibre-gl/dist/maplibre-gl.css";
+
+import SiteHeader from "../components/SiteHeader.astro";
+import TrailMapExperience from "../components/TrailMapExperience";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { defaultLocale } from "../lib/content/locales.ts";
+import { buildMapDayViewModels } from "../lib/map/mapExperience.ts";
+import { site } from "../lib/site.ts";
+
+const [dayEntries, journalEntries, routeEntries] = await Promise.all([
+  getCollection("days"),
+  getCollection("journal"),
+  getCollection("routes"),
+]);
+const days = buildMapDayViewModels({
+  days: dayEntries.map(({ data }) => data),
+  journalEntries: journalEntries.map(({ data }) => data),
+  locale: defaultLocale,
+});
+const route = routeEntries[0]?.data;
+
+if (!route) {
+  throw new Error("The PCT route is missing.");
+}
+
+const mapStyleUrl =
+  import.meta.env.PUBLIC_MAP_STYLE_URL ??
+  "https://tiles.openfreemap.org/styles/dark";
+---
+
+<BaseLayout
+  title={`Carte du parcours | ${site.title}`}
+  description="Parcourir les 2 656 miles du Pacific Crest Trail jour après jour."
+>
+  <SiteHeader />
+  <main>
+    <TrailMapExperience
+      days={days}
+      route={route}
+      mapStyleUrl={mapStyleUrl}
+      client:load
+    />
+  </main>
+
+  <footer>
+    <p>
+      <a href={route.source.centerlineUrl}>{route.source.attribution}</a>,
+      <a href={route.source.licenseUrl}>{route.source.license}</a>
+    </p>
+    <p>
+      Fond de carte <a href="https://openfreemap.org/">OpenFreeMap</a>, données
+      <a href="https://openmaptiles.org/">OpenMapTiles</a> et
+      <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+    </p>
+  </footer>
+</BaseLayout>
+
+<style>
+  main {
+    min-height: calc(100vh - 5.25rem);
+  }
+
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    justify-content: space-between;
+    width: min(100% - 3rem, var(--pct-content-wide));
+    margin: 0 auto;
+    padding: var(--pct-space-5) 0 var(--pct-space-7);
+    border-top: 1px solid var(--pct-color-faint);
+    color: var(--pct-color-muted);
+    font-size: 0.55rem;
+    line-height: 1.6;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  footer a {
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 46rem) {
+    footer {
+      width: min(100% - 2rem, var(--pct-content-wide));
+    }
+  }
+</style>

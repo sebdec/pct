@@ -8,5 +8,8 @@ export default defineConfig({
   site: "https://pct.sebdec.com",
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      exclude: ["maplibre-gl"],
+    },
   },
 });
