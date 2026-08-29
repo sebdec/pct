@@ -10,6 +10,7 @@ import {
   localizedGearEntrySchema,
   localizedGlossaryEntrySchema,
   localizedPhotoSchema,
+  mediaAssetSchema,
   photoSchema,
   regionSchema,
   sectionSchema,
@@ -24,6 +25,7 @@ import {
   type LocalizedGearEntry,
   type LocalizedGlossaryEntry,
   type LocalizedPhoto,
+  type MediaAsset,
   type Photo,
   type Region,
   type SupportingPage,
@@ -43,6 +45,7 @@ export interface ContentModelSource {
   days: readonly unknown[];
   journalEntries: readonly unknown[];
   photos: readonly unknown[];
+  mediaAssets: readonly unknown[];
   localizedPhotos: readonly unknown[];
   glossaryConcepts: readonly unknown[];
   localizedGlossaryEntries: readonly unknown[];
@@ -71,6 +74,7 @@ interface ParsedContentModel {
   days: Day[];
   journalEntries: JournalEntry[];
   photos: Photo[];
+  mediaAssets: MediaAsset[];
   localizedPhotos: LocalizedPhoto[];
   glossaryConcepts: GlossaryConcept[];
   localizedGlossaryEntries: LocalizedGlossaryEntry[];
@@ -187,6 +191,12 @@ function parseContentModel(
       issues,
     ),
     photos: parseCollection("photos", source.photos, photoSchema, issues),
+    mediaAssets: parseCollection(
+      "mediaAssets",
+      source.mediaAssets,
+      mediaAssetSchema,
+      issues,
+    ),
     localizedPhotos: parseCollection(
       "localizedPhotos",
       source.localizedPhotos,
@@ -252,6 +262,13 @@ function validateUniqueIdentifiers(
   findDuplicates(content.sections, "sections", ({ id }) => id, issues);
   findDuplicates(content.days, "days", ({ id }) => id, issues);
   findDuplicates(content.photos, "photos", ({ id }) => id, issues);
+  findDuplicates(content.mediaAssets, "mediaAssets", ({ id }) => id, issues);
+  findDuplicates(
+    content.mediaAssets,
+    "mediaAssets",
+    ({ assetKey }) => assetKey,
+    issues,
+  );
   findDuplicates(
     content.glossaryConcepts,
     "glossaryConcepts",
@@ -757,6 +774,154 @@ function validatePhotoPlacements(
   });
 }
 
+const mediaVariantWidths = [640, 960, 1440, 1920] as const;
+const mediaVariantFormats = ["avif", "webp"] as const;
+
+function validateMediaAssets(
+  content: ParsedContentModel,
+  issues: ContentValidationIssue[],
+): void {
+  const placementAssetKeys = new Set(
+    content.photos.map(({ assetKey }) => assetKey),
+  );
+  const assetsByKey = new Map(
+    content.mediaAssets.map((asset) => [asset.assetKey, asset]),
+  );
+
+  findDuplicates(
+    content.mediaAssets,
+    "mediaAssets",
+    ({ sourceFingerprint }) => sourceFingerprint,
+    issues,
+  );
+
+  content.mediaAssets.forEach((asset) => {
+    const path = `mediaAssets.${asset.id}`;
+    const expectedId = `media-${asset.sourceFingerprint.slice(0, 16)}`;
+    if (asset.id !== expectedId) {
+      addIssue(
+        issues,
+        "media.id.fingerprint",
+        `${path}.id`,
+        `Expected identifier "${expectedId}" for source fingerprint ${asset.sourceFingerprint}.`,
+      );
+    }
+    if (!placementAssetKeys.has(asset.assetKey)) {
+      addIssue(
+        issues,
+        "reference.photo-asset",
+        `${path}.assetKey`,
+        `Unknown placement asset key "${asset.assetKey}".`,
+      );
+    }
+
+    const expectedWidths = mediaVariantWidths.filter(
+      (width) => width <= asset.width,
+    );
+    const applicableWidths =
+      expectedWidths.length > 0 ? expectedWidths : [asset.width];
+    const expectedVariants = new Set(
+      applicableWidths.flatMap((width) =>
+        mediaVariantFormats.map((format) => `${format}:${width}`),
+      ),
+    );
+    const actualVariants = new Set<string>();
+
+    asset.variants.forEach((variant, index) => {
+      const key = `${variant.format}:${variant.width}`;
+      if (actualVariants.has(key)) {
+        addIssue(
+          issues,
+          "media.variant.duplicate",
+          `${path}.variants[${index}]`,
+          `Duplicate ${key} variant.`,
+        );
+      }
+      actualVariants.add(key);
+
+      const expectedPath = `pct-2026/${asset.assetKey}/${asset.sourceFingerprint}-${variant.width}.${variant.format}`;
+      if (variant.path !== expectedPath) {
+        addIssue(
+          issues,
+          "media.variant.path",
+          `${path}.variants[${index}].path`,
+          `Expected immutable path "${expectedPath}".`,
+        );
+      }
+      if (variant.width > asset.width) {
+        addIssue(
+          issues,
+          "media.variant.upscale",
+          `${path}.variants[${index}].width`,
+          `Variant width ${variant.width} exceeds source width ${asset.width}.`,
+        );
+      }
+      const expectedHeight = Math.max(
+        1,
+        Math.round((asset.height * variant.width) / asset.width),
+      );
+      if (Math.abs(variant.height - expectedHeight) > 1) {
+        addIssue(
+          issues,
+          "media.variant.aspect-ratio",
+          `${path}.variants[${index}].height`,
+          `Expected height ${expectedHeight} for width ${variant.width}.`,
+        );
+      }
+      if (asset.published && !variant.url) {
+        addIssue(
+          issues,
+          "media.variant.url.missing",
+          `${path}.variants[${index}].url`,
+          "Published media variants require a public URL.",
+        );
+      }
+    });
+
+    for (const expectedVariant of expectedVariants) {
+      if (!actualVariants.has(expectedVariant)) {
+        addIssue(
+          issues,
+          "media.variant.missing",
+          `${path}.variants`,
+          `Missing ${expectedVariant} variant.`,
+        );
+      }
+    }
+    for (const actualVariant of actualVariants) {
+      if (!expectedVariants.has(actualVariant)) {
+        addIssue(
+          issues,
+          "media.variant.unexpected",
+          `${path}.variants`,
+          `Unexpected ${actualVariant} variant.`,
+        );
+      }
+    }
+  });
+
+  content.photos
+    .filter(({ published }) => published)
+    .forEach((photo) => {
+      const asset = assetsByKey.get(photo.assetKey);
+      if (!asset) {
+        addIssue(
+          issues,
+          "reference.photo-asset",
+          `photos.${photo.id}.assetKey`,
+          `Published photo "${photo.id}" has no media asset.`,
+        );
+      } else if (!asset.published) {
+        addIssue(
+          issues,
+          "media.asset.unpublished",
+          `photos.${photo.id}.assetKey`,
+          `Published photo "${photo.id}" references unpublished asset "${asset.id}".`,
+        );
+      }
+    });
+}
+
 function validateRequiredFrenchCopy(
   content: ParsedContentModel,
   issues: ContentValidationIssue[],
@@ -899,6 +1064,7 @@ export function validateContentModel(
   validateTrailDays(content, issues);
   validateEditorialReferences(content, issues);
   validatePhotoPlacements(content, issues);
+  validateMediaAssets(content, issues);
   validateRequiredFrenchCopy(content, issues);
   validateCorrections(content, issues);
 

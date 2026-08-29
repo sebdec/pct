@@ -101,6 +101,12 @@ The TypeScript extractor reads ordered OOXML directly. It verifies the source ha
 
 The extractor generates placement metadata for every embedded Word image without writing an image binary. Do not commit the Word source, private exports, original photos, unoptimized source photos or credentials.
 
+## Photo pipeline
+
+The local media pipeline matches a curated export of higher-quality originals to the Word placements, creates responsive AVIF and WebP derivatives and prepares immutable Vercel Blob paths. It is independent from the static build and uses synthetic images in automated tests.
+
+See `scripts/media/README.md` for the review, generation, validation and dry-run upload workflow. No real upload is performed without a separate explicit authorization.
+
 Imported entities keep references to their source blocks in the Word document. Approved editorial changes live in `src/data/source/corrections.json` instead of overwriting source history silently.
 
 ## Vercel preparation

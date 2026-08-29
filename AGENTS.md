@@ -97,6 +97,9 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Run `pnpm content:validate` after every content change. Add a focused invalid fixture whenever a new cross-entry invariant is introduced.
 - Do not place original full-resolution photos in Git. Commit only approved optimized derivatives with stable names and attribution metadata where needed.
 - Never import the Word source or Google Photos export wholesale into this repository.
+- Keep original photos, matching reports and generated derivatives outside Git. Only approved fingerprint associations, provider-neutral manifests and localized media copy are versioned.
+- Run media work through the separate `media:match`, `media:approve`, `media:generate`, `media:validate` and `media:upload` commands. Matching must never approve ambiguous candidates silently.
+- Keep media paths immutable and content-addressed. Blob upload is dry-run by default and must never overwrite or delete remote content.
 
 ## Project tracking and making of
 

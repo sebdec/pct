@@ -210,6 +210,42 @@ export const localizedPhotoSchema = z.object({
   caption: z.string().min(1).optional(),
 });
 
+export const mediaVariantFormatSchema = z.enum(["avif", "webp"]);
+
+export const mediaVariantSchema = z.object({
+  format: mediaVariantFormatSchema,
+  width: z.number().int().positive(),
+  height: z.number().int().positive(),
+  bytes: z.number().int().positive(),
+  path: z
+    .string()
+    .regex(/^pct-2026\/[a-z0-9-]+\/[a-f0-9]{64}-\d+\.(?:avif|webp)$/),
+  url: z.url().optional(),
+});
+
+export const mediaAssetSchema = z.object({
+  id: stableIdSchema,
+  assetKey: stableIdSchema,
+  sourceFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+  width: z.number().int().positive(),
+  height: z.number().int().positive(),
+  placeholder: z.object({
+    dataUrl: z.string().regex(/^data:image\/webp;base64,/),
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+  }),
+  variants: z.array(mediaVariantSchema).min(2),
+  published: z.boolean().default(false),
+});
+
+export const approvedMediaMatchSchema = z.object({
+  assetKey: stableIdSchema,
+  assetId: stableIdSchema,
+  sourceFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+  similarity: z.number().min(0).max(1),
+  approval: z.enum(["automatic", "manual"]),
+});
+
 export const glossaryConceptSchema = z.object({
   id: stableIdSchema,
   published: z.boolean().default(false),
@@ -292,6 +328,9 @@ export type Day = z.infer<typeof daySchema>;
 export type JournalEntry = z.infer<typeof journalEntrySchema>;
 export type Photo = z.infer<typeof photoSchema>;
 export type LocalizedPhoto = z.infer<typeof localizedPhotoSchema>;
+export type MediaVariant = z.infer<typeof mediaVariantSchema>;
+export type MediaAsset = z.infer<typeof mediaAssetSchema>;
+export type ApprovedMediaMatch = z.infer<typeof approvedMediaMatchSchema>;
 export type GlossaryConcept = z.infer<typeof glossaryConceptSchema>;
 export type LocalizedGlossaryEntry = z.infer<
   typeof localizedGlossaryEntrySchema

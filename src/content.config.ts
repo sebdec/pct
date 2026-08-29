@@ -10,6 +10,7 @@ import {
   localizedGearEntrySchema,
   localizedGlossaryEntrySchema,
   localizedPhotoSchema,
+  mediaAssetSchema,
   photoSchema,
   regionSchema,
   sectionSchema,
@@ -47,6 +48,11 @@ const photos = defineCollection({
   schema: photoSchema,
 });
 
+const mediaAssets = defineCollection({
+  loader: file("src/data/media/assets.json"),
+  schema: mediaAssetSchema,
+});
+
 const corrections = defineCollection({
   loader: file("src/data/source/corrections.json"),
   schema: correctionSchema,
@@ -78,7 +84,7 @@ const gear = defineCollection({
 });
 
 const media = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/content/media" }),
+  loader: file("src/content/media/fr.json"),
   schema: localizedPhotoSchema,
 });
 
@@ -89,6 +95,7 @@ export const collections = {
   glossaryConcepts,
   gearItems,
   photos,
+  mediaAssets,
   corrections,
   sourceDocuments,
   journal,

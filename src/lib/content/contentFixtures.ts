@@ -195,6 +195,72 @@ export function createValidContentModel(): ContentModelSource {
         sourceRefs: [{ ...sourceRef, blockType: "image" }],
       },
     ],
+    mediaAssets: [
+      {
+        id: "media-0123456789abcdef",
+        assetKey: "pct-2026-day-001-001",
+        sourceFingerprint:
+          "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        width: 1600,
+        height: 1200,
+        placeholder: {
+          dataUrl: "data:image/webp;base64,AA==",
+          width: 24,
+          height: 18,
+        },
+        variants: [
+          {
+            format: "avif",
+            width: 640,
+            height: 480,
+            bytes: 100,
+            path: "pct-2026/pct-2026-day-001-001/0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef-640.avif",
+            url: "https://example.com/photo-640.avif",
+          },
+          {
+            format: "webp",
+            width: 640,
+            height: 480,
+            bytes: 120,
+            path: "pct-2026/pct-2026-day-001-001/0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef-640.webp",
+            url: "https://example.com/photo-640.webp",
+          },
+          {
+            format: "avif",
+            width: 960,
+            height: 720,
+            bytes: 180,
+            path: "pct-2026/pct-2026-day-001-001/0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef-960.avif",
+            url: "https://example.com/photo-960.avif",
+          },
+          {
+            format: "webp",
+            width: 960,
+            height: 720,
+            bytes: 220,
+            path: "pct-2026/pct-2026-day-001-001/0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef-960.webp",
+            url: "https://example.com/photo-960.webp",
+          },
+          {
+            format: "avif",
+            width: 1440,
+            height: 1080,
+            bytes: 300,
+            path: "pct-2026/pct-2026-day-001-001/0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef-1440.avif",
+            url: "https://example.com/photo-1440.avif",
+          },
+          {
+            format: "webp",
+            width: 1440,
+            height: 1080,
+            bytes: 350,
+            path: "pct-2026/pct-2026-day-001-001/0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef-1440.webp",
+            url: "https://example.com/photo-1440.webp",
+          },
+        ],
+        published: true,
+      },
+    ],
     localizedPhotos: [
       {
         photoId: "photo-001001",
