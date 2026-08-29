@@ -87,12 +87,15 @@ input {
   opacity: 1;
 }
 
+/* Crossfade both journal snapshots together to avoid an opacity gap. */
 ::view-transition-old(journal-day) {
-  animation: 90ms ease-in both pct-journal-out;
+  animation: 160ms linear both pct-journal-out;
+  mix-blend-mode: plus-lighter;
 }
 
 ::view-transition-new(journal-day) {
-  animation: 170ms 30ms ease-out both pct-journal-in;
+  animation: 160ms linear both pct-journal-in;
+  mix-blend-mode: plus-lighter;
 }
 
 @keyframes pct-journal-out {
