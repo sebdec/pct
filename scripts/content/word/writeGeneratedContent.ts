@@ -54,6 +54,18 @@ function json(value: unknown): string {
   return `${JSON.stringify(value, null, 2)}\n`;
 }
 
+function localizedJson<T>(
+  locale: string,
+  entries: readonly T[],
+  getEntityId: (entry: T) => string,
+): string {
+  return json(
+    Object.fromEntries(
+      entries.map((entry) => [`${locale}/${getEntityId(entry)}`, entry]),
+    ),
+  );
+}
+
 function markdown(frontmatter: object, body: string): string {
   const yaml = stringifyYaml(frontmatter, { lineWidth: 0 }).trimEnd();
   return `---\n${yaml}\n---\n\n${body.trim()}\n`;
@@ -152,6 +164,22 @@ export async function writeGeneratedContent(
       ["src/data/media/photos.json", json(content.photos)],
       ["src/data/source/word-source.json", json(content.sourceDocuments)],
       ["src/data/source/word-extraction-report.json", json(content.report)],
+      [
+        "src/content/gear/fr.json",
+        localizedJson(
+          "fr",
+          content.localizedGearEntries,
+          ({ gearItemId }) => gearItemId,
+        ),
+      ],
+      [
+        "src/content/glossary/fr.json",
+        localizedJson(
+          "fr",
+          content.localizedGlossaryEntries,
+          ({ conceptId }) => conceptId,
+        ),
+      ],
     ]);
 
     for (const entry of content.journalEntries) {
@@ -162,12 +190,6 @@ export async function writeGeneratedContent(
         `src/content/journal/fr/${entry.dayId}.md`,
         markdown(entry, body),
       );
-    }
-    for (const entry of content.localizedGearEntries) {
-      files.set(`src/content/gear/fr/${entry.gearItemId}.json`, json(entry));
-    }
-    for (const entry of content.localizedGlossaryEntries) {
-      files.set(`src/content/glossary/fr/${entry.conceptId}.json`, json(entry));
     }
     for (const page of content.supportingPages) {
       const body = content.supportingBodies.get(page.pageId);
@@ -184,8 +206,8 @@ export async function writeGeneratedContent(
 
     await replaceGeneratedPaths(repositoryRoot, stagingRoot, [
       "src/content/journal/fr",
-      "src/content/gear/fr",
-      "src/content/glossary/fr",
+      "src/content/gear/fr.json",
+      "src/content/glossary/fr.json",
       "src/content/pages/fr",
       "src/data/trail/regions.json",
       "src/data/trail/sections.json",

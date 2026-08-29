@@ -6,8 +6,8 @@ Localized editorial content lives here. Language-neutral trail facts and source 
 
 - `journal/{locale}/day-NNN.md`: journal prose with localized frontmatter.
 - `pages/{locale}/*.md`: introduction, analysis, gear, people, after-terminus and closing prose.
-- `glossary/{locale}/*.json`: localized terms and definitions.
-- `gear/{locale}/*.json`: localized gear names and details.
+- `glossary/{locale}.json`: all localized terms and definitions for 1 language.
+- `gear/{locale}.json`: all localized gear names and details for 1 language.
 - `media/{locale}/*.json`: localized alternative text and captions.
 
 French (`fr`) is required for every published neutral entity. English (`en`) can be added incrementally while retaining the same neutral IDs.

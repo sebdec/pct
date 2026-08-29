@@ -1,0 +1,275 @@
+{
+  "fr/at": {
+    "conceptId": "at",
+    "locale": "fr",
+    "term": "AT",
+    "definition": "Appalachian Trail: l’un des 3 grands trails américains, traversant l’est des États-Unis.",
+    "aliases": []
+  },
+  "fr/bear-box": {
+    "conceptId": "bear-box",
+    "locale": "fr",
+    "term": "Bear box",
+    "definition": "Coffre métallique fixe installé dans certains campings pour protéger la nourriture des ours et des autres animaux.",
+    "aliases": []
+  },
+  "fr/bear-canister": {
+    "conceptId": "bear-canister",
+    "locale": "fr",
+    "term": "Bear canister",
+    "definition": "Conteneur rigide et portable, résistant aux ours, utilisé pour stocker la nourriture et les produits odorants.",
+    "aliases": []
+  },
+  "fr/blowdown": {
+    "conceptId": "blowdown",
+    "locale": "fr",
+    "term": "Blowdown",
+    "definition": "Arbre tombé en travers du sentier, qu’il faut contourner ou enjamber.",
+    "aliases": []
+  },
+  "fr/boot-track": {
+    "conceptId": "boot-track",
+    "locale": "fr",
+    "term": "Boot track",
+    "definition": "Trace de pas laissée par d’autres randonneurs, notamment dans la neige.",
+    "aliases": []
+  },
+  "fr/breakfast-burrito": {
+    "conceptId": "breakfast-burrito",
+    "locale": "fr",
+    "term": "Breakfast burrito",
+    "definition": "Tortilla garnie d’œufs, souvent de pommes de terre, fromage ou viande: un classique des villes du trail.",
+    "aliases": []
+  },
+  "fr/bubble": {
+    "conceptId": "bubble",
+    "locale": "fr",
+    "term": "Bubble",
+    "definition": "Groupe dense de hikers avançant au même rythme, avec parfois des campings et ravitaillements saturés.",
+    "aliases": []
+  },
+  "fr/california-campfire-permit-stove": {
+    "conceptId": "california-campfire-permit-stove",
+    "locale": "fr",
+    "term": "California Campfire Permit / stove",
+    "definition": "Permis généralement nécessaire pour utiliser un réchaud ou faire un feu hors des campings aménagés, sous réserve des restrictions locales.",
+    "aliases": []
+  },
+  "fr/cdt": {
+    "conceptId": "cdt",
+    "locale": "fr",
+    "term": "CDT",
+    "definition": "Continental Divide Trail: l’un des 3 grands trails américains, reliant le Mexique au Canada le long de la ligne de partage des eaux.",
+    "aliases": []
+  },
+  "fr/cowboy-camping": {
+    "conceptId": "cowboy-camping",
+    "locale": "fr",
+    "term": "Cowboy camping",
+    "definition": "Dormir directement à la belle étoile, sans monter sa tente.",
+    "aliases": []
+  },
+  "fr/darn-tough": {
+    "conceptId": "darn-tough",
+    "locale": "fr",
+    "term": "Darn Tough",
+    "definition": "Marque de chaussettes, souvent en laine mérinos, populaire chez les thru-hikers pour leur confort et leur résistance.",
+    "aliases": []
+  },
+  "fr/farout": {
+    "conceptId": "farout",
+    "locale": "fr",
+    "term": "FarOut",
+    "definition": "Application de navigation regroupant carte GPS, profil d’altitude, points d’eau, campements et commentaires récents.",
+    "aliases": []
+  },
+  "fr/filtre-a-eau": {
+    "conceptId": "filtre-a-eau",
+    "locale": "fr",
+    "term": "Filtre à eau",
+    "definition": "Petit dispositif permettant de rendre l’eau des sources et rivières plus sûre en retenant notamment bactéries et protozoaires.",
+    "aliases": []
+  },
+  "fr/flip-flop": {
+    "conceptId": "flip-flop",
+    "locale": "fr",
+    "term": "Flip-flop",
+    "definition": "Changement de point de départ ou de direction pour éviter une difficulté, avant de revenir parcourir la section manquante.",
+    "aliases": []
+  },
+  "fr/hanging-bag-bear-hang": {
+    "conceptId": "hanging-bag-bear-hang",
+    "locale": "fr",
+    "term": "Hanging bag / bear hang",
+    "definition": "Sac de nourriture suspendu à un arbre afin de le rendre difficilement accessible aux animaux.",
+    "aliases": []
+  },
+  "fr/hiker": {
+    "conceptId": "hiker",
+    "locale": "fr",
+    "term": "Hiker",
+    "definition": "Randonneur. Dans ce journal, le terme désigne surtout les personnes qui parcourent le PCT sur plusieurs jours ou plusieurs mois.",
+    "aliases": []
+  },
+  "fr/hiker-box": {
+    "conceptId": "hiker-box",
+    "locale": "fr",
+    "term": "Hiker box",
+    "definition": "Boîte où les hikers déposent gratuitement nourriture ou matériel dont ils n’ont plus besoin, à disposition des suivants.",
+    "aliases": []
+  },
+  "fr/hitchhiking": {
+    "conceptId": "hitchhiking",
+    "locale": "fr",
+    "term": "Hitchhiking",
+    "definition": "Auto-stop, très utilisé pour rejoindre une ville ou revenir au trail depuis un trailhead.",
+    "aliases": []
+  },
+  "fr/leukotape": {
+    "conceptId": "leukotape",
+    "locale": "fr",
+    "term": "Leukotape",
+    "definition": "Ruban adhésif médical très résistant, utilisé surtout pour prévenir ou protéger les ampoules et les zones de frottement.",
+    "aliases": []
+  },
+  "fr/nobo-sobo": {
+    "conceptId": "nobo-sobo",
+    "locale": "fr",
+    "term": "NOBO / SOBO",
+    "definition": "Abréviations de northbound et southbound: marche vers le nord ou vers le sud.",
+    "aliases": []
+  },
+  "fr/pct": {
+    "conceptId": "pct",
+    "locale": "fr",
+    "term": "PCT",
+    "definition": "Pacific Crest Trail: sentier de longue randonnée reliant le Mexique au Canada, parcouru dans ce journal.",
+    "aliases": []
+  },
+  "fr/poison-oak": {
+    "conceptId": "poison-oak",
+    "locale": "fr",
+    "term": "Poison oak",
+    "definition": "Arbuste ou liane de l’Ouest américain contenant de l’urushiol, une huile pouvant provoquer une dermatite de contact avec rougeurs, démangeaisons et cloques.",
+    "aliases": []
+  },
+  "fr/ranger": {
+    "conceptId": "ranger",
+    "locale": "fr",
+    "term": "Ranger",
+    "definition": "Agent d’un parc ou d’une forêt chargé de l’accueil, de la protection du site, de l’application des règles et parfois des secours.",
+    "aliases": []
+  },
+  "fr/resupply": {
+    "conceptId": "resupply",
+    "locale": "fr",
+    "term": "Resupply",
+    "definition": "Ravitaillement en nourriture et consommables, acheté en ville ou récupéré dans un colis envoyé à l’avance.",
+    "aliases": []
+  },
+  "fr/resupply-box-supply-box": {
+    "conceptId": "resupply-box-supply-box",
+    "locale": "fr",
+    "term": "Resupply box / supply box",
+    "definition": "Carton de ravitaillement préparé puis envoyé à un bureau de poste, un commerce ou un hébergement situé plus loin sur le parcours.",
+    "aliases": []
+  },
+  "fr/smartwater": {
+    "conceptId": "smartwater",
+    "locale": "fr",
+    "term": "Smartwater",
+    "definition": "Marque de bouteilles hautes, légères et solides, appréciées des hikers, leur pas de vis est compatible avec plusieurs filtres courants.",
+    "aliases": []
+  },
+  "fr/sun-hoodie": {
+    "conceptId": "sun-hoodie",
+    "locale": "fr",
+    "term": "Sun hoodie",
+    "definition": "Haut léger à manches longues avec capuche, conçu pour protéger du soleil tout en restant respirant.",
+    "aliases": []
+  },
+  "fr/thru-hiking": {
+    "conceptId": "thru-hiking",
+    "locale": "fr",
+    "term": "Thru-hiking",
+    "definition": "Parcours intégral d’un long sentier en une seule saison ou dans une continuité de voyage.",
+    "aliases": []
+  },
+  "fr/topo-altra": {
+    "conceptId": "topo-altra",
+    "locale": "fr",
+    "term": "Topo / Altra",
+    "definition": "Marques de chaussures de trail appréciées pour leurs modèles laissant davantage de place aux orteils.",
+    "aliases": []
+  },
+  "fr/trail-angel": {
+    "conceptId": "trail-angel",
+    "locale": "fr",
+    "term": "Trail angel",
+    "definition": "Personne qui aide bénévolement les hikers: transport, eau, nourriture, hébergement ou autre forme de \" trail magic \".",
+    "aliases": []
+  },
+  "fr/trailhead": {
+    "conceptId": "trailhead",
+    "locale": "fr",
+    "term": "Trailhead",
+    "definition": "Point d’accès ou départ officiel d’un sentier, souvent situé près d’une route ou d’un parking.",
+    "aliases": []
+  },
+  "fr/trail-mix": {
+    "conceptId": "trail-mix",
+    "locale": "fr",
+    "term": "Trail mix",
+    "definition": "Mélange énergétique facile à grignoter, généralement composé de noix, fruits secs, graines et parfois chocolat ou bonbons.",
+    "aliases": []
+  },
+  "fr/trail-hiker-name": {
+    "conceptId": "trail-hiker-name",
+    "locale": "fr",
+    "term": "Trail/Hiker name",
+    "definition": "Surnom reçu ou choisi sur le trail, souvent inspiré d’une anecdote ou d’un trait marquant.",
+    "aliases": []
+  },
+  "fr/trail-registry": {
+    "conceptId": "trail-registry",
+    "locale": "fr",
+    "term": "Trail registry",
+    "definition": "Registre papier placé à certains points du trail où les hikers inscrivent leur nom, leur date de passage et parfois un message.",
+    "aliases": []
+  },
+  "fr/tramily": {
+    "conceptId": "tramily",
+    "locale": "fr",
+    "term": "Tramily",
+    "definition": "Contraction de trail family: groupe de hikers qui se forme sur le sentier et avance ensemble pendant une partie du parcours.",
+    "aliases": []
+  },
+  "fr/triple-crown": {
+    "conceptId": "triple-crown",
+    "locale": "fr",
+    "term": "Triple Crown",
+    "definition": "Accomplissement consistant à terminer les 3 grands trails américains: Pacific Crest Trail, Appalachian Trail et Continental Divide Trail.",
+    "aliases": []
+  },
+  "fr/ultralight": {
+    "conceptId": "ultralight",
+    "locale": "fr",
+    "term": "Ultralight",
+    "definition": "Approche visant à réduire au maximum le poids du sac sans sacrifier la sécurité, en privilégiant du matériel léger et polyvalent.",
+    "aliases": []
+  },
+  "fr/water-cache": {
+    "conceptId": "water-cache",
+    "locale": "fr",
+    "term": "Water cache",
+    "definition": "Réserve d’eau laissée sur le trail par des bénévoles. Utile dans le désert, mais trop incertaine pour constituer l’unique plan d’approvisionnement.",
+    "aliases": []
+  },
+  "fr/zero-nero-day": {
+    "conceptId": "zero-nero-day",
+    "locale": "fr",
+    "term": "Zero / Nero day",
+    "definition": "Un zero est une journée sans aucun mile parcouru, un nero, pour near zero, est une journée de marche très courte consacrée surtout au repos ou au ravitaillement.",
+    "aliases": []
+  }
+}

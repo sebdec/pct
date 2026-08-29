@@ -68,12 +68,12 @@ const pages = defineCollection({
 });
 
 const glossary = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/content/glossary" }),
+  loader: file("src/content/glossary/fr.json"),
   schema: localizedGlossaryEntrySchema,
 });
 
 const gear = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/content/gear" }),
+  loader: file("src/content/gear/fr.json"),
   schema: localizedGearEntrySchema,
 });
 
