@@ -1,0 +1,227 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+import JournalDayHeader from "../../components/JournalDayHeader.astro";
+import JournalDayNavigator from "../../components/JournalDayNavigator.astro";
+import JournalMediaSequence from "../../components/JournalMediaSequence.astro";
+import JournalMetrics from "../../components/JournalMetrics.astro";
+import JournalNavigation from "../../components/JournalNavigation.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  buildJournalViewModels,
+  buildJournalNavigatorItems,
+  type JournalNavigatorItem,
+  type JournalPageViewModel,
+} from "../../lib/content/journalViewModel.ts";
+import { defaultLocale } from "../../lib/content/locales.ts";
+import { site } from "../../lib/site.ts";
+
+interface Props {
+  page: JournalPageViewModel;
+  journalEntry: CollectionEntry<"journal">;
+  navigatorEntries: readonly JournalNavigatorItem[];
+}
+
+export async function getStaticPaths() {
+  const [dayEntries, journalEntries, photoEntries] = await Promise.all([
+    getCollection("days"),
+    getCollection("journal"),
+    getCollection("photos"),
+  ]);
+  const frenchEntries = journalEntries.filter(
+    ({ data }) => data.locale === defaultLocale,
+  );
+  const pages = buildJournalViewModels({
+    days: dayEntries.map(({ data }) => data),
+    journalEntries: frenchEntries.map(({ data }) => data),
+    photos: photoEntries.map(({ data }) => data),
+  });
+  const entryByDayId = new Map(
+    frenchEntries.map((entry) => [entry.data.dayId, entry]),
+  );
+  const navigatorEntries = buildJournalNavigatorItems(pages);
+
+  return pages.map((page) => ({
+    params: { dayId: page.day.id },
+    props: {
+      page,
+      journalEntry: entryByDayId.get(page.day.id),
+      navigatorEntries,
+    },
+  }));
+}
+
+const { page, journalEntry, navigatorEntries } = Astro.props;
+const { Content } = await render(journalEntry);
+const pageTitle = `Jour ${page.day.sequence} · ${page.entry.locationLabel} | ${site.title}`;
+const pageDescription =
+  page.entry.summary ??
+  `Journal du Pacific Crest Trail 2026 à ${page.entry.locationLabel}.`;
+const regionClass = page.regionId
+  ? `journal-${page.regionId}`
+  : "journal-after-trail";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <SiteHeader />
+
+  <main class:list={["journal-page", regionClass]}>
+    <article>
+      <JournalDayNavigator page={page} entries={navigatorEntries} />
+
+      <div class="journal-transition-surface">
+        <JournalDayHeader page={page} />
+
+        <div class="journal-layout">
+          <JournalMetrics page={page} />
+
+          <div class="reading-column">
+            <div class="journal-copy">
+              <Content />
+            </div>
+
+            <JournalMediaSequence
+              photos={page.photos}
+              regionId={page.regionId}
+            />
+          </div>
+        </div>
+
+        <JournalNavigation previous={page.previous} next={page.next} />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .journal-page {
+    --section-color: var(--pct-color-pine-glow);
+
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .journal-transition-surface {
+    view-transition-name: journal-day;
+  }
+
+  .journal-page::before {
+    position: absolute;
+    z-index: -1;
+    top: -8rem;
+    right: -10rem;
+    width: min(42rem, 70vw);
+    height: min(42rem, 70vw);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--section-color) 8%, transparent);
+    filter: blur(7rem);
+    content: "";
+    pointer-events: none;
+  }
+
+  .journal-desert {
+    --section-color: var(--pct-color-desert-dust);
+  }
+
+  .journal-sierra {
+    --section-color: var(--pct-color-sierra-snow);
+  }
+
+  .journal-norcal {
+    --section-color: var(--pct-color-norcal-forest);
+  }
+
+  .journal-oregon {
+    --section-color: var(--pct-color-oregon-lake);
+  }
+
+  .journal-washington {
+    --section-color: var(--pct-color-washington-mist);
+  }
+
+  article {
+    width: min(100% - 3rem, var(--pct-content-wide));
+    margin: 0 auto;
+    padding-bottom: var(--pct-space-8);
+  }
+
+  .journal-layout {
+    display: grid;
+    grid-template-columns: minmax(9rem, 13rem) minmax(
+        0,
+        var(--pct-content-reading)
+      );
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: start;
+    justify-content: center;
+  }
+
+  .reading-column {
+    min-width: 0;
+  }
+
+  .journal-copy {
+    color: var(--pct-color-copy);
+    font-family: var(--pct-font-journal);
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.95;
+  }
+
+  .journal-copy :global(p) {
+    margin: 0 0 1.7em;
+  }
+
+  .journal-copy :global(p:first-child) {
+    color: var(--pct-color-white);
+    font-size: 1.06em;
+  }
+
+  .journal-copy :global(strong) {
+    color: var(--pct-color-white);
+    font-weight: 600;
+  }
+
+  .journal-copy :global(a) {
+    color: var(--pct-color-pine-glow);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .journal-copy :global(h2),
+  .journal-copy :global(h3) {
+    margin: 2.5em 0 0.8em;
+    color: var(--pct-color-white);
+    font-family: var(--pct-font-display);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+  }
+
+  .journal-copy :global(blockquote) {
+    margin: 2.5rem 0;
+    padding-left: var(--pct-space-5);
+    border-left: 2px solid var(--pct-color-pine-glow);
+    color: var(--pct-color-muted);
+    font-style: italic;
+  }
+
+  @media (max-width: 46rem) {
+    article {
+      width: min(100% - 2rem, var(--pct-content-wide));
+    }
+
+    .journal-layout {
+      grid-template-columns: 1fr;
+      gap: var(--pct-space-7);
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .journal-copy {
+      font-size: 0.98rem;
+      line-height: 1.85;
+    }
+  }
+</style>

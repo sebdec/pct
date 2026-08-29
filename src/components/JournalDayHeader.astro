@@ -1,0 +1,95 @@
+---
+import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import LocalizedDate from "./LocalizedDate.astro";
+
+interface Props {
+  page: JournalPageViewModel;
+}
+
+const { page } = Astro.props;
+const sequence = page.day.sequence;
+const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
+---
+
+<header class="day-header">
+  <h1>Jour <span class="day-number">{sequence}</span></h1>
+
+  <div class="day-place">
+    <p class="date">
+      <LocalizedDate start={page.day.date} end={endDate} />
+    </p>
+    <p class="location">{page.entry.locationLabel}</p>
+  </div>
+</header>
+
+<style>
+  .day-header {
+    position: relative;
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 5.5rem);
+  }
+
+  .day-place {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--pct-space-6);
+  }
+
+  .date,
+  .location {
+    margin: 0;
+  }
+
+  h1 {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(0.7rem, 1.8vw, 1.3rem);
+    margin: 0;
+    color: var(--pct-color-white);
+    font-size: clamp(2.6rem, 4.6vw, 4rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+  }
+
+  .day-number {
+    color: transparent;
+    font-size: 0.88em;
+    -webkit-text-stroke: 1px var(--pct-color-muted);
+  }
+
+  .day-place {
+    margin-top: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .date {
+    color: var(--pct-color-copy);
+    font-family: var(--pct-font-journal);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-style: italic;
+  }
+
+  .location {
+    max-width: 30rem;
+    color: var(--pct-color-muted);
+    font-size: 0.72rem;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  @media (max-width: 40rem) {
+    .day-header {
+      padding-block: var(--pct-space-7);
+    }
+
+    .day-place {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: var(--pct-space-3);
+    }
+
+    .location {
+      text-align: left;
+    }
+  }
+</style>

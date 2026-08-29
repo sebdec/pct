@@ -1,0 +1,417 @@
+---
+import type {
+  JournalNavigatorItem,
+  JournalPageViewModel,
+} from "../lib/content/journalViewModel.ts";
+import { journalDayUrl } from "../lib/content/urls.ts";
+
+interface Props {
+  page: JournalPageViewModel;
+  entries: readonly JournalNavigatorItem[];
+}
+
+const { page, entries } = Astro.props;
+const currentIndex = entries.findIndex(({ dayId }) => dayId === page.day.id);
+
+if (currentIndex < 0) {
+  throw new Error(`Missing journal navigator entry for ${page.day.id}.`);
+}
+
+const current = entries[currentIndex];
+const previous = currentIndex > 0 ? entries[currentIndex - 1] : null;
+const next =
+  currentIndex < entries.length - 1 ? entries[currentIndex + 1] : null;
+const progress =
+  entries.length > 1 ? (currentIndex / (entries.length - 1)) * 100 : 100;
+const navigatorEntries = entries.map((entry) => ({
+  sequence: entry.sequence,
+  regionId: entry.regionId,
+  regionLabel: entry.regionLabel,
+  mileStart: entry.mileStart,
+  mileEnd: entry.mileEnd,
+  href: journalDayUrl(entry.dayId),
+}));
+
+function mileLabel(entry: JournalNavigatorItem): string | null {
+  if (entry.mileStart === null || entry.mileEnd === null) {
+    return null;
+  }
+
+  return `Miles ${entry.mileStart.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} → ${entry.mileEnd.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}`;
+}
+
+const currentMileLabel = mileLabel(current);
+---
+
+<nav
+  class="day-navigator"
+  aria-label="Accès rapide aux journées"
+  data-journal-navigator
+  data-entries={JSON.stringify(navigatorEntries)}
+  data-preview-region={current.regionId ?? "after-trail"}
+  style={`--day-progress: ${progress}%`}
+>
+  {
+    previous ? (
+      <a
+        class="step-link previous"
+        href={journalDayUrl(previous.dayId)}
+        aria-label={`Journée précédente, jour ${previous.sequence}`}
+      >
+        <span aria-hidden="true">←</span>
+        <small>Jour {previous.sequence}</small>
+      </a>
+    ) : (
+      <span class="step-boundary" aria-hidden="true" />
+    )
+  }
+
+  <div class="range-control">
+    <div class="range-copy">
+      <strong data-day-label>Jour {current.sequence}</strong>
+      <span data-region-label>{current.regionLabel}</span>
+      <small data-mile-label hidden={!currentMileLabel}>
+        {currentMileLabel}
+      </small>
+    </div>
+
+    <label class="visually-hidden" for={`journal-day-${page.day.id}`}>
+      Choisir une journée du journal
+    </label>
+    <input
+      id={`journal-day-${page.day.id}`}
+      type="range"
+      min="1"
+      max={entries.length}
+      value={currentIndex + 1}
+      aria-valuetext={[
+        `Jour ${current.sequence}`,
+        current.regionLabel,
+        currentMileLabel,
+      ]
+        .filter(Boolean)
+        .join(", ")}
+      data-day-range
+      disabled
+    />
+  </div>
+
+  {
+    next ? (
+      <a
+        class="step-link next"
+        href={journalDayUrl(next.dayId)}
+        aria-label={`Journée suivante, jour ${next.sequence}`}
+      >
+        <small>Jour {next.sequence}</small>
+        <span aria-hidden="true">→</span>
+      </a>
+    ) : (
+      <span class="step-boundary" aria-hidden="true" />
+    )
+  }
+</nav>
+
+<script>
+  interface NavigatorEntry {
+    sequence: number;
+    regionId: "desert" | "sierra" | "norcal" | "oregon" | "washington" | null;
+    regionLabel: string;
+    mileStart: number | null;
+    mileEnd: number | null;
+    href: string;
+  }
+
+  const formatMile = new Intl.NumberFormat("fr-FR", {
+    maximumFractionDigits: 1,
+  });
+
+  function entryMileLabel(entry: NavigatorEntry): string | null {
+    if (entry.mileStart === null || entry.mileEnd === null) {
+      return null;
+    }
+
+    return `Miles ${formatMile.format(entry.mileStart)} → ${formatMile.format(entry.mileEnd)}`;
+  }
+
+  for (const navigator of document.querySelectorAll<HTMLElement>(
+    "[data-journal-navigator]",
+  )) {
+    const range = navigator.querySelector<HTMLInputElement>("[data-day-range]");
+    const dayLabel = navigator.querySelector<HTMLElement>("[data-day-label]");
+    const regionLabel = navigator.querySelector<HTMLElement>(
+      "[data-region-label]",
+    );
+    const mileLabel = navigator.querySelector<HTMLElement>("[data-mile-label]");
+    const rawEntries = navigator.dataset.entries;
+
+    if (!range || !dayLabel || !regionLabel || !mileLabel || !rawEntries) {
+      continue;
+    }
+
+    const entries = JSON.parse(rawEntries) as NavigatorEntry[];
+    const currentIndex = Number(range.value) - 1;
+
+    range.disabled = false;
+
+    const preview = (index: number) => {
+      const boundedIndex = Math.max(0, Math.min(entries.length - 1, index));
+      const entry = entries[boundedIndex];
+      const progress =
+        entries.length > 1 ? (boundedIndex / (entries.length - 1)) * 100 : 100;
+      const miles = entryMileLabel(entry);
+
+      dayLabel.textContent = `Jour ${entry.sequence}`;
+      regionLabel.textContent = entry.regionLabel;
+      navigator.dataset.previewRegion = entry.regionId ?? "after-trail";
+      mileLabel.textContent = miles ?? "";
+      mileLabel.hidden = miles === null;
+      range.setAttribute(
+        "aria-valuetext",
+        [`Jour ${entry.sequence}`, entry.regionLabel, miles]
+          .filter(Boolean)
+          .join(", "),
+      );
+      navigator.style.setProperty("--day-progress", `${progress}%`);
+    };
+
+    range.addEventListener("input", () => preview(Number(range.value) - 1));
+    range.addEventListener("pointerdown", () => {
+      range.dataset.pointerFocus = "true";
+    });
+    range.addEventListener("keydown", () => {
+      delete range.dataset.pointerFocus;
+    });
+    range.addEventListener("change", () => {
+      const entry = entries[Number(range.value) - 1];
+
+      if (entry) {
+        window.location.assign(entry.href);
+      }
+    });
+    range.addEventListener("pointermove", (event) => {
+      if (event.buttons !== 0) {
+        return;
+      }
+
+      const bounds = range.getBoundingClientRect();
+      const ratio = Math.max(
+        0,
+        Math.min(1, (event.clientX - bounds.left) / bounds.width),
+      );
+
+      preview(Math.round(ratio * (entries.length - 1)));
+    });
+    range.addEventListener("pointerleave", () => preview(currentIndex));
+    range.addEventListener("blur", () => {
+      delete range.dataset.pointerFocus;
+      preview(currentIndex);
+    });
+  }
+</script>
+
+<style>
+  .day-navigator {
+    --navigator-color: var(--pct-color-pine-glow);
+
+    position: sticky;
+    z-index: 8;
+    top: var(--pct-space-3);
+    display: grid;
+    grid-template-columns: minmax(5.5rem, auto) 1fr minmax(5.5rem, auto);
+    gap: var(--pct-space-5);
+    align-items: center;
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+    padding: var(--pct-space-3) var(--pct-space-4);
+    border: 1px solid var(--pct-color-faint);
+    border-radius: var(--pct-radius-small);
+    background: color-mix(in srgb, var(--pct-color-deep-camp) 90%, transparent);
+    box-shadow: 0 1rem 3rem
+      color-mix(in srgb, var(--pct-color-deep-camp) 75%, transparent);
+    backdrop-filter: blur(1rem);
+  }
+
+  .day-navigator[data-preview-region="desert"] {
+    --navigator-color: var(--pct-color-desert-dust);
+  }
+
+  .day-navigator[data-preview-region="sierra"] {
+    --navigator-color: var(--pct-color-sierra-snow);
+  }
+
+  .day-navigator[data-preview-region="norcal"] {
+    --navigator-color: var(--pct-color-norcal-forest);
+  }
+
+  .day-navigator[data-preview-region="oregon"] {
+    --navigator-color: var(--pct-color-oregon-lake);
+  }
+
+  .day-navigator[data-preview-region="washington"] {
+    --navigator-color: var(--pct-color-washington-mist);
+  }
+
+  .step-link,
+  .step-boundary {
+    min-width: 0;
+  }
+
+  .step-link {
+    display: inline-flex;
+    gap: var(--pct-space-2);
+    align-items: center;
+    color: var(--pct-color-muted);
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .step-link.next {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .step-link:hover {
+    color: var(--navigator-color);
+  }
+
+  .step-link span {
+    color: var(--navigator-color);
+    font-size: 1rem;
+  }
+
+  .step-link small {
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .range-control {
+    min-width: 0;
+  }
+
+  .range-copy {
+    display: flex;
+    gap: var(--pct-space-3);
+    align-items: baseline;
+    justify-content: center;
+    min-height: 1.25rem;
+    color: var(--pct-color-muted);
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .range-copy strong {
+    color: var(--pct-color-white);
+    font-weight: 500;
+  }
+
+  .range-copy span {
+    color: var(--navigator-color);
+    transition: color 160ms ease;
+  }
+
+  .range-copy small {
+    font-size: inherit;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    height: 1.25rem;
+    margin: var(--pct-space-1) 0 0;
+    padding: 0;
+    cursor: ew-resize;
+    appearance: none;
+    background: transparent;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      var(--navigator-color) 0 var(--day-progress),
+      var(--pct-color-faint) var(--day-progress) 100%
+    );
+  }
+
+  input[type="range"]::-moz-range-track {
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      var(--navigator-color) 0 var(--day-progress),
+      var(--pct-color-faint) var(--day-progress) 100%
+    );
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-top: -0.36rem;
+    border: 2px solid var(--pct-color-deep-camp);
+    border-radius: 50%;
+    background: var(--navigator-color);
+    box-shadow: 0 0 0 1px var(--navigator-color);
+    appearance: none;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid var(--pct-color-deep-camp);
+    border-radius: 50%;
+    background: var(--navigator-color);
+    box-shadow: 0 0 0 1px var(--navigator-color);
+  }
+
+  input[type="range"]:disabled {
+    cursor: default;
+    opacity: 0.72;
+  }
+
+  input[type="range"][data-pointer-focus]:focus-visible {
+    outline: none;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 46rem) {
+    .day-navigator {
+      grid-template-columns: 2rem 1fr 2rem;
+      gap: var(--pct-space-3);
+      margin-top: var(--pct-space-4);
+      padding-inline: var(--pct-space-3);
+    }
+
+    .step-link small {
+      display: none;
+    }
+
+    .step-link.previous {
+      justify-content: flex-start;
+    }
+
+    .range-copy {
+      gap: var(--pct-space-2);
+    }
+
+    .range-copy small {
+      display: none;
+    }
+  }
+
+  @media (max-width: 28rem) {
+    .range-copy span {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,211 @@
+---
+import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+
+interface Props {
+  photos: JournalPageViewModel["photos"];
+  regionId: JournalPageViewModel["regionId"];
+}
+
+const { photos, regionId } = Astro.props;
+
+function orientation(width: number, height: number): string {
+  if (width / height > 1.15) {
+    return "paysage";
+  }
+
+  if (height / width > 1.15) {
+    return "portrait";
+  }
+
+  return "carré";
+}
+---
+
+{
+  photos.length > 0 && (
+    <section
+      class:list={[
+        "media-sequence",
+        regionId ? `media-${regionId}` : "media-after-trail",
+      ]}
+      aria-labelledby="media-title"
+    >
+      <header>
+        <h2 id="media-title">Les images viendront retrouver leur place ici.</h2>
+      </header>
+
+      <div class="media-grid">
+        {photos.map((photo, index) => {
+          const photoOrientation = orientation(photo.width, photo.height);
+
+          return (
+            <figure
+              class:list={[photoOrientation, index % 3 === 0 && "featured"]}
+            >
+              <div
+                class="photo-field"
+                style={`--photo-ratio: ${photo.width} / ${photo.height}; --photo-shift: ${index + 1}`}
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 300 220" preserveAspectRatio="none">
+                  <path d="M-20 166C38 95 94 104 140 148s95 43 180-31" />
+                  <path d="M-15 193c58-49 107-41 151-10s95 32 177-22" />
+                  <circle cx="232" cy="54" r="22" />
+                </svg>
+                <span>Média de développement</span>
+              </div>
+              <figcaption>
+                <span>Photo {String(index + 1).padStart(2, "0")}</span>
+                <span>{photoOrientation}</span>
+              </figcaption>
+            </figure>
+          );
+        })}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .media-sequence {
+    --media-color: var(--pct-color-pine-glow);
+
+    margin-top: clamp(4rem, 9vw, 7rem);
+    padding-top: var(--pct-space-6);
+    border-top: 1px solid var(--pct-color-faint);
+  }
+
+  .media-desert {
+    --media-color: var(--pct-color-desert-dust);
+  }
+
+  .media-sierra {
+    --media-color: var(--pct-color-sierra-snow);
+  }
+
+  .media-norcal {
+    --media-color: var(--pct-color-norcal-forest);
+  }
+
+  .media-oregon {
+    --media-color: var(--pct-color-oregon-lake);
+  }
+
+  .media-washington {
+    --media-color: var(--pct-color-washington-mist);
+  }
+
+  header h2 {
+    margin: 0;
+  }
+
+  header h2 {
+    max-width: 26rem;
+    color: var(--pct-color-muted);
+    font-family: var(--pct-font-journal);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--pct-space-5);
+    margin-top: var(--pct-space-7);
+  }
+
+  figure {
+    min-width: 0;
+    margin: 0;
+  }
+
+  figure.paysage,
+  figure.featured {
+    grid-column: 1 / -1;
+  }
+
+  .photo-field {
+    position: relative;
+    display: grid;
+    aspect-ratio: var(--photo-ratio);
+    min-height: 13rem;
+    overflow: hidden;
+    place-items: end start;
+    border: 1px solid var(--pct-color-faint);
+    background:
+      radial-gradient(
+        circle at calc(18% + var(--photo-shift) * 7%) 24%,
+        color-mix(in srgb, var(--media-color) 20%, transparent),
+        transparent 36%
+      ),
+      linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--pct-color-night-trail) 76%, transparent),
+        var(--pct-color-deep-camp)
+      );
+  }
+
+  .photo-field::after {
+    position: absolute;
+    inset: var(--pct-space-3);
+    border: 1px solid color-mix(in srgb, var(--media-color) 22%, transparent);
+    content: "";
+  }
+
+  .photo-field svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: color-mix(in srgb, var(--media-color) 30%, transparent);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .photo-field circle {
+    fill: color-mix(in srgb, var(--media-color) 8%, transparent);
+  }
+
+  .photo-field > span {
+    position: relative;
+    z-index: 1;
+    margin: var(--pct-space-5);
+    color: var(--pct-color-copy);
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--pct-space-3);
+    margin-top: var(--pct-space-2);
+    color: var(--pct-color-muted);
+    font-family: var(--pct-font-journal);
+    font-size: 0.62rem;
+    font-style: italic;
+  }
+
+  figcaption span:last-child {
+    text-transform: capitalize;
+  }
+
+  @media (max-width: 36rem) {
+    .media-grid {
+      grid-template-columns: 1fr;
+    }
+
+    figure.paysage,
+    figure.featured {
+      grid-column: auto;
+    }
+
+    .photo-field {
+      min-height: 11rem;
+    }
+  }
+</style>

@@ -1,5 +1,15 @@
 ---
 import { site } from "../lib/site";
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href.startsWith("/journal")) {
+    return currentPath.startsWith("/journal");
+  }
+
+  return !href.includes("#") && href === currentPath;
+}
 ---
 
 <header class="site-header">
@@ -13,12 +23,29 @@ import { site } from "../lib/site";
       {
         site.navigation.map(({ label, href }) => (
           <li>
-            <a href={href}>{label}</a>
+            <a
+              href={href}
+              class:list={{ active: isActive(href) }}
+              aria-current={isActive(href) ? "page" : undefined}
+            >
+              {label}
+            </a>
           </li>
         ))
       }
     </ul>
   </nav>
+
+  <a
+    class:list={[
+      "mobile-journal",
+      { active: currentPath.startsWith("/journal") },
+    ]}
+    href="/journal/day-001"
+    aria-current={currentPath.startsWith("/journal") ? "page" : undefined}
+  >
+    Journal
+  </a>
 </header>
 
 <style>
@@ -60,6 +87,7 @@ import { site } from "../lib/site";
   }
 
   nav a {
+    position: relative;
     color: var(--pct-color-muted);
     font-size: 0.62rem;
     letter-spacing: 0.12em;
@@ -72,6 +100,43 @@ import { site } from "../lib/site";
     color: var(--pct-color-pine-glow);
   }
 
+  nav a::after,
+  .mobile-journal::after {
+    position: absolute;
+    right: 0;
+    bottom: -0.55rem;
+    left: 0;
+    height: 1px;
+    background: var(--pct-color-pine-glow);
+    content: "";
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  nav a.active,
+  .mobile-journal.active {
+    color: var(--pct-color-pine-glow);
+  }
+
+  nav a.active::after,
+  .mobile-journal.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .mobile-journal {
+    position: relative;
+    display: none;
+    color: var(--pct-color-pine-glow);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
   @media (max-width: 48rem) {
     .site-header {
       width: min(100% - 2rem, var(--pct-content-wide));
@@ -79,6 +144,10 @@ import { site } from "../lib/site";
 
     nav {
       display: none;
+    }
+
+    .mobile-journal {
+      display: inline-flex;
     }
   }
 </style>

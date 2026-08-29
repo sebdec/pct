@@ -1,0 +1,58 @@
+---
+import { formatFrenchDate } from "../lib/content/dates.ts";
+
+interface Props {
+  start: string;
+  end?: string;
+  class?: string;
+}
+
+const { start, end, class: className } = Astro.props;
+---
+
+<span class:list={["localized-date", className]}>
+  <time datetime={start} data-local-date={start}>{formatFrenchDate(start)}</time
+  >
+  {
+    end && (
+      <>
+        <span class="date-separator"> au </span>
+        <time datetime={end} data-local-date={end}>
+          {formatFrenchDate(end)}
+        </time>
+      </>
+    )
+  }
+</span>
+
+<script>
+  function dateFromIso(value: string): Date | null {
+    const [year, month, day] = value.split("-").map(Number);
+
+    if (!year || !month || !day) {
+      return null;
+    }
+
+    return new Date(year, month - 1, day);
+  }
+
+  const explicitPreference = document.documentElement.dataset.dateLocale;
+  const preferredLocales = explicitPreference
+    ? [explicitPreference, ...navigator.languages]
+    : navigator.languages;
+  const formatter = new Intl.DateTimeFormat(
+    preferredLocales.length > 0 ? preferredLocales : undefined,
+    { dateStyle: "long" },
+  );
+
+  for (const element of document.querySelectorAll<HTMLTimeElement>(
+    "time[data-local-date]",
+  )) {
+    const value = element.dataset.localDate;
+    const date = value ? dateFromIso(value) : null;
+
+    if (date) {
+      element.textContent = formatter.format(date);
+    }
+  }
+</script>

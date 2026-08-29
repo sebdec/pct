@@ -68,6 +68,48 @@ input {
   outline-offset: 4px;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+/* Keep the global shell fixed while journal content changes underneath it. */
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-group(journal-day) {
+  animation: none;
+}
+
+::view-transition-old(root) {
+  opacity: 0;
+}
+
+::view-transition-new(root) {
+  opacity: 1;
+}
+
+/* Crossfade both journal snapshots together to avoid an opacity gap. */
+::view-transition-old(journal-day) {
+  animation: 160ms linear both pct-journal-out;
+  mix-blend-mode: plus-lighter;
+}
+
+::view-transition-new(journal-day) {
+  animation: 160ms linear both pct-journal-in;
+  mix-blend-mode: plus-lighter;
+}
+
+@keyframes pct-journal-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pct-journal-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -78,5 +120,10 @@ input {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(journal-day),
+  ::view-transition-new(journal-day) {
+    animation: none;
   }
 }

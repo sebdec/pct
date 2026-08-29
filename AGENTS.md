@@ -86,6 +86,8 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Store language-neutral facts in `src/data` and localized editorial copy in `src/content/{area}/{locale}`. Never duplicate trail metrics for a translation.
 - Store short structured gear and glossary translations in 1 keyed JSON file per locale, such as `src/content/gear/fr.json`. Keep long-form journal and supporting pages as separate Markdown files.
 - Keep entity IDs and public slugs locale-neutral. A translated entry must reference the same neutral day, photo, glossary concept or gear item.
+- Keep public content URLs locale-free. Localization remains a content concern and future language selection must preserve the stable route shape.
+- Render date-only values with semantic `time` elements and a deterministic static fallback. Browser-preference formatting may progressively enhance the visible text but must never make content depend on JavaScript.
 - Treat miles as canonical. Derive daily distance, cumulative distance and kilometers through `src/lib/content/metrics.ts`.
 - Scope photo placement IDs to their owner. Use `photo-074001` for the first photo of `day-074` and `photo-introduction-001` for the first photo of the introduction page. Keep global source order in the separate `order` field.
 - Mark neutral entities as published only when their required French entry exists.

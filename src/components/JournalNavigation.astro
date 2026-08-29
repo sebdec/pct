@@ -1,0 +1,124 @@
+---
+import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import { journalDayUrl } from "../lib/content/urls.ts";
+
+interface Props {
+  previous: JournalPageViewModel["previous"];
+  next: JournalPageViewModel["next"];
+}
+
+const { previous, next } = Astro.props;
+---
+
+<nav class="journal-navigation" aria-label="Navigation entre les journées">
+  {
+    previous ? (
+      <a class="previous" href={journalDayUrl(previous.dayId)}>
+        <span class="direction">← Journée précédente</span>
+        <strong>Jour {previous.sequence}</strong>
+        <small>{previous.locationLabel}</small>
+      </a>
+    ) : (
+      <span class="boundary" aria-hidden="true" />
+    )
+  }
+
+  {
+    next ? (
+      <a class="next" href={journalDayUrl(next.dayId)}>
+        <span class="direction">Journée suivante →</span>
+        <strong>Jour {next.sequence}</strong>
+        <small>{next.locationLabel}</small>
+      </a>
+    ) : (
+      <span class="boundary" aria-hidden="true" />
+    )
+  }
+</nav>
+
+<style>
+  .journal-navigation {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: clamp(5rem, 11vw, 9rem);
+    border-top: 1px solid var(--pct-color-faint);
+    border-bottom: 1px solid var(--pct-color-faint);
+  }
+
+  a,
+  .boundary {
+    min-height: 12rem;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    color: var(--pct-color-copy);
+    text-decoration: none;
+    transition:
+      color 180ms ease-out,
+      background 180ms ease-out;
+  }
+
+  a:hover {
+    color: var(--pct-color-pine-glow);
+    background: var(--pct-color-pine-glow-soft);
+  }
+
+  .previous {
+    border-right: 1px solid var(--pct-color-faint);
+  }
+
+  .next {
+    text-align: right;
+  }
+
+  .direction {
+    color: var(--pct-color-pine-glow);
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  strong {
+    margin-top: var(--pct-space-5);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  small {
+    margin-top: var(--pct-space-2);
+    color: var(--pct-color-muted);
+    font-family: var(--pct-font-journal);
+    font-size: 0.68rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 36rem) {
+    .journal-navigation {
+      grid-template-columns: 1fr;
+    }
+
+    a,
+    .boundary {
+      min-height: 9rem;
+    }
+
+    .previous {
+      border-right: 0;
+      border-bottom: 1px solid var(--pct-color-faint);
+    }
+
+    .next {
+      text-align: left;
+    }
+
+    .boundary {
+      display: none;
+    }
+  }
+</style>

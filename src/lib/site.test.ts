@@ -7,7 +7,13 @@ describe("site foundation", () => {
     const targets = site.navigation.map(({ href }) => href);
 
     expect(new Set(targets).size).toBe(targets.length);
-    expect(targets.every((target) => target.startsWith("/#"))).toBe(true);
+    expect(
+      targets.every(
+        (target) => target.startsWith("/") && !target.startsWith("//"),
+      ),
+    ).toBe(true);
+    expect(targets).toContain("/journal/day-001");
+    expect(site.navigation.map(({ label }) => label)).not.toContain("Explorer");
   });
 
   it("models the five editorial trail sections", () => {
