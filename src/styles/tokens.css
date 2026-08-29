@@ -1,0 +1,34 @@
+:root {
+  color-scheme: dark;
+
+  --pct-color-night-trail: #282c35;
+  --pct-color-deep-camp: #191d27;
+  --pct-color-white: #ffffff;
+  --pct-color-copy: rgb(255 255 255 / 88%);
+  --pct-color-muted: rgb(255 255 255 / 58%);
+  --pct-color-faint: rgb(255 255 255 / 12%);
+  --pct-color-pine-glow: #91e6a5;
+  --pct-color-pine-glow-soft: rgb(145 230 165 / 12%);
+  --pct-color-desert-dust: #d6af72;
+  --pct-color-sierra-snow: #a8c8d7;
+  --pct-color-norcal-forest: #79bb8f;
+  --pct-color-oregon-lake: #61ad8c;
+  --pct-color-washington-mist: #7e9db4;
+
+  --pct-font-display: "Montserrat", Arial, sans-serif;
+  --pct-font-journal: "Merriweather", Georgia, serif;
+
+  --pct-space-1: 0.25rem;
+  --pct-space-2: 0.5rem;
+  --pct-space-3: 0.75rem;
+  --pct-space-4: 1rem;
+  --pct-space-5: 1.5rem;
+  --pct-space-6: 2rem;
+  --pct-space-7: 3rem;
+  --pct-space-8: 4.5rem;
+
+  --pct-radius-small: 0.5rem;
+  --pct-radius-medium: 1rem;
+  --pct-content-wide: 80rem;
+  --pct-content-reading: 42rem;
+}

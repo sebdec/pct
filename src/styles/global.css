@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme inline {
+  --color-night-trail: var(--pct-color-night-trail);
+  --color-deep-camp: var(--pct-color-deep-camp);
+  --color-copy: var(--pct-color-copy);
+  --color-muted: var(--pct-color-muted);
+  --color-faint: var(--pct-color-faint);
+  --color-pine-glow: var(--pct-color-pine-glow);
+  --color-pine-glow-soft: var(--pct-color-pine-glow-soft);
+  --color-desert-dust: var(--pct-color-desert-dust);
+  --color-sierra-snow: var(--pct-color-sierra-snow);
+  --color-norcal-forest: var(--pct-color-norcal-forest);
+  --color-oregon-lake: var(--pct-color-oregon-lake);
+  --color-washington-mist: var(--pct-color-washington-mist);
+  --font-display: var(--pct-font-display);
+  --font-journal: var(--pct-font-journal);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  background: var(--pct-color-deep-camp);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--pct-color-copy);
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgb(145 230 165 / 7%),
+      transparent 28rem
+    ),
+    linear-gradient(
+      150deg,
+      var(--pct-color-night-trail) 0%,
+      var(--pct-color-deep-camp) 72%
+    );
+  font-family: var(--pct-font-display);
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+::selection {
+  color: var(--pct-color-deep-camp);
+  background: var(--pct-color-pine-glow);
+}
+
+:focus-visible {
+  outline: 2px solid var(--pct-color-pine-glow);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

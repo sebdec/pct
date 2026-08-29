@@ -1,0 +1,84 @@
+---
+import { site } from "../lib/site";
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label={`${site.title}, accueil`}>
+    <span>Pacific Crest Trail</span>
+    <small>2026</small>
+  </a>
+
+  <nav aria-label="Navigation principale">
+    <ul>
+      {
+        site.navigation.map(({ label, href }) => (
+          <li>
+            <a href={href}>{label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(100% - 3rem, var(--pct-content-wide));
+    min-height: 5.25rem;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--pct-color-faint);
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--pct-space-2);
+    color: var(--pct-color-pine-glow);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+
+  .wordmark small {
+    color: var(--pct-color-muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+
+  ul {
+    display: flex;
+    gap: clamp(1rem, 2.2vw, 2rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--pct-color-muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 160ms ease;
+  }
+
+  nav a:hover {
+    color: var(--pct-color-pine-glow);
+  }
+
+  @media (max-width: 48rem) {
+    .site-header {
+      width: min(100% - 2rem, var(--pct-content-wide));
+    }
+
+    nav {
+      display: none;
+    }
+  }
+</style>
