@@ -36,7 +36,7 @@ Do not expand an issue's scope silently. Record material product or architecture
 - `src/styles`: design tokens and global styles.
 - `public`: immutable public assets that Astro should not transform.
 
-Create explicit content and media areas only when their data model is approved.
+Keep content areas aligned with `src/content.config.ts` and the contracts in `src/lib/content/schemas.ts`. A schema change requires an approved issue and matching validator tests.
 
 ## TypeScript and code style
 
@@ -83,6 +83,12 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 
 - Preserve the author's voice when correcting journal text. Separate editorial corrections from technical migrations.
 - Keep French as the initial source language while allowing a future English variant in the content model.
+- Store language-neutral facts in `src/data` and localized editorial copy in `src/content/{area}/{locale}`. Never duplicate trail metrics for a translation.
+- Keep entity IDs and public slugs locale-neutral. A translated entry must reference the same neutral day, photo, glossary concept or gear item.
+- Treat miles as canonical. Derive daily distance, cumulative distance and kilometers through `src/lib/content/metrics.ts`.
+- Mark neutral entities as published only when their required French entry exists.
+- Retain Word block references on imported entities. Record proposed, approved or rejected editorial changes in `src/data/source/corrections.json`.
+- Run `pnpm content:validate` after every content change. Add a focused invalid fixture whenever a new cross-entry invariant is introduced.
 - Do not place original full-resolution photos in Git. Commit only approved optimized derivatives with stable names and attribution metadata where needed.
 - Never import the Word source or Google Photos export wholesale into this repository.
 
