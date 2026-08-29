@@ -1,0 +1,224 @@
+import { z } from "astro/zod";
+
+import { localeSchema } from "./locales.ts";
+
+const stableIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const dayIdPattern = /^day-\d{3}$/;
+
+function isIsoDate(value: string): boolean {
+  const parsed = new Date(`${value}T00:00:00.000Z`);
+
+  return (
+    !Number.isNaN(parsed.valueOf()) && parsed.toISOString().startsWith(value)
+  );
+}
+
+export const stableIdSchema = z
+  .string()
+  .min(1)
+  .regex(stableIdPattern, "Use a lowercase kebab-case identifier.");
+
+export const correctionFieldSchema = z
+  .string()
+  .regex(
+    /^[a-z][a-zA-Z0-9]*(?:\.[a-z][a-zA-Z0-9]*)*$/,
+    "Use a camelCase field path such as locationId or sourceRef.detail.",
+  );
+
+export const dayIdSchema = z
+  .string()
+  .regex(dayIdPattern, "Use a day identifier such as day-001.");
+
+export const isoDateSchema = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "Use an ISO date in YYYY-MM-DD format.")
+  .refine(isIsoDate, "Use a valid calendar date.");
+
+export const regionIdSchema = z.enum([
+  "desert",
+  "sierra",
+  "norcal",
+  "oregon",
+  "washington",
+]);
+
+export const sourceReferenceSchema = z.object({
+  document: z.string().min(1),
+  blockType: z.enum(["heading", "paragraph", "table", "image", "manual"]),
+  blockIndex: z.number().int().nonnegative(),
+  detail: z.string().min(1).optional(),
+});
+
+const publishedEntityFields = {
+  published: z.boolean().default(false),
+  sourceRefs: z.array(sourceReferenceSchema).default([]),
+};
+
+export const regionSchema = z.object({
+  id: regionIdSchema,
+  order: z.number().int().min(1).max(5),
+  trailMarkKey: stableIdSchema,
+  ...publishedEntityFields,
+});
+
+export const sectionSchema = z.object({
+  id: z.string().regex(/^section-[a-z0-9]+$/),
+  code: z.string().min(1),
+  regionId: regionIdSchema,
+  mileStart: z.number().nonnegative(),
+  mileEnd: z.number().positive(),
+  properName: z.string().min(1),
+  ...publishedEntityFields,
+});
+
+const dayBaseFields = {
+  id: dayIdSchema,
+  sequence: z.number().int().positive(),
+  date: isoDateSchema,
+  published: z.boolean().default(false),
+  sourceRefs: z.array(sourceReferenceSchema).default([]),
+};
+
+export const trailDaySchema = z.object({
+  ...dayBaseFields,
+  kind: z.literal("trail"),
+  regionId: regionIdSchema,
+  sectionIds: z.array(z.string().regex(/^section-[a-z0-9]+$/)).min(1),
+  mileStart: z.number().nonnegative(),
+  mileEnd: z.number().positive(),
+  ascentMeters: z.number().nonnegative(),
+  descentMeters: z.number().nonnegative(),
+  locationId: stableIdSchema,
+});
+
+export const postTrailDaySchema = z.object({
+  ...dayBaseFields,
+  kind: z.literal("post-trail"),
+});
+
+export const daySchema = z.discriminatedUnion("kind", [
+  trailDaySchema,
+  postTrailDaySchema,
+]);
+
+export const journalEntrySchema = z.object({
+  dayId: dayIdSchema,
+  locale: localeSchema,
+  title: z.string().min(1),
+  locationLabel: z.string().min(1),
+  summary: z.string().min(1).optional(),
+  photoIds: z.array(stableIdSchema).default([]),
+  sourceRefs: z.array(sourceReferenceSchema).default([]),
+});
+
+export const photoSchema = z
+  .object({
+    id: z.string().regex(/^photo-\d{4}$/),
+    dayId: dayIdSchema.optional(),
+    pageId: stableIdSchema.optional(),
+    order: z.number().int().nonnegative(),
+    assetKey: stableIdSchema,
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+    published: z.boolean().default(false),
+    sourceRefs: z.array(sourceReferenceSchema).min(1),
+  })
+  .refine(({ dayId, pageId }) => Boolean(dayId) !== Boolean(pageId), {
+    message: "Associate a photo with exactly 1 day or supporting page.",
+    path: ["dayId"],
+  });
+
+export const localizedPhotoSchema = z.object({
+  photoId: z.string().regex(/^photo-\d{4}$/),
+  locale: localeSchema,
+  alt: z.string().min(1),
+  caption: z.string().min(1).optional(),
+});
+
+export const glossaryConceptSchema = z.object({
+  id: stableIdSchema,
+  published: z.boolean().default(false),
+  sourceRefs: z.array(sourceReferenceSchema).default([]),
+});
+
+export const localizedGlossaryEntrySchema = z.object({
+  conceptId: stableIdSchema,
+  locale: localeSchema,
+  term: z.string().min(1),
+  definition: z.string().min(1),
+  aliases: z.array(z.string().min(1)).default([]),
+});
+
+export const gearItemSchema = z.object({
+  id: stableIdSchema,
+  categoryId: stableIdSchema,
+  brand: z.string().min(1).optional(),
+  model: z.string().min(1).optional(),
+  weightGrams: z.number().nonnegative(),
+  tripPhase: regionIdSchema.optional(),
+  published: z.boolean().default(false),
+  sourceRefs: z.array(sourceReferenceSchema).default([]),
+});
+
+export const localizedGearEntrySchema = z.object({
+  gearItemId: stableIdSchema,
+  locale: localeSchema,
+  name: z.string().min(1),
+  detail: z.string().min(1).optional(),
+});
+
+export const supportingPageKindSchema = z.enum([
+  "introduction",
+  "analysis",
+  "people",
+  "after-terminus",
+  "closing",
+]);
+
+export const supportingPageSchema = z.object({
+  pageId: stableIdSchema,
+  locale: localeSchema,
+  kind: supportingPageKindSchema,
+  title: z.string().min(1),
+  summary: z.string().min(1).optional(),
+  published: z.boolean().default(false),
+  sourceRefs: z.array(sourceReferenceSchema).default([]),
+});
+
+export const correctionSchema = z.object({
+  id: z.string().regex(/^correction-\d{4}$/),
+  entityType: z.enum([
+    "region",
+    "section",
+    "day",
+    "photo",
+    "glossary-concept",
+    "gear-item",
+    "supporting-page",
+  ]),
+  entityId: stableIdSchema,
+  field: correctionFieldSchema,
+  sourceValue: z.json(),
+  correctedValue: z.json(),
+  reason: z.string().min(1),
+  status: z.enum(["proposed", "approved", "rejected"]),
+  sourceRef: sourceReferenceSchema,
+});
+
+export type SourceReference = z.infer<typeof sourceReferenceSchema>;
+export type Region = z.infer<typeof regionSchema>;
+export type TrailSection = z.infer<typeof sectionSchema>;
+export type TrailDay = z.infer<typeof trailDaySchema>;
+export type PostTrailDay = z.infer<typeof postTrailDaySchema>;
+export type Day = z.infer<typeof daySchema>;
+export type JournalEntry = z.infer<typeof journalEntrySchema>;
+export type Photo = z.infer<typeof photoSchema>;
+export type LocalizedPhoto = z.infer<typeof localizedPhotoSchema>;
+export type GlossaryConcept = z.infer<typeof glossaryConceptSchema>;
+export type LocalizedGlossaryEntry = z.infer<
+  typeof localizedGlossaryEntrySchema
+>;
+export type GearItem = z.infer<typeof gearItemSchema>;
+export type LocalizedGearEntry = z.infer<typeof localizedGearEntrySchema>;
+export type SupportingPage = z.infer<typeof supportingPageSchema>;
+export type Correction = z.infer<typeof correctionSchema>;
