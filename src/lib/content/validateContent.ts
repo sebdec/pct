@@ -1,6 +1,7 @@
 import { z } from "astro/zod";
 
 import { publishedLocales } from "./locales.ts";
+import { getRouteProgressAtMile } from "../map/route.ts";
 import {
   correctionSchema,
   daySchema,
@@ -15,6 +16,7 @@ import {
   regionSchema,
   sectionSchema,
   sourceDocumentSchema,
+  trailRouteSchema,
   wordExtractionReportSchema,
   supportingPageSchema,
   type Correction,
@@ -30,6 +32,7 @@ import {
   type Region,
   type SupportingPage,
   type SourceDocument,
+  type TrailRoute,
   type WordExtractionReport,
   type TrailDay,
   type TrailSection,
@@ -43,6 +46,7 @@ export interface ContentModelSource {
   regions: readonly unknown[];
   sections: readonly unknown[];
   days: readonly unknown[];
+  routes?: readonly unknown[];
   journalEntries: readonly unknown[];
   photos: readonly unknown[];
   mediaAssets: readonly unknown[];
@@ -72,6 +76,7 @@ interface ParsedContentModel {
   regions: Region[];
   sections: TrailSection[];
   days: Day[];
+  routes: TrailRoute[];
   journalEntries: JournalEntry[];
   photos: Photo[];
   mediaAssets: MediaAsset[];
@@ -184,6 +189,12 @@ function parseContentModel(
       issues,
     ),
     days: parseCollection("days", source.days, daySchema, issues),
+    routes: parseCollection(
+      "routes",
+      source.routes ?? [],
+      trailRouteSchema,
+      issues,
+    ),
     journalEntries: parseCollection(
       "journalEntries",
       source.journalEntries,
@@ -261,6 +272,7 @@ function validateUniqueIdentifiers(
   findDuplicates(content.regions, "regions", ({ id }) => id, issues);
   findDuplicates(content.sections, "sections", ({ id }) => id, issues);
   findDuplicates(content.days, "days", ({ id }) => id, issues);
+  findDuplicates(content.routes, "routes", ({ id }) => id, issues);
   findDuplicates(content.photos, "photos", ({ id }) => id, issues);
   findDuplicates(content.mediaAssets, "mediaAssets", ({ id }) => id, issues);
   findDuplicates(
@@ -628,6 +640,195 @@ function validateTrailDays(
         "mileage.overlap",
         `days.${day.id}.mileStart`,
         `Overlap of ${Math.abs(difference).toFixed(3)} miles with ${previousDay.id}.`,
+      );
+    }
+  });
+}
+
+function coordinatesMatch(
+  left: readonly [number, number],
+  right: readonly [number, number],
+): boolean {
+  return left[0] === right[0] && left[1] === right[1];
+}
+
+function validateTrailRoute(
+  content: ParsedContentModel,
+  issues: ContentValidationIssue[],
+): void {
+  if (content.routes.length !== 1) {
+    addIssue(
+      issues,
+      "route.count",
+      "routes",
+      `Expected 1 normalized PCT route and received ${content.routes.length}.`,
+    );
+  }
+  const route = content.routes[0];
+  if (!route) return;
+  const firstCoordinate = route.coordinates[0]!;
+  const lastCoordinate = route.coordinates.at(-1)!;
+  if (!coordinatesMatch(firstCoordinate, route.termini.south)) {
+    addIssue(
+      issues,
+      "route.terminus.south",
+      "routes.pct-2026.termini.south",
+      "The southern terminus must equal the first route coordinate.",
+    );
+  }
+  if (!coordinatesMatch(lastCoordinate, route.termini.north)) {
+    addIssue(
+      issues,
+      "route.terminus.north",
+      "routes.pct-2026.termini.north",
+      "The northern terminus must equal the last route coordinate.",
+    );
+  }
+
+  route.anchors.forEach((anchor, index) => {
+    const previous = route.anchors[index - 1];
+    if (previous && anchor.mile <= previous.mile) {
+      addIssue(
+        issues,
+        "route.anchor.mile-order",
+        `routes.pct-2026.anchors[${index}].mile`,
+        "Route anchor miles must be strictly increasing.",
+      );
+    }
+    if (previous && anchor.routeProgress <= previous.routeProgress) {
+      addIssue(
+        issues,
+        "route.anchor.progress-order",
+        `routes.pct-2026.anchors[${index}].routeProgress`,
+        "Route anchor progress must be strictly increasing.",
+      );
+    }
+  });
+  const firstAnchor = route.anchors[0];
+  const lastAnchor = route.anchors.at(-1);
+  if (firstAnchor?.mile !== 0 || firstAnchor.routeProgress !== 0) {
+    addIssue(
+      issues,
+      "route.anchor.start",
+      "routes.pct-2026.anchors[0]",
+      "The first route anchor must map mile 0 to progress 0.",
+    );
+  }
+  if (
+    lastAnchor?.mile !== route.officialLengthMiles ||
+    lastAnchor.routeProgress !== 1
+  ) {
+    addIssue(
+      issues,
+      "route.anchor.end",
+      "routes.pct-2026.anchors",
+      `The final route anchor must map mile ${route.officialLengthMiles} to progress 1.`,
+    );
+  }
+  if (
+    route.normalization.validMarkerCount +
+      route.normalization.excludedMarkerCount !==
+    route.normalization.sourceMarkerCount
+  ) {
+    addIssue(
+      issues,
+      "route.marker-count",
+      "routes.pct-2026.normalization",
+      "Valid and excluded marker counts must equal the source marker count.",
+    );
+  }
+  if (route.coordinates.length !== route.normalization.sourceCoordinateCount) {
+    addIssue(
+      issues,
+      "route.coordinate-count",
+      "routes.pct-2026.coordinates",
+      "Coordinate count must match the normalization report.",
+    );
+  }
+  if (route.anchors.length !== route.normalization.validMarkerCount + 2) {
+    addIssue(
+      issues,
+      "route.anchor-count",
+      "routes.pct-2026.anchors",
+      "Route anchors must contain every valid marker plus both termini.",
+    );
+  }
+  if (route.normalization.maxAnchorProjectionMeters > 250) {
+    addIssue(
+      issues,
+      "route.anchor-projection",
+      "routes.pct-2026.normalization.maxAnchorProjectionMeters",
+      "Maximum anchor projection must not exceed 250 meters.",
+    );
+  }
+  const longitudes = route.coordinates.map(([longitude]) => longitude);
+  const latitudes = route.coordinates.map(([, latitude]) => latitude);
+  const expectedSouthwest = [
+    Math.min(...longitudes),
+    Math.min(...latitudes),
+  ] as const;
+  const expectedNortheast = [
+    Math.max(...longitudes),
+    Math.max(...latitudes),
+  ] as const;
+  if (!coordinatesMatch(route.bounds.southwest, expectedSouthwest)) {
+    addIssue(
+      issues,
+      "route.bounds",
+      "routes.pct-2026.bounds.southwest",
+      "Southwest bounds must be derived from route coordinates.",
+    );
+  }
+  if (!coordinatesMatch(route.bounds.northeast, expectedNortheast)) {
+    addIssue(
+      issues,
+      "route.bounds",
+      "routes.pct-2026.bounds.northeast",
+      "Northeast bounds must be derived from route coordinates.",
+    );
+  }
+
+  content.days.forEach((day) => {
+    if (day.kind === "post-trail") return;
+    const path = `days.${day.id}`;
+    if (day.mileEnd > route.journalMaxMile) {
+      addIssue(
+        issues,
+        "route.day.out-of-range",
+        `${path}.mileEnd`,
+        `Mile ${day.mileEnd} exceeds route domain ${route.journalMaxMile}.`,
+      );
+      return;
+    }
+    const unsupportedRoundedValue = [day.mileStart, day.mileEnd].find(
+      (mile) =>
+        mile > route.officialLengthMiles && mile !== route.journalMaxMile,
+    );
+    if (unsupportedRoundedValue !== undefined) {
+      addIssue(
+        issues,
+        "route.day.unsupported-clamp",
+        path,
+        `Only journal mile ${route.journalMaxMile} may exceed official route mile ${route.officialLengthMiles}.`,
+      );
+      return;
+    }
+    const startProgress = getRouteProgressAtMile(route, day.mileStart);
+    const endProgress = getRouteProgressAtMile(route, day.mileEnd);
+    if (day.mileStart === day.mileEnd && startProgress !== endProgress) {
+      addIssue(
+        issues,
+        "route.day.point",
+        path,
+        "A zero-mile trail day must map to a single route position.",
+      );
+    }
+    if (day.mileEnd > day.mileStart && endProgress <= startProgress) {
+      addIssue(
+        issues,
+        "route.day.range",
+        path,
+        "A positive-mile trail day must map to a non-empty route range.",
       );
     }
   });
@@ -1062,6 +1263,7 @@ export function validateContentModel(
   validateSectionReferences(content, issues);
   validateDaySequence(content.days, issues);
   validateTrailDays(content, issues);
+  if (source.routes !== undefined) validateTrailRoute(content, issues);
   validateEditorialReferences(content, issues);
   validatePhotoPlacements(content, issues);
   validateMediaAssets(content, issues);

@@ -16,6 +16,7 @@ import {
   sectionSchema,
   sourceDocumentSchema,
   supportingPageSchema,
+  trailRouteSchema,
 } from "./lib/content/schemas.ts";
 
 const regions = defineCollection({
@@ -31,6 +32,11 @@ const sections = defineCollection({
 const days = defineCollection({
   loader: file("src/data/trail/days.json"),
   schema: daySchema,
+});
+
+const routes = defineCollection({
+  loader: file("src/data/map/routes.json"),
+  schema: trailRouteSchema,
 });
 
 const glossaryConcepts = defineCollection({
@@ -92,6 +98,7 @@ export const collections = {
   regions,
   sections,
   days,
+  routes,
   glossaryConcepts,
   gearItems,
   photos,

@@ -103,6 +103,11 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Run media work through the separate `media:extract-word`, `media:match`, `media:approve`, `media:generate`, `media:validate` and `media:upload` commands. Matching must never approve ambiguous candidates silently.
 - Keep media paths immutable and content-addressed. Blob upload is dry-run by default and must never overwrite or delete remote content.
 - Upload only asset IDs explicitly listed in `src/data/media/upload-selection.json`. Keep the selection empty until the human approves the exact assets, especially while official PCT logo usage remains unresolved.
+- Use the reviewed PCTA January 2026 centerline and half-mile layers as the route source. Import them only through `pnpm route:import` and commit only the normalized snapshot under `src/data/map`.
+- Preserve the exact PCTA attribution from the route manifest wherever the route is rendered. The route is a public reference geometry, not the author's personal GPS trace.
+- Keep raw GIS responses, import reports and route previews in the ignored `.route-workspace`. CI and static builds must never depend on ArcGIS availability.
+- Treat PCTA source revision changes as a separate reviewed migration. Do not weaken pinned edit dates or structural counts to accept upstream drift silently.
+- Keep journal mileage canonical. Only journal mile 2,656 may clamp to the official 2,655.84-mile northern terminus. A zero-distance trail day maps to a point without inventing distance.
 
 ## Project tracking and making of
 

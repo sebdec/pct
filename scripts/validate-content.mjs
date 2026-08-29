@@ -162,6 +162,7 @@ assertContentModel({
   regions: await readJsonArray(resolve(dataDirectory, "trail/regions.json")),
   sections: await readJsonArray(resolve(dataDirectory, "trail/sections.json")),
   days: await readJsonArray(resolve(dataDirectory, "trail/days.json")),
+  routes: await readJsonArray(resolve(dataDirectory, "map/routes.json")),
   journalEntries: await readLocalizedMarkdown(
     resolve(contentDirectory, "journal"),
   ),

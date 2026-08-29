@@ -139,6 +139,53 @@ describe("content model validation", () => {
     );
   });
 
+  it("rejects route anchors whose mileage is not strictly ordered", () => {
+    const fixture = cloneFixture();
+    const route = fixture.routes![0] as Record<string, unknown>;
+    route.anchors = [
+      { mile: 0, routeProgress: 0 },
+      { mile: 100, routeProgress: 0.2 },
+      { mile: 100, routeProgress: 0.3 },
+      { mile: 2655.84, routeProgress: 1 },
+    ];
+
+    const result = validateContentModel(fixture);
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: "route.anchor.mile-order" }),
+      ]),
+    );
+  });
+
+  it("rejects a trail day outside the journal route domain", () => {
+    const fixture = cloneFixture();
+    const secondDay = fixture.days[1] as Record<string, unknown>;
+    secondDay.mileEnd = 2657;
+
+    const result = validateContentModel(fixture);
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: "route.day.out-of-range" }),
+      ]),
+    );
+  });
+
+  it("rejects undocumented mileage between the official and journal maxima", () => {
+    const fixture = cloneFixture();
+    const secondDay = fixture.days[1] as Record<string, unknown>;
+    secondDay.mileEnd = 2655.9;
+
+    const result = validateContentModel(fixture);
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: "route.day.unsupported-clamp" }),
+      ]),
+    );
+  });
+
   it("rejects an extraction report that drifts from generated content", () => {
     const fixture = cloneFixture();
     const report = fixture.extractionReports[0] as Record<string, unknown>;

@@ -157,6 +157,55 @@ export function createValidContentModel(): ContentModelSource {
         sourceRefs: [sourceRef],
       },
     ],
+    routes: [
+      {
+        id: "pct-2026",
+        source: {
+          name: "Pacific Crest Trail Association",
+          revision: "2026",
+          centerlineUrl:
+            "https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCTA_Centerline/FeatureServer/0",
+          centerlineLastEdit: "2026-01-06T23:18:04.221Z",
+          mileMarkersUrl:
+            "https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCT_Mile_Markers_2026/FeatureServer/0",
+          mileMarkersLastEdit: "2026-01-07T00:14:06.948Z",
+          license: "CC BY 4.0",
+          licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+          attribution:
+            "Trail data © Pacific Crest Trail Association, CC BY 4.0, 2026",
+        },
+        crs: "EPSG:4326",
+        officialLengthMiles: 2655.84,
+        journalMaxMile: 2656,
+        terminalClamp: { fromMile: 2656, toMile: 2655.84 },
+        bounds: {
+          southwest: [-120.802105, 32.589741],
+          northeast: [-116.466981, 49.000302],
+        },
+        termini: {
+          south: [-116.466981, 32.589741],
+          north: [-120.802105, 49.000302],
+        },
+        coordinates: [
+          [-116.466981, 32.589741],
+          [-120.802105, 49.000302],
+        ],
+        anchors: [
+          { mile: 0, routeProgress: 0 },
+          { mile: 100, routeProgress: 0.5 },
+          { mile: 2655.84, routeProgress: 1 },
+        ],
+        normalization: {
+          maxAllowableOffsetDegrees: 0.00025,
+          coordinatePrecision: 6,
+          sourceCoordinateCount: 2,
+          sourceMarkerCount: 2,
+          validMarkerCount: 1,
+          excludedMarkerCount: 1,
+          maxAnchorProjectionMeters: 0,
+        },
+      },
+    ],
     journalEntries: [
       {
         dayId: "day-001",

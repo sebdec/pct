@@ -246,6 +246,65 @@ export const approvedMediaMatchSchema = z.object({
   approval: z.enum(["automatic", "manual"]),
 });
 
+export const routeCoordinateSchema = z.tuple([
+  z.number().min(-180).max(180),
+  z.number().min(-90).max(90),
+]);
+
+export const trailRouteSchema = z.object({
+  id: z.literal("pct-2026"),
+  source: z.object({
+    name: z.literal("Pacific Crest Trail Association"),
+    revision: z.literal("2026"),
+    centerlineUrl: z.literal(
+      "https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCTA_Centerline/FeatureServer/0",
+    ),
+    centerlineLastEdit: z.literal("2026-01-06T23:18:04.221Z"),
+    mileMarkersUrl: z.literal(
+      "https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCT_Mile_Markers_2026/FeatureServer/0",
+    ),
+    mileMarkersLastEdit: z.literal("2026-01-07T00:14:06.948Z"),
+    license: z.literal("CC BY 4.0"),
+    licenseUrl: z.literal("https://creativecommons.org/licenses/by/4.0/"),
+    attribution: z.literal(
+      "Trail data © Pacific Crest Trail Association, CC BY 4.0, 2026",
+    ),
+  }),
+  crs: z.literal("EPSG:4326"),
+  officialLengthMiles: z.literal(2655.84),
+  journalMaxMile: z.literal(2656),
+  terminalClamp: z.object({
+    fromMile: z.literal(2656),
+    toMile: z.literal(2655.84),
+  }),
+  bounds: z.object({
+    southwest: routeCoordinateSchema,
+    northeast: routeCoordinateSchema,
+  }),
+  termini: z.object({
+    south: routeCoordinateSchema,
+    north: routeCoordinateSchema,
+  }),
+  coordinates: z.array(routeCoordinateSchema).min(2),
+  anchors: z
+    .array(
+      z.object({
+        mile: z.number().nonnegative(),
+        routeProgress: z.number().min(0).max(1),
+      }),
+    )
+    .min(2),
+  normalization: z.object({
+    maxAllowableOffsetDegrees: z.literal(0.00025),
+    coordinatePrecision: z.literal(6),
+    sourceCoordinateCount: z.number().int().positive(),
+    sourceMarkerCount: z.number().int().positive(),
+    validMarkerCount: z.number().int().positive(),
+    excludedMarkerCount: z.number().int().nonnegative(),
+    maxAnchorProjectionMeters: z.number().nonnegative(),
+  }),
+});
+
 export const glossaryConceptSchema = z.object({
   id: stableIdSchema,
   published: z.boolean().default(false),
@@ -331,6 +390,8 @@ export type LocalizedPhoto = z.infer<typeof localizedPhotoSchema>;
 export type MediaVariant = z.infer<typeof mediaVariantSchema>;
 export type MediaAsset = z.infer<typeof mediaAssetSchema>;
 export type ApprovedMediaMatch = z.infer<typeof approvedMediaMatchSchema>;
+export type RouteCoordinate = z.infer<typeof routeCoordinateSchema>;
+export type TrailRoute = z.infer<typeof trailRouteSchema>;
 export type GlossaryConcept = z.infer<typeof glossaryConceptSchema>;
 export type LocalizedGlossaryEntry = z.infer<
   typeof localizedGlossaryEntrySchema
