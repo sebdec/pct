@@ -1,0 +1,127 @@
+---
+import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+
+interface Props {
+  page: JournalPageViewModel;
+}
+
+const { page } = Astro.props;
+const decimalFormatter = new Intl.NumberFormat("fr-FR", {
+  maximumFractionDigits: 1,
+});
+const integerFormatter = new Intl.NumberFormat("fr-FR", {
+  maximumFractionDigits: 0,
+});
+---
+
+<aside class="metrics" aria-label="Repères de la journée">
+  {
+    page.metrics ? (
+      <dl>
+        <div>
+          <dt>Miles</dt>
+          <dd>
+            {decimalFormatter.format(page.metrics.mileStart)} →{" "}
+            {decimalFormatter.format(page.metrics.mileEnd)}
+          </dd>
+        </div>
+        <div>
+          <dt>Distance</dt>
+          <dd>{decimalFormatter.format(page.metrics.distanceMiles)} mi</dd>
+          <dd class="secondary">
+            {decimalFormatter.format(page.metrics.distanceKilometers)} km
+          </dd>
+        </div>
+        <div>
+          <dt>Ascension</dt>
+          <dd>+{integerFormatter.format(page.metrics.ascentMeters)} m</dd>
+        </div>
+        <div>
+          <dt>Descente</dt>
+          <dd>−{integerFormatter.format(page.metrics.descentMeters)} m</dd>
+        </div>
+      </dl>
+    ) : (
+      <div class="after-trail">
+        <span aria-hidden="true">✦</span>
+        <p>Le chemin continue autrement.</p>
+      </div>
+    )
+  }
+</aside>
+
+<style>
+  .metrics {
+    position: sticky;
+    top: var(--pct-space-6);
+    padding-left: var(--pct-space-5);
+    border-left: 3px solid var(--pct-color-pine-glow);
+  }
+
+  dl {
+    display: grid;
+    gap: var(--pct-space-6);
+    margin: 0;
+  }
+
+  dt {
+    margin-bottom: var(--pct-space-2);
+    color: var(--pct-color-muted);
+    font-size: 0.52rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--pct-color-copy);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .secondary {
+    color: var(--pct-color-muted);
+    font-family: var(--pct-font-journal);
+    font-size: 0.7rem;
+    font-style: italic;
+  }
+
+  .after-trail {
+    display: grid;
+    gap: var(--pct-space-3);
+  }
+
+  .after-trail span {
+    color: var(--pct-color-pine-glow);
+  }
+
+  .after-trail p {
+    max-width: 10rem;
+    margin: 0;
+    color: var(--pct-color-muted);
+    font-family: var(--pct-font-journal);
+    font-size: 0.72rem;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 46rem) {
+    .metrics {
+      position: static;
+      padding: var(--pct-space-5);
+      border-top: 1px solid var(--pct-color-faint);
+      border-right: 1px solid var(--pct-color-faint);
+      border-bottom: 1px solid var(--pct-color-faint);
+      background: color-mix(
+        in srgb,
+        var(--pct-color-deep-camp) 82%,
+        transparent
+      );
+    }
+
+    dl {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--pct-space-5);
+    }
+  }
+</style>

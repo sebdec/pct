@@ -1,0 +1,191 @@
+---
+import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import LocalizedDate from "./LocalizedDate.astro";
+import TrailMark from "./TrailMark.astro";
+
+interface Props {
+  page: JournalPageViewModel;
+  totalEntries: number;
+}
+
+const { page, totalEntries } = Astro.props;
+const sequence = String(page.day.sequence).padStart(3, "0");
+const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
+const progress =
+  page.day.kind === "trail" ? (page.day.mileEnd / 2656) * 100 : 100;
+---
+
+<header class="day-header">
+  <div class="day-context">
+    <p class="journal-position">
+      Journal <span>{sequence} / {String(totalEntries).padStart(3, "0")}</span>
+    </p>
+    <p class="region-label">{page.regionLabel}</p>
+  </div>
+
+  <div class="heading-row">
+    <div>
+      <p class="day-kicker">
+        {page.day.kind === "trail" ? "Jour de marche" : "Après le terminus"}
+      </p>
+      <h1>
+        <span class="day-word">
+          {page.day.kind === "trail" ? "Jour" : "Étape"}
+        </span>
+        <span class="day-number">{sequence}</span>
+      </h1>
+    </div>
+
+    {page.regionId && <TrailMark regionId={page.regionId} />}
+  </div>
+
+  <div class="day-place">
+    <p class="date">
+      <LocalizedDate start={page.day.date} end={endDate} />
+    </p>
+    <p class="location">{page.entry.locationLabel}</p>
+  </div>
+
+  <div class="trail-progress" aria-hidden="true">
+    <span style={`--trail-progress: ${progress}%`}></span>
+  </div>
+</header>
+
+<style>
+  .day-header {
+    position: relative;
+    padding: clamp(4rem, 9vw, 8rem) 0 clamp(3rem, 7vw, 6rem);
+  }
+
+  .day-context,
+  .heading-row,
+  .day-place {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--pct-space-6);
+  }
+
+  .journal-position,
+  .region-label,
+  .day-kicker,
+  .date,
+  .location {
+    margin: 0;
+  }
+
+  .journal-position,
+  .region-label,
+  .day-kicker {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .journal-position {
+    color: var(--pct-color-muted);
+  }
+
+  .journal-position span,
+  .day-kicker {
+    color: var(--pct-color-pine-glow);
+  }
+
+  .region-label {
+    color: var(--section-color);
+  }
+
+  .heading-row {
+    margin-top: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  h1 {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(1rem, 3vw, 2.4rem);
+    margin: 0.55rem 0 0;
+    color: var(--pct-color-white);
+    font-weight: 500;
+    line-height: 0.82;
+    letter-spacing: -0.075em;
+  }
+
+  .day-word {
+    font-size: clamp(3.5rem, 9vw, 8.5rem);
+  }
+
+  .day-number {
+    color: transparent;
+    font-size: clamp(3rem, 7vw, 7rem);
+    -webkit-text-stroke: 1px var(--pct-color-muted);
+  }
+
+  .day-place {
+    margin-top: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .date {
+    color: var(--pct-color-copy);
+    font-family: var(--pct-font-journal);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-style: italic;
+  }
+
+  .location {
+    max-width: 30rem;
+    color: var(--pct-color-muted);
+    font-size: 0.72rem;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  .trail-progress {
+    height: 1px;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    overflow: hidden;
+    background: var(--pct-color-faint);
+  }
+
+  .trail-progress span {
+    display: block;
+    width: var(--trail-progress);
+    height: 100%;
+    background: var(--pct-color-pine-glow);
+  }
+
+  @media (max-width: 40rem) {
+    .day-header {
+      padding-top: 3rem;
+    }
+
+    .heading-row {
+      align-items: center;
+      gap: var(--pct-space-4);
+    }
+
+    h1 {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      line-height: 0.88;
+    }
+
+    .day-word {
+      font-size: clamp(3.2rem, 17vw, 4.8rem);
+    }
+
+    .day-number {
+      font-size: clamp(2.5rem, 13vw, 4rem);
+    }
+
+    .day-place {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: var(--pct-space-3);
+    }
+
+    .location {
+      text-align: left;
+    }
+  }
+</style>

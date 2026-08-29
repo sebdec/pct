@@ -19,6 +19,8 @@ import { site } from "../lib/site";
       }
     </ul>
   </nav>
+
+  <a class="mobile-journal" href="/journal/day-001">Journal</a>
 </header>
 
 <style>
@@ -72,6 +74,15 @@ import { site } from "../lib/site";
     color: var(--pct-color-pine-glow);
   }
 
+  .mobile-journal {
+    display: none;
+    color: var(--pct-color-pine-glow);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
   @media (max-width: 48rem) {
     .site-header {
       width: min(100% - 2rem, var(--pct-content-wide));
@@ -79,6 +90,10 @@ import { site } from "../lib/site";
 
     nav {
       display: none;
+    }
+
+    .mobile-journal {
+      display: inline-flex;
     }
   }
 </style>
