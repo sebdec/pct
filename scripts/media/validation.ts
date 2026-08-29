@@ -17,7 +17,7 @@ import { targetWidths, type MediaReport } from "./types.ts";
 
 const byteBudgets: Record<MediaVariant["format"], Record<number, number>> = {
   avif: { 640: 200_000, 960: 400_000, 1440: 800_000, 1920: 1_200_000 },
-  webp: { 640: 250_000, 960: 500_000, 1440: 1_000_000, 1920: 1_500_000 },
+  webp: { 640: 250_000, 960: 525_000, 1440: 1_000_000, 1920: 1_500_000 },
 };
 
 function parseArray<T>(

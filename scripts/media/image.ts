@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-import { parse as parseExif } from "exifr";
+import exifr from "exifr";
 import sharp from "sharp";
 
 import { fingerprint } from "./files.ts";
@@ -67,10 +67,9 @@ export async function describeImage(
       .greyscale()
       .raw()
       .toBuffer();
-    const exif = (await parseExif(input, [
-      "DateTimeOriginal",
-      "CreateDate",
-    ]).catch(() => undefined)) as Record<string, unknown> | undefined;
+    const exif = (await exifr
+      .parse(input, ["DateTimeOriginal", "CreateDate"])
+      .catch(() => undefined)) as Record<string, unknown> | undefined;
 
     return {
       path,

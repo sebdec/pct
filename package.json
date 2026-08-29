@@ -18,6 +18,7 @@
     "check": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check",
     "content:validate": "node scripts/validate-content.mjs",
     "content:extract": "node scripts/content/word/extractWordJournal.ts",
+    "media:extract-word": "node scripts/media/extractWord.ts",
     "media:match": "node scripts/media/match.ts",
     "media:approve": "node scripts/media/approve.ts",
     "media:generate": "node scripts/media/generate.ts",

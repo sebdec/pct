@@ -34,8 +34,11 @@ export interface UploadPlanItem {
 
 export function createUploadPlan(
   assets: readonly MediaAsset[],
+  selectedAssetIds: readonly string[],
 ): UploadPlanItem[] {
+  const selected = new Set(selectedAssetIds);
   return assets
+    .filter(({ id }) => selected.has(id))
     .flatMap((asset) =>
       asset.variants.map((variant) => ({
         assetId: asset.id,
@@ -82,10 +85,26 @@ export async function uploadMediaAssets(options: {
   confirmation?: string;
   token?: string;
   client?: BlobClient;
+  selectedAssetIds: readonly string[];
 }): Promise<{ plan: UploadPlanItem[]; assets: MediaAsset[] }> {
   const assets = parseManifest(await readJson(options.manifestPath));
-  const plan = createUploadPlan(assets);
+  const selectedAssetIds = new Set(options.selectedAssetIds);
+  if (selectedAssetIds.size !== options.selectedAssetIds.length) {
+    throw new Error("Upload selection contains duplicate asset IDs.");
+  }
+  const assetsById = new Map(assets.map((asset) => [asset.id, asset]));
+  for (const assetId of selectedAssetIds) {
+    if (!assetsById.has(assetId)) {
+      throw new Error(`Upload selection references unknown asset ${assetId}.`);
+    }
+  }
+  const plan = createUploadPlan(assets, options.selectedAssetIds);
   if (!options.execute) return { plan, assets };
+  if (selectedAssetIds.size === 0) {
+    throw new Error(
+      "Real upload requires at least 1 explicitly selected asset.",
+    );
+  }
   if (options.confirmation !== "pct-2026") {
     throw new Error('Real upload requires --confirm-upload "pct-2026".');
   }
@@ -95,6 +114,7 @@ export async function uploadMediaAssets(options: {
   const client = options.client ?? defaultBlobClient;
 
   for (const asset of assets) {
+    if (!selectedAssetIds.has(asset.id)) continue;
     for (const variant of asset.variants) {
       const existing = await client.head(variant.path, options.token);
       if (existing) {

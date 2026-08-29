@@ -92,6 +92,8 @@ export function classifyCandidates(
   const ranked = [...candidates]
     .sort(
       (left, right) =>
+        Number(Boolean(right.exactBinaryMatch)) -
+          Number(Boolean(left.exactBinaryMatch)) ||
         right.similarity - left.similarity ||
         left.sourceFingerprint.localeCompare(right.sourceFingerprint, "en"),
     )
@@ -100,7 +102,10 @@ export function classifyCandidates(
   const runnerUp = ranked[1];
   const gap = best ? best.similarity - (runnerUp?.similarity ?? 0) : 0;
   const status =
-    best && best.similarity >= automaticThreshold && gap >= minimumAutomaticGap
+    best?.exactBinaryMatch ||
+    (best &&
+      best.similarity >= automaticThreshold &&
+      gap >= minimumAutomaticGap)
       ? "automatic"
       : best && best.similarity >= ambiguityThreshold
         ? "ambiguous"
@@ -161,7 +166,14 @@ export async function createMatchReport(
     const candidates = sources.map((source) => ({
       sourcePath: source.path,
       sourceFingerprint: source.fingerprint,
-      ...scoreCandidate(wordAsset, source),
+      ...(source.fingerprint === wordAsset.fingerprint
+        ? {
+            exactBinaryMatch: true,
+            similarity: 1,
+            visualSimilarity: 1,
+            aspectSimilarity: 1,
+          }
+        : scoreCandidate(wordAsset, source)),
     }));
     return classifyCandidates(
       wordAsset.assetKey,

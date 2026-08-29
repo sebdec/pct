@@ -1,1 +1,2396 @@
-[]
+[
+  {
+    "assetKey": "word-media-007a2d5895506015",
+    "assetId": "media-007a2d5895506015",
+    "sourceFingerprint": "007a2d5895506015ac8d7b846f4f9bc8b048299993fe47bc9fec05a16564a39d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-01a92b3b7c01f557",
+    "assetId": "media-01a92b3b7c01f557",
+    "sourceFingerprint": "01a92b3b7c01f557d4532a5d4bef4355cabd1e594904b36e535945adfc4150b8",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-029b2ec3877b8573",
+    "assetId": "media-029b2ec3877b8573",
+    "sourceFingerprint": "029b2ec3877b857341a0d6f5727fafeedc6f003cafb30c456b4b6717c78b4867",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-02a55b4a0f284ec1",
+    "assetId": "media-02a55b4a0f284ec1",
+    "sourceFingerprint": "02a55b4a0f284ec175c19f27e177f4c2ef755021151805ab154027edb1bd55d9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0475e62f5b1ee9cd",
+    "assetId": "media-0475e62f5b1ee9cd",
+    "sourceFingerprint": "0475e62f5b1ee9cd4eb3fcc3652a7b0f5605c831b09cca0eaa915d7e3166983f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0485fbdd0e558158",
+    "assetId": "media-0485fbdd0e558158",
+    "sourceFingerprint": "0485fbdd0e558158fae4d31cb3463f90785a068dee07cbe38f0c235fe0a0193c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0554a2fa6c1d29a2",
+    "assetId": "media-0554a2fa6c1d29a2",
+    "sourceFingerprint": "0554a2fa6c1d29a294bc31cdb33148c6fd4714fde86ffee4ce1cda6a09124531",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-078171d8a0ae9640",
+    "assetId": "media-078171d8a0ae9640",
+    "sourceFingerprint": "078171d8a0ae9640edd19a591eecdd1ced13df322087c396e3d83fc5ba950fef",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-080f570353e3cd2f",
+    "assetId": "media-080f570353e3cd2f",
+    "sourceFingerprint": "080f570353e3cd2ff6a69859788a15c45e812815487fd6274858f00ba6987187",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-08f4426319b1047d",
+    "assetId": "media-08f4426319b1047d",
+    "sourceFingerprint": "08f4426319b1047d56539a7ed8a4e4da24d010e804ab8da869b993a3348d961a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-09552b09af9a4b2c",
+    "assetId": "media-09552b09af9a4b2c",
+    "sourceFingerprint": "09552b09af9a4b2c745429bf515618feb797f0fc7d5070fb23f70c2a215bf951",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-09855a59a6f34f27",
+    "assetId": "media-09855a59a6f34f27",
+    "sourceFingerprint": "09855a59a6f34f27df6c0728a441e30c03779c483d52a5abbe237a703363c9be",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0a758ca5f047e054",
+    "assetId": "media-0a758ca5f047e054",
+    "sourceFingerprint": "0a758ca5f047e05416e783143f9abc5a8d0ce03c20cad79d799bb543426805ae",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0a7a51f23f5a1f87",
+    "assetId": "media-0a7a51f23f5a1f87",
+    "sourceFingerprint": "0a7a51f23f5a1f879de767c9bb8b72fe670f3437d4065278f30a6dddaf84318c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0bb48037db3131e5",
+    "assetId": "media-0bb48037db3131e5",
+    "sourceFingerprint": "0bb48037db3131e55261c9433e26fac1580366ed647d0e93a76b2218a861cc0c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0bbaddbdb5308ce7",
+    "assetId": "media-0bbaddbdb5308ce7",
+    "sourceFingerprint": "0bbaddbdb5308ce7a7ddb6f735c39f032fd6ea927a7b77c1ee85d025ed4df671",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0bd441dfdbb900e2",
+    "assetId": "media-0bd441dfdbb900e2",
+    "sourceFingerprint": "0bd441dfdbb900e2a2d83c6e213560424a10c6d387674bf129f86931f9622737",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0c1bba6886bf53a7",
+    "assetId": "media-0c1bba6886bf53a7",
+    "sourceFingerprint": "0c1bba6886bf53a7e4b7842d38268710c8c8db9009c09bc62a3062ae164bc400",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0dc164eba6712ff5",
+    "assetId": "media-0dc164eba6712ff5",
+    "sourceFingerprint": "0dc164eba6712ff5d90cbe1339c8fa44257a2bbcd33936701a5a35a2637b37b9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0ebe4dd9ccd85893",
+    "assetId": "media-0ebe4dd9ccd85893",
+    "sourceFingerprint": "0ebe4dd9ccd858937ccca1ad17e0c6095dd699d340d8b34ba934a589224b9270",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0f3a379b54c0b513",
+    "assetId": "media-0f3a379b54c0b513",
+    "sourceFingerprint": "0f3a379b54c0b5137a0778fb81422bffc9dd0d3bbff59aac8e490234fbec6221",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-0fa4f78b5c6b5cf2",
+    "assetId": "media-0fa4f78b5c6b5cf2",
+    "sourceFingerprint": "0fa4f78b5c6b5cf2c3976a05356ac3c68f7ee9927ce61fa66c675546e4a66413",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-113c394fe129837c",
+    "assetId": "media-113c394fe129837c",
+    "sourceFingerprint": "113c394fe129837c48965745e0a0ea6ca304779c49a2ceb35c9df3357a66b9b1",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-126fe7d60346662e",
+    "assetId": "media-126fe7d60346662e",
+    "sourceFingerprint": "126fe7d60346662ee4ea2781cc08b265c31cd751cc0fa7518ba72de69bffd55b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-12fe5e3dd8ae1972",
+    "assetId": "media-12fe5e3dd8ae1972",
+    "sourceFingerprint": "12fe5e3dd8ae19726bc70ed7a6c8e07ef237118a385989304e1e1d8b47935527",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-142a57074eba5d4c",
+    "assetId": "media-142a57074eba5d4c",
+    "sourceFingerprint": "142a57074eba5d4cda7c1fdcf24cc3148da19a16d06a869e43fde93c6701716b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-144fdc2871fdbdbd",
+    "assetId": "media-144fdc2871fdbdbd",
+    "sourceFingerprint": "144fdc2871fdbdbd19f0073ef88a8cd1eb8a3f5ac298804075cbcec23645fab3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-1540d1ed3d781ea5",
+    "assetId": "media-1540d1ed3d781ea5",
+    "sourceFingerprint": "1540d1ed3d781ea52194dff49415f88b46518be81028e81faa6ffa87edf7a87e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-165cf443bfbbc476",
+    "assetId": "media-165cf443bfbbc476",
+    "sourceFingerprint": "165cf443bfbbc476b0befd55a1a8685cffd1ecdc5188035836748439cd92b216",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-167ad80267a15579",
+    "assetId": "media-167ad80267a15579",
+    "sourceFingerprint": "167ad80267a155790b859d4ccdcc8fdd3ac14f92ff94bffbdf6623e51b83d606",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-16d5dcb1361b2b85",
+    "assetId": "media-16d5dcb1361b2b85",
+    "sourceFingerprint": "16d5dcb1361b2b852c4ec548b18d9fd27d4be687586ef59146cc9ae9ce369a6a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-184edfc52bbde421",
+    "assetId": "media-184edfc52bbde421",
+    "sourceFingerprint": "184edfc52bbde421f16cf740430ec654e317045b3a9b76158b8b70b1bf39358c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-1854f3e657e38ba0",
+    "assetId": "media-1854f3e657e38ba0",
+    "sourceFingerprint": "1854f3e657e38ba0170bf0aa575c9eb8902d2a6a4b089c65301cc23498991727",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-18c4e45c1a0168da",
+    "assetId": "media-18c4e45c1a0168da",
+    "sourceFingerprint": "18c4e45c1a0168da3ef07e149599517432b40a97fee63b913b7d7ba46ed7b75f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-195fffcfaabadef3",
+    "assetId": "media-195fffcfaabadef3",
+    "sourceFingerprint": "195fffcfaabadef382f5d5eb66a274aa56a7fe739785a9d53d4fb78258600900",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-1bb9c1ddedfac58f",
+    "assetId": "media-1bb9c1ddedfac58f",
+    "sourceFingerprint": "1bb9c1ddedfac58fdbe1c12ca9666b25614e7addc651cd9ecf213abfd41e7043",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-1bdec3196f1a98df",
+    "assetId": "media-1bdec3196f1a98df",
+    "sourceFingerprint": "1bdec3196f1a98df6c68d84188c6ca67bb852b69b74492c59cb5391a043f4110",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-1f0dc191e83910f4",
+    "assetId": "media-1f0dc191e83910f4",
+    "sourceFingerprint": "1f0dc191e83910f4fed029509379844eac9a53f3a64c99f026543ad657664f81",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-1f8090f3f68069a2",
+    "assetId": "media-1f8090f3f68069a2",
+    "sourceFingerprint": "1f8090f3f68069a29317bc55dfcd00ea785fc246f8fa1b070acd778bb4a243dd",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2037bb376845506d",
+    "assetId": "media-2037bb376845506d",
+    "sourceFingerprint": "2037bb376845506d77a7ed1728795043d6aba31445f794c4266a2e707103b77c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-20f1072f3bfa3cdc",
+    "assetId": "media-20f1072f3bfa3cdc",
+    "sourceFingerprint": "20f1072f3bfa3cdca40e811f15a77d9d04c5e42efe11e5f749c4bb0cdf8ec7c7",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2125d7486f155589",
+    "assetId": "media-2125d7486f155589",
+    "sourceFingerprint": "2125d7486f1555897d777edc0942fe20a5a7723798eddb079ffe5116bef0b5b5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-22281b29ecacb3cc",
+    "assetId": "media-22281b29ecacb3cc",
+    "sourceFingerprint": "22281b29ecacb3cc277f07d83c7ae019d12d841dd29f809864c4e77ec412fb93",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-22a5388c1e6d5b8c",
+    "assetId": "media-22a5388c1e6d5b8c",
+    "sourceFingerprint": "22a5388c1e6d5b8ca955c7a507b326587c80c0e0319d604b64d26fbc17665059",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-22af36ab44ae7ed4",
+    "assetId": "media-22af36ab44ae7ed4",
+    "sourceFingerprint": "22af36ab44ae7ed4a1104247cb837f2d469d310dc66fea69f1e6f11a158284f9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2367e2cd0b9bbcdd",
+    "assetId": "media-2367e2cd0b9bbcdd",
+    "sourceFingerprint": "2367e2cd0b9bbcdd5f76e5a06bf5498da64cb53b0a2648d7389ac9248f9173eb",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2511289b05716667",
+    "assetId": "media-2511289b05716667",
+    "sourceFingerprint": "2511289b05716667ac2e2e7154c1d6424c4fee3abc8e58637bffa8951fa1ceac",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-25223aebd4c269fc",
+    "assetId": "media-25223aebd4c269fc",
+    "sourceFingerprint": "25223aebd4c269fc7990ebfa445eefb8216534c7c6106647ee615a6a180e610c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-25480219beb08f06",
+    "assetId": "media-25480219beb08f06",
+    "sourceFingerprint": "25480219beb08f0672a22fcf66a99dea900bedb745dba3c108caa793353265f3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-25f9016cf92225a2",
+    "assetId": "media-25f9016cf92225a2",
+    "sourceFingerprint": "25f9016cf92225a232c4b4d67ec1ccf8ccd37dc598e4563fdeaf6d7b6f0b0f6b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-265f347eb099b16d",
+    "assetId": "media-265f347eb099b16d",
+    "sourceFingerprint": "265f347eb099b16dc5eae603100e1908c34dd63828a29d130f0c074bef7552da",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-272ca0a5a9e50905",
+    "assetId": "media-272ca0a5a9e50905",
+    "sourceFingerprint": "272ca0a5a9e509057a585ec15ef82ac10b4884400cf0ea6de76b8be8bfc987e7",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-27bbdbcba5a8cf06",
+    "assetId": "media-27bbdbcba5a8cf06",
+    "sourceFingerprint": "27bbdbcba5a8cf06cab364bff935e1cd4294864846f9b3a1d5c1a9126491de84",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-286ece3c1ff2c79b",
+    "assetId": "media-286ece3c1ff2c79b",
+    "sourceFingerprint": "286ece3c1ff2c79b2af1f3644c768ac84340f75ce1e04a817c02fb9f517e68a0",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-28c5211c4919bd8b",
+    "assetId": "media-28c5211c4919bd8b",
+    "sourceFingerprint": "28c5211c4919bd8bcbeda16eb1d3fb1d125792a237935a8ea8d2790b1c33c245",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-290eb953b329de7a",
+    "assetId": "media-290eb953b329de7a",
+    "sourceFingerprint": "290eb953b329de7ad0b682304bb4e87ae1c47486e084912bc00fcb51d02eb3f7",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-29e13c866444b6f0",
+    "assetId": "media-29e13c866444b6f0",
+    "sourceFingerprint": "29e13c866444b6f0da7003255fefaf8040ea16079d0dd327cb07bafcfac0ff2f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2b451f349f3ef8d5",
+    "assetId": "media-2b451f349f3ef8d5",
+    "sourceFingerprint": "2b451f349f3ef8d5d9831403f88fdf2a286cf96181649567c5b7063fab8b4516",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2c4d3f7f4580c87b",
+    "assetId": "media-2c4d3f7f4580c87b",
+    "sourceFingerprint": "2c4d3f7f4580c87b3b9d439a5e5ec1dfa03dfff2a0ddb1d987337cb5247b1a28",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2df6e9de7be4fc1b",
+    "assetId": "media-2df6e9de7be4fc1b",
+    "sourceFingerprint": "2df6e9de7be4fc1bf9984d647b32dd1498df3580f44c5f9f368c56d69353c734",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2e3edbd13a2cee3b",
+    "assetId": "media-2e3edbd13a2cee3b",
+    "sourceFingerprint": "2e3edbd13a2cee3b55079573c2622e84064e55a79d62a0e9ec4da939ddfe42cf",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2e56026e65de7aff",
+    "assetId": "media-2e56026e65de7aff",
+    "sourceFingerprint": "2e56026e65de7aff2ae008dfc40ba38e49c0911c9b9ed865f33c5e5d5f4efcd9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-2f761dedfb739313",
+    "assetId": "media-2f761dedfb739313",
+    "sourceFingerprint": "2f761dedfb73931353401e26d92aba603ef33fea144715691be55a7445ed6a4e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-303108ff68875ca4",
+    "assetId": "media-303108ff68875ca4",
+    "sourceFingerprint": "303108ff68875ca41f0b0e9515d3360855d196783e6d914c57843d3cfc586486",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-32b9368a75ba4da6",
+    "assetId": "media-32b9368a75ba4da6",
+    "sourceFingerprint": "32b9368a75ba4da675ff6b08ce59397b4e84f7ef900ba8de50844d7dc3e25fba",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-32c7a378c2c5b417",
+    "assetId": "media-32c7a378c2c5b417",
+    "sourceFingerprint": "32c7a378c2c5b4179a010133bad35016123c91caae4fcaa1ce2eb23dfc261c5e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-32cb02346277e87d",
+    "assetId": "media-32cb02346277e87d",
+    "sourceFingerprint": "32cb02346277e87dc00048b1e70b1a6b9202b8660903a7da40f3ca062959cacc",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-35855febc0c21fff",
+    "assetId": "media-35855febc0c21fff",
+    "sourceFingerprint": "35855febc0c21ffff2727f0c2a47c8d96fe8f31bcf04e4d1935fbd1378c22461",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-376e1dcfa4e1e96f",
+    "assetId": "media-376e1dcfa4e1e96f",
+    "sourceFingerprint": "376e1dcfa4e1e96f66772e5a41e2569b318afbaf13b73944eb4e605f10726d2b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-38ba9e6caeed1f00",
+    "assetId": "media-38ba9e6caeed1f00",
+    "sourceFingerprint": "38ba9e6caeed1f00248201f15fbd7c157463e6395ab0156d7e515a18f411dbcc",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3966a7f356e82efa",
+    "assetId": "media-3966a7f356e82efa",
+    "sourceFingerprint": "3966a7f356e82efaae4a10f86a471876f0d17a2e00079a4b67c41bccb80bdf51",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3a719b4d547828d2",
+    "assetId": "media-3a719b4d547828d2",
+    "sourceFingerprint": "3a719b4d547828d233b93a92d3c6ad28224a50e1e3f004dd5da5b896cd869ae5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3ab1afc014b52ac8",
+    "assetId": "media-3ab1afc014b52ac8",
+    "sourceFingerprint": "3ab1afc014b52ac876e3956886c4544998a50e7f83c21d2913700f6cd6207b04",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3adc85811c987943",
+    "assetId": "media-3adc85811c987943",
+    "sourceFingerprint": "3adc85811c987943ebcfe97f7e64a81bec368c3737223b98cf76db1931629e69",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3b4cb3d1ce65e374",
+    "assetId": "media-3b4cb3d1ce65e374",
+    "sourceFingerprint": "3b4cb3d1ce65e3746713980d03151f2ce7fa28f9ec07b6c644279e3e487d459a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3b922214eac4f908",
+    "assetId": "media-3b922214eac4f908",
+    "sourceFingerprint": "3b922214eac4f908e3bc9f09bdb926afd4d3ed80b9a9d6978d3ea425eddcd1d5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3c250966d20d7739",
+    "assetId": "media-3c250966d20d7739",
+    "sourceFingerprint": "3c250966d20d77393d295db5568e3cc67b429bed7ce0719d02531fb1acb96cb9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-3da212873634a813",
+    "assetId": "media-3da212873634a813",
+    "sourceFingerprint": "3da212873634a8139ac9d79dc29fce8f988a76c341691463876a38e381c8cd63",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4076e37d940c245c",
+    "assetId": "media-4076e37d940c245c",
+    "sourceFingerprint": "4076e37d940c245c57df9b1d1e0b987b01944d520bccd6e059fe7f737bbd05ca",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-41261290f24fdb5a",
+    "assetId": "media-41261290f24fdb5a",
+    "sourceFingerprint": "41261290f24fdb5a6bd5ede1d150d67481e7f63fc763e8114d71adea9f55fbd5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-421ab31e769d455d",
+    "assetId": "media-421ab31e769d455d",
+    "sourceFingerprint": "421ab31e769d455d849a38f155941404d2ecf2cb8ad0385a208bd70fc79cdb31",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4239158471456a07",
+    "assetId": "media-4239158471456a07",
+    "sourceFingerprint": "4239158471456a07e6187d6f7fab672587901c1e5aacb12cd52271d595f0ac4f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-427f713f855e71aa",
+    "assetId": "media-427f713f855e71aa",
+    "sourceFingerprint": "427f713f855e71aab4c91c687345473e0c5ccbe6c22a1a2553c87a94f95a2705",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-444e233b1a013411",
+    "assetId": "media-444e233b1a013411",
+    "sourceFingerprint": "444e233b1a013411ca47e425a642c3d978e7d9e912dc7cd189741e50b3280116",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-445214518715a178",
+    "assetId": "media-445214518715a178",
+    "sourceFingerprint": "445214518715a17831fdced29159d585c286bb047bb3b5510f662d6ad40dfe93",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-446df06b5eee87eb",
+    "assetId": "media-446df06b5eee87eb",
+    "sourceFingerprint": "446df06b5eee87eb1a1697ae5294e187e77855a74eab98729d61b1de8aa85da5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4507f1d36babb6eb",
+    "assetId": "media-4507f1d36babb6eb",
+    "sourceFingerprint": "4507f1d36babb6ebbd9dc48d8488814a01c2240872b78a3bfdbf581926a9f94c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4509a905beb3435b",
+    "assetId": "media-4509a905beb3435b",
+    "sourceFingerprint": "4509a905beb3435b01859205fff784aa5da9b02bec7fe788d510a217d844eb0f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-450d2357b414a12c",
+    "assetId": "media-450d2357b414a12c",
+    "sourceFingerprint": "450d2357b414a12c33260f70ac5ed753a2520b2007c4df5cda2409c795f2d44a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-47d056208cf021d0",
+    "assetId": "media-47d056208cf021d0",
+    "sourceFingerprint": "47d056208cf021d020fcdaeff077899a1a29fc633cb4fa1fa70f3c40031c5eb6",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-47e237b6f336befc",
+    "assetId": "media-47e237b6f336befc",
+    "sourceFingerprint": "47e237b6f336befc71e15bc1a962d4e2b4fac8da49a2f3c7f2cfcb2074187cd4",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4862e1b81fab0a06",
+    "assetId": "media-4862e1b81fab0a06",
+    "sourceFingerprint": "4862e1b81fab0a06ca5773b5db23a7e1d249c9fda96e877246e3fd0490c915bd",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-48c2ab463696729d",
+    "assetId": "media-48c2ab463696729d",
+    "sourceFingerprint": "48c2ab463696729d642359abfb01d414da327fe634a0fc4d6d31d241d6b715d0",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-48c6a2f40c0caa77",
+    "assetId": "media-48c6a2f40c0caa77",
+    "sourceFingerprint": "48c6a2f40c0caa77ddc36b5668aa2017846c41beb9660ebaeb7cdbef2f686dc3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4966c025dccff69a",
+    "assetId": "media-4966c025dccff69a",
+    "sourceFingerprint": "4966c025dccff69a3f94a2f09548193f10b81ebcf5ca986b0d9bd1d87cd7ed27",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4bcc8b75277fc2b4",
+    "assetId": "media-4bcc8b75277fc2b4",
+    "sourceFingerprint": "4bcc8b75277fc2b4c70841427c9282f0939ef4e65072e5e4728114e302698e25",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4c2d84a43ded16c8",
+    "assetId": "media-4c2d84a43ded16c8",
+    "sourceFingerprint": "4c2d84a43ded16c82c7a2945b3f162bdd3299478cd41720149ee7268a4803af3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4c7ad5bf634febaf",
+    "assetId": "media-4c7ad5bf634febaf",
+    "sourceFingerprint": "4c7ad5bf634febafd51eaecc3434419247aea482b6a259b379524d9362a66e4d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4c7e6612fc32151b",
+    "assetId": "media-4c7e6612fc32151b",
+    "sourceFingerprint": "4c7e6612fc32151bf0a4986d7b6d57fbcc7887d7a5edef13de9aee1642ddfd8a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4e085bb51a57493f",
+    "assetId": "media-4e085bb51a57493f",
+    "sourceFingerprint": "4e085bb51a57493fd560c8ae2c20e8efd83dd06cc24eaec82f3defd006083364",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-4f23f8fd3471b758",
+    "assetId": "media-4f23f8fd3471b758",
+    "sourceFingerprint": "4f23f8fd3471b7580743a20556d5a2502e3464a87bdf6e33a98429aae2393b9e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-500dc6d407aefb32",
+    "assetId": "media-500dc6d407aefb32",
+    "sourceFingerprint": "500dc6d407aefb326cdd66878c909121afcd167b30fe796cdee64e4ce605fafd",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5068c869160f2a44",
+    "assetId": "media-5068c869160f2a44",
+    "sourceFingerprint": "5068c869160f2a44a2a5bb801d7c2e9b9ee627bc96c919063e6ba5c2b0d2e3aa",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5098c1269a4c758e",
+    "assetId": "media-5098c1269a4c758e",
+    "sourceFingerprint": "5098c1269a4c758ebecc5b4c5c370ccf98e0355d6b14bd36fc0a6351724ec043",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-520cfd949fe4563a",
+    "assetId": "media-520cfd949fe4563a",
+    "sourceFingerprint": "520cfd949fe4563ac00cd063166b34e1fe31ffcce81c7a39788de81b802260f7",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5284d5c160ba716b",
+    "assetId": "media-5284d5c160ba716b",
+    "sourceFingerprint": "5284d5c160ba716b6a05a3d903400d5206fe70457b8b529137db0731faacddba",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-52ee6d58931b319c",
+    "assetId": "media-52ee6d58931b319c",
+    "sourceFingerprint": "52ee6d58931b319c0ca0bcd489ea11b7008d2b7f670a39718e4778c3bef25cab",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5303f1e82f810902",
+    "assetId": "media-5303f1e82f810902",
+    "sourceFingerprint": "5303f1e82f810902fbf33c350a348e9252cadfe920e1f06d150728e027a0e04d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5319ee8706a7db06",
+    "assetId": "media-5319ee8706a7db06",
+    "sourceFingerprint": "5319ee8706a7db06a5f86e4a6f5da753169f381024cb9c12aa14511b8d14a16f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5364ec4cb280eaaa",
+    "assetId": "media-5364ec4cb280eaaa",
+    "sourceFingerprint": "5364ec4cb280eaaa4ad97e4293b0faffcfc11b6298de6508e315027680f3e5f3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-53f5c573ca7c3892",
+    "assetId": "media-53f5c573ca7c3892",
+    "sourceFingerprint": "53f5c573ca7c3892d7d09e3d83dfdeeb953de8142b09ee62bf2257713b308717",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5618eecac9493c7e",
+    "assetId": "media-5618eecac9493c7e",
+    "sourceFingerprint": "5618eecac9493c7e3432ef16fcf855fad594494e63ba0b384c5bd75139bebfec",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-563f55baa53c70f1",
+    "assetId": "media-563f55baa53c70f1",
+    "sourceFingerprint": "563f55baa53c70f11ca89d62473b2da39dac8a3c8488988d2162c99d428104a2",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-57106ce02002b6ff",
+    "assetId": "media-57106ce02002b6ff",
+    "sourceFingerprint": "57106ce02002b6ff5c98fa134a73d362fd3c762e23ff8f923b88c9474b7e15c3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5818c03a7bb33ad3",
+    "assetId": "media-5818c03a7bb33ad3",
+    "sourceFingerprint": "5818c03a7bb33ad3bc968f90741985119ffd1622982efc9dbdc965a893d70392",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5914b47a553ab2b7",
+    "assetId": "media-5914b47a553ab2b7",
+    "sourceFingerprint": "5914b47a553ab2b71c767f44577c4a79255d181e5951f6ee2d1045b1cfdfbdbe",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-591ebec0d467b478",
+    "assetId": "media-591ebec0d467b478",
+    "sourceFingerprint": "591ebec0d467b478da4ab3782989ec2c0bab3e050486d38854779d6597bdcd46",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-59a2a5e8e6787a6a",
+    "assetId": "media-59a2a5e8e6787a6a",
+    "sourceFingerprint": "59a2a5e8e6787a6a768a193a32f85fc179cb077a0b7f3fbc8a4dd3f8a06dd8ec",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5a119b8f03ce7831",
+    "assetId": "media-5a119b8f03ce7831",
+    "sourceFingerprint": "5a119b8f03ce78319dda57cec6c9672df2dd8279d55ae89d481680e54923375d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5a2e1e023eece8c0",
+    "assetId": "media-5a2e1e023eece8c0",
+    "sourceFingerprint": "5a2e1e023eece8c05c6cb79e6608c12a665bce79559fcd005555792ccc4c5713",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5aa7dedd28651701",
+    "assetId": "media-5aa7dedd28651701",
+    "sourceFingerprint": "5aa7dedd28651701bf5ac54c3ef42517c42088ccd5ae404e1cc3cb794a866b06",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5ac0baebe636f500",
+    "assetId": "media-5ac0baebe636f500",
+    "sourceFingerprint": "5ac0baebe636f50011f73333ae5c94aac56b21cb56565ccd34e180bd3f695be9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5acbf186a90409dc",
+    "assetId": "media-5acbf186a90409dc",
+    "sourceFingerprint": "5acbf186a90409dc224f1afcb33235d757cda2334a897b0ddac1e3317967cffb",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5ae9dfb08444de6c",
+    "assetId": "media-5ae9dfb08444de6c",
+    "sourceFingerprint": "5ae9dfb08444de6c13c7e53cd5aabfb48ac574f983a6fc9cbd29f20b7fbc94fc",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5aee4e3c6007bdde",
+    "assetId": "media-5aee4e3c6007bdde",
+    "sourceFingerprint": "5aee4e3c6007bdde581a8b85d1e8eeaf2a481fe6a57692b46fab0b7bf59ec651",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5c139aeb1eaf2ed6",
+    "assetId": "media-5c139aeb1eaf2ed6",
+    "sourceFingerprint": "5c139aeb1eaf2ed6b1ce8b995cd52af7a01bfe368d65ef39484274b85fa6e7f9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5c66ff25aa554b10",
+    "assetId": "media-5c66ff25aa554b10",
+    "sourceFingerprint": "5c66ff25aa554b1034a9b498171b5af35affa784ed77572b23765654476fb0b9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5e2172bb1f5ccac8",
+    "assetId": "media-5e2172bb1f5ccac8",
+    "sourceFingerprint": "5e2172bb1f5ccac8b4e44f86948d51aca6f6e4d5d177e3ef682b8a42c3e36fae",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5e2d311a205455ca",
+    "assetId": "media-5e2d311a205455ca",
+    "sourceFingerprint": "5e2d311a205455ca7c72ebb860ca4b4a5792f25671cdb9998ad1c2a9cf65aba5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5f8ef19d9408dd0a",
+    "assetId": "media-5f8ef19d9408dd0a",
+    "sourceFingerprint": "5f8ef19d9408dd0a0231f4065f27a7e7cb936e13bfdfe442a63bef4cf900c302",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-5fd3ce206e20722c",
+    "assetId": "media-5fd3ce206e20722c",
+    "sourceFingerprint": "5fd3ce206e20722cce2e65f012361451853fb5a03aa5b8007014f0931c4c2e44",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6053cc848592f6f1",
+    "assetId": "media-6053cc848592f6f1",
+    "sourceFingerprint": "6053cc848592f6f1641a4df2fa3c71421e966d8cae73bdb5ccf1c50bf9ccc9b0",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-60dde05b6151d5e0",
+    "assetId": "media-60dde05b6151d5e0",
+    "sourceFingerprint": "60dde05b6151d5e027dadf1a205139a7a9dfbb55e98aea426ee7e261e6d07b03",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6106d08873b7d506",
+    "assetId": "media-6106d08873b7d506",
+    "sourceFingerprint": "6106d08873b7d506af7f2d2cb7dabd7e93bec0c158e110a5b375116441ad897b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-613c5acb0fab77c0",
+    "assetId": "media-613c5acb0fab77c0",
+    "sourceFingerprint": "613c5acb0fab77c04316b5a9e68cee30bdb0bd2e31c122508a21e79e1c343ae0",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-61673a05292babb5",
+    "assetId": "media-61673a05292babb5",
+    "sourceFingerprint": "61673a05292babb5bf282a93cce5c70218501f0a98e0052e322e211b827d637d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-617e4254f989113c",
+    "assetId": "media-617e4254f989113c",
+    "sourceFingerprint": "617e4254f989113cedd816f450a3979aea5b6f9ca8b43e9c367cb6eb3f6b2a8a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-62e3ccf9aa8dad5b",
+    "assetId": "media-62e3ccf9aa8dad5b",
+    "sourceFingerprint": "62e3ccf9aa8dad5b1fc9e577fd1ba1fcab96dd5ec12fa8237d33ceb528d41f60",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-631c157e09498274",
+    "assetId": "media-631c157e09498274",
+    "sourceFingerprint": "631c157e09498274dd40fd38040f9fd38e8f42c145ca589d3b9b81de794172f9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6365e0b06b1a4fe2",
+    "assetId": "media-6365e0b06b1a4fe2",
+    "sourceFingerprint": "6365e0b06b1a4fe288a9f792cb86bf69f0e955413aabea8f18747e88a64d2375",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-63678f4b5b70c80a",
+    "assetId": "media-63678f4b5b70c80a",
+    "sourceFingerprint": "63678f4b5b70c80aab449916e20b03b619fec0a75ab8c888f76855025ad5b593",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-649629f2648fb535",
+    "assetId": "media-649629f2648fb535",
+    "sourceFingerprint": "649629f2648fb535bec32d75dcc3df941ecd4817ac9c213f834a8218f810cbf5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-650076915f7426c2",
+    "assetId": "media-650076915f7426c2",
+    "sourceFingerprint": "650076915f7426c2832f434a345993453c470d7271bf7aca71aac9151a706ff6",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-65955a228ea29538",
+    "assetId": "media-65955a228ea29538",
+    "sourceFingerprint": "65955a228ea29538c8b38e6ccba6e3b8719b2d2782eea3c586a0b96df00ba5eb",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-65f9ad9eaa5254a7",
+    "assetId": "media-65f9ad9eaa5254a7",
+    "sourceFingerprint": "65f9ad9eaa5254a7131a39bce9800738da01f8c5cc259a9795fdc3f561f0d72f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-66292dd2a6fd43f2",
+    "assetId": "media-66292dd2a6fd43f2",
+    "sourceFingerprint": "66292dd2a6fd43f23d883618bc18ac0a74dd2e16c9b4384c8208c37809194db9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-665d53d4095daace",
+    "assetId": "media-665d53d4095daace",
+    "sourceFingerprint": "665d53d4095daace6634a66cc9159a279d6a1036f9e1f0d18706537f2b469a15",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6664f336653ab34f",
+    "assetId": "media-6664f336653ab34f",
+    "sourceFingerprint": "6664f336653ab34f56820bde1b53d0cbde60e7536dd7e1bb7e0dc5b13335149c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-66a0ea3638206aae",
+    "assetId": "media-66a0ea3638206aae",
+    "sourceFingerprint": "66a0ea3638206aae831aae8234fe5fe22e4bd58ea2f8b222f12dd0c1dfc2d060",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-66c799095c75c9a3",
+    "assetId": "media-66c799095c75c9a3",
+    "sourceFingerprint": "66c799095c75c9a35fb867b14bf6c26680a365335702e9cdbd2f4b2142db93b3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-68edd0d91028372b",
+    "assetId": "media-68edd0d91028372b",
+    "sourceFingerprint": "68edd0d91028372b224e35d5ee80f0761259bb7b60ccb4ca303fc94b2cb8c4b1",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-69b2a86fe7929c24",
+    "assetId": "media-69b2a86fe7929c24",
+    "sourceFingerprint": "69b2a86fe7929c245b29479dc8e599c25bb2792ae147ffce7940e73013552138",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-69c1c02fcc1ab6eb",
+    "assetId": "media-69c1c02fcc1ab6eb",
+    "sourceFingerprint": "69c1c02fcc1ab6eb7782618ba73f1516946ea8008e9cdc734b44b5aa8b8accdb",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-69f2492a6e180e6f",
+    "assetId": "media-69f2492a6e180e6f",
+    "sourceFingerprint": "69f2492a6e180e6f23e3696d1ee05dfc3f70e8ebccf236adab85dac06b2e8a13",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6ae73230c7579f48",
+    "assetId": "media-6ae73230c7579f48",
+    "sourceFingerprint": "6ae73230c7579f48ef5e374f78335f5a7f83be8aacca255b322a36760f568a56",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6b1e3d616e3370fc",
+    "assetId": "media-6b1e3d616e3370fc",
+    "sourceFingerprint": "6b1e3d616e3370fce2d7811d075f91b826703ad67f7c44340d493155bc847ce2",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6b4f244a38fedc71",
+    "assetId": "media-6b4f244a38fedc71",
+    "sourceFingerprint": "6b4f244a38fedc716f1045bb61c18ca4312478008ff05aa3ddb5fb0ced22a440",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6b6f277e081538a8",
+    "assetId": "media-6b6f277e081538a8",
+    "sourceFingerprint": "6b6f277e081538a87c7add2e3e8785454edbb905201cf44c1540346245479ba5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6cc4ac4f2c5debfd",
+    "assetId": "media-6cc4ac4f2c5debfd",
+    "sourceFingerprint": "6cc4ac4f2c5debfdae09a72a15b68b185b80f7d3686f38c49bf3d32920364c0f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6cd111b2606e68b7",
+    "assetId": "media-6cd111b2606e68b7",
+    "sourceFingerprint": "6cd111b2606e68b7eb00031b25805889ee01b7aa0df23551eac379405ad94a8d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6d4c023f0c4e8338",
+    "assetId": "media-6d4c023f0c4e8338",
+    "sourceFingerprint": "6d4c023f0c4e8338ea7660bb0f47d16151d5f154e2c68a1722bae966611c4a37",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6d681a8ee8ff93ad",
+    "assetId": "media-6d681a8ee8ff93ad",
+    "sourceFingerprint": "6d681a8ee8ff93ad93e13932e0c37af6e76041a8d6a49e0a28dec1ff6fc35634",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6daf014740c220c4",
+    "assetId": "media-6daf014740c220c4",
+    "sourceFingerprint": "6daf014740c220c4383549fa38e4b377cfcb969e0ecf45c16c2065c40fae212c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-6e08097040c4ae90",
+    "assetId": "media-6e08097040c4ae90",
+    "sourceFingerprint": "6e08097040c4ae906692a3d282b28239654d83369b7db52f19433d49014496f1",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-70a4a66fd5a74dd8",
+    "assetId": "media-70a4a66fd5a74dd8",
+    "sourceFingerprint": "70a4a66fd5a74dd86ef42cf27e5c0c09113fcccf8e592fb4b82673df0c3b241b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-718efa2f2054bbf8",
+    "assetId": "media-718efa2f2054bbf8",
+    "sourceFingerprint": "718efa2f2054bbf89baa47e2e13e3aa24a3d0e34826fdf8fda5106ce98964cd3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-71bf5d8aed639d06",
+    "assetId": "media-71bf5d8aed639d06",
+    "sourceFingerprint": "71bf5d8aed639d06e75d2aafc99fb4cd6e4d278469a32422809395a365c24276",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-721cbf3a3c08b496",
+    "assetId": "media-721cbf3a3c08b496",
+    "sourceFingerprint": "721cbf3a3c08b49634bf5babdc67e2eb2ecba38e88d737027774ceb1bf3710a1",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7303a122076db924",
+    "assetId": "media-7303a122076db924",
+    "sourceFingerprint": "7303a122076db924c87a734e696a3e7ec72a8fc8e55e5b8d6a4bd798a4c8a52a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7348b1225a2adeae",
+    "assetId": "media-7348b1225a2adeae",
+    "sourceFingerprint": "7348b1225a2adeaee79d68d07baeddb1e74a7b5693b985293a41ba2dcc641486",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-73bb4060db590e36",
+    "assetId": "media-73bb4060db590e36",
+    "sourceFingerprint": "73bb4060db590e36f51d4b10ac279612d5a621e5d58e8b5009cfb70d9a5f57ce",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-741963239935a119",
+    "assetId": "media-741963239935a119",
+    "sourceFingerprint": "741963239935a1194bfb5e04a58b2ac4b8c284d95826446d60ca19dfcabb5561",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7537f386f800564a",
+    "assetId": "media-7537f386f800564a",
+    "sourceFingerprint": "7537f386f800564aeeeec20747e96c202f0c7c16b19a30e52010cba9117ec084",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7580a2b2438c18b9",
+    "assetId": "media-7580a2b2438c18b9",
+    "sourceFingerprint": "7580a2b2438c18b90e77b08235a8de0b85624fc3f81f15043833a38f1b0ef07a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-768289e6aa38eeb5",
+    "assetId": "media-768289e6aa38eeb5",
+    "sourceFingerprint": "768289e6aa38eeb5b30b658645e475ccf69bfd22eaca16bb1239b0c808fc6834",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-784c0a421c7d1dca",
+    "assetId": "media-784c0a421c7d1dca",
+    "sourceFingerprint": "784c0a421c7d1dcaaaeb465f198d57b64fc7790b4bdd7a27e1a5dfcbcb5f0b9a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7981929c506e83ef",
+    "assetId": "media-7981929c506e83ef",
+    "sourceFingerprint": "7981929c506e83efe6c5b93261917a017855875231cd887cdf1084afde1bde3b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7b636257d9a267c6",
+    "assetId": "media-7b636257d9a267c6",
+    "sourceFingerprint": "7b636257d9a267c6d3f2ccf331bb1ced6588ce1ab9bb0f7af87db92799a3d474",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7d39bd0ad6122838",
+    "assetId": "media-7d39bd0ad6122838",
+    "sourceFingerprint": "7d39bd0ad6122838df25279ab6cd2e73fa80be7ce55554b465d6c7c0f8a57b78",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7d540735bd33e5b3",
+    "assetId": "media-7d540735bd33e5b3",
+    "sourceFingerprint": "7d540735bd33e5b3d1506274ac1812945c73796500f4b0d73c6e5ac5ef91c416",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7d7ccd56a4206e38",
+    "assetId": "media-7d7ccd56a4206e38",
+    "sourceFingerprint": "7d7ccd56a4206e385bd6fdd1bd728dabe8216cbce9b77df26b5393d40afc4d82",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7d979d3814b5086d",
+    "assetId": "media-7d979d3814b5086d",
+    "sourceFingerprint": "7d979d3814b5086de378c0fc4ff0b06479ce7787d5afa62d0461afdeef70a47a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7e3bb9def102588d",
+    "assetId": "media-7e3bb9def102588d",
+    "sourceFingerprint": "7e3bb9def102588d14498c312a8a939767479edc4eb7681512fffeac1176a6fd",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-7ec2d4ff51a362ea",
+    "assetId": "media-7ec2d4ff51a362ea",
+    "sourceFingerprint": "7ec2d4ff51a362eacb2e9bf526556f7806672ec0b50b83d53e12b81926809562",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-8023cfc7ae212c5b",
+    "assetId": "media-8023cfc7ae212c5b",
+    "sourceFingerprint": "8023cfc7ae212c5b822e7805ac7c9882891d4bb730d4dfee1e6b4efa29952625",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-815cb460434718d8",
+    "assetId": "media-815cb460434718d8",
+    "sourceFingerprint": "815cb460434718d8556d31d11e170f6830de58a832e93878bdbf26f3cdd48587",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-81cdba65b905cc4d",
+    "assetId": "media-81cdba65b905cc4d",
+    "sourceFingerprint": "81cdba65b905cc4ddbb32eecb84908d0c2b68711c55ce05a2cad2a45be4c1a4c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-83db193eab5c5fe7",
+    "assetId": "media-83db193eab5c5fe7",
+    "sourceFingerprint": "83db193eab5c5fe7e9a6945ad2538d6fcc39761258238fe326f6d4d61dfd2812",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-843cd3b46d0aba4c",
+    "assetId": "media-843cd3b46d0aba4c",
+    "sourceFingerprint": "843cd3b46d0aba4cccb2f089a8f5a863417fe6a314f10831f097e9f1c318099f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-84a5c6f4583bcff1",
+    "assetId": "media-84a5c6f4583bcff1",
+    "sourceFingerprint": "84a5c6f4583bcff1d30532b6990bf327ac762621e94e3904075ade4b9c2dd8a3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-866c7057636f377c",
+    "assetId": "media-866c7057636f377c",
+    "sourceFingerprint": "866c7057636f377c2023b9a851969fc7172b549acfec0c549f355941248105bd",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-873b5f60278e6436",
+    "assetId": "media-873b5f60278e6436",
+    "sourceFingerprint": "873b5f60278e6436aa90f6f9d26dec05b7edd81321aea30c87c9be8dda85b432",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-87fe4c7d570131b4",
+    "assetId": "media-87fe4c7d570131b4",
+    "sourceFingerprint": "87fe4c7d570131b4c7ca799da4c0643afa755a3e219ab7ff03546606b453377b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-883cadc0eb0c7b5e",
+    "assetId": "media-883cadc0eb0c7b5e",
+    "sourceFingerprint": "883cadc0eb0c7b5ed8e9b9378fdb8ccd7077e6b04299cd2c3bd880bb9e8b3920",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-884b36215301f1e6",
+    "assetId": "media-884b36215301f1e6",
+    "sourceFingerprint": "884b36215301f1e6216f8d9a4b03cad6a0efa1a8d18d1c3c1eae18459fcd78d4",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-88e6ed5bf49412df",
+    "assetId": "media-88e6ed5bf49412df",
+    "sourceFingerprint": "88e6ed5bf49412df681628658c49e4e49282d74bcc748b49ee2b625a13b1cfe5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-88f9025853980aea",
+    "assetId": "media-88f9025853980aea",
+    "sourceFingerprint": "88f9025853980aea6617c81ab218372ffd01f72e588093aa115313f1edd4c53b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-8915a45b74337cb6",
+    "assetId": "media-8915a45b74337cb6",
+    "sourceFingerprint": "8915a45b74337cb613f0e8ab92ec270ca474f69fc8cd2dd1871807bb33ef11d5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-8a5a48537375f97b",
+    "assetId": "media-8a5a48537375f97b",
+    "sourceFingerprint": "8a5a48537375f97b75317de26a48ba1eea648e8d1cb9931393ff4d99bc67403c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-8a8c08fb2d7cadcb",
+    "assetId": "media-8a8c08fb2d7cadcb",
+    "sourceFingerprint": "8a8c08fb2d7cadcb69fef1097c1eb9e8eb1cbd78e9ac5db1a208de0d24777928",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-8ac6e17c44b64686",
+    "assetId": "media-8ac6e17c44b64686",
+    "sourceFingerprint": "8ac6e17c44b64686b5c36cd7bac690e88805aa0ee9c17ef0eadba000305602d3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-8eadb4d7a86b97d0",
+    "assetId": "media-8eadb4d7a86b97d0",
+    "sourceFingerprint": "8eadb4d7a86b97d0163da44ee3659873f7c8d9df1b87044656d14c68879bf448",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-8f59fb8f837fc288",
+    "assetId": "media-8f59fb8f837fc288",
+    "sourceFingerprint": "8f59fb8f837fc288699b31157b57ffbe700bd1b4484f74bf9d359405cc23aa2b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-9086fa449882a669",
+    "assetId": "media-9086fa449882a669",
+    "sourceFingerprint": "9086fa449882a669bdd014a9441343a6df28111855065988014b5f88a2e28972",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-90903cefe0fba8e2",
+    "assetId": "media-90903cefe0fba8e2",
+    "sourceFingerprint": "90903cefe0fba8e22ff4ab8b5da753c5ad0de2c22b92ceaf5481cb2b3175c7fb",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-91209ad440dd8c24",
+    "assetId": "media-91209ad440dd8c24",
+    "sourceFingerprint": "91209ad440dd8c2473aa8e464e88285a7c88c63257a5d9af7ed213788acdd8ea",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-918e89edbc6d1c88",
+    "assetId": "media-918e89edbc6d1c88",
+    "sourceFingerprint": "918e89edbc6d1c880a547a4177e4cda83c38a8bd2cfab09f2974238b94390ce6",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-92229690ca23ebe1",
+    "assetId": "media-92229690ca23ebe1",
+    "sourceFingerprint": "92229690ca23ebe17d5efc31714d6bce2f2acb619befc372c6a460bfda842d14",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-92db57c73b511acc",
+    "assetId": "media-92db57c73b511acc",
+    "sourceFingerprint": "92db57c73b511acc8e804089b92440a3d435b02745b34acf633f7d1d5044978a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-931a1ddfd69cc902",
+    "assetId": "media-931a1ddfd69cc902",
+    "sourceFingerprint": "931a1ddfd69cc902b9f95f9294603efc85a3261d09c9ac2720f7ae0877c2b42e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-937acb2fb4c8174c",
+    "assetId": "media-937acb2fb4c8174c",
+    "sourceFingerprint": "937acb2fb4c8174c53809db88fd9bbeeceb7e254d2897a6e5d70343d3e59a875",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-95989dabb7f9697a",
+    "assetId": "media-95989dabb7f9697a",
+    "sourceFingerprint": "95989dabb7f9697a3e480a67a54bb14c2f22fd76da02798406bd33e370fa03e9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-95d33c4f2c5992b1",
+    "assetId": "media-95d33c4f2c5992b1",
+    "sourceFingerprint": "95d33c4f2c5992b1ba1b89d2734c48010d9b37c48350bfd83ad62eb31fde12e3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-95f2264d18f901cd",
+    "assetId": "media-95f2264d18f901cd",
+    "sourceFingerprint": "95f2264d18f901cddbb89418884668c358660ee91056eb7124f392c3ca3b50d0",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-963ab25b89cf93ee",
+    "assetId": "media-963ab25b89cf93ee",
+    "sourceFingerprint": "963ab25b89cf93ee35da02b6327bd1f1c2f470c54b5fcb97c18b14779b154cc2",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-96528f2374c02358",
+    "assetId": "media-96528f2374c02358",
+    "sourceFingerprint": "96528f2374c02358a55b6994e791c15602008693cded2e941cf8657b21de5cdf",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-97aa60943e57a836",
+    "assetId": "media-97aa60943e57a836",
+    "sourceFingerprint": "97aa60943e57a83625370b1c8f53eb294a9a0d54df80164fe00be795a55429b7",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-982e099d0b279f04",
+    "assetId": "media-982e099d0b279f04",
+    "sourceFingerprint": "982e099d0b279f0473e66353e82941fa75920d0761b15e3feafcd4c7350e93a2",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-986a6e3321d3eeb5",
+    "assetId": "media-986a6e3321d3eeb5",
+    "sourceFingerprint": "986a6e3321d3eeb5e85ec6f7733d2f2629724425bf562f7c79b7fbaf4aacac71",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-98b839f22752d4f9",
+    "assetId": "media-98b839f22752d4f9",
+    "sourceFingerprint": "98b839f22752d4f90a3c6701746ae84d83ea1b63318c084745f9ce61c68468ab",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-99dfe5f40b410e15",
+    "assetId": "media-99dfe5f40b410e15",
+    "sourceFingerprint": "99dfe5f40b410e15ae6408cbdf7a5d40d5d001c2f743e1b6fb953e2a57b5e5f4",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-9a6843d0f05d1d1a",
+    "assetId": "media-9a6843d0f05d1d1a",
+    "sourceFingerprint": "9a6843d0f05d1d1ace00e9cc6525ea8774328873fdd5634e4e9ad8166117ed7e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-9d0abc164c20f3ac",
+    "assetId": "media-9d0abc164c20f3ac",
+    "sourceFingerprint": "9d0abc164c20f3ac54d649a07e7a85fd9469e2d5a0aae85dccdf96b849538d7a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-9e3e6362318013db",
+    "assetId": "media-9e3e6362318013db",
+    "sourceFingerprint": "9e3e6362318013db7afd5d2fd86f65ff5e5bd569facbb4df517c52d5b19d04dc",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-9eb5dfed58413887",
+    "assetId": "media-9eb5dfed58413887",
+    "sourceFingerprint": "9eb5dfed5841388724930767ea83270b0e8f3a515a2773042d8504e65daf4f85",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-9f3dda7d787d4160",
+    "assetId": "media-9f3dda7d787d4160",
+    "sourceFingerprint": "9f3dda7d787d4160b6b89a2fb88e87161923b96d93c2d41f2e9256ae2577d5ed",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-9fd747cfb67d967d",
+    "assetId": "media-9fd747cfb67d967d",
+    "sourceFingerprint": "9fd747cfb67d967d90040987588aaff65ffb34fe05955d0e51b4cfc6667f3e9c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a0dd806afc726370",
+    "assetId": "media-a0dd806afc726370",
+    "sourceFingerprint": "a0dd806afc7263700a50aaee9e5388755915040dac9ddb464c751af74a82c981",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a13664d32f800b3e",
+    "assetId": "media-a13664d32f800b3e",
+    "sourceFingerprint": "a13664d32f800b3e9958d7a0b00f372c4fb151faf1c5242ac830925aed094294",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a1391ad1e0e4ac59",
+    "assetId": "media-a1391ad1e0e4ac59",
+    "sourceFingerprint": "a1391ad1e0e4ac59ed2c1de536939a9696a23787f77cad98aba3472dff210d7a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a20eca934fb2c7a7",
+    "assetId": "media-a20eca934fb2c7a7",
+    "sourceFingerprint": "a20eca934fb2c7a7c667250b613fb3327fe86902e16f6f9fc2d4b10a5c536f9d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a26dac7267050a9a",
+    "assetId": "media-a26dac7267050a9a",
+    "sourceFingerprint": "a26dac7267050a9a41fe2886989019285b1116ad959792f65a8420d6314e551a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a3dc9032a6bd5a46",
+    "assetId": "media-a3dc9032a6bd5a46",
+    "sourceFingerprint": "a3dc9032a6bd5a468340049193bb3a8eb1ff76ca5a1c0555a936e9dde5f843eb",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a471ac9bb03e5116",
+    "assetId": "media-a471ac9bb03e5116",
+    "sourceFingerprint": "a471ac9bb03e5116529ff7fdad787e59b1d3b642d552e1fa18bf1c8f4200d93f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-a548d5ce5ded7ede",
+    "assetId": "media-a548d5ce5ded7ede",
+    "sourceFingerprint": "a548d5ce5ded7edea923baf58284dc01e8c15c02fc116f5d3425d17824a7b18d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ab5ce8279b7b4ec0",
+    "assetId": "media-ab5ce8279b7b4ec0",
+    "sourceFingerprint": "ab5ce8279b7b4ec06877a97781aeb54b327a60d4bf1a1c475d70e718dcf3d4c9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ae9fd5b0881c6c6c",
+    "assetId": "media-ae9fd5b0881c6c6c",
+    "sourceFingerprint": "ae9fd5b0881c6c6c28074ba17b2440b726b0452dec384448c19728eb75be3ec8",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-afe764844c10530f",
+    "assetId": "media-afe764844c10530f",
+    "sourceFingerprint": "afe764844c10530f67f5d5579706b207cd719893442a2402bb727aac5a42cae9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b12e09eb3e24c8bf",
+    "assetId": "media-b12e09eb3e24c8bf",
+    "sourceFingerprint": "b12e09eb3e24c8bfb2d6348e92e48c3cadb508046e2a1cdc9f752d4af85418dd",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b360bec693e6d5eb",
+    "assetId": "media-b360bec693e6d5eb",
+    "sourceFingerprint": "b360bec693e6d5eb099bd9241ad7b3bf5cfd4642d4b06a79f014d64e7a036474",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b3af92c27e502cfe",
+    "assetId": "media-b3af92c27e502cfe",
+    "sourceFingerprint": "b3af92c27e502cfe0004a813e603819bb950d58f2383f4463795b38b8cd652c4",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b3b5a162e446dc14",
+    "assetId": "media-b3b5a162e446dc14",
+    "sourceFingerprint": "b3b5a162e446dc14d62464e4dc729b94349428ce6be04337576dbb6b63688aab",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b4e3912275309e06",
+    "assetId": "media-b4e3912275309e06",
+    "sourceFingerprint": "b4e3912275309e06ac94f2c6f377703b96068fb8d8d286b09929428e7c6c25ef",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b529e9e308ebac1e",
+    "assetId": "media-b529e9e308ebac1e",
+    "sourceFingerprint": "b529e9e308ebac1ea3d12cb64a61f970fcae2a953e81808f7320f32ebcb7693c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b52dfd8692da59f1",
+    "assetId": "media-b52dfd8692da59f1",
+    "sourceFingerprint": "b52dfd8692da59f19911d36e1999ecddcc5adf1cb056dfc7890f13a3a9f6c44a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b53b5e0dc8a2a64c",
+    "assetId": "media-b53b5e0dc8a2a64c",
+    "sourceFingerprint": "b53b5e0dc8a2a64c69461d8bcc3374dd2740ec7c7433eefb148f989c524b4c3e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b58edc3941789ee2",
+    "assetId": "media-b58edc3941789ee2",
+    "sourceFingerprint": "b58edc3941789ee2a82a7d6cfa2a7219a06f094b09ff6d174a4fb7dd7ab73cda",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b676844b8f59c8de",
+    "assetId": "media-b676844b8f59c8de",
+    "sourceFingerprint": "b676844b8f59c8dee159441b93da19f92691ebcdbf43badd425c015283c2f578",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b6dbe7a1ef75805f",
+    "assetId": "media-b6dbe7a1ef75805f",
+    "sourceFingerprint": "b6dbe7a1ef75805f30b15fb49c7dcf6995174aa8b707f7ddd9fa72c38e8b239e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b7f0952bb658d08a",
+    "assetId": "media-b7f0952bb658d08a",
+    "sourceFingerprint": "b7f0952bb658d08a5cb1d0de769843a23638273785f14f0d728fa7f85ac446f9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b81f3d8ffdbe4963",
+    "assetId": "media-b81f3d8ffdbe4963",
+    "sourceFingerprint": "b81f3d8ffdbe496336ad8c2a7c78de4d407b90949f5e882492b9c0e3a8c75688",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b830c1aa47345ba5",
+    "assetId": "media-b830c1aa47345ba5",
+    "sourceFingerprint": "b830c1aa47345ba5d28621b5e479aaf45f9a6ab21fae9ff1d31687943c77822c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b830fce0121ea588",
+    "assetId": "media-b830fce0121ea588",
+    "sourceFingerprint": "b830fce0121ea588ee61701e99542a30a151e3be24d35ec8712c589b2031c65a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b87cc1ad4c304b43",
+    "assetId": "media-b87cc1ad4c304b43",
+    "sourceFingerprint": "b87cc1ad4c304b433f90a0cf4481e7177fac1ea301a16321f5b15dcf46639c59",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b8af8efa4f00748b",
+    "assetId": "media-b8af8efa4f00748b",
+    "sourceFingerprint": "b8af8efa4f00748bb574deaf6d88e804166772900b232fe6bbd81cbdb97b784d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b8badca70286046d",
+    "assetId": "media-b8badca70286046d",
+    "sourceFingerprint": "b8badca70286046dd0eabcba029f3ab1b7079287d8cda13296dc036dabd56345",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b9a2c3cc9f0978b6",
+    "assetId": "media-b9a2c3cc9f0978b6",
+    "sourceFingerprint": "b9a2c3cc9f0978b6badcb0751c401b83f121b48358252889de13407a16222728",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b9daaf105c6e2a72",
+    "assetId": "media-b9daaf105c6e2a72",
+    "sourceFingerprint": "b9daaf105c6e2a7209b0d99a01c2e7917571c6ae6d61cb945fd6584a287bb3f5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-b9f46851cea0d65c",
+    "assetId": "media-b9f46851cea0d65c",
+    "sourceFingerprint": "b9f46851cea0d65c19f384c49fb7a4525426c17796254e5c5d1fa590836ff489",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-bea19981e444802e",
+    "assetId": "media-bea19981e444802e",
+    "sourceFingerprint": "bea19981e444802e68c07f73b6693ccfbf4cb97dda6a3f27740d22c3bb734d9e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-bf040c673dc55e41",
+    "assetId": "media-bf040c673dc55e41",
+    "sourceFingerprint": "bf040c673dc55e4108583a9a007cd8cb490dd858f74fd5e4f091f19846e28140",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-bfac1c72b81bfa9b",
+    "assetId": "media-bfac1c72b81bfa9b",
+    "sourceFingerprint": "bfac1c72b81bfa9ba6567336f4a9e1542b83df175b9ab517fdfd9535990190a3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c015e50ee7081de3",
+    "assetId": "media-c015e50ee7081de3",
+    "sourceFingerprint": "c015e50ee7081de3b92e8186f30b383cfd7a88187af306334fe0eef45d75af3f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c07016f1672e2858",
+    "assetId": "media-c07016f1672e2858",
+    "sourceFingerprint": "c07016f1672e2858b916cd2ee36f3a37a70ba0bc51bef3d07257a86450742747",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c09017b91f08cf22",
+    "assetId": "media-c09017b91f08cf22",
+    "sourceFingerprint": "c09017b91f08cf2249716c3b7e8666f10352a64fa7b5def2c22e45caba7424a3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c2043ecb94b61f05",
+    "assetId": "media-c2043ecb94b61f05",
+    "sourceFingerprint": "c2043ecb94b61f054fde86e7cc4a49d7b6aa74e0d8f1378d188bc13b70f48221",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c224f889834e2ef5",
+    "assetId": "media-c224f889834e2ef5",
+    "sourceFingerprint": "c224f889834e2ef5e68c52fee2a094981d14762a46b24918eadad0c42ef67835",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c2294a9ae7990a00",
+    "assetId": "media-c2294a9ae7990a00",
+    "sourceFingerprint": "c2294a9ae7990a000b912d8dc54f2c0d025ba3060b2d64b1c2912002f9beb8be",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c2b29237cf40dd56",
+    "assetId": "media-c2b29237cf40dd56",
+    "sourceFingerprint": "c2b29237cf40dd56a0da0b78cd47dd1a9e6dbf7078aad94cdc9db116b903cb19",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c38b9df0dbef6ae1",
+    "assetId": "media-c38b9df0dbef6ae1",
+    "sourceFingerprint": "c38b9df0dbef6ae19a7d633e61f456cbce93fc2f7c12564199b7dde0021315b3",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c3ca18e47fcf93e3",
+    "assetId": "media-c3ca18e47fcf93e3",
+    "sourceFingerprint": "c3ca18e47fcf93e3f01de5dda68dcfb5cf54baabbb55d59e45cdf92ae1a26e2a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c4c2d116bc71b3ae",
+    "assetId": "media-c4c2d116bc71b3ae",
+    "sourceFingerprint": "c4c2d116bc71b3aea33e5aef49360ef1f1a1a7a3f03afaaa4510ec0644782b96",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c53b6cc7d05570ac",
+    "assetId": "media-c53b6cc7d05570ac",
+    "sourceFingerprint": "c53b6cc7d05570acd04bed93001102d321fabd74e5ff1a5c77c9d30db97096ea",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c66955e2a62c9046",
+    "assetId": "media-c66955e2a62c9046",
+    "sourceFingerprint": "c66955e2a62c9046f239cccf5cee8d4253befb52199d771783a6e280467f2dfa",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c933d607051c4209",
+    "assetId": "media-c933d607051c4209",
+    "sourceFingerprint": "c933d607051c4209322a3c7ba95814f1a71b4a7245102a4abd4b1d998584a5b8",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-c97f613dcfe0c38c",
+    "assetId": "media-c97f613dcfe0c38c",
+    "sourceFingerprint": "c97f613dcfe0c38c5a3b610d5f9bc528bf4762c7402957673ce64fca8f6a5922",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ca473f12a40ac19b",
+    "assetId": "media-ca473f12a40ac19b",
+    "sourceFingerprint": "ca473f12a40ac19b4301c4afbf1d51fcfe05671499e4630befc88973c089250e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-cb650e9237441622",
+    "assetId": "media-cb650e9237441622",
+    "sourceFingerprint": "cb650e923744162272e1f49744b9dcf609d5ae51d5af877ab859f106ce27c755",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ccf752f24c1fd7f6",
+    "assetId": "media-ccf752f24c1fd7f6",
+    "sourceFingerprint": "ccf752f24c1fd7f6f32ec46f03211248af2b4d34296fb9aba530c124dd0aa05f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-cd3a603cb0cdae08",
+    "assetId": "media-cd3a603cb0cdae08",
+    "sourceFingerprint": "cd3a603cb0cdae088a05057f085128aa96d240bfa695b263701958e716371a39",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ce00dcd80b777c20",
+    "assetId": "media-ce00dcd80b777c20",
+    "sourceFingerprint": "ce00dcd80b777c2079414a59922e7797604852d769c4c323efb19f4eb45074ba",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-cece51c712102bec",
+    "assetId": "media-cece51c712102bec",
+    "sourceFingerprint": "cece51c712102bec54d7e99c830f8ab15f402a1fcf442fdcac641165544784a1",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-cf0486cf6663cc2d",
+    "assetId": "media-cf0486cf6663cc2d",
+    "sourceFingerprint": "cf0486cf6663cc2d6f4b5ebc60f976d8ac5d958b2c06aefadc449cc6eab6b934",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-cfd500c2dab64cfa",
+    "assetId": "media-cfd500c2dab64cfa",
+    "sourceFingerprint": "cfd500c2dab64cfa65644a55b0539924afd42bd15b9d403120634d05c7b5f83f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d032194112f7eb96",
+    "assetId": "media-d032194112f7eb96",
+    "sourceFingerprint": "d032194112f7eb9645a2beae8b651264098de517a51c82aa687233224537b278",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d2f99c5aa5ce45d8",
+    "assetId": "media-d2f99c5aa5ce45d8",
+    "sourceFingerprint": "d2f99c5aa5ce45d8639f4d07ffdd0cdbec229e8e1a90a306c6a237d13d6f997f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d3a20e9b1fa8ad3a",
+    "assetId": "media-d3a20e9b1fa8ad3a",
+    "sourceFingerprint": "d3a20e9b1fa8ad3ad09c6b4949857d29fe24a9bd9c8fc98cfd878385f20cd47f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d3ed0f354547536f",
+    "assetId": "media-d3ed0f354547536f",
+    "sourceFingerprint": "d3ed0f354547536fde26d211724c1f27903f2f669983b54e15ca705e40b2298d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d44a5befd79c7692",
+    "assetId": "media-d44a5befd79c7692",
+    "sourceFingerprint": "d44a5befd79c7692dfdc10f57c7d742090c0fcf31979752224abb600dee2b7eb",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d4acef80aae1213e",
+    "assetId": "media-d4acef80aae1213e",
+    "sourceFingerprint": "d4acef80aae1213e946acbb02d10317ca1fd414488972f03cdb5a968f25aced9",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d50b2262ace38381",
+    "assetId": "media-d50b2262ace38381",
+    "sourceFingerprint": "d50b2262ace38381cc7e17d496dad8a58d4e092cbde855041bda55f0edb1d2a6",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d582fccdab7ac991",
+    "assetId": "media-d582fccdab7ac991",
+    "sourceFingerprint": "d582fccdab7ac99109b8f9a0b89fb10da20c9e9aefe8f97e7d2de79241216631",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d5b8d01d194a098b",
+    "assetId": "media-d5b8d01d194a098b",
+    "sourceFingerprint": "d5b8d01d194a098bf0f95d0472149e97a4fed382ad06eca6ff93875ec8b29d9e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d627f275649d4dde",
+    "assetId": "media-d627f275649d4dde",
+    "sourceFingerprint": "d627f275649d4dde21da36c2f2fdd2cf881df9935c1f69171c29e7df6daa404b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d6b9240cd9fd01ab",
+    "assetId": "media-d6b9240cd9fd01ab",
+    "sourceFingerprint": "d6b9240cd9fd01abde5e7bf8dac7c587bdf574e42f83c2d63a5ad210439b0bb4",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d76ab4a8741e56b0",
+    "assetId": "media-d76ab4a8741e56b0",
+    "sourceFingerprint": "d76ab4a8741e56b05251595a6c298edf4087f1ed95464a20e3ec9dc4f76564ff",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d86a463da9ab5fa6",
+    "assetId": "media-d86a463da9ab5fa6",
+    "sourceFingerprint": "d86a463da9ab5fa60962095d53ca957b5deb20d77a9bd258a62aec77be7da700",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d875cbf56b801403",
+    "assetId": "media-d875cbf56b801403",
+    "sourceFingerprint": "d875cbf56b8014030cff6517a4eaf369185bb781a3ae93e86ab9ea3aea39692c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d89b66ad5df68630",
+    "assetId": "media-d89b66ad5df68630",
+    "sourceFingerprint": "d89b66ad5df686303b40baeba3e3ff207c0b101f96e3dbdc6ca96cf0833cd32e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d89fdd142a5c5071",
+    "assetId": "media-d89fdd142a5c5071",
+    "sourceFingerprint": "d89fdd142a5c50713dea67d68661483228410bbbe67d9d5b7e16bb4d9e9a85ed",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d8cb72bf592bb6f8",
+    "assetId": "media-d8cb72bf592bb6f8",
+    "sourceFingerprint": "d8cb72bf592bb6f89a0cd3a966b1849ed5b9f0b0d14781ab95bb0f4190f1ba73",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d90736b096aafc52",
+    "assetId": "media-d90736b096aafc52",
+    "sourceFingerprint": "d90736b096aafc5270e1016c95260ee3a86dc53ebd2bd538d62856f8e464af03",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-d940cfed45b365d6",
+    "assetId": "media-d940cfed45b365d6",
+    "sourceFingerprint": "d940cfed45b365d6e293b9b433057b0afc778f406ec7026c5425d4b0944235bd",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-da4750b37d426c7e",
+    "assetId": "media-da4750b37d426c7e",
+    "sourceFingerprint": "da4750b37d426c7ee926c73ff8ba3adac7423c63a28d53a5dddcdf0bad8c9b52",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-dae2d75ca0b0b38f",
+    "assetId": "media-dae2d75ca0b0b38f",
+    "sourceFingerprint": "dae2d75ca0b0b38f84a9bb176e07aa6c6989b878be31429598a29611b6d709ea",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-dc362d2b90fad4f9",
+    "assetId": "media-dc362d2b90fad4f9",
+    "sourceFingerprint": "dc362d2b90fad4f9975e498e2cb0f77aa89ac1c4248c92eba9f8005c244d786f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-dd0f0f705c46a4c9",
+    "assetId": "media-dd0f0f705c46a4c9",
+    "sourceFingerprint": "dd0f0f705c46a4c9a9978da61dfe56b55d4f0bb38bc325d5d870ba0328a88c62",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-dffd04567f0293cf",
+    "assetId": "media-dffd04567f0293cf",
+    "sourceFingerprint": "dffd04567f0293cff3693413b52e40e616fa341d3053a807db145d810f177c62",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-e1f2d473759279fe",
+    "assetId": "media-e1f2d473759279fe",
+    "sourceFingerprint": "e1f2d473759279feb73e1e41d204b4d766d06fd82777fa39f1af86c9b5e030dc",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-e24cb59c7561bed0",
+    "assetId": "media-e24cb59c7561bed0",
+    "sourceFingerprint": "e24cb59c7561bed0c0fb2badf18cdfb845f73efd42373acb113fbc151c7ac6da",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-e4eb4aebcfef7e12",
+    "assetId": "media-e4eb4aebcfef7e12",
+    "sourceFingerprint": "e4eb4aebcfef7e12d15967af0405f09541bd883c69ed1b5e015a6cdd2d7fb74f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-e50eb670f2679cf8",
+    "assetId": "media-e50eb670f2679cf8",
+    "sourceFingerprint": "e50eb670f2679cf8802fb1944c981149f4a4e61d8320b9c450a940acabdc3b53",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-e5d952cd9381967e",
+    "assetId": "media-e5d952cd9381967e",
+    "sourceFingerprint": "e5d952cd9381967e91448bdc258d6d3a50e511fc475284041e415825230fdd70",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ea6d9802115f5e1e",
+    "assetId": "media-ea6d9802115f5e1e",
+    "sourceFingerprint": "ea6d9802115f5e1e8c2063f9de958573598f81a3ebf75987204ef84bda8703a2",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ec770fda54b511ea",
+    "assetId": "media-ec770fda54b511ea",
+    "sourceFingerprint": "ec770fda54b511eae0dfb3096bd9d044fe84fb5ccbdf242557fc41b971a50377",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-eca8f4daeab5c813",
+    "assetId": "media-eca8f4daeab5c813",
+    "sourceFingerprint": "eca8f4daeab5c813a496af571a26640c025c676c6eb1485b797ddede7bb1d304",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ed4cfe0109dd9cab",
+    "assetId": "media-ed4cfe0109dd9cab",
+    "sourceFingerprint": "ed4cfe0109dd9caba6033c800c43e370867c580e0629b3a2239157e84bb6e56c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-edcd61927a2f79e1",
+    "assetId": "media-edcd61927a2f79e1",
+    "sourceFingerprint": "edcd61927a2f79e186d07c1d36528796eba4284cda5bdbcde568551f30a72383",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ef8d580088bb7b02",
+    "assetId": "media-ef8d580088bb7b02",
+    "sourceFingerprint": "ef8d580088bb7b0276db0c650f6692755ba245d01beb7ad8beaa2b955dbcc7f7",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f0779f60fa9cff4f",
+    "assetId": "media-f0779f60fa9cff4f",
+    "sourceFingerprint": "f0779f60fa9cff4f415b96e656e5a370faa552b3aa342c8d76f88ca2fb09c21e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f0cc07a1e8adfd0c",
+    "assetId": "media-f0cc07a1e8adfd0c",
+    "sourceFingerprint": "f0cc07a1e8adfd0c1009e4a85b8faa4a9dfc4805d968196571b2c7f803e4ff88",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f0d2fa96a8989c26",
+    "assetId": "media-f0d2fa96a8989c26",
+    "sourceFingerprint": "f0d2fa96a8989c26d595b824cbe17b1a98630195061a51c28af5ab1158bd6c77",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f0d9e70a1f1dd273",
+    "assetId": "media-f0d9e70a1f1dd273",
+    "sourceFingerprint": "f0d9e70a1f1dd273e5db26494549295651fea6555225bd635519c33d0eafcb71",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f1dd15532ed4d9ad",
+    "assetId": "media-f1dd15532ed4d9ad",
+    "sourceFingerprint": "f1dd15532ed4d9ad4ba32b0a075e81aff8be95d6a4675d09a225964e213c239b",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f293cfe49d79be61",
+    "assetId": "media-f293cfe49d79be61",
+    "sourceFingerprint": "f293cfe49d79be61a99fc8cf3e1a785c343dc0fe61dbd166ca914bc35e65fa16",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f4352b375eb478cf",
+    "assetId": "media-f4352b375eb478cf",
+    "sourceFingerprint": "f4352b375eb478cfdb25bbabd9739839926f5d640e2a16090b80a7b62dbb422f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f4641bb2ab2fe15b",
+    "assetId": "media-f4641bb2ab2fe15b",
+    "sourceFingerprint": "f4641bb2ab2fe15ba22b27c565d4ccf5312152aceeb64fd40e7367870036624f",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f4c7e6f98567c20f",
+    "assetId": "media-f4c7e6f98567c20f",
+    "sourceFingerprint": "f4c7e6f98567c20f68777a46f79ac963f2124ecc3a903625056ea4a6b7c7c13d",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f5081d50886adb60",
+    "assetId": "media-f5081d50886adb60",
+    "sourceFingerprint": "f5081d50886adb60a77c0ecdb65090aab38c69f9c0f91422f11e5dbc76bd8946",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f62b264d44edcf88",
+    "assetId": "media-f62b264d44edcf88",
+    "sourceFingerprint": "f62b264d44edcf88fd6dc28030ad9baf5698b81c3ce5e0a115dd54ec9c0f1d0e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f7c31c2f276d61a3",
+    "assetId": "media-f7c31c2f276d61a3",
+    "sourceFingerprint": "f7c31c2f276d61a3e58fdc6e74d98838d2c25397054b39b0db4bcfd5731e8015",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f7d85f2b43d932f3",
+    "assetId": "media-f7d85f2b43d932f3",
+    "sourceFingerprint": "f7d85f2b43d932f361a2eef9cbf0cbf01d1cdfd57e99f7748b8551ee9bbb2079",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f8f08b0327414ae2",
+    "assetId": "media-f8f08b0327414ae2",
+    "sourceFingerprint": "f8f08b0327414ae290f0f5f538e09d265f5a73f69a29f932a605e0f3086bc00c",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f9da09d24a7c6dfc",
+    "assetId": "media-f9da09d24a7c6dfc",
+    "sourceFingerprint": "f9da09d24a7c6dfc15ba3e5888fd99a55e507bd1c410006bc642cb56a8366bb5",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-f9fe4d7fd8920110",
+    "assetId": "media-f9fe4d7fd8920110",
+    "sourceFingerprint": "f9fe4d7fd89201106d4a406fdd893aba790601532cf88c69d52a2a65e115995e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-fb5c78c9b8d9d76f",
+    "assetId": "media-fb5c78c9b8d9d76f",
+    "sourceFingerprint": "fb5c78c9b8d9d76f7ef936b293c2d1024442659323cf1e8d1084514fb580b302",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-fce3f17c686f50fe",
+    "assetId": "media-fce3f17c686f50fe",
+    "sourceFingerprint": "fce3f17c686f50fe77cf296628bf31bbec3d485247fc2acf8850b817c314d1ca",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-fda451f4f76c9265",
+    "assetId": "media-fda451f4f76c9265",
+    "sourceFingerprint": "fda451f4f76c9265ee867c615a9b5ea5b110a9fc5cec00cf2f35264b89f3b359",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-fdff5ee098571485",
+    "assetId": "media-fdff5ee098571485",
+    "sourceFingerprint": "fdff5ee09857148529f6e3f05a701de81952ef249177a4b30737391d8af2cca0",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ff17c2fbfae0859d",
+    "assetId": "media-ff17c2fbfae0859d",
+    "sourceFingerprint": "ff17c2fbfae0859d732a02332d86d4c7a6fc40c6caedf1671b9de7fa17425f9a",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ff54c967af6a5e50",
+    "assetId": "media-ff54c967af6a5e50",
+    "sourceFingerprint": "ff54c967af6a5e50f29f2cb0395ee1f6c9c77f9ec18677f0384096dbda4fdf4e",
+    "similarity": 1,
+    "approval": "automatic"
+  },
+  {
+    "assetKey": "word-media-ff81c1655d11def2",
+    "assetId": "media-ff81c1655d11def2",
+    "sourceFingerprint": "ff81c1655d11def235b7870cfdf3c49fbb30d663d0259e2619d73be6c7f4a9ae",
+    "similarity": 1,
+    "approval": "automatic"
+  }
+]
