@@ -34,6 +34,7 @@ export interface WordAssetDescriptor extends ImageDescriptor {
 export interface MatchCandidate {
   sourcePath: string;
   sourceFingerprint: string;
+  exactBinaryMatch?: boolean;
   similarity: number;
   visualSimilarity: number;
   aspectSimilarity: number;

@@ -123,6 +123,32 @@ async function readLocalizedMarkdown(directory) {
 
 const dataDirectory = resolve(repositoryRoot, "src/data");
 const contentDirectory = resolve(repositoryRoot, "src/content");
+const mediaAssets = await readJsonArray(
+  resolve(dataDirectory, "media/assets.json"),
+);
+const uploadSelection = await readJsonArray(
+  resolve(dataDirectory, "media/upload-selection.json"),
+);
+const mediaAssetIds = new Set(mediaAssets.map(({ id }) => id));
+const selectedAssetIds = new Set();
+for (const [index, assetId] of uploadSelection.entries()) {
+  if (typeof assetId !== "string") {
+    throw new TypeError(
+      `src/data/media/upload-selection.json[${index}] must be an asset ID.`,
+    );
+  }
+  if (selectedAssetIds.has(assetId)) {
+    throw new Error(
+      `src/data/media/upload-selection.json contains duplicate asset ID "${assetId}".`,
+    );
+  }
+  if (!mediaAssetIds.has(assetId)) {
+    throw new Error(
+      `src/data/media/upload-selection.json references unknown asset "${assetId}".`,
+    );
+  }
+  selectedAssetIds.add(assetId);
+}
 
 assertContentModel({
   sourceDocuments: await readJsonArray(
@@ -140,7 +166,7 @@ assertContentModel({
     resolve(contentDirectory, "journal"),
   ),
   photos: await readJsonArray(resolve(dataDirectory, "media/photos.json")),
-  mediaAssets: await readJsonArray(resolve(dataDirectory, "media/assets.json")),
+  mediaAssets,
   localizedPhotos: await readLocalizedJsonByLocale(
     resolve(contentDirectory, "media"),
   ),

@@ -1,9 +1,12 @@
 import { createHash } from "node:crypto";
-import { mkdir, mkdtemp, readFile, rm } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { promisify } from "node:util";
 
 import sharp from "sharp";
+import { zipSync } from "fflate";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { approveMatches } from "./approval.ts";
@@ -15,8 +18,17 @@ import type { BlobClient } from "./uploading.ts";
 import { uploadMediaAssets } from "./uploading.ts";
 import { validateMediaPipeline } from "./validation.ts";
 import type { MatchCandidate, MatchReport } from "./types.ts";
+import { extractWordMedia } from "./wordSource.ts";
 
 const temporaryDirectories: string[] = [];
+const execFileAsync = promisify(execFile);
+const encoder = new TextEncoder();
+const syntheticPng = Uint8Array.from(
+  Buffer.from(
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+    "base64",
+  ),
+);
 
 afterEach(async () => {
   await Promise.all(
@@ -46,6 +58,15 @@ async function createWorkspace(): Promise<string> {
 }
 
 describe("media source matching", () => {
+  it("loads the image module in the direct Node runtime used by media commands", async () => {
+    await expect(
+      execFileAsync(process.execPath, [
+        "-e",
+        "import('./scripts/media/image.ts')",
+      ]),
+    ).resolves.toMatchObject({ stderr: "" });
+  });
+
   it("scores identical visual descriptors and classifies a clear winner", () => {
     const descriptor = {
       path: "source.jpg",
@@ -67,6 +88,21 @@ describe("media source matching", () => {
         candidate("c".repeat(64), 0.8),
       ]).status,
     ).toBe("automatic");
+  });
+
+  it("prioritizes an exact binary match over perceptually similar candidates", () => {
+    const exact = {
+      ...candidate("b".repeat(64), 1),
+      exactBinaryMatch: true,
+    };
+    const entry = classifyCandidates(
+      "word-media-aaaaaaaaaaaaaaaa",
+      "a".repeat(64),
+      [candidate("a".repeat(64), 1), exact],
+    );
+
+    expect(entry.status).toBe("automatic");
+    expect(entry.candidates[0]).toEqual(exact);
   });
 
   it("keeps close candidates ambiguous and stores approvals without paths", () => {
@@ -100,6 +136,71 @@ describe("media source matching", () => {
       },
     ]);
     expect(JSON.stringify(matches)).not.toContain("/private/export");
+  });
+});
+
+describe("Word media extraction", () => {
+  it("extracts each distinct embedded binary with a stable content-addressed name", async () => {
+    const workspace = await createWorkspace();
+    const wordPath = join(workspace, "synthetic.docx");
+    const outputDirectory = join(workspace, "word-sources");
+    const relationships = `<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/image1.png"/>
+</Relationships>`;
+    const document = `<?xml version="1.0" encoding="UTF-8"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <w:body>
+    <w:p><w:r><w:drawing><a:blip r:embed="rId1"/></w:drawing></w:r><w:r><w:drawing><a:blip r:embed="rId1"/></w:drawing></w:r></w:p>
+    <w:sectPr/>
+  </w:body>
+</w:document>`;
+    const archive = zipSync({
+      "word/document.xml": encoder.encode(document),
+      "word/_rels/document.xml.rels": encoder.encode(relationships),
+      "word/media/image1.png": syntheticPng,
+    });
+    await writeFile(wordPath, archive);
+    const approvedSha256 = createHash("sha256").update(archive).digest("hex");
+    const sourceFingerprint = createHash("sha256")
+      .update(syntheticPng)
+      .digest("hex");
+    const expectedFilename = `word-media-${sourceFingerprint.slice(0, 16)}.png`;
+
+    const first = await extractWordMedia({
+      wordPath,
+      outputDirectory,
+      approvedFilename: "synthetic.docx",
+      approvedSha256,
+      expectedAssetCount: 1,
+    });
+    const firstIndex = await readFile(
+      join(outputDirectory, "index.json"),
+      "utf8",
+    );
+    const second = await extractWordMedia({
+      wordPath,
+      outputDirectory,
+      approvedFilename: "synthetic.docx",
+      approvedSha256,
+      expectedAssetCount: 1,
+    });
+
+    expect(first).toEqual(second);
+    expect(first).toEqual([
+      {
+        assetKey: `word-media-${sourceFingerprint.slice(0, 16)}`,
+        sourceFingerprint,
+        filename: expectedFilename,
+        bytes: syntheticPng.byteLength,
+      },
+    ]);
+    expect(await readFile(join(outputDirectory, expectedFilename))).toEqual(
+      Buffer.from(syntheticPng),
+    );
+    expect(await readFile(join(outputDirectory, "index.json"), "utf8")).toBe(
+      firstIndex,
+    );
   });
 });
 
@@ -203,9 +304,28 @@ describe("media generation, validation and upload", () => {
       manifestPath,
       outputDirectory,
       execute: false,
+      selectedAssetIds: [first[0]!.id],
     });
     expect(dryRun.plan).toHaveLength(2);
     expect(firstManifest).toBe(await readFile(manifestPath, "utf8"));
+    await expect(
+      uploadMediaAssets({
+        manifestPath,
+        outputDirectory,
+        execute: true,
+        confirmation: "pct-2026",
+        token: "test-token",
+        selectedAssetIds: [],
+      }),
+    ).rejects.toThrow("at least 1 explicitly selected asset");
+    await expect(
+      uploadMediaAssets({
+        manifestPath,
+        outputDirectory,
+        execute: false,
+        selectedAssetIds: ["media-does-not-exist"],
+      }),
+    ).rejects.toThrow("unknown asset media-does-not-exist");
 
     const put = vi.fn(async (path: string) => ({
       url: `https://blob.example/${path}`,
@@ -221,6 +341,7 @@ describe("media generation, validation and upload", () => {
       confirmation: "pct-2026",
       token: "test-token",
       client: firstClient,
+      selectedAssetIds: [first[0]!.id],
     });
     expect(put).toHaveBeenCalledTimes(2);
 
@@ -242,6 +363,7 @@ describe("media generation, validation and upload", () => {
       execute: true,
       confirmation: "pct-2026",
       token: "test-token",
+      selectedAssetIds: [first[0]!.id],
       client: {
         head: vi.fn(async (path) => existingSizes.get(path) ?? null),
         put: secondPut,

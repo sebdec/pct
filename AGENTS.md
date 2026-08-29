@@ -78,6 +78,7 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Keep GitHub Actions permissions read-only unless an approved workflow needs more.
 - Never commit `dist`, `.astro`, credentials, local environment files or generated media derivatives that can be reproduced.
 - Open focused pull requests ready for human review. Never merge, enable auto-merge or deploy without explicit approval.
+- Before opening a pull request, present the local diff, verification evidence, risks and remaining human checks in the active Codex task. Keep the branch unpublished until the human explicitly approves creating the pull request.
 
 ## Content and media
 
@@ -98,8 +99,10 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Do not place original full-resolution photos in Git. Commit only approved optimized derivatives with stable names and attribution metadata where needed.
 - Never import the Word source or Google Photos export wholesale into this repository.
 - Keep original photos, matching reports and generated derivatives outside Git. Only approved fingerprint associations, provider-neutral manifests and localized media copy are versioned.
-- Run media work through the separate `media:match`, `media:approve`, `media:generate`, `media:validate` and `media:upload` commands. Matching must never approve ambiguous candidates silently.
+- Use the images embedded in the approved Word document as the V1 media source. Extract them only into the ignored `.media-workspace` through `media:extract-word`. A later upgrade to higher-resolution originals requires a separate approved issue.
+- Run media work through the separate `media:extract-word`, `media:match`, `media:approve`, `media:generate`, `media:validate` and `media:upload` commands. Matching must never approve ambiguous candidates silently.
 - Keep media paths immutable and content-addressed. Blob upload is dry-run by default and must never overwrite or delete remote content.
+- Upload only asset IDs explicitly listed in `src/data/media/upload-selection.json`. Keep the selection empty until the human approves the exact assets, especially while official PCT logo usage remains unresolved.
 
 ## Project tracking and making of
 

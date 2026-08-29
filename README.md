@@ -103,7 +103,7 @@ The extractor generates placement metadata for every embedded Word image without
 
 ## Photo pipeline
 
-The local media pipeline matches a curated export of higher-quality originals to the Word placements, creates responsive AVIF and WebP derivatives and prepares immutable Vercel Blob paths. It is independent from the static build and uses synthetic images in automated tests.
+The local media pipeline extracts the images embedded in the approved Word source, verifies exact fingerprint associations, creates responsive AVIF and WebP derivatives and prepares immutable Vercel Blob paths. It is independent from the static build and uses synthetic images in automated tests. A future upgrade to higher-resolution originals remains possible through the same neutral manifest but is not a V1 dependency.
 
 See `scripts/media/README.md` for the review, generation, validation and dry-run upload workflow. No real upload is performed without a separate explicit authorization.
 
