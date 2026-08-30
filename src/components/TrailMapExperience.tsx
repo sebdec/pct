@@ -7,6 +7,7 @@ import type {
   Map as MapLibreMap,
   Marker,
 } from "maplibre-gl";
+import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 
 import type {
   MapArea,
@@ -23,7 +24,7 @@ import {
   selectMapMile,
   type MapDayViewModel,
 } from "../lib/map/mapExperience.ts";
-import { loadMapPayload, type MapPayload } from "../lib/map/mapPayload.ts";
+import { loadMapPayload, mapPayloadPath } from "../lib/map/mapPayload.ts";
 import {
   createRouteIndex,
   getCoordinateAtMile,
@@ -39,7 +40,10 @@ import "./TrailMapExperience.css";
 
 interface Props {
   days: readonly MapDayViewModel[];
-  mapPayloadUrl: string;
+  route?: TrailRoute;
+  points?: readonly MapPoint[];
+  areas?: readonly MapArea[];
+  mapPayloadUrl?: string;
   mapStyleUrl: string;
   initialDayId?: string;
   locale?: Locale;
@@ -382,7 +386,14 @@ class RouteFitControl implements IControl {
   };
 }
 
-interface LoadedProps extends Omit<Props, "mapPayloadUrl">, MapPayload {}
+interface LoadedMapPayload {
+  route: TrailRoute;
+  points: readonly MapPoint[];
+  areas: readonly MapArea[];
+}
+
+type LoadedProps = Omit<Props, "mapPayloadUrl" | "route" | "points" | "areas"> &
+  LoadedMapPayload;
 
 function LoadedTrailMapExperience({
   days,
@@ -416,7 +427,7 @@ function LoadedTrailMapExperience({
 
   useEffect(() => {
     let disposed = false;
-    let usingFallback = mapStyleUrl === "local";
+    const usingFallback = mapStyleUrl === "local";
     let routeClickBound = false;
 
     async function createMap() {
@@ -425,6 +436,7 @@ function LoadedTrailMapExperience({
       try {
         const maplibre = await import("maplibre-gl");
         if (disposed || !mapContainerRef.current) return;
+        maplibre.setWorkerUrl(maplibreWorkerUrl);
 
         const map = new maplibre.Map({
           container: mapContainerRef.current,
@@ -673,18 +685,13 @@ function LoadedTrailMapExperience({
         map.on("load", addExperienceLayers);
         map.on("style.load", addExperienceLayers);
         if (map.isStyleLoaded()) addExperienceLayers();
-        map.on("error", () => {
-          if (!map.isStyleLoaded() && !usingFallback) {
-            usingFallback = true;
-            map.setStyle(localMapStyle(readMapThemeColors()));
-          }
-        });
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
         map.addControl(
           new RouteFitControl(route, labels.recenterTrail),
           "top-right",
         );
         map.once("idle", () => {
+          map.getContainer().dataset.mapReady = "true";
           map
             .getContainer()
             .querySelector(".maplibregl-ctrl-attrib")
@@ -873,15 +880,26 @@ function MapDataPlaceholder({
 }
 
 export default function TrailMapExperience(props: Props) {
-  const [payload, setPayload] = useState<MapPayload>();
+  const hasInlinePayload = !!(props.route && props.points && props.areas);
+  const [payload, setPayload] = useState<LoadedMapPayload | undefined>(() =>
+    hasInlinePayload
+      ? {
+          route: props.route!,
+          points: props.points!,
+          areas: props.areas!,
+        }
+      : undefined,
+  );
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
+    if (hasInlinePayload) return;
+
     const controller = new AbortController();
     setPayload(undefined);
     setFailed(false);
 
-    loadMapPayload(props.mapPayloadUrl, controller.signal)
+    loadMapPayload(props.mapPayloadUrl ?? mapPayloadPath, controller.signal)
       .then(setPayload)
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === "AbortError")
@@ -890,7 +908,7 @@ export default function TrailMapExperience(props: Props) {
       });
 
     return () => controller.abort();
-  }, [props.mapPayloadUrl]);
+  }, [hasInlinePayload, props.mapPayloadUrl]);
 
   if (!payload) {
     return (

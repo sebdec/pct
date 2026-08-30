@@ -41,6 +41,10 @@ test("selects the journey without a native day menu or URL changes", async ({
   await expect(
     page.getByRole("button", { name: "Recentrer sur le PCT" }),
   ).toBeVisible();
+  await expect(page.locator(".maplibregl-map")).toHaveAttribute(
+    "data-map-ready",
+    "true",
+  );
   await expect(
     page.getByRole("link", { name: "Voir sur le journal" }),
   ).toHaveAttribute("href", "/fr/journal/day-001");

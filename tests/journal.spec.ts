@@ -93,15 +93,20 @@ test("renders approved responsive photos as static HTML", async ({ page }) => {
   ).toBe(true);
 });
 
-test("keeps localized placeholders when alternative text is missing", async ({
+test("falls back to source photo copy when translation is missing", async ({
   page,
 }) => {
   await page.goto("/journal/day-001");
 
   const sequence = page.getByLabel("Journal photographs");
+  const photos = sequence.locator("img");
 
-  await expect(sequence.locator("img")).toHaveCount(0);
-  await expect(sequence.getByText("Photo not published")).toHaveCount(6);
+  await expect(photos).toHaveCount(6);
+  await expect(photos.first()).toHaveAttribute(
+    "alt",
+    "Randonneur debout auprès du monument marquant le terminus sud du Pacific Crest Trail",
+  );
+  await expect(sequence.getByText("Photo not published")).toHaveCount(0);
 });
 
 test("removes trail metrics and the map action after day 97", async ({

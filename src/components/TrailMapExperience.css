@@ -94,10 +94,12 @@
 }
 
 .trail-map-metrics .trail-metrics__section-list {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pct-space-2) var(--pct-space-4);
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .trail-map-metrics .trail-metrics__section-list span {
@@ -108,6 +110,8 @@
   display: inline;
   margin-right: var(--pct-space-2);
   margin-left: var(--pct-space-2);
+  color: var(--pct-color-faint);
+  content: "/";
 }
 
 .trail-map-metrics .trail-metrics__position,
