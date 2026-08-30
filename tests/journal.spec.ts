@@ -34,7 +34,7 @@ test("keeps French dates, the current Journal URL and the map deep link", async 
     "Position",
   );
   await expect(page.getByLabel("Repères de la journée")).not.toContainText(
-    "km",
+    "mi",
   );
   await expect(page.getByLabel("Accès rapide aux journées")).not.toContainText(
     "Position",
@@ -201,6 +201,18 @@ test("keeps region and section aligned without joining their separators", async 
 
     const regionBounds = region.getBoundingClientRect();
     const sectionBounds = section.getBoundingClientRect();
+    const regionLabelBounds = region
+      .querySelector("dt")!
+      .getBoundingClientRect();
+    const sectionLabelBounds = section
+      .querySelector("dt")!
+      .getBoundingClientRect();
+    const regionValueBounds = region
+      .querySelector("dd")!
+      .getBoundingClientRect();
+    const sectionValueBounds = section
+      .querySelector("dd")!
+      .getBoundingClientRect();
     const separatorBottom = Number.parseFloat(
       getComputedStyle(region, "::after").bottom,
     );
@@ -209,11 +221,17 @@ test("keeps region and section aligned without joining their separators", async 
       horizontalBorderWidth: getComputedStyle(region).borderBottomWidth,
       regionTop: regionBounds.top,
       sectionTop: sectionBounds.top,
+      regionLabelTop: regionLabelBounds.top,
+      sectionLabelTop: sectionLabelBounds.top,
+      regionValueTop: regionValueBounds.top,
+      sectionValueTop: sectionValueBounds.top,
       separatorBottom,
     };
   });
 
   expect(contextLayout.horizontalBorderWidth).toBe("0px");
   expect(contextLayout.regionTop).toBe(contextLayout.sectionTop);
+  expect(contextLayout.regionLabelTop).toBe(contextLayout.sectionLabelTop);
+  expect(contextLayout.regionValueTop).toBe(contextLayout.sectionValueTop);
   expect(contextLayout.separatorBottom).toBeGreaterThan(0);
 });

@@ -41,8 +41,10 @@ const themeColor = usesFlatTrailBackground ? "#282c35" : "#191d27";
 
     <script>
       import { configureExternalLinks } from "../lib/navigation/externalLinks";
+      import { configureDisplayPreferences } from "../lib/preferences/displayPreferencesBrowser.ts";
 
       configureExternalLinks(document);
+      configureDisplayPreferences(document);
     </script>
   </body>
 </html>

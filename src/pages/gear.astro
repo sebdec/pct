@@ -4,11 +4,9 @@ import { getCollection } from "astro:content";
 import GearWeightChart from "../components/GearWeightChart.astro";
 import PageCredits from "../components/PageCredits.astro";
 import TextLink from "../components/TextLink.astro";
+import UnitValue from "../components/UnitValue.tsx";
 import EditorialPageLayout from "../layouts/EditorialPageLayout.astro";
-import {
-  buildGearViewModel,
-  formatGearWeightInGrams,
-} from "../lib/gear/gearViewModel.ts";
+import { buildGearViewModel } from "../lib/gear/gearViewModel.ts";
 import { site } from "../lib/site.ts";
 
 const [
@@ -64,7 +62,9 @@ const pageTitle = "Équipement | " + site.title;
               {category.temporary && <span>Temporaire</span>}
             </div>
             <p>
-              <strong>{formatGearWeightInGrams(category.weightGrams)}</strong>
+              <strong>
+                <UnitValue weightGrams={category.weightGrams} />
+              </strong>
             </p>
           </header>
 
@@ -84,7 +84,7 @@ const pageTitle = "Équipement | " + site.title;
                   {item.detail && <p>{item.detail}</p>}
                 </div>
                 <p class="gear-item__weight">
-                  {formatGearWeightInGrams(item.weightGrams)}
+                  <UnitValue weightGrams={item.weightGrams} />
                 </p>
               </li>
             ))}

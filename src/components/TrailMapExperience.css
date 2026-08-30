@@ -159,18 +159,26 @@
 }
 
 .maplibregl-ctrl-group button {
-  filter: invert(1);
+  filter: var(--pct-map-control-filter);
 }
 
 .maplibregl-ctrl-attrib.maplibregl-compact {
   max-width: calc(100% - var(--pct-space-8));
   color: var(--pct-color-muted);
-  background-color: rgb(40 44 53 / 92%);
+  background-color: color-mix(
+    in srgb,
+    var(--pct-color-night-trail) 92%,
+    transparent
+  );
   font-size: 0.6rem;
 }
 
 .maplibregl-ctrl-attrib.maplibregl-compact-show {
-  background-color: rgb(40 44 53 / 96%);
+  background-color: color-mix(
+    in srgb,
+    var(--pct-color-night-trail) 96%,
+    transparent
+  );
 }
 
 .maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-inner {
@@ -182,8 +190,12 @@
 }
 
 .maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button {
-  background-color: rgb(40 44 53 / 92%);
-  filter: invert(1);
+  background-color: color-mix(
+    in srgb,
+    var(--pct-color-night-trail) 92%,
+    transparent
+  );
+  filter: var(--pct-map-control-filter);
 }
 
 .trail-map-fit-button::before {

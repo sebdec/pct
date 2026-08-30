@@ -9,9 +9,6 @@ interface Props {
 }
 
 const { page, sections } = Astro.props;
-const decimalFormatter = new Intl.NumberFormat("fr-FR", {
-  maximumFractionDigits: 1,
-});
 const integerFormatter = new Intl.NumberFormat("fr-FR", {
   maximumFractionDigits: 0,
 });
@@ -23,8 +20,11 @@ const integerFormatter = new Intl.NumberFormat("fr-FR", {
       regionId={page.regionId}
       regionLabel={page.regionLabel}
       sections={sections}
-      positionLabel={`${decimalFormatter.format(page.metrics.mileStart)} → ${decimalFormatter.format(page.metrics.mileEnd)} mi`}
-      distanceLabel={`${decimalFormatter.format(page.metrics.distanceMiles)} mi`}
+      positionMiles={{
+        start: page.metrics.mileStart,
+        end: page.metrics.mileEnd,
+      }}
+      distanceMiles={page.metrics.distanceMiles}
       ascentLabel={`+${integerFormatter.format(page.metrics.ascentMeters)} m`}
       descentLabel={`−${integerFormatter.format(page.metrics.descentMeters)} m`}
     />

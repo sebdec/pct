@@ -1,5 +1,6 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
 import TrailMetricIcon from "./TrailMetricIcon.tsx";
+import UnitValue from "./UnitValue.tsx";
 import "./TrailMetricLabel.css";
 import "./TrailMetrics.css";
 
@@ -12,8 +13,8 @@ interface Props {
   regionId: TrailDay["regionId"];
   regionLabel: string;
   sections: readonly TrailSectionLabel[];
-  positionLabel: string;
-  distanceLabel: string;
+  positionMiles: { start: number; end: number };
+  distanceMiles: number;
   ascentLabel: string;
   descentLabel: string;
   className?: string;
@@ -23,8 +24,8 @@ export default function TrailMetrics({
   regionId,
   regionLabel,
   sections,
-  positionLabel,
-  distanceLabel,
+  positionMiles,
+  distanceMiles,
   ascentLabel,
   descentLabel,
   className,
@@ -69,14 +70,17 @@ export default function TrailMetrics({
           icon="mile"
           label="Position"
         >
-          {positionLabel}
+          <UnitValue
+            distanceMiles={positionMiles.start}
+            distanceEndMiles={positionMiles.end}
+          />
         </Metric>
         <Metric
           className="trail-metrics__distance"
           icon="distance"
           label="Distance"
         >
-          {distanceLabel}
+          <UnitValue distanceMiles={distanceMiles} />
         </Metric>
         <Metric
           className="trail-metrics__ascent"

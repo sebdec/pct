@@ -1,5 +1,6 @@
 ---
 import { site } from "../lib/site";
+import HeaderPreferences from "./HeaderPreferences.astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -29,28 +30,34 @@ function navigationHref(label: string, href: string): string {
 ---
 
 <header class="site-header">
-  <a class="wordmark" href="/" aria-label={`${site.title}, accueil`}>
-    <span>Pacific Crest Trail</span>
-    <small>2026</small>
-  </a>
+  <div class="site-header__row">
+    <div class="site-header__left">
+      <a class="wordmark" href="/" aria-label={`${site.title}, accueil`}>
+        <span>Pacific Crest Trail</span>
+        <small>2026</small>
+      </a>
 
-  <nav aria-label="Navigation principale">
-    <ul>
-      {
-        site.navigation.map(({ label, href }) => (
-          <li>
-            <a
-              href={navigationHref(label, href)}
-              class:list={{ active: isActive(href) }}
-              aria-current={isActive(href) ? "page" : undefined}
-            >
-              {label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+      <nav aria-label="Navigation principale">
+        <ul>
+          {
+            site.navigation.map(({ label, href }) => (
+              <li>
+                <a
+                  href={navigationHref(label, href)}
+                  class:list={{ active: isActive(href) }}
+                  aria-current={isActive(href) ? "page" : undefined}
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <HeaderPreferences />
+  </div>
 
   <nav class="mobile-navigation" aria-label="Navigation principale mobile">
     {
@@ -71,13 +78,25 @@ function navigationHref(label: string, href: string): string {
   .site-header {
     position: relative;
     z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: min(100% - 3rem, var(--pct-content-wide));
     min-height: 5.25rem;
     margin: 0 auto;
     border-bottom: 1px solid var(--pct-color-faint);
+  }
+
+  .site-header__row {
+    display: flex;
+    min-height: 5.25rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--pct-space-5);
+  }
+
+  .site-header__left {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
   }
 
   .wordmark {
@@ -160,11 +179,17 @@ function navigationHref(label: string, href: string): string {
 
   @media (max-width: 48rem) {
     .site-header {
-      flex-direction: column;
-      gap: var(--pct-space-4);
-      align-items: flex-start;
       width: min(100% - 2rem, var(--pct-content-wide));
       padding: var(--pct-space-4) 0;
+    }
+
+    .site-header__row {
+      width: 100%;
+      min-height: 0;
+    }
+
+    .site-header__left {
+      min-width: 0;
     }
 
     nav {

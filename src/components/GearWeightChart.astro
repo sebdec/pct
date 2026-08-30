@@ -1,6 +1,7 @@
 ---
 import type { GearCategory } from "../lib/gear/gearViewModel.ts";
 import { formatGearWeightInGrams } from "../lib/gear/gearViewModel.ts";
+import UnitValue from "./UnitValue.tsx";
 
 interface Props {
   baseWeightGrams: number;
@@ -43,7 +44,19 @@ const accessibleChartLabel =
 ---
 
 <section class="gear-chart" aria-label="Répartition du poids" data-gear-chart>
-  <div class="gear-chart__visual" role="img" aria-label={accessibleChartLabel}>
+  <div
+    class="gear-chart__visual"
+    role="img"
+    aria-label={accessibleChartLabel}
+    data-gear-chart-accessibility
+    data-gear-chart-total={totalWeightGrams}
+    data-gear-chart-breakdown={JSON.stringify(
+      chartCategories.map(({ label, weightGrams }) => ({
+        label,
+        weightGrams,
+      })),
+    )}
+  >
     <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
       <circle class="gear-chart__track" cx="60" cy="60" r="44" pathLength="100"
       ></circle>
@@ -92,9 +105,15 @@ const accessibleChartLabel =
               <span class="gear-chart__swatch" aria-hidden="true" />
               <span>{category.label}</span>
               <strong>
-                {category.temporary
-                  ? "(+" + formatGearWeightInGrams(category.weightGrams) + ")"
-                  : formatGearWeightInGrams(category.weightGrams)}
+                {category.temporary ? (
+                  <UnitValue
+                    weightGrams={category.weightGrams}
+                    prefix="(+"
+                    suffix=")"
+                  />
+                ) : (
+                  <UnitValue weightGrams={category.weightGrams} />
+                )}
               </strong>
             </a>
           </li>
@@ -105,27 +124,56 @@ const accessibleChartLabel =
     <dl class="gear-chart__summary">
       <div class="gear-chart__base-weight">
         <dt>Poids de base</dt>
-        <dd>{formatGearWeightInGrams(baseWeightGrams)}</dd>
+        <dd><UnitValue weightGrams={baseWeightGrams} /></dd>
       </div>
       <div>
         <dt>Porté</dt>
-        <dd>{formatGearWeightInGrams(wornWeightGrams)}</dd>
+        <dd><UnitValue weightGrams={wornWeightGrams} /></dd>
       </div>
       <div>
         <dt>Total</dt>
-        <dd>{formatGearWeightInGrams(totalWeightGrams)}</dd>
+        <dd><UnitValue weightGrams={totalWeightGrams} /></dd>
       </div>
     </dl>
   </div>
 </section>
 
 <script>
+  import { formatWeight } from "../lib/preferences/displayPreferences.ts";
+  import {
+    displayPreferencesChangeEvent,
+    readDisplayPreferences,
+  } from "../lib/preferences/displayPreferencesBrowser.ts";
+
   document
     .querySelectorAll<HTMLElement>("[data-gear-chart]")
     .forEach((chart) => {
       const items = chart.querySelectorAll<HTMLElement>(
         "[data-gear-chart-item]",
       );
+      const accessibility = chart.querySelector<HTMLElement>(
+        "[data-gear-chart-accessibility]",
+      );
+
+      function updateAccessibleLabel() {
+        if (!accessibility) return;
+        const total = Number(accessibility.dataset.gearChartTotal);
+        const breakdown = JSON.parse(
+          accessibility.dataset.gearChartBreakdown ?? "[]",
+        ) as { label: string; weightGrams: number }[];
+        const { weightUnit } = readDisplayPreferences();
+        const details = breakdown
+          .map(
+            ({ label, weightGrams }) =>
+              `${label} ${formatWeight(weightGrams, weightUnit)}`,
+          )
+          .join(", ");
+
+        accessibility.setAttribute(
+          "aria-label",
+          `Répartition du poids par catégorie. ${formatWeight(total, weightUnit)} au total. ${details}.`,
+        );
+      }
 
       function selectCategory(categoryId: string | null) {
         chart.classList.toggle("is-selecting", categoryId !== null);
@@ -160,6 +208,12 @@ const accessibleChartLabel =
           });
         }
       });
+
+      updateAccessibleLabel();
+      window.addEventListener(
+        displayPreferencesChangeEvent,
+        updateAccessibleLabel,
+      );
     });
 </script>
 

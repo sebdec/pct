@@ -100,6 +100,8 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Keep public content URLs locale-free. Localization remains a content concern and future language selection must preserve the stable route shape.
 - Render date-only values with semantic `time` elements and a deterministic static fallback. Browser-preference formatting may progressively enhance the visible text but must never make content depend on JavaScript.
 - Treat miles as canonical. Derive daily distance, cumulative distance and kilometers through `src/lib/content/metrics.ts`.
+- Treat grams as the canonical equipment weight unit. Pass canonical miles and grams to the shared `UnitValue` presentation instead of formatting unit strings inside routes or components.
+- Keep display preferences versioned and browser-local through `src/lib/preferences`. Keep their controls visually aligned with the existing navigation instead of introducing a separate chip or panel design language.
 - Scope photo placement IDs to their owner. Use `photo-074001` for the first photo of `day-074` and `photo-introduction-001` for the first photo of the introduction page. Keep global source order in the separate `order` field.
 - Mark neutral entities as published only when their required French entry exists.
 - Retain Word block references on imported entities. Record proposed, approved or rejected editorial changes in `src/data/source/corrections.json`.
