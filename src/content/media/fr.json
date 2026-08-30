@@ -1,1 +1,1717 @@
-{}
+{
+  "fr/photo-introduction-002": {
+    "photoId": "photo-introduction-002",
+    "locale": "fr",
+    "alt": "Randonneur assis avec son sac devant un bâtiment en bois sculpté"
+  },
+  "fr/photo-analysis-001": {
+    "photoId": "photo-analysis-001",
+    "locale": "fr",
+    "alt": "Carte du Pacific Crest Trail avec son tracé de la frontière mexicaine au Canada"
+  },
+  "fr/photo-001001": {
+    "photoId": "photo-001001",
+    "locale": "fr",
+    "alt": "Randonneur debout auprès du monument marquant le terminus sud du Pacific Crest Trail"
+  },
+  "fr/photo-001002": {
+    "photoId": "photo-001002",
+    "locale": "fr",
+    "alt": "Randonneur devant une haute clôture métallique à la frontière"
+  },
+  "fr/photo-001003": {
+    "photoId": "photo-001003",
+    "locale": "fr",
+    "alt": "Randonneur souriant à côté du panneau Mile 1"
+  },
+  "fr/photo-001004": {
+    "photoId": "photo-001004",
+    "locale": "fr",
+    "alt": "Bannière Pacific Crest Trail Class of 2026 couverte de signatures"
+  },
+  "fr/photo-001005": {
+    "photoId": "photo-001005",
+    "locale": "fr",
+    "alt": "Panneau du Pacific Crest Trail près d'une voie ferrée"
+  },
+  "fr/photo-001006": {
+    "photoId": "photo-001006",
+    "locale": "fr",
+    "alt": "Campement léger installé sur un versant aride au coucher du soleil"
+  },
+  "fr/photo-003001": {
+    "photoId": "photo-003001",
+    "locale": "fr",
+    "alt": "Sentier caillouteux serpentant entre des buissons bas"
+  },
+  "fr/photo-003002": {
+    "photoId": "photo-003002",
+    "locale": "fr",
+    "alt": "Balise du Pacific Crest Trail sur un poteau au bord d'un chemin sablonneux"
+  },
+  "fr/photo-004001": {
+    "photoId": "photo-004001",
+    "locale": "fr",
+    "alt": "Panneau Toaster Point surmonté d'une pomme de pin au bord du sentier"
+  },
+  "fr/photo-004002": {
+    "photoId": "photo-004002",
+    "locale": "fr",
+    "alt": "Jambes allongées devant une tente avec un sac à dos"
+  },
+  "fr/photo-004003": {
+    "photoId": "photo-004003",
+    "locale": "fr",
+    "alt": "Boîte de dons noire fixée devant un bâtiment"
+  },
+  "fr/photo-005001": {
+    "photoId": "photo-005001",
+    "locale": "fr",
+    "alt": "Randonneur marchant sur un sentier aride entre des reliefs rocheux"
+  },
+  "fr/photo-005002": {
+    "photoId": "photo-005002",
+    "locale": "fr",
+    "alt": "Espace de repos aménagé sous un viaduc"
+  },
+  "fr/photo-006001": {
+    "photoId": "photo-006001",
+    "locale": "fr",
+    "alt": "Nombre 1000 formé avec des pierres sur le sentier"
+  },
+  "fr/photo-006002": {
+    "photoId": "photo-006002",
+    "locale": "fr",
+    "alt": "Trace étroite traversant une vaste prairie sèche"
+  },
+  "fr/photo-006003": {
+    "photoId": "photo-006003",
+    "locale": "fr",
+    "alt": "Glacières de ravitaillement devant une voiture marquée Trail Magic"
+  },
+  "fr/photo-007001": {
+    "photoId": "photo-007001",
+    "locale": "fr",
+    "alt": "Sentier surplombant des montagnes couvertes de broussailles"
+  },
+  "fr/photo-007002": {
+    "photoId": "photo-007002",
+    "locale": "fr",
+    "alt": "Tente légère et matériel de couchage sur un emplacement désertique"
+  },
+  "fr/photo-007003": {
+    "photoId": "photo-007003",
+    "locale": "fr",
+    "alt": "Réservoirs métalliques au bord d'un chemin poussiéreux"
+  },
+  "fr/photo-008001": {
+    "photoId": "photo-008001",
+    "locale": "fr",
+    "alt": "Coucher de soleil derrière des montagnes couvertes de broussailles"
+  },
+  "fr/photo-008002": {
+    "photoId": "photo-008002",
+    "locale": "fr",
+    "alt": "Randonneur souriant avec un fagot de bois attaché au sac"
+  },
+  "fr/photo-008003": {
+    "photoId": "photo-008003",
+    "locale": "fr",
+    "alt": "Tente légère dressée derrière des rochers sous un ciel d'orage"
+  },
+  "fr/photo-008004": {
+    "photoId": "photo-008004",
+    "locale": "fr",
+    "alt": "Autoportrait d'un randonneur barbu avec un matelas orange fixé au sac"
+  },
+  "fr/photo-008005": {
+    "photoId": "photo-008005",
+    "locale": "fr",
+    "alt": "Vue depuis une forêt brûlée sur une vaste plaine lointaine"
+  },
+  "fr/photo-008006": {
+    "photoId": "photo-008006",
+    "locale": "fr",
+    "alt": "Bac d'eau en plein air couvert d'algues"
+  },
+  "fr/photo-010001": {
+    "photoId": "photo-010001",
+    "locale": "fr",
+    "alt": "Vallée sèche et pierreuse s'étendant jusqu'à l'horizon"
+  },
+  "fr/photo-010002": {
+    "photoId": "photo-010002",
+    "locale": "fr",
+    "alt": "Panneau de sentier couvert d'autocollants dans une vallée aride"
+  },
+  "fr/photo-010003": {
+    "photoId": "photo-010003",
+    "locale": "fr",
+    "alt": "Tente légère installée dans un canyon aride"
+  },
+  "fr/photo-010004": {
+    "photoId": "photo-010004",
+    "locale": "fr",
+    "alt": "Randonneur encapuchonné sous la pluie et le brouillard"
+  },
+  "fr/photo-011001": {
+    "photoId": "photo-011001",
+    "locale": "fr",
+    "alt": "Canyon sec et escarpé vu depuis un sentier en hauteur"
+  },
+  "fr/photo-012001": {
+    "photoId": "photo-012001",
+    "locale": "fr",
+    "alt": "Randonneur avançant entre des buissons dans un paysage aride"
+  },
+  "fr/photo-012002": {
+    "photoId": "photo-012002",
+    "locale": "fr",
+    "alt": "Main tenant une bouteille en plastique cabossée"
+  },
+  "fr/photo-012003": {
+    "photoId": "photo-012003",
+    "locale": "fr",
+    "alt": "Aire de pique-nique devant des bâtiments en forêt"
+  },
+  "fr/photo-013001": {
+    "photoId": "photo-013001",
+    "locale": "fr",
+    "alt": "Sentier à travers des collines couvertes de broussailles"
+  },
+  "fr/photo-013002": {
+    "photoId": "photo-013002",
+    "locale": "fr",
+    "alt": "Campement dispersé autour d'un foyer dans une clairière"
+  },
+  "fr/photo-013003": {
+    "photoId": "photo-013003",
+    "locale": "fr",
+    "alt": "Grand lac entouré de forêts avec des montagnes enneigées à l'horizon"
+  },
+  "fr/photo-014001": {
+    "photoId": "photo-014001",
+    "locale": "fr",
+    "alt": "Petit lézard sombre posé sur un rocher clair"
+  },
+  "fr/photo-014002": {
+    "photoId": "photo-014002",
+    "locale": "fr",
+    "alt": "Lézard cornu camouflé parmi les pierres et les plantes sèches"
+  },
+  "fr/photo-015001": {
+    "photoId": "photo-015001",
+    "locale": "fr",
+    "alt": "Passage circulaire en tôle ondulée sous la végétation"
+  },
+  "fr/photo-015002": {
+    "photoId": "photo-015002",
+    "locale": "fr",
+    "alt": "Boîte de registre de randonnée ouverte avec carnets et messages"
+  },
+  "fr/photo-015003": {
+    "photoId": "photo-015003",
+    "locale": "fr",
+    "alt": "Douilles éparpillées au bord d'un sentier sablonneux"
+  },
+  "fr/photo-015004": {
+    "photoId": "photo-015004",
+    "locale": "fr",
+    "alt": "Réserve d'eau et de provisions installée au bord du sentier"
+  },
+  "fr/photo-015005": {
+    "photoId": "photo-015005",
+    "locale": "fr",
+    "alt": "Tente légère sur une crête herbeuse au crépuscule"
+  },
+  "fr/photo-015006": {
+    "photoId": "photo-015006",
+    "locale": "fr",
+    "alt": "Randonneur debout près d'un panneau indiquant McDonalds et Guffy Campground"
+  },
+  "fr/photo-016001": {
+    "photoId": "photo-016001",
+    "locale": "fr",
+    "alt": "Ravitaillement de randonnée disposé sur des aiguilles de pin"
+  },
+  "fr/photo-017001": {
+    "photoId": "photo-017001",
+    "locale": "fr",
+    "alt": "Banc de neige pentu au bord d'un sentier forestier"
+  },
+  "fr/photo-017002": {
+    "photoId": "photo-017002",
+    "locale": "fr",
+    "alt": "Sentier escarpé dominant des vallées remplies de nuages"
+  },
+  "fr/photo-017003": {
+    "photoId": "photo-017003",
+    "locale": "fr",
+    "alt": "Crête minérale dominant une mer de nuages entre les montagnes"
+  },
+  "fr/photo-017004": {
+    "photoId": "photo-017004",
+    "locale": "fr",
+    "alt": "Drapeau américain flottant sur un sommet montagneux"
+  },
+  "fr/photo-018001": {
+    "photoId": "photo-018001",
+    "locale": "fr",
+    "alt": "Sentier surplombant des montagnes couvertes de broussailles"
+  },
+  "fr/photo-018002": {
+    "photoId": "photo-018002",
+    "locale": "fr",
+    "alt": "Vue plongeante sur une vaste vallée depuis une crête"
+  },
+  "fr/photo-019001": {
+    "photoId": "photo-019001",
+    "locale": "fr",
+    "alt": "Grande aire de terre battue sous un ciel nuageux"
+  },
+  "fr/photo-019002": {
+    "photoId": "photo-019002",
+    "locale": "fr",
+    "alt": "Long tunnel en béton couvert de graffitis"
+  },
+  "fr/photo-019003": {
+    "photoId": "photo-019003",
+    "locale": "fr",
+    "alt": "Silhouette d'un randonneur au sommet d'un immense rocher arrondi"
+  },
+  "fr/photo-019004": {
+    "photoId": "photo-019004",
+    "locale": "fr",
+    "alt": "Formations rocheuses inclinées dans un paysage désertique"
+  },
+  "fr/photo-019005": {
+    "photoId": "photo-019005",
+    "locale": "fr",
+    "alt": "Canyon coloré sous une nappe de nuages"
+  },
+  "fr/photo-019006": {
+    "photoId": "photo-019006",
+    "locale": "fr",
+    "alt": "Randonneur souriant sous une capuche avec son sac chargé"
+  },
+  "fr/photo-020001": {
+    "photoId": "photo-020001",
+    "locale": "fr",
+    "alt": "Vallée aride et accidentée sous un ciel bleu"
+  },
+  "fr/photo-020002": {
+    "photoId": "photo-020002",
+    "locale": "fr",
+    "alt": "Collines de broussailles sous un ciel rose à l'aube"
+  },
+  "fr/photo-020003": {
+    "photoId": "photo-020003",
+    "locale": "fr",
+    "alt": "Réservoir bleu au fond d'une vallée couverte de broussailles"
+  },
+  "fr/photo-021001": {
+    "photoId": "photo-021001",
+    "locale": "fr",
+    "alt": "Soleil levant au-dessus de collines couvertes de broussailles"
+  },
+  "fr/photo-021002": {
+    "photoId": "photo-021002",
+    "locale": "fr",
+    "alt": "Fleurs rouges dressées au bord d'un sentier sec"
+  },
+  "fr/photo-022001": {
+    "photoId": "photo-022001",
+    "locale": "fr",
+    "alt": "Parc d'éoliennes dans une vaste plaine désertique"
+  },
+  "fr/photo-022002": {
+    "photoId": "photo-022002",
+    "locale": "fr",
+    "alt": "Longue conduite métallique traversant le désert"
+  },
+  "fr/photo-022003": {
+    "photoId": "photo-022003",
+    "locale": "fr",
+    "alt": "Petit serpent brun ondulant sur un chemin de terre"
+  },
+  "fr/photo-022004": {
+    "photoId": "photo-022004",
+    "locale": "fr",
+    "alt": "Ravitaillement avec glacières, boissons et chaises au milieu du désert"
+  },
+  "fr/photo-022005": {
+    "photoId": "photo-022005",
+    "locale": "fr",
+    "alt": "Bâtiments bas et véhicules au bord d'une vaste aire poussiéreuse"
+  },
+  "fr/photo-023001": {
+    "photoId": "photo-023001",
+    "locale": "fr",
+    "alt": "Éoliennes alignées à l'horizon dans un paysage désertique au crépuscule"
+  },
+  "fr/photo-023002": {
+    "photoId": "photo-023002",
+    "locale": "fr",
+    "alt": "Matériel de bivouac installé à même le sol sous de grands arbres"
+  },
+  "fr/photo-023003": {
+    "photoId": "photo-023003",
+    "locale": "fr",
+    "alt": "Parc d'éoliennes couvrant des collines arides"
+  },
+  "fr/photo-024001": {
+    "photoId": "photo-024001",
+    "locale": "fr",
+    "alt": "Vallée aride couverte de broussailles et de pins clairsemés"
+  },
+  "fr/photo-025001": {
+    "photoId": "photo-025001",
+    "locale": "fr",
+    "alt": "Collines arides s'étendant jusqu'aux montagnes lointaines"
+  },
+  "fr/photo-025002": {
+    "photoId": "photo-025002",
+    "locale": "fr",
+    "alt": "Tente légère installée dans le désert au crépuscule"
+  },
+  "fr/photo-025003": {
+    "photoId": "photo-025003",
+    "locale": "fr",
+    "alt": "Médaillon du Pacific Crest Trail fixé à un arbre"
+  },
+  "fr/photo-026001": {
+    "photoId": "photo-026001",
+    "locale": "fr",
+    "alt": "Vallée désertique encaissée entre des montagnes rocheuses"
+  },
+  "fr/photo-026002": {
+    "photoId": "photo-026002",
+    "locale": "fr",
+    "alt": "Poignée en mousse déchirée sur un bâton de marche"
+  },
+  "fr/photo-026003": {
+    "photoId": "photo-026003",
+    "locale": "fr",
+    "alt": "Tente au milieu des broussailles face au soleil couchant"
+  },
+  "fr/photo-026004": {
+    "photoId": "photo-026004",
+    "locale": "fr",
+    "alt": "Collines arides éclairées par une lumière dorée"
+  },
+  "fr/photo-027001": {
+    "photoId": "photo-027001",
+    "locale": "fr",
+    "alt": "Versant rocheux dominant une plaine désertique"
+  },
+  "fr/photo-027002": {
+    "photoId": "photo-027002",
+    "locale": "fr",
+    "alt": "Vallée aride observée depuis un versant rocheux"
+  },
+  "fr/photo-028001": {
+    "photoId": "photo-028001",
+    "locale": "fr",
+    "alt": "Balise du Pacific Crest Trail fixée à un poteau en bois"
+  },
+  "fr/photo-028002": {
+    "photoId": "photo-028002",
+    "locale": "fr",
+    "alt": "Petit-déjeuner composé d'une grande pile de pancakes, d'œufs et de pommes de terre"
+  },
+  "fr/photo-028003": {
+    "photoId": "photo-028003",
+    "locale": "fr",
+    "alt": "Sac à dos de randonnée chargé posé contre un mur"
+  },
+  "fr/photo-028004": {
+    "photoId": "photo-028004",
+    "locale": "fr",
+    "alt": "Bâtiment rustique avec terrasse et réservoirs de propane"
+  },
+  "fr/photo-030001": {
+    "photoId": "photo-030001",
+    "locale": "fr",
+    "alt": "Sentier ensoleillé au milieu d'une forêt clairsemée"
+  },
+  "fr/photo-030002": {
+    "photoId": "photo-030002",
+    "locale": "fr",
+    "alt": "Vue à travers les pins sur une vallée boisée et des montagnes lointaines"
+  },
+  "fr/photo-030003": {
+    "photoId": "photo-030003",
+    "locale": "fr",
+    "alt": "Large vallon d'altitude ouvert sur des reliefs lointains"
+  },
+  "fr/photo-031001": {
+    "photoId": "photo-031001",
+    "locale": "fr",
+    "alt": "Petit lac alpin bordé de rochers et de plaques de neige"
+  },
+  "fr/photo-031002": {
+    "photoId": "photo-031002",
+    "locale": "fr",
+    "alt": "Trace de pas gravissant une pente enneigée entre les pins"
+  },
+  "fr/photo-031003": {
+    "photoId": "photo-031003",
+    "locale": "fr",
+    "alt": "Vallée désertique vue depuis une crête enneigée"
+  },
+  "fr/photo-032001": {
+    "photoId": "photo-032001",
+    "locale": "fr",
+    "alt": "Banc en bois installé dans une clairière parsemée de neige"
+  },
+  "fr/photo-032002": {
+    "photoId": "photo-032002",
+    "locale": "fr",
+    "alt": "Sentier rocailleux au pied de montagnes enneigées"
+  },
+  "fr/photo-032003": {
+    "photoId": "photo-032003",
+    "locale": "fr",
+    "alt": "Grande étendue de neige bordée de crêtes rocheuses sous des nuages imposants"
+  },
+  "fr/photo-032004": {
+    "photoId": "photo-032004",
+    "locale": "fr",
+    "alt": "Chaîne montagneuse enneigée derrière une forêt clairsemée"
+  },
+  "fr/photo-033001": {
+    "photoId": "photo-033001",
+    "locale": "fr",
+    "alt": "Torrent de montagne passant sous un tronc couché"
+  },
+  "fr/photo-033002": {
+    "photoId": "photo-033002",
+    "locale": "fr",
+    "alt": "Main tenant des bâtons de randonnée devant une pente enneigée"
+  },
+  "fr/photo-033003": {
+    "photoId": "photo-033003",
+    "locale": "fr",
+    "alt": "Pente de neige marquée de traces sous un ciel d'orage"
+  },
+  "fr/photo-033004": {
+    "photoId": "photo-033004",
+    "locale": "fr",
+    "alt": "Vaste paysage alpin rocheux couvert de neige par endroits"
+  },
+  "fr/photo-033005": {
+    "photoId": "photo-033005",
+    "locale": "fr",
+    "alt": "Randonneur debout sur un sommet rocheux devant des montagnes enneigées"
+  },
+  "fr/photo-034001": {
+    "photoId": "photo-034001",
+    "locale": "fr",
+    "alt": "Chaussure rouge équipée d'une pointe sur la neige"
+  },
+  "fr/photo-034002": {
+    "photoId": "photo-034002",
+    "locale": "fr",
+    "alt": "Tente dressée parmi les rochers dans un paysage enneigé"
+  },
+  "fr/photo-034003": {
+    "photoId": "photo-034003",
+    "locale": "fr",
+    "alt": "Grand cirque montagneux couvert de neige"
+  },
+  "fr/photo-035001": {
+    "photoId": "photo-035001",
+    "locale": "fr",
+    "alt": "Traces de pas traversant une pente enneigée sous une crête déchiquetée"
+  },
+  "fr/photo-035002": {
+    "photoId": "photo-035002",
+    "locale": "fr",
+    "alt": "Deux cervidés entre les troncs d'une forêt"
+  },
+  "fr/photo-035003": {
+    "photoId": "photo-035003",
+    "locale": "fr",
+    "alt": "Bivouac installé au pied d'une pente enneigée"
+  },
+  "fr/photo-035004": {
+    "photoId": "photo-035004",
+    "locale": "fr",
+    "alt": "Vallée alpine encadrée de hauts sommets rocheux et enneigés"
+  },
+  "fr/photo-035005": {
+    "photoId": "photo-035005",
+    "locale": "fr",
+    "alt": "Tente légère parmi les blocs de granit et les névés"
+  },
+  "fr/photo-035006": {
+    "photoId": "photo-035006",
+    "locale": "fr",
+    "alt": "Cuvette montagneuse entièrement enneigée au lever du jour"
+  },
+  "fr/photo-036001": {
+    "photoId": "photo-036001",
+    "locale": "fr",
+    "alt": "Vallée montagneuse sous un ciel chargé de nuages"
+  },
+  "fr/photo-036002": {
+    "photoId": "photo-036002",
+    "locale": "fr",
+    "alt": "Vaste pente enneigée entre des crêtes rocheuses"
+  },
+  "fr/photo-036003": {
+    "photoId": "photo-036003",
+    "locale": "fr",
+    "alt": "Tente et sac à dos sur un campement rocheux avec une tasse au premier plan"
+  },
+  "fr/photo-037001": {
+    "photoId": "photo-037001",
+    "locale": "fr",
+    "alt": "Caisse de dons remplie d'objets pour randonneurs"
+  },
+  "fr/photo-037002": {
+    "photoId": "photo-037002",
+    "locale": "fr",
+    "alt": "Feu allumé devant les tables d'un refuge en forêt"
+  },
+  "fr/photo-038001": {
+    "photoId": "photo-038001",
+    "locale": "fr",
+    "alt": "Sous-bois clairsemé de pins sur un sol sec couvert d'aiguilles"
+  },
+  "fr/photo-038002": {
+    "photoId": "photo-038002",
+    "locale": "fr",
+    "alt": "Randonneur emmitouflé avec lunettes sous une chute de neige"
+  },
+  "fr/photo-038003": {
+    "photoId": "photo-038003",
+    "locale": "fr",
+    "alt": "Lac partiellement gelé sous la brume et la neige"
+  },
+  "fr/photo-038004": {
+    "photoId": "photo-038004",
+    "locale": "fr",
+    "alt": "Grand lac bleu entouré de reliefs granitiques"
+  },
+  "fr/photo-038005": {
+    "photoId": "photo-038005",
+    "locale": "fr",
+    "alt": "Étendue enneigée sous de lourds nuages d'orage"
+  },
+  "fr/photo-038006": {
+    "photoId": "photo-038006",
+    "locale": "fr",
+    "alt": "Cascade dévalant des rochers entre des buissons"
+  },
+  "fr/photo-038007": {
+    "photoId": "photo-038007",
+    "locale": "fr",
+    "alt": "Col montagneux enneigé sous des nuages d'orage"
+  },
+  "fr/photo-040001": {
+    "photoId": "photo-040001",
+    "locale": "fr",
+    "alt": "Pente entièrement enneigée disparaissant dans le brouillard"
+  },
+  "fr/photo-040002": {
+    "photoId": "photo-040002",
+    "locale": "fr",
+    "alt": "Montagnes rocheuses dans la brume au-dessus d'une forêt de conifères"
+  },
+  "fr/photo-040003": {
+    "photoId": "photo-040003",
+    "locale": "fr",
+    "alt": "Grande cascade dévalant une falaise rocheuse entre les pins"
+  },
+  "fr/photo-040004": {
+    "photoId": "photo-040004",
+    "locale": "fr",
+    "alt": "Fine couche de grêle sur le sol d'une forêt de pins"
+  },
+  "fr/photo-040005": {
+    "photoId": "photo-040005",
+    "locale": "fr",
+    "alt": "Crêtes enneigées sous des nuages teintés de rose au crépuscule"
+  },
+  "fr/photo-040006": {
+    "photoId": "photo-040006",
+    "locale": "fr",
+    "alt": "Ruisseau serpentant dans une vallée enneigée sous un ciel sombre"
+  },
+  "fr/photo-041001": {
+    "photoId": "photo-041001",
+    "locale": "fr",
+    "alt": "Tronc couché recouvert de neige dans une forêt sombre"
+  },
+  "fr/photo-041002": {
+    "photoId": "photo-041002",
+    "locale": "fr",
+    "alt": "Sentier étroit dans une forêt couverte de neige fraîche"
+  },
+  "fr/photo-041003": {
+    "photoId": "photo-041003",
+    "locale": "fr",
+    "alt": "Lac gelé entouré de pentes enneigées dans le brouillard"
+  },
+  "fr/photo-042001": {
+    "photoId": "photo-042001",
+    "locale": "fr",
+    "alt": "Lac de montagne reflétant une falaise et des arbres enneigés"
+  },
+  "fr/photo-042002": {
+    "photoId": "photo-042002",
+    "locale": "fr",
+    "alt": "Vallon montagneux enneigé sous un ciel bleu et nuageux"
+  },
+  "fr/photo-042003": {
+    "photoId": "photo-042003",
+    "locale": "fr",
+    "alt": "Sentier enneigé face à une crête rocheuse dentelée"
+  },
+  "fr/photo-042004": {
+    "photoId": "photo-042004",
+    "locale": "fr",
+    "alt": "Vallée encaissée couverte d'une fine couche de neige"
+  },
+  "fr/photo-043001": {
+    "photoId": "photo-043001",
+    "locale": "fr",
+    "alt": "Vallée aride et sommets saupoudrés de neige sous les nuages"
+  },
+  "fr/photo-043002": {
+    "photoId": "photo-043002",
+    "locale": "fr",
+    "alt": "Passerelle rustique en bois franchissant un torrent"
+  },
+  "fr/photo-043003": {
+    "photoId": "photo-043003",
+    "locale": "fr",
+    "alt": "Traces de pas dans la neige entre de grandes dalles rocheuses"
+  },
+  "fr/photo-043004": {
+    "photoId": "photo-043004",
+    "locale": "fr",
+    "alt": "Poteau en bois marqué 1000 dans une forêt partiellement enneigée"
+  },
+  "fr/photo-043005": {
+    "photoId": "photo-043005",
+    "locale": "fr",
+    "alt": "Randonneur barbu souriant et levant le pouce"
+  },
+  "fr/photo-044001": {
+    "photoId": "photo-044001",
+    "locale": "fr",
+    "alt": "Panorama de sommets enneigés depuis un promontoire rocheux"
+  },
+  "fr/photo-044002": {
+    "photoId": "photo-044002",
+    "locale": "fr",
+    "alt": "Façade verte du Kennedy Meadows General Store sous un ciel bleu"
+  },
+  "fr/photo-044003": {
+    "photoId": "photo-044003",
+    "locale": "fr",
+    "alt": "Gros plan sur un arbuste aux petites feuilles vertes"
+  },
+  "fr/photo-045001": {
+    "photoId": "photo-045001",
+    "locale": "fr",
+    "alt": "Massif montagneux strié de plaques de neige"
+  },
+  "fr/photo-046001": {
+    "photoId": "photo-046001",
+    "locale": "fr",
+    "alt": "Refuge en bois avec terrasse et drapeau américain"
+  },
+  "fr/photo-046002": {
+    "photoId": "photo-046002",
+    "locale": "fr",
+    "alt": "Soleil couchant entre les troncs près d'une tente"
+  },
+  "fr/photo-046003": {
+    "photoId": "photo-046003",
+    "locale": "fr",
+    "alt": "Deux lacs bleus au milieu de montagnes enneigées"
+  },
+  "fr/photo-047001": {
+    "photoId": "photo-047001",
+    "locale": "fr",
+    "alt": "Trois randonneurs souriants sur un ponton au bord d'un lac"
+  },
+  "fr/photo-047002": {
+    "photoId": "photo-047002",
+    "locale": "fr",
+    "alt": "Assortiment de sachets de nourriture disposés sur un matelas jaune"
+  },
+  "fr/photo-048001": {
+    "photoId": "photo-048001",
+    "locale": "fr",
+    "alt": "Vallon rocheux et enneigé sous un ciel pastel"
+  },
+  "fr/photo-048002": {
+    "photoId": "photo-048002",
+    "locale": "fr",
+    "alt": "Panorama de sommets encore enneigés depuis une crête rocheuse"
+  },
+  "fr/photo-048003": {
+    "photoId": "photo-048003",
+    "locale": "fr",
+    "alt": "Vallée boisée ouvrant sur un lac bleu au loin"
+  },
+  "fr/photo-049001": {
+    "photoId": "photo-049001",
+    "locale": "fr",
+    "alt": "Salle rustique aménagée en hiker lounge avec tables et bancs"
+  },
+  "fr/photo-049002": {
+    "photoId": "photo-049002",
+    "locale": "fr",
+    "alt": "Pizza et gobelet de soda servis sur une table de restaurant"
+  },
+  "fr/photo-049003": {
+    "photoId": "photo-049003",
+    "locale": "fr",
+    "alt": "Sentier rocheux serpentant entre des arbustes de montagne"
+  },
+  "fr/photo-049004": {
+    "photoId": "photo-049004",
+    "locale": "fr",
+    "alt": "Soleil couchant au ras de collines sombres"
+  },
+  "fr/photo-049005": {
+    "photoId": "photo-049005",
+    "locale": "fr",
+    "alt": "Bâtiment de station de montagne au bord d'un parking"
+  },
+  "fr/photo-049006": {
+    "photoId": "photo-049006",
+    "locale": "fr",
+    "alt": "Crête dégagée avec quelques plaques de neige"
+  },
+  "fr/photo-050001": {
+    "photoId": "photo-050001",
+    "locale": "fr",
+    "alt": "Lupins violets le long d'un sentier en montagne"
+  },
+  "fr/photo-050002": {
+    "photoId": "photo-050002",
+    "locale": "fr",
+    "alt": "Refuge rustique en pierre et en bois au milieu des pins"
+  },
+  "fr/photo-050003": {
+    "photoId": "photo-050003",
+    "locale": "fr",
+    "alt": "Sentier étroit serpentant dans une forêt de conifères"
+  },
+  "fr/photo-051001": {
+    "photoId": "photo-051001",
+    "locale": "fr",
+    "alt": "Petit-déjeuner composé de pancakes, œufs, bacon et saucisses"
+  },
+  "fr/photo-051002": {
+    "photoId": "photo-051002",
+    "locale": "fr",
+    "alt": "Rue calme d'un village de montagne bordée de bâtiments en bois"
+  },
+  "fr/photo-051003": {
+    "photoId": "photo-051003",
+    "locale": "fr",
+    "alt": "Crêtes verdoyantes descendant vers une vallée profonde"
+  },
+  "fr/photo-052001": {
+    "photoId": "photo-052001",
+    "locale": "fr",
+    "alt": "Deux randonneurs barbus souriant dans une forêt"
+  },
+  "fr/photo-052002": {
+    "photoId": "photo-052002",
+    "locale": "fr",
+    "alt": "Lupins violets éclairés par le soleil dans une clairière"
+  },
+  "fr/photo-052003": {
+    "photoId": "photo-052003",
+    "locale": "fr",
+    "alt": "Sentier encombré de troncs dans une forêt brûlée"
+  },
+  "fr/photo-052004": {
+    "photoId": "photo-052004",
+    "locale": "fr",
+    "alt": "Grand lac entouré d'une forêt de conifères"
+  },
+  "fr/photo-053001": {
+    "photoId": "photo-053001",
+    "locale": "fr",
+    "alt": "Sentier traversant un sous-bois dense et verdoyant"
+  },
+  "fr/photo-054001": {
+    "photoId": "photo-054001",
+    "locale": "fr",
+    "alt": "Coucher de soleil orange derrière les troncs d'une forêt brûlée"
+  },
+  "fr/photo-054002": {
+    "photoId": "photo-054002",
+    "locale": "fr",
+    "alt": "Chaussures de randonnée sur un sentier poussiéreux"
+  },
+  "fr/photo-054003": {
+    "photoId": "photo-054003",
+    "locale": "fr",
+    "alt": "Troncs calcinés dressés sur un versant forestier"
+  },
+  "fr/photo-054004": {
+    "photoId": "photo-054004",
+    "locale": "fr",
+    "alt": "Poteau blanc planté dans une forêt brûlée"
+  },
+  "fr/photo-055001": {
+    "photoId": "photo-055001",
+    "locale": "fr",
+    "alt": "Jeunes pousses vertes parmi les troncs calcinés d'une forêt"
+  },
+  "fr/photo-055002": {
+    "photoId": "photo-055002",
+    "locale": "fr",
+    "alt": "Forêt de conifères ouverte sur des sommets lointains"
+  },
+  "fr/photo-055003": {
+    "photoId": "photo-055003",
+    "locale": "fr",
+    "alt": "Panneau avertissant des dangers dans les zones brûlées"
+  },
+  "fr/photo-056001": {
+    "photoId": "photo-056001",
+    "locale": "fr",
+    "alt": "Pieds poussiéreux reposant à côté d'une sandale"
+  },
+  "fr/photo-056002": {
+    "photoId": "photo-056002",
+    "locale": "fr",
+    "alt": "Pieds nus poussiéreux reposant au milieu de broussailles sèches"
+  },
+  "fr/photo-056003": {
+    "photoId": "photo-056003",
+    "locale": "fr",
+    "alt": "Cornet surmonté de deux boules de glace"
+  },
+  "fr/photo-056004": {
+    "photoId": "photo-056004",
+    "locale": "fr",
+    "alt": "Empreintes de chaussures traversant une route bordée d'arbres"
+  },
+  "fr/photo-057001": {
+    "photoId": "photo-057001",
+    "locale": "fr",
+    "alt": "Façade en bois d'un hébergement avec une chaise verte"
+  },
+  "fr/photo-057002": {
+    "photoId": "photo-057002",
+    "locale": "fr",
+    "alt": "Terrasse de restaurant ombragée par de grandes toiles colorées"
+  },
+  "fr/photo-057003": {
+    "photoId": "photo-057003",
+    "locale": "fr",
+    "alt": "Réservoir décoré d'empreintes de mains colorées à Burney Mountain Guest Ranch"
+  },
+  "fr/photo-057004": {
+    "photoId": "photo-057004",
+    "locale": "fr",
+    "alt": "Deux coffres à provisions ouverts contenant nourriture et matériel de randonnée"
+  },
+  "fr/photo-057005": {
+    "photoId": "photo-057005",
+    "locale": "fr",
+    "alt": "Randonneur assis avec son sac devant un bâtiment en bois sculpté"
+  },
+  "fr/photo-058001": {
+    "photoId": "photo-058001",
+    "locale": "fr",
+    "alt": "Sommet enneigé dominant une immense forêt de conifères"
+  },
+  "fr/photo-059001": {
+    "photoId": "photo-059001",
+    "locale": "fr",
+    "alt": "Rivière traversant une gorge forestière éclairée par le soleil"
+  },
+  "fr/photo-059002": {
+    "photoId": "photo-059002",
+    "locale": "fr",
+    "alt": "Ciel rose et orange au-dessus de silhouettes montagneuses"
+  },
+  "fr/photo-059003": {
+    "photoId": "photo-059003",
+    "locale": "fr",
+    "alt": "Lézard vert et noir camouflé dans les aiguilles de pin"
+  },
+  "fr/photo-060001": {
+    "photoId": "photo-060001",
+    "locale": "fr",
+    "alt": "Silhouettes de montagnes superposées dans la lumière douce du soir"
+  },
+  "fr/photo-061001": {
+    "photoId": "photo-061001",
+    "locale": "fr",
+    "alt": "Pierrier abrupt descendant vers un petit lac de montagne"
+  },
+  "fr/photo-061002": {
+    "photoId": "photo-061002",
+    "locale": "fr",
+    "alt": "Cerf immobile dans un sous-bois"
+  },
+  "fr/photo-062001": {
+    "photoId": "photo-062001",
+    "locale": "fr",
+    "alt": "Petit écureuil posé sur des blocs de roche"
+  },
+  "fr/photo-062002": {
+    "photoId": "photo-062002",
+    "locale": "fr",
+    "alt": "Vaste cirque alpin couvert de conifères et de prairies"
+  },
+  "fr/photo-062003": {
+    "photoId": "photo-062003",
+    "locale": "fr",
+    "alt": "Deux lacs alpins au creux d'une vallée boisée"
+  },
+  "fr/photo-063001": {
+    "photoId": "photo-063001",
+    "locale": "fr",
+    "alt": "Sentier forestier sous un ciel rouge au coucher du soleil"
+  },
+  "fr/photo-063002": {
+    "photoId": "photo-063002",
+    "locale": "fr",
+    "alt": "Rassemblement en plein air devant une petite scène musicale"
+  },
+  "fr/photo-063003": {
+    "photoId": "photo-063003",
+    "locale": "fr",
+    "alt": "Lac sombre dans un cirque boisé face à des montagnes lointaines"
+  },
+  "fr/photo-064001": {
+    "photoId": "photo-064001",
+    "locale": "fr",
+    "alt": "Montagnes émergeant des nuages au-dessus d'une forêt brûlée"
+  },
+  "fr/photo-064002": {
+    "photoId": "photo-064002",
+    "locale": "fr",
+    "alt": "Lac bleu sombre au pied d'un cirque rocheux escarpé"
+  },
+  "fr/photo-064003": {
+    "photoId": "photo-064003",
+    "locale": "fr",
+    "alt": "Soleil levant sur des montagnes partiellement noyées dans la fumée"
+  },
+  "fr/photo-064004": {
+    "photoId": "photo-064004",
+    "locale": "fr",
+    "alt": "Groupe de cervidés à l'ombre des arbres"
+  },
+  "fr/photo-065001": {
+    "photoId": "photo-065001",
+    "locale": "fr",
+    "alt": "Crête rocheuse dominant une succession de vallées boisées"
+  },
+  "fr/photo-065002": {
+    "photoId": "photo-065002",
+    "locale": "fr",
+    "alt": "Tente légère dressée sur un plateau rocheux au crépuscule"
+  },
+  "fr/photo-065003": {
+    "photoId": "photo-065003",
+    "locale": "fr",
+    "alt": "Chemin forestier montant entre de grands pins"
+  },
+  "fr/photo-066001": {
+    "photoId": "photo-066001",
+    "locale": "fr",
+    "alt": "Carrefour de sentiers balisé par plusieurs panneaux en bois"
+  },
+  "fr/photo-066002": {
+    "photoId": "photo-066002",
+    "locale": "fr",
+    "alt": "Haute prairie entourée de versants boisés"
+  },
+  "fr/photo-066003": {
+    "photoId": "photo-066003",
+    "locale": "fr",
+    "alt": "Chaises pliantes, glacières et ravitaillement installés au bord du sentier"
+  },
+  "fr/photo-066004": {
+    "photoId": "photo-066004",
+    "locale": "fr",
+    "alt": "Étroit sentier de terre dans une forêt de conifères"
+  },
+  "fr/photo-066005": {
+    "photoId": "photo-066005",
+    "locale": "fr",
+    "alt": "Sentier de crête au crépuscule sous un ciel rose"
+  },
+  "fr/photo-067001": {
+    "photoId": "photo-067001",
+    "locale": "fr",
+    "alt": "Buffet de petit-déjeuner en libre-service dans une salle boisée"
+  },
+  "fr/photo-067002": {
+    "photoId": "photo-067002",
+    "locale": "fr",
+    "alt": "Salle commune lumineuse avec tables, chaises et plantes vertes"
+  },
+  "fr/photo-067003": {
+    "photoId": "photo-067003",
+    "locale": "fr",
+    "alt": "Cuisine ouverte et comptoir décoré dans un hébergement"
+  },
+  "fr/photo-067004": {
+    "photoId": "photo-067004",
+    "locale": "fr",
+    "alt": "Paire de chaussures de randonnée usées"
+  },
+  "fr/photo-068001": {
+    "photoId": "photo-068001",
+    "locale": "fr",
+    "alt": "Randonneur barbu assis dans un fauteuil de salon de coiffure"
+  },
+  "fr/photo-068002": {
+    "photoId": "photo-068002",
+    "locale": "fr",
+    "alt": "Prairie dominant une large vallée montagneuse"
+  },
+  "fr/photo-068003": {
+    "photoId": "photo-068003",
+    "locale": "fr",
+    "alt": "Panorama de vallées boisées et de sommets lointains"
+  },
+  "fr/photo-069001": {
+    "photoId": "photo-069001",
+    "locale": "fr",
+    "alt": "Petite cabane en rondins au bout d'un sentier forestier"
+  },
+  "fr/photo-069002": {
+    "photoId": "photo-069002",
+    "locale": "fr",
+    "alt": "Sentier forestier avec un sommet rocheux en arrière-plan"
+  },
+  "fr/photo-069003": {
+    "photoId": "photo-069003",
+    "locale": "fr",
+    "alt": "Lac calme au coucher du soleil"
+  },
+  "fr/photo-070001": {
+    "photoId": "photo-070001",
+    "locale": "fr",
+    "alt": "Sentier encombré de troncs brûlés dans une forêt brumeuse"
+  },
+  "fr/photo-070002": {
+    "photoId": "photo-070002",
+    "locale": "fr",
+    "alt": "Jeunes conifères repoussant parmi les troncs brûlés"
+  },
+  "fr/photo-070003": {
+    "photoId": "photo-070003",
+    "locale": "fr",
+    "alt": "Sentier rougeâtre sur un versant boisé plongé dans la brume"
+  },
+  "fr/photo-071001": {
+    "photoId": "photo-071001",
+    "locale": "fr",
+    "alt": "Assiette de pancakes avec œufs, bacon et café"
+  },
+  "fr/photo-071002": {
+    "photoId": "photo-071002",
+    "locale": "fr",
+    "alt": "Île boisée émergeant d'un lac enveloppé de brume"
+  },
+  "fr/photo-071003": {
+    "photoId": "photo-071003",
+    "locale": "fr",
+    "alt": "Panneau d'information sur un lac volcanique masqué par le brouillard"
+  },
+  "fr/photo-071004": {
+    "photoId": "photo-071004",
+    "locale": "fr",
+    "alt": "Prairie et conifères à peine visibles dans un brouillard dense"
+  },
+  "fr/photo-072001": {
+    "photoId": "photo-072001",
+    "locale": "fr",
+    "alt": "Sentier traversant une forêt couverte de neige fraîche"
+  },
+  "fr/photo-072002": {
+    "photoId": "photo-072002",
+    "locale": "fr",
+    "alt": "Sentier traversant une forêt fraîchement enneigée"
+  },
+  "fr/photo-072003": {
+    "photoId": "photo-072003",
+    "locale": "fr",
+    "alt": "Versant rocheux enveloppé de brume au-dessus d'une forêt"
+  },
+  "fr/photo-072004": {
+    "photoId": "photo-072004",
+    "locale": "fr",
+    "alt": "Forêt de conifères et montagnes lointaines sous un ciel bleu nuageux"
+  },
+  "fr/photo-073001": {
+    "photoId": "photo-073001",
+    "locale": "fr",
+    "alt": "Sentier serpentant entre les conifères et les plaques de neige en montagne"
+  },
+  "fr/photo-073002": {
+    "photoId": "photo-073002",
+    "locale": "fr",
+    "alt": "Campement au bord d'un lac entouré de sapins"
+  },
+  "fr/photo-073003": {
+    "photoId": "photo-073003",
+    "locale": "fr",
+    "alt": "Route traversant un campement au milieu des pins"
+  },
+  "fr/photo-074001": {
+    "photoId": "photo-074001",
+    "locale": "fr",
+    "alt": "Clairière verdoyante au milieu de grands conifères"
+  },
+  "fr/photo-074002": {
+    "photoId": "photo-074002",
+    "locale": "fr",
+    "alt": "Lac alpin bordé de rochers et de sapins"
+  },
+  "fr/photo-074003": {
+    "photoId": "photo-074003",
+    "locale": "fr",
+    "alt": "Lac entrevu au-delà d'une forêt dense de conifères"
+  },
+  "fr/photo-074004": {
+    "photoId": "photo-074004",
+    "locale": "fr",
+    "alt": "Forêt brûlée aux troncs calcinés sous un ciel bleu"
+  },
+  "fr/photo-074005": {
+    "photoId": "photo-074005",
+    "locale": "fr",
+    "alt": "Tente légère dressée sous les arbres au bord d'un lac"
+  },
+  "fr/photo-075001": {
+    "photoId": "photo-075001",
+    "locale": "fr",
+    "alt": "Sentier droit menant vers un sommet enneigé sous un ciel bleu"
+  },
+  "fr/photo-075002": {
+    "photoId": "photo-075002",
+    "locale": "fr",
+    "alt": "Vaste champ de lave noire entre deux versants montagneux"
+  },
+  "fr/photo-076001": {
+    "photoId": "photo-076001",
+    "locale": "fr",
+    "alt": "Lac de montagne reflétant des sapins et des sommets au coucher du soleil"
+  },
+  "fr/photo-076002": {
+    "photoId": "photo-076002",
+    "locale": "fr",
+    "alt": "Nombre 2000 formé avec des branches sur le sol de la forêt"
+  },
+  "fr/photo-076003": {
+    "photoId": "photo-076003",
+    "locale": "fr",
+    "alt": "Tente légère installée au pied d'une crête rocheuse"
+  },
+  "fr/photo-076004": {
+    "photoId": "photo-076004",
+    "locale": "fr",
+    "alt": "Cône volcanique dominant une vaste forêt de conifères"
+  },
+  "fr/photo-077001": {
+    "photoId": "photo-077001",
+    "locale": "fr",
+    "alt": "Névé au premier plan et sommets volcaniques sous un ciel dégagé"
+  },
+  "fr/photo-077002": {
+    "photoId": "photo-077002",
+    "locale": "fr",
+    "alt": "Montagne enneigée dominant un lac entouré de sapins"
+  },
+  "fr/photo-077003": {
+    "photoId": "photo-077003",
+    "locale": "fr",
+    "alt": "Sommet volcanique enneigé au-dessus d'une vallée boisée"
+  },
+  "fr/photo-078001": {
+    "photoId": "photo-078001",
+    "locale": "fr",
+    "alt": "Vallée boisée éclairée par les dernières lueurs du soleil"
+  },
+  "fr/photo-078002": {
+    "photoId": "photo-078002",
+    "locale": "fr",
+    "alt": "Pontons étroits et embarcations sur un lac face à un sommet enneigé"
+  },
+  "fr/photo-079001": {
+    "photoId": "photo-079001",
+    "locale": "fr",
+    "alt": "Refuge de montagne dominant une succession de crêtes boisées"
+  },
+  "fr/photo-079002": {
+    "photoId": "photo-079002",
+    "locale": "fr",
+    "alt": "Randonneur tenant un manche en bois devant une grande cheminée en pierre"
+  },
+  "fr/photo-079003": {
+    "photoId": "photo-079003",
+    "locale": "fr",
+    "alt": "Salon rustique organisé autour d'une grande cheminée en pierre"
+  },
+  "fr/photo-079004": {
+    "photoId": "photo-079004",
+    "locale": "fr",
+    "alt": "Sentier de terre dans une prairie face à un sommet volcanique enneigé"
+  },
+  "fr/photo-079005": {
+    "photoId": "photo-079005",
+    "locale": "fr",
+    "alt": "Cascade ruisselant sur une paroi couverte de mousse en forêt"
+  },
+  "fr/photo-080001": {
+    "photoId": "photo-080001",
+    "locale": "fr",
+    "alt": "Haute cascade tombant dans un bassin rocheux"
+  },
+  "fr/photo-080002": {
+    "photoId": "photo-080002",
+    "locale": "fr",
+    "alt": "Randonneur debout derrière une haute cascade"
+  },
+  "fr/photo-080003": {
+    "photoId": "photo-080003",
+    "locale": "fr",
+    "alt": "Rue calme traversant une petite ville"
+  },
+  "fr/photo-080004": {
+    "photoId": "photo-080004",
+    "locale": "fr",
+    "alt": "Jambes allongées sur un lit face à un téléviseur"
+  },
+  "fr/photo-081001": {
+    "photoId": "photo-081001",
+    "locale": "fr",
+    "alt": "Large lac parsemé de petites îles boisées"
+  },
+  "fr/photo-081002": {
+    "photoId": "photo-081002",
+    "locale": "fr",
+    "alt": "Sentier étroit dans une forêt luxuriante de fougères"
+  },
+  "fr/photo-081003": {
+    "photoId": "photo-081003",
+    "locale": "fr",
+    "alt": "Passerelle métallique dominant un lac bordé de montagnes"
+  },
+  "fr/photo-082001": {
+    "photoId": "photo-082001",
+    "locale": "fr",
+    "alt": "Sentier en balcon parmi les sapins avec un sommet enneigé au loin"
+  },
+  "fr/photo-082002": {
+    "photoId": "photo-082002",
+    "locale": "fr",
+    "alt": "Immense forêt de conifères s'étendant jusqu'aux montagnes bleutées"
+  },
+  "fr/photo-082003": {
+    "photoId": "photo-082003",
+    "locale": "fr",
+    "alt": "Petit lac forestier bordé de troncs couchés"
+  },
+  "fr/photo-084001": {
+    "photoId": "photo-084001",
+    "locale": "fr",
+    "alt": "Sentier à flanc de montagne face à des sommets encore enneigés"
+  },
+  "fr/photo-084002": {
+    "photoId": "photo-084002",
+    "locale": "fr",
+    "alt": "Passage improvisé en planches au-dessus d'un ruisseau"
+  },
+  "fr/photo-084003": {
+    "photoId": "photo-084003",
+    "locale": "fr",
+    "alt": "Randonneur trempé sous une capuche et des lunettes"
+  },
+  "fr/photo-084004": {
+    "photoId": "photo-084004",
+    "locale": "fr",
+    "alt": "Sommet enneigé derrière une prairie verdoyante"
+  },
+  "fr/photo-084005": {
+    "photoId": "photo-084005",
+    "locale": "fr",
+    "alt": "Pente enneigée disparaissant dans un épais brouillard"
+  },
+  "fr/photo-084006": {
+    "photoId": "photo-084006",
+    "locale": "fr",
+    "alt": "Arête rocheuse disparaissant dans un brouillard dense"
+  },
+  "fr/photo-084007": {
+    "photoId": "photo-084007",
+    "locale": "fr",
+    "alt": "Vallon alpin rocheux parsemé de névés sous un ciel couvert"
+  },
+  "fr/photo-085001": {
+    "photoId": "photo-085001",
+    "locale": "fr",
+    "alt": "Vallon traversé par des ruisseaux de fonte sous un ciel sombre"
+  },
+  "fr/photo-085002": {
+    "photoId": "photo-085002",
+    "locale": "fr",
+    "alt": "Serpent brun lové entre des rochers et des plantes sur un versant"
+  },
+  "fr/photo-085003": {
+    "photoId": "photo-085003",
+    "locale": "fr",
+    "alt": "Lac alpin bleu entouré de montagnes encore enneigées"
+  },
+  "fr/photo-086001": {
+    "photoId": "photo-086001",
+    "locale": "fr",
+    "alt": "Cervidés dispersés dans une prairie bordée de conifères"
+  },
+  "fr/photo-086002": {
+    "photoId": "photo-086002",
+    "locale": "fr",
+    "alt": "Vaste panorama de forêts et de chaînes montagneuses"
+  },
+  "fr/photo-086003": {
+    "photoId": "photo-086003",
+    "locale": "fr",
+    "alt": "Sentier longeant la rive boisée d'un lac de montagne"
+  },
+  "fr/photo-086004": {
+    "photoId": "photo-086004",
+    "locale": "fr",
+    "alt": "Forêt brûlée sur une pente dominant des montagnes"
+  },
+  "fr/photo-086005": {
+    "photoId": "photo-086005",
+    "locale": "fr",
+    "alt": "Sentier forestier face à un sommet enneigé au-dessus des nuages"
+  },
+  "fr/photo-087001": {
+    "photoId": "photo-087001",
+    "locale": "fr",
+    "alt": "Large vallée couverte de forêts de conifères"
+  },
+  "fr/photo-087002": {
+    "photoId": "photo-087002",
+    "locale": "fr",
+    "alt": "Forêt de conifères avec un sommet enneigé à l'horizon"
+  },
+  "fr/photo-088001": {
+    "photoId": "photo-088001",
+    "locale": "fr",
+    "alt": "Petit complexe de bâtiments au pied d'une montagne boisée"
+  },
+  "fr/photo-088002": {
+    "photoId": "photo-088002",
+    "locale": "fr",
+    "alt": "Tables en bois dans un bar presque vide"
+  },
+  "fr/photo-088003": {
+    "photoId": "photo-088003",
+    "locale": "fr",
+    "alt": "Vue depuis un lit sur une chambre d'hôtel et son téléviseur"
+  },
+  "fr/photo-089001": {
+    "photoId": "photo-089001",
+    "locale": "fr",
+    "alt": "Pics rocheux déchiquetés sous un ciel menaçant"
+  },
+  "fr/photo-089002": {
+    "photoId": "photo-089002",
+    "locale": "fr",
+    "alt": "Sentier alpin dominant une ligne de pics rocheux"
+  },
+  "fr/photo-089003": {
+    "photoId": "photo-089003",
+    "locale": "fr",
+    "alt": "Lac alpin entouré de sommets escarpés et de sapins"
+  },
+  "fr/photo-089004": {
+    "photoId": "photo-089004",
+    "locale": "fr",
+    "alt": "Vallée alpine profonde vue entre des conifères"
+  },
+  "fr/photo-090001": {
+    "photoId": "photo-090001",
+    "locale": "fr",
+    "alt": "Vallée encaissée couverte de conifères sous un ciel nuageux"
+  },
+  "fr/photo-090002": {
+    "photoId": "photo-090002",
+    "locale": "fr",
+    "alt": "Torrent impétueux dévalant entre les rochers"
+  },
+  "fr/photo-090003": {
+    "photoId": "photo-090003",
+    "locale": "fr",
+    "alt": "Vallée boisée et lac lointain dans la lumière du soir"
+  },
+  "fr/photo-090004": {
+    "photoId": "photo-090004",
+    "locale": "fr",
+    "alt": "Chaîne de montagnes boisées sous un ciel de fin de journée"
+  },
+  "fr/photo-091001": {
+    "photoId": "photo-091001",
+    "locale": "fr",
+    "alt": "Lac calme enveloppé de brume entre des conifères"
+  },
+  "fr/photo-091002": {
+    "photoId": "photo-091002",
+    "locale": "fr",
+    "alt": "Vêtements séchant devant le Pacific Crest Lodge"
+  },
+  "fr/photo-091003": {
+    "photoId": "photo-091003",
+    "locale": "fr",
+    "alt": "Sac à dos, bâtons de marche et nourriture posés sur une table de pique-nique"
+  },
+  "fr/photo-091004": {
+    "photoId": "photo-091004",
+    "locale": "fr",
+    "alt": "Lac bleu entouré d'une forêt dense et de crêtes montagneuses"
+  },
+  "fr/photo-091005": {
+    "photoId": "photo-091005",
+    "locale": "fr",
+    "alt": "Prairie fleurie face à des sommets enneigés"
+  },
+  "fr/photo-092001": {
+    "photoId": "photo-092001",
+    "locale": "fr",
+    "alt": "Prairie alpine verte dominant une longue vallée montagneuse"
+  },
+  "fr/photo-092002": {
+    "photoId": "photo-092002",
+    "locale": "fr",
+    "alt": "Rayons de soleil perçant les nuages au-dessus d'une vallée boisée"
+  },
+  "fr/photo-092003": {
+    "photoId": "photo-092003",
+    "locale": "fr",
+    "alt": "Sentier étroit traversant une vallée alpine verdoyante"
+  },
+  "fr/photo-092004": {
+    "photoId": "photo-092004",
+    "locale": "fr",
+    "alt": "Sentier étroit longeant un versant verdoyant dans le brouillard"
+  },
+  "fr/photo-092005": {
+    "photoId": "photo-092005",
+    "locale": "fr",
+    "alt": "Montagnes boisées sous de lourds nuages d'orage"
+  },
+  "fr/photo-092006": {
+    "photoId": "photo-092006",
+    "locale": "fr",
+    "alt": "Versant rocheux parsemé de plaques de neige dans un épais brouillard"
+  },
+  "fr/photo-092007": {
+    "photoId": "photo-092007",
+    "locale": "fr",
+    "alt": "Escalier étroit en bois descendant dans une végétation dense"
+  },
+  "fr/photo-092008": {
+    "photoId": "photo-092008",
+    "locale": "fr",
+    "alt": "Torrent boueux traversant un lit rocheux encombré de troncs"
+  },
+  "fr/photo-093001": {
+    "photoId": "photo-093001",
+    "locale": "fr",
+    "alt": "Névé descendant entre de hautes crêtes montagneuses"
+  },
+  "fr/photo-093002": {
+    "photoId": "photo-093002",
+    "locale": "fr",
+    "alt": "Petit lac de montagne au pied d'une crête rocheuse"
+  },
+  "fr/photo-093003": {
+    "photoId": "photo-093003",
+    "locale": "fr",
+    "alt": "Sentier traversant une prairie fleurie face à une chaîne de montagnes enneigées"
+  },
+  "fr/photo-093004": {
+    "photoId": "photo-093004",
+    "locale": "fr",
+    "alt": "Chaîne de montagnes éclairée par le soleil au-delà d'une forêt"
+  },
+  "fr/photo-093005": {
+    "photoId": "photo-093005",
+    "locale": "fr",
+    "alt": "Sous-bois sombre au milieu de grands conifères"
+  },
+  "fr/photo-093006": {
+    "photoId": "photo-093006",
+    "locale": "fr",
+    "alt": "Sentier passant entre de gros troncs tombés en forêt"
+  },
+  "fr/photo-093007": {
+    "photoId": "photo-093007",
+    "locale": "fr",
+    "alt": "Pieds posés sur le tronc d'un arbre géant"
+  },
+  "fr/photo-093008": {
+    "photoId": "photo-093008",
+    "locale": "fr",
+    "alt": "Crêtes rocheuses sombres ponctuées de névés"
+  },
+  "fr/photo-094001": {
+    "photoId": "photo-094001",
+    "locale": "fr",
+    "alt": "Troncs d'arbres tombés en travers du sentier"
+  },
+  "fr/photo-094002": {
+    "photoId": "photo-094002",
+    "locale": "fr",
+    "alt": "Sommet rocheux dominant une vallée encaissée couverte de conifères"
+  },
+  "fr/photo-094003": {
+    "photoId": "photo-094003",
+    "locale": "fr",
+    "alt": "Torrent coulant au fond d'une gorge rocheuse"
+  },
+  "fr/photo-094004": {
+    "photoId": "photo-094004",
+    "locale": "fr",
+    "alt": "Crête rocheuse escarpée striée de plaques de neige"
+  },
+  "fr/photo-095001": {
+    "photoId": "photo-095001",
+    "locale": "fr",
+    "alt": "Vallée montagneuse noyée dans la brume et traversée par un rayon de soleil"
+  },
+  "fr/photo-095002": {
+    "photoId": "photo-095002",
+    "locale": "fr",
+    "alt": "Vallée montagneuse boisée voilée par la fumée"
+  },
+  "fr/photo-095003": {
+    "photoId": "photo-095003",
+    "locale": "fr",
+    "alt": "Part de gâteau posée sur son emballage"
+  },
+  "fr/photo-095004": {
+    "photoId": "photo-095004",
+    "locale": "fr",
+    "alt": "Chaîne de sommets escarpés derrière un névé"
+  },
+  "fr/photo-096001": {
+    "photoId": "photo-096001",
+    "locale": "fr",
+    "alt": "Crêtes boisées s'étendant sous un ciel bleu"
+  },
+  "fr/photo-096002": {
+    "photoId": "photo-096002",
+    "locale": "fr",
+    "alt": "Panache de fumée s'élevant entre deux montagnes boisées"
+  },
+  "fr/photo-096003": {
+    "photoId": "photo-096003",
+    "locale": "fr",
+    "alt": "Prairie alpine au crépuscule sous des sommets dentelés"
+  },
+  "fr/photo-096004": {
+    "photoId": "photo-096004",
+    "locale": "fr",
+    "alt": "Sentier traversant une prairie alpine couverte de fleurs sauvages"
+  },
+  "fr/photo-097001": {
+    "photoId": "photo-097001",
+    "locale": "fr",
+    "alt": "Lac encaissé dans une vallée montagneuse embrumée"
+  },
+  "fr/photo-097002": {
+    "photoId": "photo-097002",
+    "locale": "fr",
+    "alt": "Randonneur assis les bras levés sur un monument du Pacific Crest Trail"
+  },
+  "fr/photo-097003": {
+    "photoId": "photo-097003",
+    "locale": "fr",
+    "alt": "Monument du terminus nord du Pacific Crest Trail au milieu de la forêt"
+  },
+  "fr/photo-097004": {
+    "photoId": "photo-097004",
+    "locale": "fr",
+    "alt": "Panneau Welcome to Canada au milieu d'une forêt"
+  },
+  "fr/photo-098001": {
+    "photoId": "photo-098001",
+    "locale": "fr",
+    "alt": "Portants de vêtements colorés sous une tente de marché"
+  },
+  "fr/photo-098002": {
+    "photoId": "photo-098002",
+    "locale": "fr",
+    "alt": "Table de ravitaillement chargée de boissons et nourriture devant une cabane"
+  },
+  "fr/photo-098003": {
+    "photoId": "photo-098003",
+    "locale": "fr",
+    "alt": "Hamac et chaise installés devant une cabane décorée de fanions"
+  },
+  "fr/photo-098004": {
+    "photoId": "photo-098004",
+    "locale": "fr",
+    "alt": "Salon coloré d'un hébergement pour randonneurs"
+  },
+  "fr/photo-098005": {
+    "photoId": "photo-098005",
+    "locale": "fr",
+    "alt": "Petite salle de bains en bois avec douche, lavabo et toilettes"
+  },
+  "fr/photo-098006": {
+    "photoId": "photo-098006",
+    "locale": "fr",
+    "alt": "Tables et chaises sous une terrasse décorée de guirlandes"
+  },
+  "fr/photo-098007": {
+    "photoId": "photo-098007",
+    "locale": "fr",
+    "alt": "Deux hommes posant sous un abri décoré de fanions"
+  },
+  "fr/photo-099001": {
+    "photoId": "photo-099001",
+    "locale": "fr",
+    "alt": "Bateaux amarrés dans un port urbain"
+  },
+  "fr/photo-100001": {
+    "photoId": "photo-100001",
+    "locale": "fr",
+    "alt": "Rue piétonne animée entre de hauts immeubles"
+  },
+  "fr/photo-100002": {
+    "photoId": "photo-100002",
+    "locale": "fr",
+    "alt": "Allée d'un magasin aux poutres apparentes"
+  },
+  "fr/photo-100003": {
+    "photoId": "photo-100003",
+    "locale": "fr",
+    "alt": "Carrefour urbain animé sous des immeubles de bureaux"
+  },
+  "fr/photo-100004": {
+    "photoId": "photo-100004",
+    "locale": "fr",
+    "alt": "Salle d'arcade bordée de flippers"
+  },
+  "fr/photo-100005": {
+    "photoId": "photo-100005",
+    "locale": "fr",
+    "alt": "Ville et baie vues depuis une colline boisée"
+  }
+}

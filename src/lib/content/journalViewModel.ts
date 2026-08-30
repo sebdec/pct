@@ -3,8 +3,19 @@ import {
   getTrailDayDistanceKilometers,
   getTrailDayDistanceMiles,
 } from "./metrics.ts";
+import {
+  buildJournalPhotoViewModels,
+  type JournalPhotoViewModel,
+} from "./journalMediaViewModel.ts";
 import { getRegionLabels } from "./regions.ts";
-import type { Day, JournalEntry, Photo, TrailDay } from "./schemas.ts";
+import type {
+  Day,
+  JournalEntry,
+  LocalizedPhoto,
+  MediaAsset,
+  Photo,
+  TrailDay,
+} from "./schemas.ts";
 
 export interface JournalNavigationItem {
   dayId: string;
@@ -31,7 +42,7 @@ export interface JournalTrailMetrics {
 export interface JournalPageViewModel {
   day: Day;
   entry: JournalEntry;
-  photos: readonly Photo[];
+  photos: readonly JournalPhotoViewModel[];
   metrics: JournalTrailMetrics | null;
   regionId: TrailDay["regionId"] | null;
   regionLabel: string;
@@ -55,6 +66,8 @@ interface JournalViewModelSource {
   days: readonly Day[];
   journalEntries: readonly JournalEntry[];
   photos: readonly Photo[];
+  mediaAssets?: readonly MediaAsset[];
+  localizedPhotos?: readonly LocalizedPhoto[];
   locale?: Locale;
 }
 
@@ -90,6 +103,8 @@ export function buildJournalViewModels({
   days,
   journalEntries,
   photos,
+  mediaAssets = [],
+  localizedPhotos = [],
   locale = defaultLocale,
 }: JournalViewModelSource): JournalPageViewModel[] {
   const dayById = indexUnique(days, ({ id }) => id, "day ID");
@@ -152,6 +167,12 @@ export function buildJournalViewModels({
 
       return photo;
     });
+    const journalPhotos = buildJournalPhotoViewModels({
+      photos: entryPhotos,
+      mediaAssets,
+      localizedPhotos,
+      locale,
+    });
 
     const metrics =
       day.kind === "trail"
@@ -168,7 +189,7 @@ export function buildJournalViewModels({
     return {
       day,
       entry,
-      photos: entryPhotos,
+      photos: journalPhotos,
       metrics,
       regionId: day.kind === "trail" ? day.regionId : null,
       regionLabel:
