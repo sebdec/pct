@@ -76,7 +76,7 @@
   font-weight: 500;
 }
 
-.trail-progress__copy span {
+.trail-progress__copy > span {
   color: var(--navigator-color);
   transition: color 160ms ease;
 }

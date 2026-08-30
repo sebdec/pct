@@ -39,6 +39,22 @@ test("keeps French dates, the current Journal URL and the map deep link", async 
   await expect(page.getByLabel("Accès rapide aux journées")).not.toContainText(
     "Position",
   );
+
+  const progressColors = await page
+    .locator(".journal-progress .trail-progress__copy")
+    .evaluate((copy) => {
+      const region = copy.querySelector(":scope > span");
+      const unit = copy.querySelector("[data-pct-unit-value]");
+      if (!region || !unit) throw new Error("Missing progress labels.");
+
+      return {
+        neutral: getComputedStyle(copy).color,
+        region: getComputedStyle(region).color,
+        unit: getComputedStyle(unit).color,
+      };
+    });
+  expect(progressColors.region).not.toBe(progressColors.neutral);
+  expect(progressColors.unit).toBe(progressColors.neutral);
 });
 
 test("removes trail metrics and the map action after day 97", async ({

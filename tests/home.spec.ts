@@ -4,6 +4,13 @@ test("presents the journey and its main entrances", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle("Pacific Crest Trail 2026");
 
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
+    "href",
+    /^data:image\/svg\+xml,/,
+  );
+  await expect(page.locator(".wordmark__mark svg")).toHaveCount(1);
+  await expect(page.locator(".wordmark__mark img")).toHaveCount(0);
+
   await expect(
     page.getByRole("heading", {
       level: 1,
@@ -47,7 +54,7 @@ test("presents the journey and its main entrances", async ({ page }) => {
   ).toHaveCount(0);
 
   await expect(
-    page.getByRole("heading", { name: "Pourquoi le PCT" }),
+    page.getByRole("heading", { name: "Pourquoi le PCT?" }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Découvrir l’aventure" }),
@@ -106,6 +113,22 @@ test("presents the journey and its main entrances", async ({ page }) => {
     );
   expect(regionColors).toHaveLength(5);
   expect(new Set(regionColors).size).toBe(5);
+
+  const overviewAlignment = await page.evaluate(() => {
+    const firstMetric = document.querySelector<HTMLElement>(
+      ".trail-overview-metrics__metric",
+    );
+    const regions = document.querySelector<HTMLElement>(
+      ".trail-overview-metrics__regions",
+    );
+    if (!firstMetric || !regions) throw new Error("Missing overview metrics.");
+
+    return {
+      firstMetricLeft: firstMetric.getBoundingClientRect().left,
+      regionsLeft: regions.getBoundingClientRect().left,
+    };
+  });
+  expect(overviewAlignment.regionsLeft).toBe(overviewAlignment.firstMetricLeft);
 
   for (const linkName of [
     "Pacific Crest Trail",
@@ -172,6 +195,76 @@ test("reuses the editorial shell and heading scale", async ({ page }) => {
   expect(homeShell.headingSize).toBe(glossaryShell.headingSize);
   expect(homeShell.mainWidth).toBeLessThanOrEqual(glossaryShell.mainWidth);
   expect(homeShell.centerOffset).toBeLessThan(1);
+});
+
+test("keeps the header stable across primary navigation", async ({ page }) => {
+  await page.goto("/gear");
+
+  const wordmark = page.locator(".wordmark");
+  await page.evaluate(() => {
+    (
+      window as typeof window & { __pctNavigationMarker?: string }
+    ).__pctNavigationMarker = "retained";
+  });
+
+  const readHeaderLayout = () =>
+    page.evaluate(() => {
+      const visibleLinks = [...document.querySelectorAll(".site-header nav a")]
+        .map((link) => link.getBoundingClientRect())
+        .filter(({ width, height }) => width > 0 && height > 0);
+      const mark = document.querySelector(".wordmark")?.getBoundingClientRect();
+      if (!mark) throw new Error("Missing wordmark.");
+
+      return {
+        linkPositions: visibleLinks.map(({ left, top }) => ({ left, top })),
+        mark: { left: mark.left, top: mark.top },
+      };
+    });
+
+  const beforeNavigation = await readHeaderLayout();
+
+  const wordmarkSpacing = await wordmark.evaluate((element) => {
+    const title = element.querySelector<HTMLElement>(".wordmark__text > span");
+    const year = element.querySelector<HTMLElement>("small");
+    if (!title || !year) throw new Error("Missing wordmark text.");
+
+    return (
+      year.getBoundingClientRect().left - title.getBoundingClientRect().right
+    );
+  });
+  expect(wordmarkSpacing).toBeGreaterThanOrEqual(8);
+
+  await page.locator('.site-header a[href="/glossary"]:visible').click();
+  await expect(page).toHaveURL("/glossary");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as typeof window & { __pctNavigationMarker?: string })
+            .__pctNavigationMarker,
+      ),
+    )
+    .toBe("retained");
+  await expect(
+    page.locator('.site-header a[aria-current="page"]:visible'),
+  ).toHaveText("Glossaire");
+
+  const afterNavigation = await readHeaderLayout();
+  expect(afterNavigation.mark.left).toBeCloseTo(beforeNavigation.mark.left, 0);
+  expect(afterNavigation.mark.top).toBeCloseTo(beforeNavigation.mark.top, 0);
+  expect(afterNavigation.linkPositions).toHaveLength(
+    beforeNavigation.linkPositions.length,
+  );
+  afterNavigation.linkPositions.forEach((position, index) => {
+    expect(position.left).toBeCloseTo(
+      beforeNavigation.linkPositions[index].left,
+      0,
+    );
+    expect(position.top).toBeCloseTo(
+      beforeNavigation.linkPositions[index].top,
+      0,
+    );
+  });
 });
 
 test("keeps the homepage within responsive viewports", async ({ page }) => {

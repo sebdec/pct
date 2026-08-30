@@ -6,6 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { defaultLocale } from "../lib/content/locales.ts";
 import { buildMapDayViewModels } from "../lib/map/mapExperience.ts";
 import { site } from "../lib/site.ts";
+import PageCredits from "./PageCredits.astro";
 import SiteHeader from "./SiteHeader.astro";
 import TrailMapExperience from "./TrailMapExperience";
 
@@ -38,12 +39,17 @@ const days = buildMapDayViewModels({
 const route = routeEntries[0]?.data;
 const points = pointEntries.map(({ data }) => data);
 const areas = areaEntries.map(({ data }) => data);
+const naturalEarthSource = areas[0]?.source;
 const initialDay = initialDayId
   ? days.find(({ id }) => id === initialDayId)
   : undefined;
 
 if (!route) {
   throw new Error("The PCT route is missing.");
+}
+
+if (!naturalEarthSource) {
+  throw new Error("The map geography source is missing.");
 }
 
 if (initialDayId && !initialDay) {
@@ -75,6 +81,22 @@ const title = initialDay
       client:load
     />
   </main>
+  <PageCredits
+    links={[
+      {
+        href: route.source.centerlineUrl,
+        label: "Pacific Crest Trail Association",
+      },
+      { href: route.source.licenseUrl, label: route.source.license },
+      { href: "https://openfreemap.org/", label: "OpenFreeMap" },
+      { href: "https://openmaptiles.org/", label: "OpenMapTiles" },
+      {
+        href: "https://www.openstreetmap.org/copyright",
+        label: "OpenStreetMap",
+      },
+      { href: naturalEarthSource.url, label: naturalEarthSource.dataset },
+    ]}
+  />
 </BaseLayout>
 
 <style>

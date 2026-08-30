@@ -21,6 +21,22 @@ test("selects the journey without a native day menu or URL changes", async ({
     page.getByRole("link", { name: "Voir sur le journal" }),
   ).toHaveClass(/pct-text-link/);
 
+  const progressColors = await page
+    .locator(".trail-map-progress .trail-progress__copy")
+    .evaluate((copy) => {
+      const region = copy.querySelector(":scope > span");
+      const unit = copy.querySelector("[data-pct-unit-value]");
+      if (!region || !unit) throw new Error("Missing progress labels.");
+
+      return {
+        neutral: getComputedStyle(copy).color,
+        region: getComputedStyle(region).color,
+        unit: getComputedStyle(unit).color,
+      };
+    });
+  expect(progressColors.region).not.toBe(progressColors.neutral);
+  expect(progressColors.unit).toBe(progressColors.neutral);
+
   const metaAlignment = await page.evaluate(() => {
     const date = document.querySelector(".trail-day-summary__date");
     const action = document.querySelector(".trail-day-summary__action");
@@ -114,7 +130,17 @@ test("keeps the map page within the mobile viewport", async ({ page }) => {
   await expect(
     page.getByRole("link", { name: "Carte", exact: true }),
   ).toHaveAttribute("aria-current", "page");
-  await expect(page.locator(".page-credits")).toHaveCount(0);
+  const credits = page.locator(".page-credits");
+  await expect(credits).toContainText(
+    "Credits: Pacific Crest Trail Association, CC BY 4.0, OpenFreeMap, OpenMapTiles, OpenStreetMap, Natural Earth",
+  );
+  await expect(credits.getByRole("link")).toHaveCount(6);
+  await expect(
+    credits.getByRole("link", { name: "Natural Earth" }),
+  ).toHaveClass(/text-link/);
+  await expect(
+    credits.getByRole("link", { name: "Natural Earth" }),
+  ).toHaveAttribute("target", "_blank");
   const attribution = page.locator(".maplibregl-ctrl-attrib");
   await expect(attribution).toBeAttached();
   if (
@@ -125,17 +151,20 @@ test("keeps the map page within the mobile viewport", async ({ page }) => {
     await page.locator(".maplibregl-ctrl-attrib-button").click();
   }
   await expect(
-    page.getByRole("link", { name: "OpenStreetMap", exact: true }),
+    attribution.getByRole("link", { name: "OpenStreetMap", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "OpenStreetMap", exact: true }),
+    attribution.getByRole("link", { name: "OpenStreetMap", exact: true }),
   ).toHaveAttribute("href", "https://www.openstreetmap.org/copyright");
   await expect(
-    page.getByRole("link", {
+    attribution.getByRole("link", {
       name: "Trail data © Pacific Crest Trail Association, CC BY 4.0, 2026",
     }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Natural Earth", exact: true }),
-  ).toHaveCount(0);
+    credits.getByRole("link", { name: "Natural Earth", exact: true }),
+  ).toHaveAttribute(
+    "href",
+    "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/",
+  );
 });
