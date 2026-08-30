@@ -6,11 +6,16 @@
   grid-template-columns: 2rem minmax(0, 1fr) 2rem;
   gap: var(--pct-space-3);
   align-items: center;
-  width: min(100%, 48rem);
+  width: 100%;
   margin-inline: auto;
   padding: var(--pct-space-3) var(--pct-space-4);
   border-radius: var(--pct-radius-small);
   background: var(--pct-color-night-trail);
+}
+
+.journal-progress {
+  width: 100%;
+  max-width: none;
 }
 
 .trail-progress[data-region="desert"] {
