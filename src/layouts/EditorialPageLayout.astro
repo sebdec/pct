@@ -7,10 +7,9 @@ interface Props {
   description: string;
   heading: string;
   bodyClass?: string;
-  width?: "wide" | "reading";
 }
 
-const { title, description, heading, bodyClass, width = "wide" } = Astro.props;
+const { title, description, heading, bodyClass } = Astro.props;
 ---
 
 <BaseLayout
@@ -20,12 +19,7 @@ const { title, description, heading, bodyClass, width = "wide" } = Astro.props;
 >
   <SiteHeader />
 
-  <main
-    class:list={[
-      "editorial-page",
-      { "editorial-page--reading": width === "reading" },
-    ]}
-  >
+  <main class="editorial-page">
     <header class="editorial-page__hero">
       <h1>{heading}</h1>
     </header>
@@ -33,20 +27,16 @@ const { title, description, heading, bodyClass, width = "wide" } = Astro.props;
     <slot />
   </main>
 
-  <slot name="after-main" />
+  <Fragment slot="page-supplement">
+    <slot name="after-main" />
+  </Fragment>
 </BaseLayout>
 
 <style>
   .editorial-page {
-    --editorial-page-width: 58rem;
-
-    width: min(100% - 3rem, var(--editorial-page-width));
+    width: min(100% - 3rem, var(--pct-content-page));
     margin: 0 auto;
     padding: clamp(3.5rem, 8vw, 6.5rem) 0 var(--pct-space-8);
-  }
-
-  .editorial-page--reading {
-    --editorial-page-width: var(--pct-content-reading);
   }
 
   .editorial-page__hero {
@@ -64,7 +54,7 @@ const { title, description, heading, bodyClass, width = "wide" } = Astro.props;
 
   @media (max-width: 46rem) {
     .editorial-page {
-      width: min(100% - 2rem, 58rem);
+      width: min(100% - 2rem, var(--pct-content-page));
     }
   }
 </style>

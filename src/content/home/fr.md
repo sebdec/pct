@@ -45,5 +45,3 @@ La [carte officielle du PCT](https://www.pcta.org/discover-the-trail/maps/overvi
 [Glossaire](/glossary) rassemble les mots et les habitudes du thru-hiking.
 
 [Commencer par le jour 1](/journal/day-001)
-
-<p class="pct-signature"><strong>Sebdec / One Pole</strong></p>
