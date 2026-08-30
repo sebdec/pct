@@ -6,7 +6,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { defaultLocale } from "../lib/content/locales.ts";
 import { buildMapDayViewModels } from "../lib/map/mapExperience.ts";
 import { site } from "../lib/site.ts";
-import PageCredits from "./PageCredits.astro";
 import SiteHeader from "./SiteHeader.astro";
 import TrailMapExperience from "./TrailMapExperience";
 
@@ -65,7 +64,7 @@ const title = initialDay
   bodyClass="trail-shell"
 >
   <SiteHeader />
-  <main>
+  <main class="map-page">
     <TrailMapExperience
       days={days}
       route={route}
@@ -76,33 +75,10 @@ const title = initialDay
       client:load
     />
   </main>
-
-  <PageCredits
-    links={[
-      {
-        href: route.source.centerlineUrl,
-        label: route.source.attribution,
-      },
-      {
-        href: route.source.licenseUrl,
-        label: route.source.license,
-      },
-      { href: "https://openfreemap.org/", label: "OpenFreeMap" },
-      { href: "https://openmaptiles.org/", label: "OpenMapTiles" },
-      {
-        href: "https://www.openstreetmap.org/copyright",
-        label: "OpenStreetMap",
-      },
-      {
-        href: "https://www.naturalearthdata.com/",
-        label: "Natural Earth",
-      },
-    ]}
-  />
 </BaseLayout>
 
 <style>
-  main {
+  .map-page {
     min-height: calc(100vh - 5.25rem);
   }
 </style>

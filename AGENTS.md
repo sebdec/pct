@@ -18,6 +18,12 @@ Do not expand an issue's scope silently. Record material product or architecture
 - Run `pnpm verify` before every pull request handoff.
 - `pnpm verify` is the canonical gate. CI must call it instead of recreating its steps.
 
+## Task synchronization
+
+- Before starting or resuming any task, run `git fetch origin` and rebase the task branch onto the latest `origin/main` before editing.
+- If the working tree is not clean, preserve tracked and untracked changes before the rebase and restore them afterward.
+- Resolve rebase conflicts before continuing. Rerun `pnpm verify` after the rebase and before the pull request handoff.
+
 ## Architecture
 
 - Keep the site static by default. Adding a server runtime or Vercel adapter requires an approved architecture decision.

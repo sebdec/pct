@@ -47,7 +47,12 @@ export default function TrailMetrics({
             <TrailMetricIcon name="section" />
             <span>Section</span>
           </dt>
-          <dd className="trail-metrics__section-list">
+          <dd
+            className="trail-metrics__section-list"
+            title={sections
+              .map(({ code, properName }) => `${code} ${properName}`)
+              .join(" / ")}
+          >
             {sections.map((section) => (
               <span
                 key={`${section.code}-${section.properName}`}

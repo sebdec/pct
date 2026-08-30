@@ -46,6 +46,8 @@ interface Props {
 const pageBackground = "#282c35";
 const landBackground = "#373b44";
 const trailStateBackground = "#495057";
+const baseMapAttribution =
+  '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>';
 const numberFormatter = new Intl.NumberFormat("fr-FR", {
   maximumFractionDigits: 1,
 });
@@ -254,6 +256,20 @@ function customizeBaseMap(map: MapLibreMap) {
     }
   }
   for (const layerId of [
+    "highway_name_other",
+    "highway_ref",
+    "place_other",
+    "place_suburb",
+    "place_village",
+    "place_town",
+    "place_city",
+    "place_city_large",
+  ]) {
+    if (map.getLayer(layerId)) {
+      map.setLayoutProperty(layerId, "visibility", "none");
+    }
+  }
+  for (const layerId of [
     "tunnel_motorway_casing",
     "tunnel_motorway_inner",
     "highway_path",
@@ -380,7 +396,14 @@ export default function TrailMapExperience({
           fitBoundsOptions: { padding: 44 },
           maxBounds: routeNavigationBounds(route),
           minZoom: 2.8,
-          attributionControl: false,
+          attributionControl: {
+            compact: true,
+            customAttribution: [
+              baseMapAttribution,
+              `<a href="${route.source.centerlineUrl}" target="_blank" rel="noopener noreferrer">${route.source.attribution}</a>`,
+              `<a href="${route.source.licenseUrl}" target="_blank" rel="noopener noreferrer">${route.source.license}</a>`,
+            ],
+          },
         });
         mapRef.current = map;
 
@@ -626,6 +649,12 @@ export default function TrailMapExperience({
         });
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
         map.addControl(new RouteFitControl(route), "top-right");
+        map.once("idle", () => {
+          map
+            .getContainer()
+            .querySelector(".maplibregl-ctrl-attrib")
+            ?.classList.remove("maplibregl-compact-show");
+        });
       } catch {
         setMapUnavailable(true);
       }
