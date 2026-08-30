@@ -18,13 +18,21 @@ export interface JournalPageProps {
 }
 
 export async function getJournalStaticPaths(locale: Locale) {
-  const [dayEntries, journalEntries, photoEntries, sectionEntries] =
-    await Promise.all([
-      getCollection("days"),
-      getCollection("journal"),
-      getCollection("photos"),
-      getCollection("sections"),
-    ]);
+  const [
+    dayEntries,
+    journalEntries,
+    photoEntries,
+    mediaAssetEntries,
+    localizedPhotoEntries,
+    sectionEntries,
+  ] = await Promise.all([
+    getCollection("days"),
+    getCollection("journal"),
+    getCollection("photos"),
+    getCollection("mediaAssets"),
+    getCollection("media"),
+    getCollection("sections"),
+  ]);
   const localizedEntries = journalEntries.filter(
     ({ data }) => data.locale === locale,
   );
@@ -32,6 +40,8 @@ export async function getJournalStaticPaths(locale: Locale) {
     days: dayEntries.map(({ data }) => data),
     journalEntries: localizedEntries.map(({ data }) => data),
     photos: photoEntries.map(({ data }) => data),
+    mediaAssets: mediaAssetEntries.map(({ data }) => data),
+    localizedPhotos: localizedPhotoEntries.map(({ data }) => data),
     locale,
   });
   const entryByDayId = new Map(

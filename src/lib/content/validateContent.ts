@@ -1154,6 +1154,19 @@ function validatePublishedLocaleCoverage(
       .filter(({ published }) => published)
       .map(({ pageId }) => pageId),
   );
+  content.photos
+    .filter(({ published }) => published)
+    .forEach(({ id }) => {
+      if (!photoKeys.has(`${sourceLocale}:${id}`)) {
+        addIssue(
+          issues,
+          `translation.${sourceLocale}.missing`,
+          `photos.${id}`,
+          `Published photo "${id}" requires ${sourceLocale} alternative text.`,
+        );
+      }
+    });
+
   for (const requiredLocale of publishedLocales) {
     const issueCode = `translation.${requiredLocale}.missing`;
 
@@ -1166,19 +1179,6 @@ function validatePublishedLocaleCoverage(
             issueCode,
             `days.${id}`,
             `Published day "${id}" requires a ${requiredLocale} journal entry.`,
-          );
-        }
-      });
-
-    content.photos
-      .filter(({ published }) => published)
-      .forEach(({ id }) => {
-        if (!photoKeys.has(`${requiredLocale}:${id}`)) {
-          addIssue(
-            issues,
-            issueCode,
-            `photos.${id}`,
-            `Published photo "${id}" requires ${requiredLocale} alternative text.`,
           );
         }
       });

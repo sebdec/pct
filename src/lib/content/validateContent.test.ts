@@ -108,6 +108,32 @@ describe("content model validation", () => {
     );
   });
 
+  it("requires source-language photo copy without requiring English", () => {
+    const withoutEnglish = cloneFixture();
+    withoutEnglish.localizedPhotos = withoutEnglish.localizedPhotos.filter(
+      (entry) => (entry as Record<string, unknown>).locale !== "en",
+    );
+
+    expect(validateContentModel(withoutEnglish)).toEqual({
+      valid: true,
+      issues: [],
+    });
+
+    const withoutFrench = cloneFixture();
+    withoutFrench.localizedPhotos = withoutFrench.localizedPhotos.filter(
+      (entry) => (entry as Record<string, unknown>).locale !== "fr",
+    );
+
+    expect(validateContentModel(withoutFrench).issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "translation.fr.missing",
+          path: "photos.photo-001001",
+        }),
+      ]),
+    );
+  });
+
   it("preserves source photos and references in journal translations", () => {
     const fixture = cloneFixture();
     const englishEntry = fixture.journalEntries.find(

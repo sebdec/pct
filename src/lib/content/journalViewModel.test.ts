@@ -5,7 +5,13 @@ import {
   buildJournalNavigatorItems,
   buildJournalViewModels,
 } from "./journalViewModel.ts";
-import { daySchema, journalEntrySchema, photoSchema } from "./schemas.ts";
+import {
+  daySchema,
+  journalEntrySchema,
+  localizedPhotoSchema,
+  mediaAssetSchema,
+  photoSchema,
+} from "./schemas.ts";
 
 function createValidJournalSource() {
   const source = createValidContentModel();
@@ -14,18 +20,19 @@ function createValidJournalSource() {
     days: daySchema.array().parse(source.days),
     journalEntries: journalEntrySchema.array().parse(source.journalEntries),
     photos: photoSchema.array().parse(source.photos),
+    mediaAssets: mediaAssetSchema.array().parse(source.mediaAssets),
+    localizedPhotos: localizedPhotoSchema.array().parse(source.localizedPhotos),
   };
+}
+
+function buildPages(source: ReturnType<typeof createValidJournalSource>) {
+  return buildJournalViewModels({ ...source, locale: "fr" });
 }
 
 describe("journal view models", () => {
   it("assembles published entries, metrics, photos and navigation", () => {
     const source = createValidJournalSource();
-    const pages = buildJournalViewModels({
-      days: source.days,
-      journalEntries: source.journalEntries,
-      photos: source.photos,
-      locale: "fr",
-    });
+    const pages = buildPages(source);
 
     expect(pages).toHaveLength(3);
     expect(pages[0]).toMatchObject({
@@ -42,7 +49,13 @@ describe("journal view models", () => {
         descentMeters: 684,
       },
     });
-    expect(pages[0].photos.map(({ id }) => id)).toEqual(["photo-001001"]);
+    expect(pages[0].photos).toMatchObject([
+      {
+        state: "published",
+        placement: { id: "photo-001001" },
+        asset: { id: "media-0123456789abcdef" },
+      },
+    ]);
     expect(pages[2]).toMatchObject({
       day: { id: "day-003", kind: "post-trail" },
       regionLabel: "Après le trail",

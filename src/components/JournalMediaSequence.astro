@@ -11,6 +11,8 @@ interface Props {
 
 const { photos, regionId, locale = defaultLocale } = Astro.props;
 const labels = getUi(locale);
+const priorityPhotoId = photos.find(({ state }) => state === "published")
+  ?.placement.id;
 
 function orientation(
   width: number,
@@ -26,6 +28,21 @@ function orientation(
 
   return "square";
 }
+
+function srcset(
+  variants: readonly {
+    width: number;
+    url?: string | undefined;
+  }[],
+): string {
+  return variants
+    .filter((variant): variant is { width: number; url: string } =>
+      Boolean(variant.url),
+    )
+    .toSorted((left, right) => left.width - right.width)
+    .map(({ width, url }) => `${url} ${width}w`)
+    .join(", ");
+}
 ---
 
 {
@@ -35,39 +52,84 @@ function orientation(
         "media-sequence",
         regionId ? `media-${regionId}` : "media-after-trail",
       ]}
-      aria-labelledby="media-title"
+      aria-label={labels.journalPhotos}
     >
-      <header>
-        <h2 id="media-title">{labels.photoPlaceholderHeading}</h2>
-      </header>
-
       <div class="media-grid">
         {photos.map((photo, index) => {
-          const photoOrientation = orientation(photo.width, photo.height);
-          const orientationLabel = labels[photoOrientation];
+          const { placement } = photo;
+          const photoOrientation = orientation(
+            placement.width,
+            placement.height,
+          );
+
+          if (photo.state === "placeholder") {
+            return (
+              <figure
+                class:list={[
+                  photoOrientation,
+                  index % 3 === 0 && "featured",
+                  "unpublished",
+                ]}
+              >
+                <div
+                  class="photo-field"
+                  style={`--photo-ratio: ${placement.width} / ${placement.height}; --photo-shift: ${index + 1}`}
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 300 220" preserveAspectRatio="none">
+                    <path d="M-20 166C38 95 94 104 140 148s95 43 180-31" />
+                    <path d="M-15 193c58-49 107-41 151-10s95 32 177-22" />
+                    <circle cx="232" cy="54" r="22" />
+                  </svg>
+                  <span>{labels.photoPlaceholder}</span>
+                </div>
+              </figure>
+            );
+          }
+
+          const { asset, copy } = photo;
+          const avifVariants = asset.variants.filter(
+            ({ format }) => format === "avif",
+          );
+          const webpVariants = asset.variants.filter(
+            ({ format }) => format === "webp",
+          );
+          const fallback = webpVariants
+            .filter((variant): variant is typeof variant & { url: string } =>
+              Boolean(variant.url),
+            )
+            .toSorted((left, right) => right.width - left.width)[0];
+          const isPriority = placement.id === priorityPhotoId;
 
           return (
             <figure
               class:list={[photoOrientation, index % 3 === 0 && "featured"]}
             >
-              <div
-                class="photo-field"
-                style={`--photo-ratio: ${photo.width} / ${photo.height}; --photo-shift: ${index + 1}`}
-                aria-hidden="true"
+              <picture
+                class="photo-field published-photo"
+                style={`--photo-ratio: ${asset.width} / ${asset.height}; --photo-placeholder: url("${asset.placeholder.dataUrl}")`}
               >
-                <svg viewBox="0 0 300 220" preserveAspectRatio="none">
-                  <path d="M-20 166C38 95 94 104 140 148s95 43 180-31" />
-                  <path d="M-15 193c58-49 107-41 151-10s95 32 177-22" />
-                  <circle cx="232" cy="54" r="22" />
-                </svg>
-                <span>{labels.photoPlaceholder}</span>
-              </div>
-              <figcaption>
-                <span>
-                  {labels.photo} {String(index + 1).padStart(2, "0")}
-                </span>
-                <span>{orientationLabel}</span>
-              </figcaption>
+                <source
+                  type="image/avif"
+                  srcset={srcset(avifVariants)}
+                  sizes="(max-width: 36rem) calc(100vw - 2rem), min(100vw - 4rem, 70rem)"
+                />
+                <source
+                  type="image/webp"
+                  srcset={srcset(webpVariants)}
+                  sizes="(max-width: 36rem) calc(100vw - 2rem), min(100vw - 4rem, 70rem)"
+                />
+                <img
+                  src={fallback.url}
+                  alt={copy.alt}
+                  width={asset.width}
+                  height={asset.height}
+                  loading={isPriority ? "eager" : "lazy"}
+                  fetchpriority={isPriority ? "high" : "auto"}
+                  decoding="async"
+                />
+              </picture>
+              {copy.caption && <figcaption>{copy.caption}</figcaption>}
             </figure>
           );
         })}
@@ -105,25 +167,10 @@ function orientation(
     --media-color: var(--pct-color-washington-mist);
   }
 
-  header h2 {
-    margin: 0;
-  }
-
-  header h2 {
-    max-width: 26rem;
-    color: var(--pct-color-muted);
-    font-family: var(--pct-font-journal);
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.6;
-  }
-
   .media-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--pct-space-5);
-    margin-top: var(--pct-space-7);
   }
 
   figure {
@@ -139,6 +186,7 @@ function orientation(
   .photo-field {
     position: relative;
     display: grid;
+    width: 100%;
     aspect-ratio: var(--photo-ratio);
     min-height: 13rem;
     overflow: hidden;
@@ -157,14 +205,29 @@ function orientation(
       );
   }
 
-  .photo-field::after {
+  .published-photo {
+    min-height: 0;
+    background-color: var(--pct-color-deep-camp);
+    background-image: var(--photo-placeholder);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .published-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .unpublished .photo-field::after {
     position: absolute;
     inset: var(--pct-space-3);
     border: 1px solid color-mix(in srgb, var(--media-color) 22%, transparent);
     content: "";
   }
 
-  .photo-field svg {
+  .unpublished svg {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -175,11 +238,11 @@ function orientation(
     vector-effect: non-scaling-stroke;
   }
 
-  .photo-field circle {
+  .unpublished circle {
     fill: color-mix(in srgb, var(--media-color) 8%, transparent);
   }
 
-  .photo-field > span {
+  .unpublished .photo-field > span {
     position: relative;
     z-index: 1;
     margin: var(--pct-space-5);
@@ -189,18 +252,12 @@ function orientation(
   }
 
   figcaption {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--pct-space-3);
     margin-top: var(--pct-space-2);
     color: var(--pct-color-muted);
     font-family: var(--pct-font-journal);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-style: italic;
-  }
-
-  figcaption span:last-child {
-    text-transform: capitalize;
+    line-height: 1.5;
   }
 
   @media (max-width: 36rem) {
@@ -213,7 +270,7 @@ function orientation(
       grid-column: auto;
     }
 
-    .photo-field {
+    .unpublished .photo-field {
       min-height: 11rem;
     }
   }

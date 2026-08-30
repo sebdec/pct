@@ -57,6 +57,53 @@ test("keeps French dates, the current Journal URL and the map deep link", async 
   expect(progressColors.unit).toBe(progressColors.neutral);
 });
 
+test("renders approved responsive photos as static HTML", async ({ page }) => {
+  await page.goto("/fr/journal/day-001");
+
+  const sequence = page.getByLabel("Photographies du journal");
+  const photos = sequence.locator("img");
+
+  await expect(sequence).toBeVisible();
+  await expect(sequence.locator("astro-island")).toHaveCount(0);
+  await expect(photos).toHaveCount(6);
+  await expect(sequence.locator("source[type='image/avif']")).toHaveCount(6);
+  await expect(sequence.locator("source[type='image/webp']")).toHaveCount(6);
+  await expect(photos.first()).toHaveAttribute("loading", "eager");
+  await expect(photos.first()).toHaveAttribute("fetchpriority", "high");
+  await expect(photos.nth(1)).toHaveAttribute("loading", "lazy");
+  await expect(photos.nth(1)).toHaveAttribute("fetchpriority", "auto");
+
+  const mediaContract = await photos.evaluateAll((images) =>
+    images.map((image) => ({
+      alt: image.getAttribute("alt"),
+      height: image.getAttribute("height"),
+      objectFit: getComputedStyle(image).objectFit,
+      width: image.getAttribute("width"),
+    })),
+  );
+
+  expect(
+    mediaContract.every(
+      ({ alt, height, objectFit, width }) =>
+        Boolean(alt) &&
+        /^\d+$/.test(height ?? "") &&
+        objectFit === "contain" &&
+        /^\d+$/.test(width ?? ""),
+    ),
+  ).toBe(true);
+});
+
+test("keeps localized placeholders when alternative text is missing", async ({
+  page,
+}) => {
+  await page.goto("/journal/day-001");
+
+  const sequence = page.getByLabel("Journal photographs");
+
+  await expect(sequence.locator("img")).toHaveCount(0);
+  await expect(sequence.getByText("Photo not published")).toHaveCount(6);
+});
+
 test("removes trail metrics and the map action after day 97", async ({
   page,
 }) => {
