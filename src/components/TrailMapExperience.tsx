@@ -680,27 +680,33 @@ function LoadedTrailMapExperience({
           }
         };
 
-        map.on("load", addExperienceLayers);
-        map.on("style.load", addExperienceLayers);
+        const safelyAddExperienceLayers = () => {
+          try {
+            addExperienceLayers();
+          } catch (error) {
+            console.error("Trail map layer error", error);
+          }
+        };
+
+        map.on("load", safelyAddExperienceLayers);
+        map.on("style.load", safelyAddExperienceLayers);
         map.on("error", ({ error }) => {
           console.error("Trail map rendering error", error);
         });
-        map.once("load", () => {
-          window.setTimeout(() => {
-            console.error(
-              "Trail map diagnostics",
-              JSON.stringify({
-                zoom: map.getZoom(),
-                center: map.getCenter().toArray(),
-                styleLoaded: map.isStyleLoaded(),
-                tilesLoaded: map.areTilesLoaded(),
-                sources: Object.keys(map.getStyle().sources),
-                layers: map.getStyle().layers?.map(({ id }) => id),
-              }),
-            );
-          }, 5_000);
-        });
-        if (map.isStyleLoaded()) addExperienceLayers();
+        window.setTimeout(() => {
+          console.error(
+            "Trail map diagnostics",
+            JSON.stringify({
+              zoom: map.getZoom(),
+              center: map.getCenter().toArray(),
+              styleLoaded: map.isStyleLoaded(),
+              tilesLoaded: map.areTilesLoaded(),
+              sources: Object.keys(map.getStyle().sources),
+              layers: map.getStyle().layers?.map(({ id }) => id),
+            }),
+          );
+        }, 5_000);
+        if (map.isStyleLoaded()) safelyAddExperienceLayers();
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
         map.addControl(
           new RouteFitControl(route, labels.recenterTrail),
