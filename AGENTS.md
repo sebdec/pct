@@ -60,6 +60,10 @@ Keep content areas aligned with `src/content.config.ts` and the contracts in `sr
 - Treat `src/styles/tokens.css` as the only source for palette, typography, spacing and radius values.
 - Give design tokens semantic names. Components must not duplicate approved raw color values.
 - Tailwind theme aliases must point to CSS custom properties.
+- Build every route with the existing shared page layout that matches its content. Do not instantiate `BaseLayout` directly or redefine the page background, content width or H1 scale when `EditorialPageLayout` or `ReadingPageLayout` already provides them.
+- Render authored inline editorial links with `TextLink`. Wrap rendered Markdown in `editorial-rich-text` so its native anchors inherit the same shared rules from `src/styles/text-link.css`. Do not create route-specific link colors, hover states or focus treatments.
+- Before introducing a new page-level style, compare the route with at least 2 existing pages. Move any repeated background, width, heading or link rule into the shared layout or component instead of copying it into the route.
+- Every top-level public content route must have an explicit navigation entry and active state unless an approved issue records why it should remain outside the primary navigation.
 - Keep the visual language dark, editorial, restrained and deliberately detailed.
 - Use the text wordmark only. Do not commit an official or modified PCT logo until its dedicated usage decision is approved.
 - Trail marks and illustrations must be original and consistent with the approved visual system. Do not trace protected artwork.

@@ -1,0 +1,48 @@
+.editorial-rich-text h2 {
+  margin: var(--pct-space-8) 0 var(--pct-space-5);
+  color: var(--pct-color-white);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.editorial-rich-text p {
+  margin: 0;
+  color: var(--pct-color-copy);
+  font-family: var(--pct-font-journal);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.editorial-rich-text p + p {
+  margin-top: var(--pct-space-4);
+}
+
+.editorial-rich-text ul {
+  margin: var(--pct-space-5) 0 0;
+  padding-left: 0;
+  color: var(--pct-color-copy);
+  font-family: var(--pct-font-journal);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  list-style: none;
+}
+
+.editorial-rich-text li + li {
+  margin-top: var(--pct-space-3);
+}
+
+.editorial-rich-text strong {
+  color: var(--pct-color-white);
+}
+
+.editorial-rich-text .pct-signature {
+  margin-top: var(--pct-space-8);
+  padding-top: var(--pct-space-5);
+  border-top: 1px solid var(--pct-color-faint);
+}
+
+.editorial-rich-text > :first-child {
+  margin-top: 0;
+}

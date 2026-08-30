@@ -12,6 +12,7 @@ describe("site foundation", () => {
         (target) => target.startsWith("/") && !target.startsWith("//"),
       ),
     ).toBe(true);
+    expect(targets).toContain("/");
     expect(targets).toContain("/journal/day-001");
     expect(targets).toContain("/map");
     expect(site.navigation.map(({ label }) => label)).not.toContain("Explorer");

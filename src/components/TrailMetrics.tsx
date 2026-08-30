@@ -1,5 +1,6 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
 import TrailMetricIcon from "./TrailMetricIcon.tsx";
+import "./TrailMetricLabel.css";
 import "./TrailMetrics.css";
 
 export interface TrailSectionLabel {
@@ -36,14 +37,14 @@ export default function TrailMetrics({
     >
       <dl>
         <div className="trail-metrics__context trail-metrics__region">
-          <dt>
+          <dt className="trail-metric-label">
             <TrailMetricIcon name="region" />
             <span>Région</span>
           </dt>
           <dd className="trail-metrics__region-name">{regionLabel}</dd>
         </div>
         <div className="trail-metrics__context trail-metrics__section">
-          <dt>
+          <dt className="trail-metric-label">
             <TrailMetricIcon name="section" />
             <span>Section</span>
           </dt>
@@ -109,7 +110,7 @@ function Metric({
 }) {
   return (
     <div className={`trail-metrics__metric ${className}`}>
-      <dt>
+      <dt className="trail-metric-label">
         <TrailMetricIcon name={icon} />
         <span>{label}</span>
       </dt>

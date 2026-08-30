@@ -9,7 +9,15 @@ export const regionColorVariables = {
 } as const satisfies Record<TrailDay["regionId"], string>;
 
 export type TrailMetricIconName =
-  "region" | "section" | "mile" | "distance" | "ascent" | "descent";
+  | "calendar"
+  | "direction"
+  | "duration"
+  | "region"
+  | "section"
+  | "mile"
+  | "distance"
+  | "ascent"
+  | "descent";
 
 export function getProgressStop(
   value: number,

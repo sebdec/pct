@@ -17,11 +17,12 @@ test("renders the complete glossary with shared navigation", async ({
     page.locator("a[aria-current='page']:visible", { hasText: "Glossaire" }),
   ).toHaveCount(1);
 
-  const homeCard = page.locator("a[href='/glossary']").filter({
-    has: page.getByRole("heading", { name: "Glossaire", exact: true }),
-  });
   await page.goto("/");
-  await expect(homeCard).toHaveAttribute("href", "/glossary");
+  await expect(
+    page
+      .locator(".editorial-rich-text")
+      .getByRole("link", { name: "Glossaire", exact: true }),
+  ).toHaveAttribute("href", "/glossary");
 });
 
 test("supports stable direct links to glossary definitions", async ({
@@ -81,7 +82,7 @@ test("keeps the glossary and shared navigation within narrow viewports", async (
           ),
       )
       .toBe(1);
-    await expect(page.locator(".mobile-navigation a:visible")).toHaveCount(4);
+    await expect(page.locator(".mobile-navigation a:visible")).toHaveCount(5);
     await expect(
       page.locator(".mobile-navigation a[aria-current='page']:visible"),
     ).toHaveText("Glossaire");

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
 @import "./text-link.css";
+@import "./editorial-rich-text.css";
 
 @theme inline {
   --color-night-trail: var(--pct-color-night-trail);
