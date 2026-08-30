@@ -127,9 +127,34 @@ const socialCardAlt =
     />
     <ClientRouter />
     <script is:inline>
+      function configureAnalyticsOptOut() {
+        try {
+          const url = new URL(window.location.href);
+          const preference = url.searchParams.get("analytics");
+
+          if (preference === "off") {
+            localStorage.setItem("pct.analytics.disabled", "true");
+          } else if (preference === "on") {
+            localStorage.removeItem("pct.analytics.disabled");
+          } else {
+            return;
+          }
+
+          url.searchParams.delete("analytics");
+          history.replaceState(
+            history.state,
+            "",
+            `${url.pathname}${url.search}${url.hash}`,
+          );
+        } catch {}
+      }
+
       function isAnalyticsDisabled() {
         try {
-          return localStorage.getItem("pct.analytics.disabled") === "true";
+          return (
+            localStorage.getItem("pct.analytics.disabled") === "true" ||
+            /GPTBot|ChatGPT-User|OAI-SearchBot/i.test(navigator.userAgent)
+          );
         } catch {
           return false;
         }
@@ -138,6 +163,8 @@ const socialCardAlt =
       function webAnalyticsBeforeSend(event) {
         return isAnalyticsDisabled() ? null : event;
       }
+
+      configureAnalyticsOptOut();
 
       if (isAnalyticsDisabled()) {
         console.info("PCT analytics disabled for this browser");
