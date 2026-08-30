@@ -15,6 +15,7 @@ const currentPath = Astro.url.pathname;
 const routePath = stripLocaleFromUrl(currentPath);
 const navigation = getSiteNavigation(locale);
 const labels = getUi(locale);
+const isMapRoute = routePath.startsWith("/map");
 
 function isActive(href: string): boolean {
   const normalizedHref = stripLocaleFromUrl(href);
@@ -41,6 +42,10 @@ function navigationHref(id: string, href: string): string {
 
   return href;
 }
+
+function shouldReloadNavigation(id: string): boolean {
+  return id === "map" || isMapRoute;
+}
 ---
 
 <header class="site-header">
@@ -50,6 +55,7 @@ function navigationHref(id: string, href: string): string {
         class="wordmark"
         href={navigation[0].href}
         aria-label={labels.homeAriaLabel}
+        data-astro-reload={isMapRoute ? true : undefined}
       >
         <span class="wordmark__mark" set:html={pctMark} />
         <span class="wordmark__text">
@@ -67,6 +73,9 @@ function navigationHref(id: string, href: string): string {
                   href={navigationHref(id, href)}
                   class:list={{ active: isActive(href) }}
                   aria-current={isActive(href) ? "page" : undefined}
+                  data-astro-reload={
+                    shouldReloadNavigation(id) ? true : undefined
+                  }
                 >
                   {label}
                 </a>
@@ -87,6 +96,7 @@ function navigationHref(id: string, href: string): string {
           href={navigationHref(id, href)}
           class:list={{ active: isActive(href) }}
           aria-current={isActive(href) ? "page" : undefined}
+          data-astro-reload={shouldReloadNavigation(id) ? true : undefined}
         >
           {label}
         </a>

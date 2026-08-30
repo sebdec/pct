@@ -1,6 +1,7 @@
 import {
   formatDistance,
   formatDistanceRange,
+  formatElevation,
   formatWeight,
   getDefaultDisplayPreferences,
 } from "../lib/preferences/displayPreferences.ts";
@@ -21,6 +22,7 @@ type CommonProps = {
 type DistanceProps = CommonProps & {
   distanceMiles: number;
   distanceEndMiles?: never;
+  elevationMeters?: never;
   unitDisplay?: "short" | "long";
   weightGrams?: never;
 };
@@ -28,6 +30,7 @@ type DistanceProps = CommonProps & {
 type DistanceRangeProps = CommonProps & {
   distanceMiles: number;
   distanceEndMiles: number;
+  elevationMeters?: never;
   unitDisplay?: never;
   weightGrams?: never;
 };
@@ -36,10 +39,19 @@ type WeightProps = CommonProps & {
   weightGrams: number;
   distanceMiles?: never;
   distanceEndMiles?: never;
+  elevationMeters?: never;
   unitDisplay?: never;
 };
 
-type Props = DistanceProps | DistanceRangeProps | WeightProps;
+type ElevationProps = CommonProps & {
+  elevationMeters: number;
+  distanceMiles?: never;
+  distanceEndMiles?: never;
+  weightGrams?: never;
+  unitDisplay?: never;
+};
+
+type Props = DistanceProps | DistanceRangeProps | WeightProps | ElevationProps;
 
 export default function UnitValue(props: Props) {
   const {
@@ -58,6 +70,12 @@ export default function UnitValue(props: Props) {
       locale: formattingLocale,
       maximumFractionDigits,
     });
+  } else if (props.elevationMeters !== undefined) {
+    value = formatElevation(
+      props.elevationMeters,
+      fallbackPreferences.distanceUnit,
+      { locale: formattingLocale, maximumFractionDigits },
+    );
   } else if (props.distanceEndMiles !== undefined) {
     value = formatDistanceRange(
       props.distanceMiles,
@@ -91,6 +109,9 @@ export default function UnitValue(props: Props) {
       data-pct-weight-grams={
         props.weightGrams !== undefined ? props.weightGrams : undefined
       }
+      data-pct-elevation-meters={
+        props.elevationMeters !== undefined ? props.elevationMeters : undefined
+      }
       data-pct-prefix={prefix || undefined}
       data-pct-suffix={suffix || undefined}
       data-pct-unit-display={
@@ -98,9 +119,7 @@ export default function UnitValue(props: Props) {
       }
       data-pct-maximum-fraction-digits={maximumFractionDigits}
     >
-      {prefix}
-      {value}
-      {suffix}
+      {`${prefix}${value}${suffix}`}
     </span>
   );
 }
