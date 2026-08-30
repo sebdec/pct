@@ -49,10 +49,23 @@ describe("journal media view models", () => {
     });
   });
 
+  it("publishes with empty source copy when localization is missing", () => {
+    const source = createSource();
+    const [photo] = buildJournalPhotoViewModels({
+      ...source,
+      localizedPhotos: [],
+      locale: "fr",
+    });
+
+    expect(photo).toMatchObject({
+      state: "published",
+      copy: { locale: "fr", alt: "" },
+    });
+  });
+
   it.each([
     ["unpublished placement", { published: false }, undefined, undefined],
     ["unpublished asset", undefined, { published: false }, undefined],
-    ["missing localization", undefined, undefined, []],
     ["missing public URL", undefined, { variants: [] }, undefined],
   ])(
     "keeps an intentional placeholder for %s",

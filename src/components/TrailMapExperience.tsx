@@ -7,6 +7,7 @@ import type {
   Map as MapLibreMap,
   Marker,
 } from "maplibre-gl";
+import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 
 import type {
   MapArea,
@@ -435,6 +436,7 @@ function LoadedTrailMapExperience({
       try {
         const maplibre = await import("maplibre-gl");
         if (disposed || !mapContainerRef.current) return;
+        maplibre.setWorkerUrl(maplibreWorkerUrl);
 
         const map = new maplibre.Map({
           container: mapContainerRef.current,
@@ -680,45 +682,16 @@ function LoadedTrailMapExperience({
           }
         };
 
-        const safelyAddExperienceLayers = () => {
-          try {
-            addExperienceLayers();
-          } catch (error) {
-            console.error("Trail map layer error", error);
-          }
-        };
-
-        map.on("load", safelyAddExperienceLayers);
-        map.on("style.load", safelyAddExperienceLayers);
-        map.on("error", ({ error }) => {
-          console.error("Trail map rendering error", error);
-        });
-        window.setTimeout(() => {
-          const sources = Object.keys(map.getStyle().sources);
-          console.error(
-            "Trail map diagnostics",
-            JSON.stringify({
-              zoom: map.getZoom(),
-              center: map.getCenter().toArray(),
-              styleLoaded: map.isStyleLoaded(),
-              tilesLoaded: map.areTilesLoaded(),
-              sources: Object.fromEntries(
-                sources.map((sourceId) => [
-                  sourceId,
-                  map.isSourceLoaded(sourceId),
-                ]),
-              ),
-              layers: map.getStyle().layers?.map(({ id }) => id),
-            }),
-          );
-        }, 5_000);
-        if (map.isStyleLoaded()) safelyAddExperienceLayers();
+        map.on("load", addExperienceLayers);
+        map.on("style.load", addExperienceLayers);
+        if (map.isStyleLoaded()) addExperienceLayers();
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
         map.addControl(
           new RouteFitControl(route, labels.recenterTrail),
           "top-right",
         );
         map.once("idle", () => {
+          map.getContainer().dataset.mapReady = "true";
           map
             .getContainer()
             .querySelector(".maplibregl-ctrl-attrib")
