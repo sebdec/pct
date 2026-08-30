@@ -694,6 +694,7 @@ function LoadedTrailMapExperience({
           console.error("Trail map rendering error", error);
         });
         window.setTimeout(() => {
+          const sources = Object.keys(map.getStyle().sources);
           console.error(
             "Trail map diagnostics",
             JSON.stringify({
@@ -701,7 +702,12 @@ function LoadedTrailMapExperience({
               center: map.getCenter().toArray(),
               styleLoaded: map.isStyleLoaded(),
               tilesLoaded: map.areTilesLoaded(),
-              sources: Object.keys(map.getStyle().sources),
+              sources: Object.fromEntries(
+                sources.map((sourceId) => [
+                  sourceId,
+                  map.isSourceLoaded(sourceId),
+                ]),
+              ),
               layers: map.getStyle().layers?.map(({ id }) => id),
             }),
           );
