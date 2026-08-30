@@ -5,14 +5,46 @@ import type {
 } from "../content/schemas.ts";
 
 const categoryPresentation = [
-  { id: "big-4", label: "Big 4" },
-  { id: "vetements", label: "Vêtements" },
-  { id: "eau-et-cuisine", label: "Eau et cuisine" },
-  { id: "electronique", label: "Électronique" },
-  { id: "hygiene", label: "Hygiène" },
-  { id: "premiers-soins", label: "Premiers soins" },
-  { id: "divers", label: "Divers" },
-  { id: "sierra", label: "Sierra" },
+  {
+    id: "big-4",
+    label: "Big 4",
+    color: "var(--pct-color-pine-glow)",
+  },
+  {
+    id: "vetements",
+    label: "Vêtements",
+    color: "var(--pct-color-desert-dust)",
+  },
+  {
+    id: "eau-et-cuisine",
+    label: "Eau et cuisine",
+    color: "var(--pct-color-oregon-lake)",
+  },
+  {
+    id: "electronique",
+    label: "Électronique",
+    color: "var(--pct-color-washington-mist)",
+  },
+  {
+    id: "hygiene",
+    label: "Hygiène",
+    color: "var(--pct-color-muted)",
+  },
+  {
+    id: "premiers-soins",
+    label: "Premiers soins",
+    color: "var(--pct-color-norcal-forest)",
+  },
+  {
+    id: "divers",
+    label: "Divers",
+    color: "var(--pct-color-copy)",
+  },
+  {
+    id: "sierra",
+    label: "Sierra",
+    color: "var(--pct-color-sierra-snow)",
+  },
 ] as const;
 
 function sourceOrder(item: GearItem): number {
@@ -35,6 +67,7 @@ export interface GearListItem {
 export interface GearCategory {
   id: string;
   label: string;
+  color: string;
   items: GearListItem[];
   weightGrams: number;
   temporary: boolean;
@@ -60,7 +93,7 @@ export function buildGearViewModel(
     productLinks.map(({ gearItemId, url }) => [gearItemId, url]),
   );
 
-  const categories = categoryPresentation.map(({ id, label }) => {
+  const categories = categoryPresentation.map(({ id, label, color }) => {
     const categoryItems = publishedItems
       .filter(({ categoryId }) => categoryId === id)
       .toSorted((left, right) => sourceOrder(left) - sourceOrder(right))
@@ -83,6 +116,7 @@ export function buildGearViewModel(
     return {
       id,
       label,
+      color,
       items: categoryItems,
       weightGrams: categoryItems.reduce(
         (total, item) => total + item.weightGrams,
@@ -130,4 +164,8 @@ export function formatGearWeight(weightGrams: number): string {
       minimumFractionDigits: 2,
     }) + " kg"
   );
+}
+
+export function formatGearWeightInGrams(weightGrams: number): string {
+  return weightGrams.toLocaleString("fr-FR") + " g";
 }

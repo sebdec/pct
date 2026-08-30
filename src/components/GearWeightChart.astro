@@ -1,0 +1,309 @@
+---
+import type { GearCategory } from "../lib/gear/gearViewModel.ts";
+import { formatGearWeightInGrams } from "../lib/gear/gearViewModel.ts";
+
+interface Props {
+  baseWeightGrams: number;
+  categories: readonly GearCategory[];
+}
+
+const { baseWeightGrams, categories } = Astro.props;
+const chartCategories = categories.filter(({ temporary }) => !temporary);
+const temporaryCategory = categories.find(({ temporary }) => temporary);
+const totalWeightGrams = chartCategories.reduce(
+  (total, { weightGrams }) => total + weightGrams,
+  0,
+);
+const wornWeightGrams = totalWeightGrams - baseWeightGrams;
+const segmentGap = 0.8;
+let cumulativePercentage = 0;
+const segments = chartCategories.map((category) => {
+  const percentage = (category.weightGrams / totalWeightGrams) * 100;
+  const segment = {
+    ...category,
+    offset: cumulativePercentage,
+    visiblePercentage: Math.max(percentage - segmentGap, 0.15),
+  };
+
+  cumulativePercentage += percentage;
+  return segment;
+});
+const accessibleBreakdown = chartCategories
+  .map(
+    ({ label, weightGrams }) =>
+      label + " " + formatGearWeightInGrams(weightGrams),
+  )
+  .join(", ");
+const accessibleChartLabel =
+  "Répartition du poids par catégorie. " +
+  formatGearWeightInGrams(totalWeightGrams) +
+  " au total. " +
+  accessibleBreakdown +
+  ".";
+---
+
+<section class="gear-chart" aria-label="Répartition du poids" data-gear-chart>
+  <div class="gear-chart__visual" role="img" aria-label={accessibleChartLabel}>
+    <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <circle class="gear-chart__track" cx="60" cy="60" r="44" pathLength="100"
+      ></circle>
+      {
+        segments.map((segment) => (
+          <circle
+            class="gear-chart__segment"
+            data-gear-chart-item
+            data-gear-id={segment.id}
+            data-gear-href={"#" + segment.id + "-title"}
+            aria-hidden="true"
+            style={"--gear-color: " + segment.color}
+            cx="60"
+            cy="60"
+            r="44"
+            pathLength="100"
+            stroke-dasharray={
+              segment.visiblePercentage +
+              " " +
+              (100 - segment.visiblePercentage)
+            }
+            stroke-dashoffset={-segment.offset}
+          />
+        ))
+      }
+    </svg>
+  </div>
+
+  <div class="gear-chart__details">
+    <ul>
+      {
+        [
+          ...chartCategories,
+          ...(temporaryCategory ? [temporaryCategory] : []),
+        ].map((category) => (
+          <li
+            style={"--gear-color: " + category.color}
+            data-gear-chart-item
+            data-gear-id={category.id}
+          >
+            <a
+              href={"#" + category.id + "-title"}
+              data-gear-chart-item
+              data-gear-id={category.id}
+            >
+              <span class="gear-chart__swatch" aria-hidden="true" />
+              <span>{category.label}</span>
+              <strong>
+                {category.temporary
+                  ? "(+" + formatGearWeightInGrams(category.weightGrams) + ")"
+                  : formatGearWeightInGrams(category.weightGrams)}
+              </strong>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <dl class="gear-chart__summary">
+      <div class="gear-chart__base-weight">
+        <dt>Poids de base</dt>
+        <dd>{formatGearWeightInGrams(baseWeightGrams)}</dd>
+      </div>
+      <div>
+        <dt>Porté</dt>
+        <dd>{formatGearWeightInGrams(wornWeightGrams)}</dd>
+      </div>
+      <div>
+        <dt>Total</dt>
+        <dd>{formatGearWeightInGrams(totalWeightGrams)}</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-gear-chart]")
+    .forEach((chart) => {
+      const items = chart.querySelectorAll<HTMLElement>(
+        "[data-gear-chart-item]",
+      );
+
+      function selectCategory(categoryId: string | null) {
+        chart.classList.toggle("is-selecting", categoryId !== null);
+        items.forEach((item) => {
+          item.classList.toggle(
+            "is-active",
+            item.dataset.gearId === categoryId,
+          );
+        });
+      }
+
+      items.forEach((item) => {
+        item.addEventListener("pointerenter", () => {
+          selectCategory(item.dataset.gearId ?? null);
+        });
+        item.addEventListener("pointerleave", () => selectCategory(null));
+        item.addEventListener("focus", () => {
+          selectCategory(item.dataset.gearId ?? null);
+        });
+        item.addEventListener("blur", () => selectCategory(null));
+
+        const href = item.dataset.gearHref;
+        if (href) {
+          item.addEventListener("pointerdown", (event) => {
+            event.preventDefault();
+          });
+          item.addEventListener("dragstart", (event) => {
+            event.preventDefault();
+          });
+          item.addEventListener("click", () => {
+            window.location.hash = href.slice(1);
+          });
+        }
+      });
+    });
+</script>
+
+<style>
+  .gear-chart {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.75fr) minmax(18rem, 1fr);
+    gap: clamp(2.5rem, 7vw, 5rem);
+    align-items: center;
+    margin-bottom: clamp(4rem, 8vw, 6rem);
+  }
+
+  .gear-chart__visual {
+    position: relative;
+    width: min(100%, 15rem);
+    margin: 0 auto;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    -webkit-user-drag: none;
+    transform: rotate(-90deg);
+  }
+
+  circle {
+    fill: none;
+    stroke-width: 15;
+  }
+
+  .gear-chart__track {
+    stroke: var(--pct-color-faint);
+  }
+
+  .gear-chart__segment {
+    cursor: pointer;
+    stroke: var(--gear-color);
+    transition:
+      opacity 160ms ease,
+      stroke-width 160ms ease;
+  }
+
+  .gear-chart.is-selecting .gear-chart__segment:not(.is-active) {
+    opacity: 0.22;
+  }
+
+  .gear-chart__segment.is-active {
+    stroke-width: 19;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  li > a {
+    display: grid;
+    grid-template-columns: 0.5rem minmax(0, 1fr) auto;
+    gap: var(--pct-space-3);
+    align-items: center;
+    padding: 0.3rem 0;
+    color: var(--pct-color-copy);
+    font-size: 0.72rem;
+    text-decoration: none;
+  }
+
+  .gear-chart.is-selecting li:not(.is-active) {
+    opacity: 0.28;
+  }
+
+  li.is-active {
+    transform: translateX(var(--pct-space-2));
+  }
+
+  .gear-chart__swatch {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--gear-color);
+  }
+
+  li strong {
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gear-chart__summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--pct-space-5);
+    margin: var(--pct-space-4) 0 0;
+    padding-top: var(--pct-space-4);
+    border-top: 1px solid var(--pct-color-faint);
+  }
+
+  .gear-chart__summary dt,
+  .gear-chart__summary dd {
+    margin: 0;
+  }
+
+  .gear-chart__summary dt {
+    color: var(--pct-color-muted);
+    font-size: 0.62rem;
+  }
+
+  .gear-chart__summary dd {
+    margin-top: var(--pct-space-1);
+    color: var(--pct-color-copy);
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  .gear-chart__base-weight dd {
+    color: var(--pct-color-pine-glow);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 42rem) {
+    .gear-chart {
+      grid-template-columns: 1fr;
+      gap: var(--pct-space-7);
+    }
+
+    .gear-chart__visual {
+      width: min(62vw, 13.5rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gear-chart__segment,
+    li {
+      transition: none;
+    }
+  }
+</style>
