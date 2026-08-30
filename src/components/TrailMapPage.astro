@@ -25,6 +25,7 @@ const [dayEntries, journalEntries, sectionEntries, routeEntries, areaEntries] =
     getCollection("routes"),
     getCollection("mapAreas"),
   ]);
+const pointEntries = await getCollection("mapPoints");
 const days = buildMapDayViewModels({
   days: dayEntries.map(({ data }) => data),
   journalEntries: journalEntries.map(({ data }) => data),
@@ -71,6 +72,9 @@ const description =
   <main class="map-page">
     <TrailMapExperience
       days={days}
+      route={route}
+      points={pointEntries.map(({ data }) => data)}
+      areas={areas}
       mapPayloadUrl={mapPayloadPath}
       mapStyleUrl={mapStyleUrl}
       initialDayId={initialDayId}

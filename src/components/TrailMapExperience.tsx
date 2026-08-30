@@ -23,7 +23,7 @@ import {
   selectMapMile,
   type MapDayViewModel,
 } from "../lib/map/mapExperience.ts";
-import { loadMapPayload, type MapPayload } from "../lib/map/mapPayload.ts";
+import { loadMapPayload, mapPayloadPath, type MapPayload } from "../lib/map/mapPayload.ts";
 import {
   createRouteIndex,
   getCoordinateAtMile,
@@ -39,7 +39,10 @@ import "./TrailMapExperience.css";
 
 interface Props {
   days: readonly MapDayViewModel[];
-  mapPayloadUrl: string;
+  route?: TrailRoute;
+  points?: readonly MapPoint[];
+  areas?: readonly MapArea[];
+  mapPayloadUrl?: string;
   mapStyleUrl: string;
   initialDayId?: string;
   locale?: Locale;
@@ -873,15 +876,30 @@ function MapDataPlaceholder({
 }
 
 export default function TrailMapExperience(props: Props) {
-  const [payload, setPayload] = useState<MapPayload>();
+  const hasInlinePayload = !!(
+    props.route &&
+    props.points &&
+    props.areas
+  );
+  const [payload, setPayload] = useState<MapPayload | undefined>(() =>
+    hasInlinePayload
+      ? {
+          route: props.route!,
+          points: props.points!,
+          areas: props.areas!,
+        }
+      : undefined,
+  );
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
+    if (hasInlinePayload) return;
+
     const controller = new AbortController();
     setPayload(undefined);
     setFailed(false);
 
-    loadMapPayload(props.mapPayloadUrl, controller.signal)
+    loadMapPayload(props.mapPayloadUrl ?? mapPayloadPath, controller.signal)
       .then(setPayload)
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === "AbortError")
@@ -890,7 +908,7 @@ export default function TrailMapExperience(props: Props) {
       });
 
     return () => controller.abort();
-  }, [props.mapPayloadUrl]);
+  }, [hasInlinePayload, props.mapPayloadUrl]);
 
   if (!payload) {
     return (
