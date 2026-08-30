@@ -30,7 +30,7 @@
 }
 
 .trail-overview-metrics__regions {
-  grid-column: 2 / -1;
+  grid-column: 1 / -1;
 }
 
 .trail-overview-metrics__regions dd {

@@ -4,7 +4,7 @@ Le Pacific Crest Trail traverse l’Ouest des États-Unis, du Mexique au Canada.
 
 Un thru-hike ne consiste pas seulement à marcher. Il faut gérer en permanence l’eau, la nourriture, la météo, les incendies, l’équipement et les passages en ville.
 
-## Pourquoi le PCT
+## Pourquoi le PCT?
 
 Après plusieurs années intenses, avec beaucoup d’effort et d’énergie consacrés au travail, j’avais besoin d’une vraie rupture. De me vider la tête pour pouvoir la remplir à nouveau.
 

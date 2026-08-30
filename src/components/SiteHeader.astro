@@ -1,4 +1,5 @@
 ---
+import pctMark from "../assets/pct-mark.svg?raw";
 import { site } from "../lib/site";
 import HeaderPreferences from "./HeaderPreferences.astro";
 
@@ -33,8 +34,11 @@ function navigationHref(label: string, href: string): string {
   <div class="site-header__row">
     <div class="site-header__left">
       <a class="wordmark" href="/" aria-label={`${site.title}, accueil`}>
-        <span>Pacific Crest Trail</span>
-        <small>2026</small>
+        <span class="wordmark__mark" set:html={pctMark} />
+        <span class="wordmark__text">
+          <span>Pacific Crest Trail</span>
+          <small>2026</small>
+        </span>
       </a>
 
       <nav aria-label="Navigation principale">
@@ -101,13 +105,32 @@ function navigationHref(label: string, href: string): string {
 
   .wordmark {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     gap: var(--pct-space-2);
     color: var(--pct-color-pine-glow);
     font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: -0.03em;
     text-decoration: none;
+  }
+
+  .wordmark__mark {
+    display: block;
+    width: 1.9rem;
+    height: 1.9rem;
+    flex: 0 0 auto;
+  }
+
+  .wordmark__mark :global(svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .wordmark__text {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--pct-space-3);
   }
 
   .wordmark small {
