@@ -6,7 +6,7 @@ export const site = {
   navigation: [
     { label: "Journal", href: "/journal/day-001" },
     { label: "Carte", href: "/map" },
-    { label: "Équipement", href: "/#equipement" },
+    { label: "Équipement", href: "/gear" },
     { label: "Glossaire", href: "/#glossaire" },
   ],
 } as const;

@@ -43,7 +43,10 @@ export default function TrailDaySummary({
           ) : null}
         </p>
         {action ? (
-          <a className="trail-day-summary__action" href={action.href}>
+          <a
+            className="pct-text-link trail-day-summary__action"
+            href={action.href}
+          >
             {action.label}
           </a>
         ) : null}

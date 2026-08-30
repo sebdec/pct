@@ -12,6 +12,10 @@ function isActive(href: string): boolean {
     return currentPath.startsWith("/map");
   }
 
+  if (href === "/gear") {
+    return currentPath.startsWith("/gear");
+  }
+
   return !href.includes("#") && href === currentPath;
 }
 
@@ -64,6 +68,13 @@ function navigationHref(label: string, href: string): string {
       aria-current={currentPath.startsWith("/map") ? "page" : undefined}
     >
       Carte
+    </a>
+    <a
+      class:list={{ active: currentPath.startsWith("/gear") }}
+      href="/gear"
+      aria-current={currentPath.startsWith("/gear") ? "page" : undefined}
+    >
+      Équipement
     </a>
   </nav>
 </header>
@@ -156,6 +167,7 @@ function navigationHref(label: string, href: string): string {
     letter-spacing: 0.12em;
     text-decoration: none;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   @media (max-width: 48rem) {
@@ -173,6 +185,11 @@ function navigationHref(label: string, href: string): string {
 
     .mobile-navigation {
       display: flex;
+      gap: 0.75rem;
+    }
+
+    .mobile-navigation a {
+      font-size: 0.58rem;
     }
   }
 </style>

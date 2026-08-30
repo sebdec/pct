@@ -15,6 +15,9 @@ test("selects the journey without a native day menu or URL changes", async ({
   await expect(
     page.getByRole("link", { name: "Voir sur le journal" }),
   ).toHaveAttribute("href", "/journal/day-001");
+  await expect(
+    page.getByRole("link", { name: "Voir sur le journal" }),
+  ).toHaveClass(/pct-text-link/);
 
   const metaAlignment = await page.evaluate(() => {
     const date = document.querySelector(".trail-day-summary__date");
@@ -100,4 +103,11 @@ test("keeps the map page within the mobile viewport", async ({ page }) => {
   await expect(
     page.getByRole("link", { name: "Carte", exact: true }),
   ).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".page-credits")).toContainText("Credits:");
+  await expect(
+    page.getByRole("link", { name: "OpenStreetMap", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "OpenStreetMap", exact: true }),
+  ).toHaveClass(/text-link/);
 });

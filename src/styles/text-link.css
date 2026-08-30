@@ -1,0 +1,16 @@
+.pct-text-link {
+  color: var(--pct-color-pine-glow);
+  text-decoration-color: rgb(145 230 165 / 52%);
+  text-decoration-line: underline;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.pct-text-link:hover {
+  color: var(--pct-color-white);
+  text-decoration-color: currentColor;
+}

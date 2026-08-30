@@ -6,6 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { defaultLocale } from "../lib/content/locales.ts";
 import { buildMapDayViewModels } from "../lib/map/mapExperience.ts";
 import { site } from "../lib/site.ts";
+import PageCredits from "./PageCredits.astro";
 import SiteHeader from "./SiteHeader.astro";
 import TrailMapExperience from "./TrailMapExperience";
 
@@ -76,58 +77,32 @@ const title = initialDay
     />
   </main>
 
-  <footer>
-    <p>
-      <a href={route.source.centerlineUrl}>{route.source.attribution}</a>,
-      {" "}
-      <a href={route.source.licenseUrl}>{route.source.license}</a>
-    </p>
-    <p>
-      Fond de carte <a href="https://openfreemap.org/">OpenFreeMap</a>, données
-      {" "}
-      <a href="https://openmaptiles.org/">OpenMapTiles</a> et
-      {" "}
-      <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
-    </p>
-    <p>
-      Limites administratives
-      {" "}
-      <a href="https://www.naturalearthdata.com/">Natural Earth</a>, domaine
-      public
-    </p>
-  </footer>
+  <PageCredits
+    links={[
+      {
+        href: route.source.centerlineUrl,
+        label: route.source.attribution,
+      },
+      {
+        href: route.source.licenseUrl,
+        label: route.source.license,
+      },
+      { href: "https://openfreemap.org/", label: "OpenFreeMap" },
+      { href: "https://openmaptiles.org/", label: "OpenMapTiles" },
+      {
+        href: "https://www.openstreetmap.org/copyright",
+        label: "OpenStreetMap",
+      },
+      {
+        href: "https://www.naturalearthdata.com/",
+        label: "Natural Earth",
+      },
+    ]}
+  />
 </BaseLayout>
 
 <style>
   main {
     min-height: calc(100vh - 5.25rem);
-  }
-
-  footer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1.5rem;
-    justify-content: space-between;
-    width: min(100% - 3rem, var(--pct-content-wide));
-    margin: 0 auto;
-    padding: var(--pct-space-5) 0 var(--pct-space-7);
-    border-top: 1px solid var(--pct-color-faint);
-    color: var(--pct-color-muted);
-    font-size: 0.55rem;
-    line-height: 1.6;
-  }
-
-  footer p {
-    margin: 0;
-  }
-
-  footer a {
-    text-underline-offset: 0.2em;
-  }
-
-  @media (max-width: 46rem) {
-    footer {
-      width: min(100% - 2rem, var(--pct-content-wide));
-    }
   }
 </style>

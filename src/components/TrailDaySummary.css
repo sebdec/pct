@@ -69,14 +69,7 @@
   display: inline-flex;
   gap: var(--pct-space-2);
   align-items: center;
-  color: var(--pct-color-pine-glow);
   font-size: 0.75rem;
-  text-decoration: none;
-}
-
-.trail-day-summary__action:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.35em;
 }
 
 @media (max-width: 40rem) {

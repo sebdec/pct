@@ -14,6 +14,9 @@ test("keeps French dates, the current Journal URL and the map deep link", async 
   await expect(
     page.getByRole("link", { name: "Voir sur la carte", exact: true }),
   ).toHaveAttribute("href", "/map/day-001");
+  await expect(
+    page.getByRole("link", { name: "Voir sur la carte", exact: true }),
+  ).toHaveClass(/pct-text-link/);
   await expect(page.getByLabel("Repères de la journée")).toBeVisible();
   await expect(page.getByLabel("Repères de la journée")).toContainText(
     "Section",
