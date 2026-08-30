@@ -2,6 +2,7 @@
 import "../styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
+import Analytics from "@vercel/analytics/astro";
 import pctMarkUrl from "../assets/pct-mark.svg?url";
 import SiteFooter from "../components/SiteFooter.astro";
 import {
@@ -125,6 +126,7 @@ const socialCardAlt =
       rel="stylesheet"
     />
     <ClientRouter />
+    <Analytics />
     <title>{title}</title>
   </head>
   <body class={bodyClass}>
