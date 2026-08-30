@@ -22,14 +22,17 @@ test("presents the journey and its main entrances", async ({ page }) => {
     page.getByRole("heading", { name: "Le parcours en quelques chiffres" }),
   ).toBeVisible();
   await expect(figures).toContainText("96");
-  await expect(figures).toContainText("2 656");
-  await expect(figures).toContainText("2 656 miles");
-  await expect(figures).toContainText("27,7 miles par jour");
+  await expect(figures).toContainText("4 274,4 km");
+  await expect(figures).toContainText("44,6 km / jour");
   await expect(figures).toContainText("+140 706 m");
-  await expect(figures).toContainText("+1 466 m par jour");
+  await expect(figures).toContainText("+1 466 m / jour");
   await expect(figures).toContainText("−140 301 m");
-  await expect(figures).toContainText("−1 461 m par jour");
+  await expect(figures).toContainText("−1 461 m / jour");
+  await expect(figures).toContainText("Désert");
+  await expect(figures).toContainText("Sierra");
   await expect(figures).toContainText("Washington");
+  await expect(figures).not.toContainText("Southern California");
+  await expect(figures).not.toContainText("Sierra Nevada");
   await expect(figures).not.toContainText("·");
   await expect(figures).not.toContainText("Les moyennes sont calculées");
 
@@ -91,10 +94,10 @@ test("presents the journey and its main entrances", async ({ page }) => {
     page.locator(".site-header a[aria-current='page']:visible"),
   ).toHaveText("Accueil");
 
-  await expect(page.locator(".trail-overview-metrics__metric")).toHaveCount(8);
+  await expect(page.locator(".trail-overview-metrics__metric")).toHaveCount(7);
   await expect(
     page.locator(".trail-overview-metrics .trail-metric-icon"),
-  ).toHaveCount(8);
+  ).toHaveCount(7);
 
   const regionColors = await page
     .locator(".trail-overview-metrics__region")

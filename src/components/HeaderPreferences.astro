@@ -1,0 +1,302 @@
+<div class="header-preferences" data-header-preferences>
+  <button
+    class="header-preferences__trigger"
+    type="button"
+    popovertarget="display-preferences"
+    aria-label="Réglages"
+    aria-expanded="false"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="3"></circle>
+      <path
+        d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.55V21h-4v-.08a1.7 1.7 0 0 0-1.03-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1.03H3v-4h.05A1.7 1.7 0 0 0 4.6 8.94a1.7 1.7 0 0 0-.34-1.88L4.2 7l2.83-2.83.06.06a1.7 1.7 0 0 0 1.88.34A1.7 1.7 0 0 0 10 3.02V3h4v.02a1.7 1.7 0 0 0 1.03 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06L19.8 7l-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.95 10H21v4h-.05A1.7 1.7 0 0 0 19.4 15Z"
+      ></path>
+    </svg>
+  </button>
+
+  <div
+    class="header-preferences__popover"
+    id="display-preferences"
+    popover
+    aria-label="Réglages d’affichage"
+  >
+    <form>
+      <fieldset class="header-preferences__language">
+        <legend>Langue</legend>
+        <div class="header-preferences__options">
+          <label title="Français">
+            <input
+              type="radio"
+              name="language"
+              value="fr"
+              aria-label="Français"
+              checked
+            />
+            <span aria-hidden="true">🇫🇷</span>
+          </label>
+          <label class="header-preferences__disabled" title="English bientôt">
+            <input
+              type="radio"
+              name="language"
+              value="en"
+              aria-label="English, bientôt"
+              disabled
+            />
+            <span aria-hidden="true">🇬🇧</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Distance</legend>
+        <div class="header-preferences__options">
+          <label>
+            <input
+              type="radio"
+              name="distanceUnit"
+              value="km"
+              aria-label="Kilomètres"
+            />
+            <span>km</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="distanceUnit"
+              value="mi"
+              aria-label="Miles"
+            />
+            <span>mi</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Poids</legend>
+        <div class="header-preferences__options">
+          <label>
+            <input
+              type="radio"
+              name="weightUnit"
+              value="g"
+              aria-label="Grammes"
+            />
+            <span>g</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="weightUnit"
+              value="oz"
+              aria-label="Onces"
+            />
+            <span>oz</span>
+          </label>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<script>
+  import {
+    displayPreferencesChangeEvent,
+    readDisplayPreferences,
+    writeDisplayPreferences,
+  } from "../lib/preferences/displayPreferencesBrowser.ts";
+  import type {
+    DistanceUnit,
+    WeightUnit,
+  } from "../lib/preferences/displayPreferences.ts";
+
+  document
+    .querySelectorAll<HTMLElement>("[data-header-preferences]")
+    .forEach((root) => {
+      const trigger = root.querySelector<HTMLButtonElement>(
+        ".header-preferences__trigger",
+      );
+      const popover = root.querySelector<HTMLElement>(
+        ".header-preferences__popover",
+      );
+      const form = root.querySelector<HTMLFormElement>("form");
+      if (!trigger || !popover || !form) return;
+      const preferencesForm = form;
+
+      function synchronizeForm() {
+        const preferences = readDisplayPreferences();
+        const values = {
+          language: preferences.language,
+          distanceUnit: preferences.distanceUnit,
+          weightUnit: preferences.weightUnit,
+        };
+
+        Object.entries(values).forEach(([name, value]) => {
+          const input = preferencesForm.querySelector<HTMLInputElement>(
+            `input[name="${name}"][value="${value}"]`,
+          );
+          if (input) input.checked = true;
+        });
+      }
+
+      synchronizeForm();
+      popover.addEventListener("toggle", (event) => {
+        const isOpen = (event as ToggleEvent).newState === "open";
+        trigger.setAttribute("aria-expanded", String(isOpen));
+        if (isOpen) synchronizeForm();
+      });
+      preferencesForm.addEventListener("change", () => {
+        const data = new FormData(preferencesForm);
+        writeDisplayPreferences({
+          version: 1,
+          language: "fr",
+          distanceUnit: data.get("distanceUnit") as DistanceUnit,
+          weightUnit: data.get("weightUnit") as WeightUnit,
+        });
+      });
+      window.addEventListener(displayPreferencesChangeEvent, synchronizeForm);
+    });
+</script>
+
+<style>
+  .header-preferences {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .header-preferences__trigger {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0;
+    color: var(--pct-color-muted);
+    background: transparent;
+    cursor: pointer;
+    place-items: center;
+    transition: color 160ms ease;
+  }
+
+  .header-preferences__trigger:hover,
+  .header-preferences__trigger[aria-expanded="true"] {
+    color: var(--pct-color-pine-glow);
+  }
+
+  .header-preferences__trigger svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.45;
+  }
+
+  .header-preferences__popover {
+    position: fixed;
+    inset: 4.7rem max(1.5rem, calc((100vw - var(--pct-content-wide)) / 2)) auto
+      auto;
+    width: min(14rem, calc(100vw - 2rem));
+    margin: 0;
+    padding: var(--pct-space-2) var(--pct-space-4);
+    border: 1px solid var(--pct-color-faint);
+    border-radius: var(--pct-radius-small);
+    color: var(--pct-color-copy);
+    background: var(--pct-color-night-trail);
+    box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 18%);
+  }
+
+  .header-preferences__popover::backdrop {
+    background: transparent;
+  }
+
+  fieldset {
+    display: flex;
+    min-height: 3.1rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--pct-space-4);
+    margin: 0;
+    padding: var(--pct-space-2) 0;
+    border: 0;
+    border-top: 1px solid var(--pct-color-faint);
+  }
+
+  fieldset:first-child {
+    border-top: 0;
+  }
+
+  legend {
+    display: contents;
+    color: var(--pct-color-muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .header-preferences__options {
+    display: flex;
+    gap: var(--pct-space-4);
+    align-items: center;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  label input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  label span {
+    display: inline-flex;
+    min-width: 1.5rem;
+    min-height: 1.75rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid transparent;
+    color: var(--pct-color-muted);
+    font-size: 0.7rem;
+    transition:
+      color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .header-preferences__language span {
+    font-size: 1rem;
+  }
+
+  label:hover span,
+  label input:checked + span {
+    color: var(--pct-color-pine-glow);
+    border-bottom-color: var(--pct-color-pine-glow);
+  }
+
+  label input:focus-visible + span {
+    outline: 2px solid var(--pct-color-pine-glow);
+    outline-offset: 3px;
+  }
+
+  .header-preferences__disabled {
+    cursor: not-allowed;
+    filter: grayscale(1);
+    opacity: 0.32;
+  }
+
+  @media (max-width: 48rem) {
+    .header-preferences__popover {
+      inset: 4.2rem 1rem auto auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header-preferences__trigger,
+    label span {
+      transition: none;
+    }
+  }
+</style>

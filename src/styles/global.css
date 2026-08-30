@@ -39,7 +39,7 @@ body {
   background:
     radial-gradient(
       circle at 82% 18%,
-      rgb(145 230 165 / 7%),
+      var(--pct-color-pine-aura),
       transparent 28rem
     ),
     linear-gradient(

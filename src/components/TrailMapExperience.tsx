@@ -43,9 +43,6 @@ interface Props {
   initialDayId?: string;
 }
 
-const pageBackground = "#282c35";
-const landBackground = "#373b44";
-const trailStateBackground = "#495057";
 const baseMapAttribution =
   '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>';
 const numberFormatter = new Intl.NumberFormat("fr-FR", {
@@ -56,7 +53,46 @@ function formatNumber(value: number): string {
   return numberFormatter.format(value);
 }
 
-function localMapStyle() {
+interface MapThemeColors {
+  page: string;
+  land: string;
+  canada: string;
+  mexico: string;
+  state: string;
+  boundary: string;
+  road: string;
+  waterway: string;
+}
+
+function readMapThemeColors(): MapThemeColors {
+  const styles = getComputedStyle(document.documentElement);
+  const read = (name: string) => styles.getPropertyValue(name).trim();
+
+  return {
+    page: read("--pct-color-night-trail"),
+    land: read("--pct-map-land"),
+    canada: read("--pct-map-neighbor-canada"),
+    mexico: read("--pct-map-neighbor-mexico"),
+    state: read("--pct-map-state"),
+    boundary: read("--pct-map-boundary"),
+    road: read("--pct-map-road"),
+    waterway: read("--pct-map-waterway"),
+  };
+}
+
+function neighborCountryColor(colors: MapThemeColors): ExpressionSpecification {
+  return [
+    "match",
+    ["get", "code"],
+    "CAN",
+    colors.canada,
+    "MEX",
+    colors.mexico,
+    colors.land,
+  ];
+}
+
+function localMapStyle(colors: MapThemeColors) {
   return {
     version: 8 as const,
     glyphs: "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
@@ -65,7 +101,7 @@ function localMapStyle() {
       {
         id: "background",
         type: "background" as const,
-        paint: { "background-color": landBackground },
+        paint: { "background-color": colors.land },
       },
     ],
   };
@@ -226,12 +262,12 @@ function regionLineColor(
   ];
 }
 
-function customizeBaseMap(map: MapLibreMap) {
+function customizeBaseMap(map: MapLibreMap, colors: MapThemeColors) {
   if (map.getLayer("background")) {
-    map.setPaintProperty("background", "background-color", landBackground);
+    map.setPaintProperty("background", "background-color", colors.land);
   }
   if (map.getLayer("water")) {
-    map.setPaintProperty("water", "fill-color", pageBackground);
+    map.setPaintProperty("water", "fill-color", colors.page);
   }
   for (const layerId of [
     "landcover_ice_shelf",
@@ -282,13 +318,13 @@ function customizeBaseMap(map: MapLibreMap) {
     "highway_motorway_subtle",
   ]) {
     if (map.getLayer(layerId)) {
-      map.setPaintProperty(layerId, "line-color", "#4a5152");
+      map.setPaintProperty(layerId, "line-color", colors.road);
       map.setPaintProperty(layerId, "line-opacity", 0.5);
     }
   }
   for (const layerId of ["waterway", "waterway-river-canal"] as const) {
     if (map.getLayer(layerId)) {
-      map.setPaintProperty(layerId, "line-color", "#60748c");
+      map.setPaintProperty(layerId, "line-color", colors.waterway);
     }
   }
 }
@@ -391,7 +427,9 @@ export default function TrailMapExperience({
 
         const map = new maplibre.Map({
           container: mapContainerRef.current,
-          style: usingFallback ? localMapStyle() : mapStyleUrl,
+          style: usingFallback
+            ? localMapStyle(readMapThemeColors())
+            : mapStyleUrl,
           bounds: routeCameraBounds(route),
           fitBoundsOptions: { padding: 44 },
           maxBounds: routeNavigationBounds(route),
@@ -444,7 +482,8 @@ export default function TrailMapExperience({
         };
 
         const addExperienceLayers = () => {
-          customizeBaseMap(map);
+          const themeColors = readMapThemeColors();
+          customizeBaseMap(map, themeColors);
           const firstSymbol = map
             .getStyle()
             .layers?.find(({ type }) => type === "symbol")?.id;
@@ -462,17 +501,9 @@ export default function TrailMapExperience({
                 source: "pct-areas",
                 filter: ["==", ["get", "kind"], "country"],
                 paint: {
-                  "fill-color": [
-                    "match",
-                    ["get", "code"],
-                    "CAN",
-                    "#333b48",
-                    "MEX",
-                    "#443b3d",
-                    landBackground,
-                  ],
+                  "fill-color": neighborCountryColor(themeColors),
                   "fill-opacity": 0.92,
-                  "fill-outline-color": "#68717a",
+                  "fill-outline-color": themeColors.boundary,
                 },
               },
               firstSymbol,
@@ -484,9 +515,9 @@ export default function TrailMapExperience({
                 source: "pct-areas",
                 filter: ["==", ["get", "kind"], "state"],
                 paint: {
-                  "fill-color": trailStateBackground,
+                  "fill-color": themeColors.state,
                   "fill-opacity": 0.78,
-                  "fill-outline-color": "#747d83",
+                  "fill-outline-color": themeColors.boundary,
                 },
               },
               firstSymbol,
@@ -586,7 +617,7 @@ export default function TrailMapExperience({
                   paint: {
                     "circle-color": pointColor,
                     "circle-radius": 3.2,
-                    "circle-stroke-color": pageBackground,
+                    "circle-stroke-color": themeColors.page,
                     "circle-stroke-width": 1.2,
                   },
                 },
@@ -617,7 +648,7 @@ export default function TrailMapExperience({
                   },
                   paint: {
                     "text-color": pointColor,
-                    "text-halo-color": pageBackground,
+                    "text-halo-color": themeColors.page,
                     "text-halo-width": 2,
                     "text-halo-blur": 0.5,
                   },
@@ -644,7 +675,7 @@ export default function TrailMapExperience({
         map.on("error", () => {
           if (!map.isStyleLoaded() && !usingFallback) {
             usingFallback = true;
-            map.setStyle(localMapStyle());
+            map.setStyle(localMapStyle(readMapThemeColors()));
           }
         });
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
@@ -732,7 +763,7 @@ export default function TrailMapExperience({
           sequence={selectedDay.sequence}
           regionId={selectedDay.regionId}
           regionLabel={selectedDay.regionLabel}
-          positionLabel={`${formatNumber(selection.mile)} mi`}
+          positionMiles={selection.mile}
           min={days[0]!.mileStart}
           max={route.journalMaxMile}
           step={0.1}
@@ -764,8 +795,11 @@ export default function TrailMapExperience({
           regionId={selectedDay.regionId}
           regionLabel={selectedDay.regionLabel}
           sections={selectedDay.sections}
-          positionLabel={`${formatNumber(selectedDay.mileStart)} → ${formatNumber(selectedDay.mileEnd)} mi`}
-          distanceLabel={`${formatNumber(selectedDay.distanceMiles)} mi`}
+          positionMiles={{
+            start: selectedDay.mileStart,
+            end: selectedDay.mileEnd,
+          }}
+          distanceMiles={selectedDay.distanceMiles}
           ascentLabel={`${formatNumber(selectedDay.ascentMeters)} m`}
           descentLabel={`${formatNumber(selectedDay.descentMeters)} m`}
         />

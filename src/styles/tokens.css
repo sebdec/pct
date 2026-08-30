@@ -9,11 +9,21 @@
   --pct-color-faint: rgb(255 255 255 / 12%);
   --pct-color-pine-glow: #91e6a5;
   --pct-color-pine-glow-soft: rgb(145 230 165 / 12%);
+  --pct-color-pine-aura: rgb(145 230 165 / 7%);
   --pct-color-desert-dust: #d6af72;
   --pct-color-sierra-snow: #a8c8d7;
   --pct-color-norcal-forest: #c47f68;
   --pct-color-oregon-lake: #4fb6ad;
   --pct-color-washington-mist: #7e9db4;
+
+  --pct-map-land: #373b44;
+  --pct-map-neighbor-canada: #333b48;
+  --pct-map-neighbor-mexico: #443b3d;
+  --pct-map-state: #495057;
+  --pct-map-boundary: #747d83;
+  --pct-map-road: #4a5152;
+  --pct-map-waterway: #60748c;
+  --pct-map-control-filter: invert(1);
 
   --pct-font-display: "Montserrat", Arial, sans-serif;
   --pct-font-journal: "Merriweather", Georgia, serif;

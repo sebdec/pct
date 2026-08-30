@@ -1,14 +1,19 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
 import type { TrailMetricIconName } from "../lib/trail/presentation.ts";
 import TrailMetricIcon from "./TrailMetricIcon.tsx";
+import UnitValue from "./UnitValue.tsx";
 import "./TrailMetricLabel.css";
 import "./TrailOverviewMetrics.css";
 
 interface OverviewMetric {
   icon: TrailMetricIconName;
   label: string;
-  value: string;
+  value?: string;
+  distanceMiles?: number;
+  distanceSuffix?: string;
   detail?: string;
+  detailDistanceMiles?: number;
+  detailDistanceSuffix?: string;
 }
 
 export interface TrailOverviewContent {
@@ -32,16 +37,47 @@ export default function TrailOverviewMetrics({
       <h2 id="trail-overview-heading">{heading}</h2>
 
       <dl className="trail-overview-metrics__grid">
-        {metrics.map(({ icon, label, value, detail }) => (
-          <div className="trail-overview-metrics__metric" key={label}>
-            <dt className="trail-metric-label">
-              <TrailMetricIcon name={icon} />
-              <span>{label}</span>
-            </dt>
-            <dd>{value}</dd>
-            {detail ? <small>{detail}</small> : null}
-          </div>
-        ))}
+        {metrics.map(
+          ({
+            icon,
+            label,
+            value,
+            distanceMiles,
+            distanceSuffix,
+            detail,
+            detailDistanceMiles,
+            detailDistanceSuffix,
+          }) => (
+            <div className="trail-overview-metrics__metric" key={label}>
+              <dt className="trail-metric-label">
+                <TrailMetricIcon name={icon} />
+                <span>{label}</span>
+              </dt>
+              <dd>
+                {distanceMiles === undefined ? (
+                  value
+                ) : (
+                  <UnitValue
+                    distanceMiles={distanceMiles}
+                    suffix={distanceSuffix}
+                  />
+                )}
+              </dd>
+              {detail || detailDistanceMiles !== undefined ? (
+                <small>
+                  {detailDistanceMiles === undefined ? (
+                    detail
+                  ) : (
+                    <UnitValue
+                      distanceMiles={detailDistanceMiles}
+                      suffix={detailDistanceSuffix}
+                    />
+                  )}
+                </small>
+              ) : null}
+            </div>
+          ),
+        )}
 
         <div className="trail-overview-metrics__metric trail-overview-metrics__regions">
           <dt className="trail-metric-label">

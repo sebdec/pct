@@ -9,10 +9,12 @@ interface Props {
   entries: readonly JournalNavigatorItem[];
 }
 
-function positionLabel(entry: JournalNavigatorItem): string | undefined {
+function positionMiles(
+  entry: JournalNavigatorItem,
+): { start: number; end: number } | undefined {
   if (entry.mileStart === null || entry.mileEnd === null) return undefined;
 
-  return `${entry.mileStart.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} → ${entry.mileEnd.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} mi`;
+  return { start: entry.mileStart, end: entry.mileEnd };
 }
 
 export default function JournalProgressControl({
@@ -68,7 +70,7 @@ export default function JournalProgressControl({
       sequence={preview.sequence}
       regionId={preview.regionId}
       regionLabel={preview.regionLabel}
-      positionLabel={positionLabel(preview)}
+      positionMiles={positionMiles(preview)}
       min={0}
       max={entries.length - 1}
       step={1}
