@@ -7,9 +7,10 @@ interface Props {
   description: string;
   heading: string;
   bodyClass?: string;
+  width?: "wide" | "reading";
 }
 
-const { title, description, heading, bodyClass } = Astro.props;
+const { title, description, heading, bodyClass, width = "wide" } = Astro.props;
 ---
 
 <BaseLayout
@@ -19,7 +20,12 @@ const { title, description, heading, bodyClass } = Astro.props;
 >
   <SiteHeader />
 
-  <main class="editorial-page">
+  <main
+    class:list={[
+      "editorial-page",
+      { "editorial-page--reading": width === "reading" },
+    ]}
+  >
     <header class="editorial-page__hero">
       <h1>{heading}</h1>
     </header>
@@ -32,9 +38,15 @@ const { title, description, heading, bodyClass } = Astro.props;
 
 <style>
   .editorial-page {
-    width: min(100% - 3rem, 58rem);
+    --editorial-page-width: 58rem;
+
+    width: min(100% - 3rem, var(--editorial-page-width));
     margin: 0 auto;
     padding: clamp(3.5rem, 8vw, 6.5rem) 0 var(--pct-space-8);
+  }
+
+  .editorial-page--reading {
+    --editorial-page-width: var(--pct-content-reading);
   }
 
   .editorial-page__hero {

@@ -1,4 +1,5 @@
-.pct-text-link {
+.pct-text-link,
+.editorial-rich-text a {
   color: var(--pct-color-pine-glow);
   text-decoration-color: rgb(145 230 165 / 52%);
   text-decoration-line: underline;
@@ -10,7 +11,26 @@
     text-decoration-color 160ms ease;
 }
 
-.pct-text-link:hover {
+.pct-text-link:hover,
+.editorial-rich-text a:hover {
   color: var(--pct-color-white);
   text-decoration-color: currentColor;
+}
+
+.pct-text-link strong,
+.editorial-rich-text a strong {
+  color: inherit;
+}
+
+.pct-text-link[target="_blank"]::after,
+.editorial-rich-text a[target="_blank"]::after {
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
+  margin-left: 0.28em;
+  background: currentColor;
+  content: "";
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M5 3h4v4' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  vertical-align: 0.12em;
 }

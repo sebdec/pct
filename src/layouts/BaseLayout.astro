@@ -38,5 +38,11 @@ const themeColor = usesFlatTrailBackground ? "#282c35" : "#191d27";
   </head>
   <body class={bodyClass}>
     <slot />
+
+    <script>
+      import { configureExternalLinks } from "../lib/navigation/externalLinks";
+
+      configureExternalLinks(document);
+    </script>
   </body>
 </html>

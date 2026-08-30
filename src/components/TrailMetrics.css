@@ -103,33 +103,11 @@
   font-weight: 700;
 }
 
-.trail-metrics dt {
-  display: flex;
-  gap: var(--pct-space-2);
-  align-items: center;
-  margin: 0;
-  color: var(--pct-color-muted);
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
 .trail-metrics dd {
   margin: 0;
   color: var(--pct-color-copy);
   font-size: 0.88rem;
   line-height: 1.5;
-}
-
-.trail-metric-icon {
-  width: 1rem;
-  height: 1rem;
-  flex: 0 0 auto;
-  color: var(--pct-color-pine-glow);
-  stroke: currentcolor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 @media (max-width: 46rem) {

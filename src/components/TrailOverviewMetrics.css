@@ -1,0 +1,74 @@
+.trail-overview-metrics {
+  margin-top: var(--pct-space-8);
+}
+
+.trail-overview-metrics__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pct-space-6) var(--pct-space-5);
+  margin: 0;
+}
+
+.trail-overview-metrics__metric {
+  display: grid;
+  grid-template-rows: 1.25rem auto auto;
+  gap: var(--pct-space-1);
+  min-width: 0;
+}
+
+.trail-overview-metrics__metric dd {
+  margin: 0;
+  color: var(--pct-color-copy);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.trail-overview-metrics__metric small {
+  color: var(--pct-color-muted);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.trail-overview-metrics__regions {
+  grid-column: 2 / -1;
+}
+
+.trail-overview-metrics__regions dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pct-space-1) var(--pct-space-3);
+}
+
+.trail-overview-metrics__region {
+  font-weight: 650;
+}
+
+.trail-overview-metrics__region--desert {
+  color: var(--pct-color-desert-dust);
+}
+
+.trail-overview-metrics__region--sierra {
+  color: var(--pct-color-sierra-snow);
+}
+
+.trail-overview-metrics__region--norcal {
+  color: var(--pct-color-norcal-forest);
+}
+
+.trail-overview-metrics__region--oregon {
+  color: var(--pct-color-oregon-lake);
+}
+
+.trail-overview-metrics__region--washington {
+  color: var(--pct-color-washington-mist);
+}
+
+@media (max-width: 46rem) {
+  .trail-overview-metrics__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trail-overview-metrics__regions {
+    grid-column: 1 / -1;
+  }
+}

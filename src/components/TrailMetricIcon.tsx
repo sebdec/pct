@@ -1,4 +1,5 @@
 import type { TrailMetricIconName } from "../lib/trail/presentation.ts";
+import "./TrailMetricIcon.css";
 
 interface Props {
   name: TrailMetricIconName;
@@ -22,6 +23,24 @@ export default function TrailMetricIcon({ name }: Props) {
         <>
           <path d="M6 21V4" />
           <path d="M6 6h10l2 3-2 3H6" />
+        </>
+      ) : null}
+      {name === "calendar" ? (
+        <>
+          <rect x="4" y="5.5" width="16" height="14" rx="2" />
+          <path d="M8 3.5v4M16 3.5v4M4 10h16" />
+        </>
+      ) : null}
+      {name === "direction" ? (
+        <>
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="m15.8 8.2-2.1 5.5-5.5 2.1 2.1-5.5 5.5-2.1Z" />
+        </>
+      ) : null}
+      {name === "duration" ? (
+        <>
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M12 7.5V12l3.2 2" />
         </>
       ) : null}
       {name === "mile" ? (
