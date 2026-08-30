@@ -50,7 +50,9 @@ export function buildJournalPhotoViewModels({
   return photos.map((placement) => {
     const asset = assetByKey.get(placement.assetKey) ?? null;
     const copy =
-      copyByPhotoId.get(placement.id) ?? sourceCopyByPhotoId.get(placement.id) ?? null;
+      copyByPhotoId.get(placement.id) ??
+      sourceCopyByPhotoId.get(placement.id) ??
+      null;
 
     if (
       placement.published &&

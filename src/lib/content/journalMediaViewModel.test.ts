@@ -35,7 +35,9 @@ describe("journal media view models", () => {
     const source = createSource();
     const [photo] = buildJournalPhotoViewModels({
       ...source,
-      localizedPhotos: source.localizedPhotos.filter((copy) => copy.locale !== "en"),
+      localizedPhotos: source.localizedPhotos.filter(
+        (copy) => copy.locale !== "en",
+      ),
       locale: "en",
     });
 
