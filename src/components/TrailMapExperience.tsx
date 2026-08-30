@@ -423,7 +423,7 @@ function LoadedTrailMapExperience({
 
   useEffect(() => {
     let disposed = false;
-    let usingFallback = mapStyleUrl === "local";
+    const usingFallback = mapStyleUrl === "local";
     let routeClickBound = false;
 
     async function createMap() {
@@ -680,12 +680,6 @@ function LoadedTrailMapExperience({
         map.on("load", addExperienceLayers);
         map.on("style.load", addExperienceLayers);
         if (map.isStyleLoaded()) addExperienceLayers();
-        map.on("error", () => {
-          if (!map.isStyleLoaded() && !usingFallback) {
-            usingFallback = true;
-            map.setStyle(localMapStyle(readMapThemeColors()));
-          }
-        });
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
         map.addControl(
           new RouteFitControl(route, labels.recenterTrail),
