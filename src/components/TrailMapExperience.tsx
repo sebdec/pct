@@ -682,6 +682,9 @@ function LoadedTrailMapExperience({
 
         map.on("load", addExperienceLayers);
         map.on("style.load", addExperienceLayers);
+        map.on("error", ({ error }) => {
+          console.error("Trail map rendering error", error);
+        });
         if (map.isStyleLoaded()) addExperienceLayers();
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
         map.addControl(
