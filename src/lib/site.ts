@@ -7,7 +7,7 @@ export const site = {
     { label: "Journal", href: "/journal/day-001" },
     { label: "Carte", href: "/map" },
     { label: "Équipement", href: "/gear" },
-    { label: "Glossaire", href: "/#glossaire" },
+    { label: "Glossaire", href: "/glossary" },
   ],
 } as const;
 

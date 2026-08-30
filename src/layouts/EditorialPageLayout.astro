@@ -1,0 +1,58 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  bodyClass?: string;
+}
+
+const { title, description, heading, bodyClass } = Astro.props;
+---
+
+<BaseLayout
+  {title}
+  {description}
+  bodyClass={`trail-shell ${bodyClass ?? ""}`.trim()}
+>
+  <SiteHeader />
+
+  <main class="editorial-page">
+    <header class="editorial-page__hero">
+      <h1>{heading}</h1>
+    </header>
+
+    <slot />
+  </main>
+
+  <slot name="after-main" />
+</BaseLayout>
+
+<style>
+  .editorial-page {
+    width: min(100% - 3rem, 58rem);
+    margin: 0 auto;
+    padding: clamp(3.5rem, 8vw, 6.5rem) 0 var(--pct-space-8);
+  }
+
+  .editorial-page__hero {
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--pct-color-white);
+    font-size: clamp(1.9rem, 3vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 46rem) {
+    .editorial-page {
+      width: min(100% - 2rem, 58rem);
+    }
+  }
+</style>

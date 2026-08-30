@@ -3,9 +3,8 @@ import { getCollection } from "astro:content";
 
 import GearWeightChart from "../components/GearWeightChart.astro";
 import PageCredits from "../components/PageCredits.astro";
-import SiteHeader from "../components/SiteHeader.astro";
 import TextLink from "../components/TextLink.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import EditorialPageLayout from "../layouts/EditorialPageLayout.astro";
 import {
   buildGearViewModel,
   formatGearWeightInGrams,
@@ -37,98 +36,73 @@ const gear = buildGearViewModel(
 const pageTitle = "Équipement | " + site.title;
 ---
 
-<BaseLayout
+<EditorialPageLayout
   title={pageTitle}
   description="Le matériel emporté sur le Pacific Crest Trail 2026, catégorie par catégorie."
-  bodyClass="trail-shell gear-shell"
+  heading="Équipement"
+  bodyClass="gear-shell"
 >
-  <SiteHeader />
-
-  <main class="gear-page">
-    <header class="gear-hero">
-      <h1>Équipement</h1>
-    </header>
-
-    <GearWeightChart
-      baseWeightGrams={summary.baseWeightGrams}
-      categories={gear.categories}
-    />
-
-    <div class="gear-list" aria-label="Liste de l'équipement">
-      {
-        gear.categories.map((category) => (
-          <section
-            class:list={{
-              "gear-category": true,
-              "gear-category--temporary": category.temporary,
-            }}
-            style={"--gear-category-color: " + category.color}
-            aria-labelledby={category.id + "-title"}
-          >
-            <header class="gear-category__header">
-              <div>
-                <h2 id={category.id + "-title"}>{category.label}</h2>
-                {category.temporary && <span>Temporaire</span>}
-              </div>
-              <p>
-                <strong>{formatGearWeightInGrams(category.weightGrams)}</strong>
-              </p>
-            </header>
-
-            <ul>
-              {category.items.map((item) => (
-                <li>
-                  <div class="gear-item">
-                    <h3>
-                      {item.productUrl ? (
-                        <TextLink href={item.productUrl} external>
-                          {item.name}
-                        </TextLink>
-                      ) : (
-                        item.name
-                      )}
-                    </h3>
-                    {item.detail && <p>{item.detail}</p>}
-                  </div>
-                  <p class="gear-item__weight">
-                    {formatGearWeightInGrams(item.weightGrams)}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
-      }
-    </div>
-  </main>
-
-  <PageCredits
-    width="reading"
-    links={[{ href: summary.sourceUrl, label: "LighterPack" }]}
+  <GearWeightChart
+    baseWeightGrams={summary.baseWeightGrams}
+    categories={gear.categories}
   />
-</BaseLayout>
+
+  <div class="gear-list" aria-label="Liste de l'équipement">
+    {
+      gear.categories.map((category) => (
+        <section
+          class:list={{
+            "gear-category": true,
+            "gear-category--temporary": category.temporary,
+          }}
+          style={"--gear-category-color: " + category.color}
+          aria-labelledby={category.id + "-title"}
+        >
+          <header class="gear-category__header">
+            <div>
+              <h2 id={category.id + "-title"}>{category.label}</h2>
+              {category.temporary && <span>Temporaire</span>}
+            </div>
+            <p>
+              <strong>{formatGearWeightInGrams(category.weightGrams)}</strong>
+            </p>
+          </header>
+
+          <ul>
+            {category.items.map((item) => (
+              <li>
+                <div class="gear-item">
+                  <h3>
+                    {item.productUrl ? (
+                      <TextLink href={item.productUrl} external>
+                        {item.name}
+                      </TextLink>
+                    ) : (
+                      item.name
+                    )}
+                  </h3>
+                  {item.detail && <p>{item.detail}</p>}
+                </div>
+                <p class="gear-item__weight">
+                  {formatGearWeightInGrams(item.weightGrams)}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <Fragment slot="after-main">
+    <PageCredits
+      width="reading"
+      links={[{ href: summary.sourceUrl, label: "LighterPack" }]}
+    />
+  </Fragment>
+</EditorialPageLayout>
 
 <style>
-  .gear-page {
-    width: min(100% - 3rem, 58rem);
-    margin-right: auto;
-    margin-left: auto;
-    padding: clamp(3.5rem, 8vw, 6.5rem) 0 var(--pct-space-8);
-  }
-
-  .gear-hero {
-    margin-bottom: clamp(3rem, 6vw, 4.5rem);
-  }
-
-  h1 {
-    margin: 0;
-    color: var(--pct-color-white);
-    font-size: clamp(1.9rem, 3vw, 2.35rem);
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.2;
-  }
-
   .gear-category {
     margin-top: var(--pct-space-7);
     border-top: 2px solid var(--gear-category-color);
@@ -238,12 +212,6 @@ const pageTitle = "Équipement | " + site.title;
     font-variant-numeric: tabular-nums;
     text-align: right;
     white-space: nowrap;
-  }
-
-  @media (max-width: 46rem) {
-    .gear-page {
-      width: min(100% - 2rem, 58rem);
-    }
   }
 
   @media (max-width: 30rem) {

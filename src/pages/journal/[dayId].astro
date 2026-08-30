@@ -6,8 +6,7 @@ import JournalDayNavigator from "../../components/JournalDayNavigator.astro";
 import JournalMediaSequence from "../../components/JournalMediaSequence.astro";
 import JournalMetrics from "../../components/JournalMetrics.astro";
 import JournalNavigation from "../../components/JournalNavigation.astro";
-import SiteHeader from "../../components/SiteHeader.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReadingPageLayout from "../../layouts/ReadingPageLayout.astro";
 import {
   buildJournalViewModels,
   buildJournalNavigatorItems,
@@ -81,42 +80,35 @@ const pageDescription =
   `Journal du Pacific Crest Trail 2026 à ${page.entry.locationLabel}.`;
 ---
 
-<BaseLayout
+<ReadingPageLayout
   title={pageTitle}
   description={pageDescription}
-  bodyClass="journal-shell"
+  mainClass="journal-page"
 >
-  <SiteHeader />
+  <article>
+    <JournalDayHeader page={page} />
+    <JournalDayNavigator page={page} entries={navigatorEntries} />
 
-  <main class="journal-page">
-    <article>
-      <JournalDayNavigator page={page} entries={navigatorEntries} />
+    <div class="journal-transition-surface">
+      <JournalMetrics page={page} sections={sections} />
 
-      <div class="journal-transition-surface">
-        <JournalDayHeader page={page} />
-        <JournalMetrics page={page} sections={sections} />
-
-        <div class="journal-layout">
-          <div class="reading-column">
-            <div class="journal-copy">
-              <Content />
-            </div>
-
-            <JournalMediaSequence
-              photos={page.photos}
-              regionId={page.regionId}
-            />
+      <div class="journal-layout">
+        <div class="reading-column">
+          <div class="journal-copy">
+            <Content />
           </div>
-        </div>
 
-        <JournalNavigation previous={page.previous} next={page.next} />
+          <JournalMediaSequence photos={page.photos} regionId={page.regionId} />
+        </div>
       </div>
-    </article>
-  </main>
-</BaseLayout>
+
+      <JournalNavigation previous={page.previous} next={page.next} />
+    </div>
+  </article>
+</ReadingPageLayout>
 
 <style>
-  .journal-page {
+  :global(.journal-page) {
     min-height: 100vh;
     overflow: hidden;
     background: var(--pct-color-night-trail);
@@ -127,8 +119,8 @@ const pageDescription =
   }
 
   article {
-    width: min(100% - 3rem, var(--pct-content-wide));
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     padding-bottom: var(--pct-space-8);
   }
 
@@ -184,12 +176,6 @@ const pageDescription =
     border-left: 2px solid var(--pct-color-pine-glow);
     color: var(--pct-color-muted);
     font-style: italic;
-  }
-
-  @media (max-width: 46rem) {
-    article {
-      width: min(100% - 2rem, var(--pct-content-wide));
-    }
   }
 
   @media (max-width: 36rem) {

@@ -54,15 +54,63 @@ test("removes trail metrics and the map action after day 97", async ({
 });
 
 test("keeps the refined Journal inside the viewport", async ({ page }) => {
-  await page.goto("/journal/day-034");
-  await expect(page.getByRole("heading", { name: "Jour 34" })).toBeVisible();
+  for (const width of [736, 360]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/journal/day-034");
+    await expect(page.getByRole("heading", { name: "Jour 34" })).toBeVisible();
 
-  const dimensions = await page.evaluate(() => ({
-    clientWidth: document.documentElement.clientWidth,
-    scrollWidth: document.documentElement.scrollWidth,
-  }));
+    const dimensions = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
 
-  expect(dimensions.scrollWidth).toBe(dimensions.clientWidth);
+    expect(dimensions.scrollWidth).toBe(dimensions.clientWidth);
+  }
+});
+
+test("places the heading before the sticky navigator on one reading width", async ({
+  page,
+}) => {
+  for (const width of [736, 360]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/journal/day-034");
+
+    const layout = await page.evaluate(() => {
+      const heading = document.querySelector<HTMLElement>(".trail-day-summary");
+      const navigator = document.querySelector<HTMLElement>(
+        ".journal-day-navigator",
+      );
+      const metrics = document.querySelector<HTMLElement>(".trail-metrics");
+      const article = document.querySelector<HTMLElement>(".journal-layout");
+
+      if (!heading || !navigator || !metrics || !article) {
+        throw new Error("Missing Journal reading layout elements.");
+      }
+
+      const bounds = [heading, navigator, metrics, article].map((element) => {
+        const rectangle = element.getBoundingClientRect();
+
+        return {
+          left: Math.round(rectangle.left),
+          right: Math.round(rectangle.right),
+        };
+      });
+
+      return {
+        bounds,
+        headingBeforeNavigator: Boolean(
+          heading.compareDocumentPosition(navigator) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+        ),
+        navigatorPosition: getComputedStyle(navigator).position,
+      };
+    });
+
+    expect(layout.headingBeforeNavigator).toBe(true);
+    expect(layout.navigatorPosition).toBe("sticky");
+    expect(new Set(layout.bounds.map(({ left }) => left)).size).toBe(1);
+    expect(new Set(layout.bounds.map(({ right }) => right)).size).toBe(1);
+  }
 });
 
 test("keeps the current day while scrolling over the navigator", async ({

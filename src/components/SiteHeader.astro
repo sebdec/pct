@@ -12,8 +12,8 @@ function isActive(href: string): boolean {
     return currentPath.startsWith("/map");
   }
 
-  if (href === "/gear") {
-    return currentPath.startsWith("/gear");
+  if (href === "/gear" || href === "/glossary") {
+    return currentPath.startsWith(href);
   }
 
   return !href.includes("#") && href === currentPath;
@@ -53,29 +53,17 @@ function navigationHref(label: string, href: string): string {
   </nav>
 
   <nav class="mobile-navigation" aria-label="Navigation principale mobile">
-    <a
-      class:list={{ active: currentPath.startsWith("/journal") }}
-      href={currentPath.startsWith("/journal/")
-        ? currentPath
-        : "/journal/day-001"}
-      aria-current={currentPath.startsWith("/journal") ? "page" : undefined}
-    >
-      Journal
-    </a>
-    <a
-      class:list={{ active: currentPath.startsWith("/map") }}
-      href="/map"
-      aria-current={currentPath.startsWith("/map") ? "page" : undefined}
-    >
-      Carte
-    </a>
-    <a
-      class:list={{ active: currentPath.startsWith("/gear") }}
-      href="/gear"
-      aria-current={currentPath.startsWith("/gear") ? "page" : undefined}
-    >
-      Équipement
-    </a>
+    {
+      site.navigation.map(({ label, href }) => (
+        <a
+          href={navigationHref(label, href)}
+          class:list={{ active: isActive(href) }}
+          aria-current={isActive(href) ? "page" : undefined}
+        >
+          {label}
+        </a>
+      ))
+    }
   </nav>
 </header>
 
@@ -172,7 +160,11 @@ function navigationHref(label: string, href: string): string {
 
   @media (max-width: 48rem) {
     .site-header {
+      flex-direction: column;
+      gap: var(--pct-space-4);
+      align-items: flex-start;
       width: min(100% - 2rem, var(--pct-content-wide));
+      padding: var(--pct-space-4) 0;
     }
 
     nav {
@@ -185,7 +177,9 @@ function navigationHref(label: string, href: string): string {
 
     .mobile-navigation {
       display: flex;
-      gap: 0.75rem;
+      justify-content: space-between;
+      width: 100%;
+      gap: var(--pct-space-3);
     }
 
     .mobile-navigation a {
