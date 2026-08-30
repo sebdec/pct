@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+
+import GlossaryList from "../components/GlossaryList.astro";
+import EditorialPageLayout from "../layouts/EditorialPageLayout.astro";
+import { buildGlossaryViewModel } from "../lib/glossary/glossaryViewModel.ts";
+import { site } from "../lib/site.ts";
+
+const [conceptEntries, localizedEntries] = await Promise.all([
+  getCollection("glossaryConcepts"),
+  getCollection("glossary"),
+]);
+const glossary = buildGlossaryViewModel(
+  conceptEntries.map(({ data }) => data),
+  localizedEntries.map(({ data }) => data),
+);
+---
+
+<EditorialPageLayout
+  title={`Glossaire | ${site.title}`}
+  description="Les mots et expressions de la vie quotidienne sur le Pacific Crest Trail."
+  heading="Glossaire"
+  bodyClass="glossary-shell"
+>
+  <GlossaryList {glossary} />
+</EditorialPageLayout>

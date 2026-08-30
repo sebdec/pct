@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { homeUrl, journalDayUrl, mapDayUrl, mapUrl } from "./urls.ts";
+import {
+  glossaryEntryUrl,
+  glossaryUrl,
+  homeUrl,
+  journalDayUrl,
+  mapDayUrl,
+  mapUrl,
+} from "./urls.ts";
 
 describe("content URLs", () => {
   it("keeps stable neutral day slugs without locale segments", () => {
@@ -16,5 +23,11 @@ describe("content URLs", () => {
     expect(homeUrl()).toBe("/");
     expect(() => journalDayUrl("first-day")).toThrow();
     expect(() => mapDayUrl("first-day")).toThrow();
+  });
+
+  it("creates stable glossary URLs for explicit journal references", () => {
+    expect(glossaryUrl()).toBe("/glossary");
+    expect(glossaryEntryUrl("trail-angel")).toBe("/glossary#trail-angel");
+    expect(() => glossaryEntryUrl("Trail angel")).toThrow();
   });
 });

@@ -13,6 +13,7 @@ interface Props {
   endDate?: string;
   action?: Action;
   stableLocation?: boolean;
+  className?: string;
 }
 
 export default function TrailDaySummary({
@@ -22,10 +23,11 @@ export default function TrailDaySummary({
   endDate,
   action,
   stableLocation = false,
+  className,
 }: Props) {
   return (
     <header
-      className={`trail-day-summary${stableLocation ? " trail-day-summary--stable" : ""}`}
+      className={`trail-day-summary${stableLocation ? " trail-day-summary--stable" : ""}${className ? ` ${className}` : ""}`}
     >
       <h1 aria-label={`Jour ${sequence}, ${locationLabel}`}>
         <span>Jour {sequence}</span>

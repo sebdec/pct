@@ -5,6 +5,10 @@
   text-align: left;
 }
 
+.trail-day-summary.journal-day-summary {
+  padding-top: clamp(3.5rem, 8vw, 6.5rem);
+}
+
 .trail-day-summary h1 {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);

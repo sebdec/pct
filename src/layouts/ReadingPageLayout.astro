@@ -1,0 +1,38 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  bodyClass?: string;
+  mainClass?: string;
+}
+
+const { title, description, bodyClass, mainClass } = Astro.props;
+---
+
+<BaseLayout
+  {title}
+  {description}
+  bodyClass={`journal-shell ${bodyClass ?? ""}`.trim()}
+>
+  <SiteHeader />
+
+  <main class={`reading-page ${mainClass ?? ""}`.trim()}>
+    <slot />
+  </main>
+</BaseLayout>
+
+<style>
+  .reading-page {
+    width: min(100% - 3rem, var(--pct-content-reading));
+    margin: 0 auto;
+  }
+
+  @media (max-width: 46rem) {
+    .reading-page {
+      width: min(100% - 2rem, var(--pct-content-reading));
+    }
+  }
+</style>

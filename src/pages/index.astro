@@ -65,14 +65,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
         </article>
       </a>
-      <article id="glossaire">
-        <span>03</span>
-        <h2>Glossaire</h2>
-        <p>
-          Les mots, habitudes et détails qui composent la vie quotidienne sur le
-          PCT.
-        </p>
-      </article>
+      <a class="coming-card" href="/glossary">
+        <article id="glossaire">
+          <span>03</span>
+          <h2>Glossaire</h2>
+          <p>
+            Les mots, habitudes et détails qui composent la vie quotidienne sur
+            le PCT.
+          </p>
+        </article>
+      </a>
       <div class="status">
         <span class="status-dot"></span>
         <p>Le journal complet est en préparation.</p>
@@ -230,7 +232,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     border-right: 1px solid var(--pct-color-faint);
   }
 
-  .coming > article:nth-child(2) {
+  .coming-card:last-of-type article {
     border-right: 0;
   }
 
@@ -373,7 +375,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       border-bottom: 1px solid var(--pct-color-faint);
     }
 
-    article:nth-child(2) {
+    .coming-card:last-of-type article {
       border-bottom: 0;
     }
 

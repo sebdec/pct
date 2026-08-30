@@ -1,0 +1,123 @@
+---
+import type { GlossaryViewModel } from "../lib/glossary/glossaryViewModel.ts";
+
+interface Props {
+  glossary: GlossaryViewModel;
+}
+
+const { glossary } = Astro.props;
+---
+
+<section class="glossary">
+  <div class="glossary-groups">
+    {
+      glossary.groups.map(({ initial, entries }) => (
+        <section class="glossary-group">
+          <h2 id={`letter-${initial.toLocaleLowerCase("fr")}`}>{initial}</h2>
+          <div>
+            {entries.map((entry) => (
+              <article id={entry.id} class="glossary-entry" tabindex="-1">
+                <h3>{entry.term}</h3>
+                <div>
+                  <p>{entry.definition}</p>
+                  {entry.aliases.length > 0 && (
+                    <p class="glossary-aliases">
+                      Aussi: {entry.aliases.join(", ")}
+                    </p>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .glossary {
+    width: 100%;
+  }
+
+  .glossary-group {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: var(--pct-space-5);
+    padding-top: var(--pct-space-7);
+    border-top: 1px solid var(--pct-color-faint);
+  }
+
+  .glossary-group:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .glossary-group + .glossary-group {
+    margin-top: var(--pct-space-7);
+  }
+
+  .glossary-group > h2 {
+    scroll-margin-top: var(--pct-space-6);
+    margin: 0;
+    color: var(--pct-color-pine-glow);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+  }
+
+  .glossary-entry {
+    display: grid;
+    grid-template-columns: minmax(8rem, 0.34fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    scroll-margin-top: var(--pct-space-6);
+    padding: 0 0 var(--pct-space-6);
+  }
+
+  .glossary-entry + .glossary-entry {
+    padding-top: var(--pct-space-6);
+    border-top: 1px solid var(--pct-color-faint);
+  }
+
+  .glossary-entry:target h3,
+  .glossary-entry:focus h3 {
+    color: var(--pct-color-pine-glow);
+  }
+
+  .glossary-entry h3 {
+    margin: 0;
+    color: var(--pct-color-white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.5;
+    transition: color 160ms ease;
+  }
+
+  .glossary-entry p {
+    margin: 0;
+    color: var(--pct-color-copy);
+    font-family: var(--pct-font-journal);
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.75;
+  }
+
+  .glossary-entry .glossary-aliases {
+    margin-top: var(--pct-space-2);
+    color: var(--pct-color-muted);
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 46rem) {
+    .glossary-entry {
+      grid-template-columns: 1fr;
+      gap: var(--pct-space-2);
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .glossary-group {
+      grid-template-columns: 1.5rem minmax(0, 1fr);
+      gap: var(--pct-space-4);
+    }
+  }
+</style>

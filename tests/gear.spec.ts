@@ -8,7 +8,9 @@ test("renders the simplified equipment chart and complete manifest", async ({
   await expect(
     page.getByRole("heading", { name: "Équipement", exact: true }),
   ).toBeVisible();
-  await expect(page.locator(".gear-hero")).not.toContainText("Poids de base");
+  await expect(page.locator(".editorial-page__hero")).not.toContainText(
+    "Poids de base",
+  );
   await expect(
     page.getByRole("region", { name: "Répartition du poids" }),
   ).toBeVisible();
