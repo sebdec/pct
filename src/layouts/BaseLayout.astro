@@ -144,6 +144,9 @@ const socialCardAlt =
 
       configureExternalLinks(document);
       configureDisplayPreferences(document);
+      document.addEventListener("astro:page-load", () => {
+        configureDisplayPreferences(document);
+      });
     </script>
   </body>
 </html>

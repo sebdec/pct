@@ -23,6 +23,10 @@ const endDate = page.day.kind === "post-trail" ? page.day.endDate : undefined;
   endDate={endDate}
   {locale}
   action={page.day.kind === "trail"
-    ? { href: mapDayUrl(page.day.id, locale), label: labels.viewOnMap }
+    ? {
+        href: mapDayUrl(page.day.id, locale),
+        label: labels.viewOnMap,
+        reload: true,
+      }
     : undefined}
 />

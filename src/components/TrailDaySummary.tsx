@@ -6,6 +6,7 @@ import "./TrailDaySummary.css";
 interface Action {
   href: string;
   label: string;
+  reload?: boolean;
 }
 
 interface Props {
@@ -55,6 +56,7 @@ export default function TrailDaySummary({
           <a
             className="pct-text-link trail-day-summary__action"
             href={action.href}
+            data-astro-reload={action.reload ? "" : undefined}
           >
             {action.label}
           </a>

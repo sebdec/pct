@@ -12,7 +12,7 @@ const { locale = defaultLocale, currentPath } = Astro.props;
 const labels = getUi(locale);
 ---
 
-<div
+<pct-header-preferences
   class="header-preferences"
   data-header-preferences
   data-active-locale={locale}
@@ -116,11 +116,10 @@ const labels = getUi(locale);
       </fieldset>
     </form>
   </div>
-</div>
+</pct-header-preferences>
 
 <script>
   import {
-    displayPreferencesChangeEvent,
     readDisplayPreferences,
     writeDisplayPreferences,
   } from "../lib/preferences/displayPreferencesBrowser.ts";
@@ -130,21 +129,27 @@ const labels = getUi(locale);
   } from "../lib/preferences/displayPreferences.ts";
   import type { Locale } from "../lib/content/locales.ts";
 
-  document
-    .querySelectorAll<HTMLElement>("[data-header-preferences]")
-    .forEach((root) => {
-      const trigger = root.querySelector<HTMLButtonElement>(
+  class PctHeaderPreferences extends HTMLElement {
+    private eventController?: AbortController;
+
+    connectedCallback() {
+      this.eventController?.abort();
+
+      const trigger = this.querySelector<HTMLButtonElement>(
         ".header-preferences__trigger",
       );
-      const popover = root.querySelector<HTMLElement>(
+      const popover = this.querySelector<HTMLElement>(
         ".header-preferences__popover",
       );
-      const form = root.querySelector<HTMLFormElement>("form");
-      const activeLocale = root.dataset.activeLocale as Locale;
-      if (!trigger || !popover || !form) return;
-      const preferencesForm = form;
+      const form = this.querySelector<HTMLFormElement>("form");
+      const activeLocale = this.dataset.activeLocale as Locale;
+      if (!trigger || !popover || !form || !activeLocale) return;
 
-      function synchronizeForm() {
+      const eventController = new AbortController();
+      this.eventController = eventController;
+      const { signal } = eventController;
+
+      const synchronizeForm = () => {
         const preferences = readDisplayPreferences();
         const values = {
           language: activeLocale,
@@ -153,43 +158,63 @@ const labels = getUi(locale);
         };
 
         Object.entries(values).forEach(([name, value]) => {
-          const input = preferencesForm.querySelector<HTMLInputElement>(
+          const input = form.querySelector<HTMLInputElement>(
             `input[name="${name}"][value="${value}"]`,
           );
           if (input) input.checked = true;
         });
-      }
+      };
 
       synchronizeForm();
-      popover.addEventListener("toggle", (event) => {
-        const isOpen = (event as ToggleEvent).newState === "open";
-        trigger.setAttribute("aria-expanded", String(isOpen));
-        if (isOpen) synchronizeForm();
-      });
-      preferencesForm.addEventListener("change", (event) => {
-        const data = new FormData(preferencesForm);
-        const language = data.get("language") as Locale;
-        writeDisplayPreferences({
-          version: 1,
-          language,
-          distanceUnit: data.get("distanceUnit") as DistanceUnit,
-          weightUnit: data.get("weightUnit") as WeightUnit,
-        });
+      popover.addEventListener(
+        "toggle",
+        (event) => {
+          const isOpen = (event as ToggleEvent).newState === "open";
+          trigger.setAttribute("aria-expanded", String(isOpen));
+          if (isOpen) synchronizeForm();
+        },
+        { signal },
+      );
+      form.addEventListener(
+        "change",
+        (event) => {
+          const data = new FormData(form);
+          const language = data.get("language") as Locale;
+          writeDisplayPreferences({
+            version: 1,
+            language,
+            distanceUnit: data.get("distanceUnit") as DistanceUnit,
+            weightUnit: data.get("weightUnit") as WeightUnit,
+          });
 
-        const target = event.target;
-        if (target instanceof HTMLInputElement && target.name === "language") {
-          const href = target.dataset.href;
-          if (href && href !== window.location.pathname) {
-            window.location.assign(href);
+          const target = event.target;
+          if (
+            target instanceof HTMLInputElement &&
+            target.name === "language"
+          ) {
+            const href = target.dataset.href;
+            if (href && href !== window.location.pathname) {
+              window.location.assign(href);
+            }
           }
-        }
-      });
-      window.addEventListener(displayPreferencesChangeEvent, synchronizeForm);
-    });
+        },
+        { signal },
+      );
+    }
+
+    disconnectedCallback() {
+      this.eventController?.abort();
+    }
+  }
+
+  if (!customElements.get("pct-header-preferences")) {
+    customElements.define("pct-header-preferences", PctHeaderPreferences);
+  }
 </script>
 
 <style>
   .header-preferences {
+    display: block;
     position: relative;
     flex: 0 0 auto;
   }

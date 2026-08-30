@@ -14,11 +14,7 @@ import type {
   RouteCoordinate,
   TrailRoute,
 } from "../lib/content/schemas.ts";
-import {
-  defaultLocale,
-  localeFormattingTags,
-  type Locale,
-} from "../lib/content/locales.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 import {
   getMapDayForMile,
@@ -398,13 +394,6 @@ function LoadedTrailMapExperience({
   locale = defaultLocale,
 }: LoadedProps) {
   const labels = getUi(locale);
-  const numberFormatter = useMemo(
-    () =>
-      new Intl.NumberFormat(localeFormattingTags[locale], {
-        maximumFractionDigits: 1,
-      }),
-    [locale],
-  );
   const initialSelection = useMemo(
     () => initialMapSelection(days, initialDayId),
     [days, initialDayId],
@@ -768,6 +757,7 @@ function LoadedTrailMapExperience({
           action={{
             href: selectedDay.journalHref,
             label: labels.viewInJournal,
+            reload: true,
           }}
           stableLocation
           locale={locale}
@@ -816,8 +806,8 @@ function LoadedTrailMapExperience({
             end: selectedDay.mileEnd,
           }}
           distanceMiles={selectedDay.distanceMiles}
-          ascentLabel={`${numberFormatter.format(selectedDay.ascentMeters)} m`}
-          descentLabel={`${numberFormatter.format(selectedDay.descentMeters)} m`}
+          ascentMeters={selectedDay.ascentMeters}
+          descentMeters={selectedDay.descentMeters}
           locale={locale}
         />
       </aside>
@@ -837,10 +827,6 @@ function MapDataPlaceholder({
   const selectedDay =
     days.find(({ id }) => id === selection.dayId) ??
     getMapDayForMile(days, selection.mile);
-  const numberFormatter = new Intl.NumberFormat(
-    localeFormattingTags[activeLocale],
-    { maximumFractionDigits: 1 },
-  );
 
   return (
     <section
@@ -862,6 +848,7 @@ function MapDataPlaceholder({
           action={{
             href: selectedDay.journalHref,
             label: labels.viewInJournal,
+            reload: true,
           }}
           stableLocation
           locale={activeLocale}
@@ -876,8 +863,8 @@ function MapDataPlaceholder({
             end: selectedDay.mileEnd,
           }}
           distanceMiles={selectedDay.distanceMiles}
-          ascentLabel={`${numberFormatter.format(selectedDay.ascentMeters)} m`}
-          descentLabel={`${numberFormatter.format(selectedDay.descentMeters)} m`}
+          ascentMeters={selectedDay.ascentMeters}
+          descentMeters={selectedDay.descentMeters}
           locale={activeLocale}
         />
       </aside>

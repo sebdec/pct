@@ -2,6 +2,7 @@ import {
   displayPreferencesStorageKey,
   formatDistance,
   formatDistanceRange,
+  formatElevation,
   formatWeight,
   getDefaultDisplayPreferences,
   parseDisplayPreferences,
@@ -35,12 +36,17 @@ function formatUnitElement(
     ? Number(element.dataset.pctMaximumFractionDigits)
     : undefined;
   const weightGrams = Number(element.dataset.pctWeightGrams);
+  const elevationMeters = Number(element.dataset.pctElevationMeters);
   const distanceMiles = Number(element.dataset.pctDistanceMiles);
   const distanceEndMiles = Number(element.dataset.pctDistanceEndMiles);
   let value: string | undefined;
 
   if (Number.isFinite(weightGrams)) {
     value = formatWeight(weightGrams, preferences.weightUnit, {
+      maximumFractionDigits,
+    });
+  } else if (Number.isFinite(elevationMeters)) {
+    value = formatElevation(elevationMeters, preferences.distanceUnit, {
       maximumFractionDigits,
     });
   } else if (
@@ -138,7 +144,7 @@ export function configureDisplayPreferences(documentRoot: Document): void {
       applyDisplayPreferences(documentRoot);
     }
   });
-  observer.observe(documentRoot.body, {
+  observer.observe(documentRoot.documentElement, {
     childList: true,
     subtree: true,
     attributes: true,
@@ -146,6 +152,7 @@ export function configureDisplayPreferences(documentRoot: Document): void {
       "data-pct-distance-miles",
       "data-pct-distance-end-miles",
       "data-pct-weight-grams",
+      "data-pct-elevation-meters",
       "data-pct-distance-aria-miles",
     ],
   });

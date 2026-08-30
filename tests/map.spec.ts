@@ -1,5 +1,32 @@
 import { expect, test } from "@playwright/test";
 
+test("reinitializes the map across repeated journal navigation", async ({
+  page,
+}) => {
+  await page.goto("/fr/journal/day-001");
+
+  for (let cycle = 0; cycle < 4; cycle += 1) {
+    const mapLink = page.getByRole("link", { name: "Voir sur la carte" });
+    await expect(mapLink).toHaveAttribute("data-astro-reload", "");
+    await mapLink.click();
+
+    await expect(page).toHaveURL(/\/fr\/map\/day-001$/);
+    await expect(
+      page.getByRole("button", { name: "Recentrer sur le PCT" }),
+    ).toBeVisible();
+    await expect(page.locator(".maplibregl-map")).toHaveCount(1);
+
+    const journalLink = page.getByRole("link", {
+      name: "Voir sur le journal",
+    });
+    await expect(journalLink).toHaveAttribute("data-astro-reload", "");
+    await journalLink.click();
+
+    await expect(page).toHaveURL(/\/fr\/journal\/day-001$/);
+    await expect(mapLink).toBeVisible();
+  }
+});
+
 test("selects the journey without a native day menu or URL changes", async ({
   page,
 }) => {

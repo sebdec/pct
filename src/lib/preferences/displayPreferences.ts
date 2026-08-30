@@ -14,6 +14,7 @@ export interface DisplayPreferences {
 
 export const kilometersPerMile = 1.609344;
 export const ouncesPerGram = 0.03527396195;
+export const feetPerMeter = 3.280839895;
 
 function isUsLocale(locale: string): boolean {
   try {
@@ -108,6 +109,18 @@ export function formatDistanceRange(
   const formatter = numberFormatter(locale, maximumFractionDigits);
 
   return `${formatter.format(startMiles * multiplier)} → ${formatter.format(endMiles * multiplier)} ${unit}`;
+}
+
+export function formatElevation(
+  meters: number,
+  distanceUnit: DistanceUnit,
+  options: { locale?: string; maximumFractionDigits?: number } = {},
+): string {
+  const { locale = "fr-FR", maximumFractionDigits = 0 } = options;
+  const value = distanceUnit === "mi" ? meters * feetPerMeter : meters;
+  const unit = distanceUnit === "mi" ? "ft" : "m";
+
+  return `${numberFormatter(locale, maximumFractionDigits).format(value)} ${unit}`;
 }
 
 export function formatWeight(

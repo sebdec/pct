@@ -12,9 +12,14 @@ interface OverviewMetric {
   value?: string;
   distanceMiles?: number;
   distanceSuffix?: string;
+  elevationMeters?: number;
+  elevationPrefix?: string;
   detail?: string;
   detailDistanceMiles?: number;
   detailDistanceSuffix?: string;
+  detailElevationMeters?: number;
+  detailElevationPrefix?: string;
+  detailElevationSuffix?: string;
 }
 
 export interface TrailOverviewContent {
@@ -50,9 +55,14 @@ export default function TrailOverviewMetrics({
             value,
             distanceMiles,
             distanceSuffix,
+            elevationMeters,
+            elevationPrefix,
             detail,
             detailDistanceMiles,
             detailDistanceSuffix,
+            detailElevationMeters,
+            detailElevationPrefix,
+            detailElevationSuffix,
           }) => (
             <div className="trail-overview-metrics__metric" key={label}>
               <dt className="trail-metric-label">
@@ -61,26 +71,41 @@ export default function TrailOverviewMetrics({
               </dt>
               <dd>
                 <span>
-                  {distanceMiles === undefined ? (
-                    value
-                  ) : (
+                  {distanceMiles !== undefined ? (
                     <UnitValue
                       locale={locale}
                       distanceMiles={distanceMiles}
                       suffix={distanceSuffix}
                     />
+                  ) : elevationMeters !== undefined ? (
+                    <UnitValue
+                      locale={locale}
+                      elevationMeters={elevationMeters}
+                      prefix={elevationPrefix}
+                    />
+                  ) : (
+                    value
                   )}
                 </span>
-                {detail || detailDistanceMiles !== undefined ? (
+                {detail ||
+                detailDistanceMiles !== undefined ||
+                detailElevationMeters !== undefined ? (
                   <small>
-                    {detailDistanceMiles === undefined ? (
-                      detail
-                    ) : (
+                    {detailDistanceMiles !== undefined ? (
                       <UnitValue
                         locale={locale}
                         distanceMiles={detailDistanceMiles}
                         suffix={detailDistanceSuffix}
                       />
+                    ) : detailElevationMeters !== undefined ? (
+                      <UnitValue
+                        locale={locale}
+                        elevationMeters={detailElevationMeters}
+                        prefix={detailElevationPrefix}
+                        suffix={detailElevationSuffix}
+                      />
+                    ) : (
+                      detail
                     )}
                   </small>
                 ) : null}

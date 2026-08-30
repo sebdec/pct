@@ -17,8 +17,8 @@ interface Props {
   sections: readonly TrailSectionLabel[];
   positionMiles: { start: number; end: number };
   distanceMiles: number;
-  ascentLabel: string;
-  descentLabel: string;
+  ascentMeters: number;
+  descentMeters: number;
   className?: string;
   locale?: Locale;
 }
@@ -29,8 +29,8 @@ export default function TrailMetrics({
   sections,
   positionMiles,
   distanceMiles,
-  ascentLabel,
-  descentLabel,
+  ascentMeters,
+  descentMeters,
   className,
   locale = defaultLocale,
 }: Props) {
@@ -93,14 +93,22 @@ export default function TrailMetrics({
           icon="ascent"
           label={labels.ascent}
         >
-          {ascentLabel}
+          <UnitValue
+            locale={locale}
+            elevationMeters={ascentMeters}
+            prefix="+"
+          />
         </Metric>
         <Metric
           className="trail-metrics__descent"
           icon="descent"
           label={labels.descent}
         >
-          {descentLabel}
+          <UnitValue
+            locale={locale}
+            elevationMeters={descentMeters}
+            prefix="−"
+          />
         </Metric>
       </dl>
     </aside>
