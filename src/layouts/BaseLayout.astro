@@ -126,6 +126,23 @@ const socialCardAlt =
       rel="stylesheet"
     />
     <ClientRouter />
+    <script is:inline>
+      function isAnalyticsDisabled() {
+        try {
+          return localStorage.getItem("pct.analytics.disabled") === "true";
+        } catch {
+          return false;
+        }
+      }
+
+      function webAnalyticsBeforeSend(event) {
+        return isAnalyticsDisabled() ? null : event;
+      }
+
+      if (isAnalyticsDisabled()) {
+        console.info("PCT analytics disabled for this browser");
+      }
+    </script>
     <Analytics />
     <title>{title}</title>
   </head>
