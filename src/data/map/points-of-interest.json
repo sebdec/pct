@@ -280,6 +280,114 @@
     "minZoom": 5
   },
   {
+    "id": "julian",
+    "labelFr": "Julian",
+    "labelEn": "Julian",
+    "type": "resupply",
+    "coordinates": [-116.602, 33.079],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "mojave",
+    "labelFr": "Mojave",
+    "labelEn": "Mojave",
+    "type": "resupply",
+    "coordinates": [-118.174, 35.053],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "independence",
+    "labelFr": "Independence",
+    "labelEn": "Independence",
+    "type": "resupply",
+    "coordinates": [-118.2, 36.803],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "bridgeport",
+    "labelFr": "Bridgeport",
+    "labelEn": "Bridgeport",
+    "type": "resupply",
+    "coordinates": [-119.231, 38.255],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "belden",
+    "labelFr": "Belden",
+    "labelEn": "Belden",
+    "type": "resupply",
+    "coordinates": [-121.25, 40.006],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "quincy",
+    "labelFr": "Quincy",
+    "labelEn": "Quincy",
+    "type": "town",
+    "coordinates": [-120.947, 39.937],
+    "priority": 3,
+    "minZoom": 7
+  },
+  {
+    "id": "castella",
+    "labelFr": "Castella",
+    "labelEn": "Castella",
+    "type": "resupply",
+    "coordinates": [-122.312, 41.122],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "mazama-village",
+    "labelFr": "Mazama Village",
+    "labelEn": "Mazama Village",
+    "type": "resupply",
+    "coordinates": [-122.142, 42.868],
+    "priority": 1,
+    "minZoom": 3
+  },
+  {
+    "id": "olallie-lake",
+    "labelFr": "Olallie Lake",
+    "labelEn": "Olallie Lake",
+    "type": "resupply",
+    "coordinates": [-121.789, 44.818],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "government-camp",
+    "labelFr": "Government Camp",
+    "labelEn": "Government Camp",
+    "type": "resupply",
+    "coordinates": [-121.755, 45.304],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "packwood",
+    "labelFr": "Packwood",
+    "labelEn": "Packwood",
+    "type": "resupply",
+    "coordinates": [-121.671, 46.608],
+    "priority": 2,
+    "minZoom": 5
+  },
+  {
+    "id": "mazama",
+    "labelFr": "Mazama",
+    "labelEn": "Mazama",
+    "type": "resupply",
+    "coordinates": [-120.403, 48.594],
+    "priority": 1,
+    "minZoom": 3
+  },
+  {
     "id": "manning-park",
     "labelFr": "Manning Park",
     "labelEn": "Manning Park",

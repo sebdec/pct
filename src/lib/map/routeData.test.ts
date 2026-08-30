@@ -2,7 +2,11 @@ import { readFile } from "node:fs/promises";
 
 import { describe, expect, it } from "vitest";
 
-import { daySchema, trailRouteSchema } from "../content/schemas.ts";
+import {
+  daySchema,
+  mapPointSchema,
+  trailRouteSchema,
+} from "../content/schemas.ts";
 import {
   createRouteIndex,
   getCoordinateAtMile,
@@ -16,6 +20,30 @@ async function readJson(relativePath: string): Promise<unknown> {
 }
 
 describe("committed PCTA 2026 route snapshot", () => {
+  it("keeps the curated landmark inventory unique and complete", async () => {
+    const value = await readJson("../../data/map/points-of-interest.json");
+    const points = mapPointSchema.array().parse(value);
+    const ids = points.map(({ id }) => id);
+
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids).toEqual(
+      expect.arrayContaining([
+        "julian",
+        "mojave",
+        "independence",
+        "bridgeport",
+        "belden",
+        "quincy",
+        "castella",
+        "mazama-village",
+        "olallie-lake",
+        "government-camp",
+        "packwood",
+        "mazama",
+      ]),
+    );
+  });
+
   it("preserves approved provenance and structural counts", async () => {
     const value = await readJson("../../data/map/routes.json");
     expect(Array.isArray(value)).toBe(true);

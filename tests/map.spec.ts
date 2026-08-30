@@ -6,7 +6,9 @@ test("selects the journey without a native day menu or URL changes", async ({
   await page.goto("/map");
 
   await expect(page).toHaveURL(/\/map$/);
-  await expect(page.getByRole("heading", { name: /Jour 1/ })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 1, name: /Jour 1/ }),
+  ).toBeVisible();
   await expect(page.getByRole("combobox")).toHaveCount(0);
   await expect(page.locator("#map-mile-progress")).toHaveValue("0");
   await expect(
@@ -57,20 +59,29 @@ test("opens a stable day URL at that day's final mile", async ({ page }) => {
       .first(),
   ).toHaveAttribute("title", /.+/);
 
-  const separators = await page.evaluate(() => {
+  const contextLayout = await page.evaluate(() => {
     const region = document.querySelector(
       ".trail-map-metrics .trail-metrics__region",
     );
-    const context = document.querySelector(
-      ".trail-map-metrics .trail-metrics__context",
+    const section = document.querySelector(
+      ".trail-map-metrics .trail-metrics__section",
     );
-    if (!region || !context) throw new Error("Missing map metrics.");
+    const regionTitle = region?.querySelector("dt");
+    const sectionTitle = section?.querySelector("dt");
+    if (!region || !section || !regionTitle || !sectionTitle) {
+      throw new Error("Missing map metrics.");
+    }
     return {
       vertical: getComputedStyle(region, "::after").display,
-      horizontalWidth: getComputedStyle(context).borderBottomWidth,
+      regionTop: Math.round(regionTitle.getBoundingClientRect().top),
+      sectionTop: Math.round(sectionTitle.getBoundingClientRect().top),
     };
   });
-  expect(separators).toEqual({ vertical: "block", horizontalWidth: "0px" });
+  expect(contextLayout.vertical).toBe("none");
+  expect(contextLayout.regionTop).toBe(contextLayout.sectionTop);
+  await expect(
+    page.locator(".trail-map-metrics .trail-metrics__section-list"),
+  ).toHaveAttribute("title", /.+/);
   await expect(
     page.getByRole("link", { name: "Carte", exact: true }),
   ).toHaveAttribute("aria-current", "page");
@@ -103,11 +114,28 @@ test("keeps the map page within the mobile viewport", async ({ page }) => {
   await expect(
     page.getByRole("link", { name: "Carte", exact: true }),
   ).toHaveAttribute("aria-current", "page");
-  await expect(page.locator(".page-credits")).toContainText("Credits:");
+  await expect(page.locator(".page-credits")).toHaveCount(0);
+  const attribution = page.locator(".maplibregl-ctrl-attrib");
+  await expect(attribution).toBeAttached();
+  if (
+    !(await attribution.evaluate((element) =>
+      element.classList.contains("maplibregl-compact-show"),
+    ))
+  ) {
+    await page.locator(".maplibregl-ctrl-attrib-button").click();
+  }
   await expect(
     page.getByRole("link", { name: "OpenStreetMap", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "OpenStreetMap", exact: true }),
-  ).toHaveClass(/text-link/);
+  ).toHaveAttribute("href", "https://www.openstreetmap.org/copyright");
+  await expect(
+    page.getByRole("link", {
+      name: "Trail data © Pacific Crest Trail Association, CC BY 4.0, 2026",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Natural Earth", exact: true }),
+  ).toHaveCount(0);
 });
