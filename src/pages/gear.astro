@@ -1,13 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 
+import GearWeightChart from "../components/GearWeightChart.astro";
 import PageCredits from "../components/PageCredits.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import TextLink from "../components/TextLink.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   buildGearViewModel,
-  formatGearWeight,
+  formatGearWeightInGrams,
 } from "../lib/gear/gearViewModel.ts";
 import { site } from "../lib/site.ts";
 
@@ -45,10 +46,13 @@ const pageTitle = "Équipement | " + site.title;
 
   <main class="gear-page">
     <header class="gear-hero">
-      <p>Équipement</p>
-      <h1>{formatGearWeight(summary.baseWeightGrams)}</h1>
-      <span>Poids de base</span>
+      <h1>Équipement</h1>
     </header>
+
+    <GearWeightChart
+      baseWeightGrams={summary.baseWeightGrams}
+      categories={gear.categories}
+    />
 
     <div class="gear-list" aria-label="Liste de l'équipement">
       {
@@ -58,6 +62,7 @@ const pageTitle = "Équipement | " + site.title;
               "gear-category": true,
               "gear-category--temporary": category.temporary,
             }}
+            style={"--gear-category-color: " + category.color}
             aria-labelledby={category.id + "-title"}
           >
             <header class="gear-category__header">
@@ -66,7 +71,7 @@ const pageTitle = "Équipement | " + site.title;
                 {category.temporary && <span>Temporaire</span>}
               </div>
               <p>
-                <strong>{formatGearWeight(category.weightGrams)}</strong>
+                <strong>{formatGearWeightInGrams(category.weightGrams)}</strong>
               </p>
             </header>
 
@@ -86,7 +91,7 @@ const pageTitle = "Équipement | " + site.title;
                     {item.detail && <p>{item.detail}</p>}
                   </div>
                   <p class="gear-item__weight">
-                    {formatGearWeight(item.weightGrams)}
+                    {formatGearWeightInGrams(item.weightGrams)}
                   </p>
                 </li>
               ))}
@@ -112,45 +117,25 @@ const pageTitle = "Équipement | " + site.title;
   }
 
   .gear-hero {
-    margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
-  }
-
-  .gear-hero > p {
-    margin: 0 0 var(--pct-space-4);
-    color: var(--pct-color-pine-glow);
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
   }
 
   h1 {
     margin: 0;
     color: var(--pct-color-white);
-    font-size: clamp(3.8rem, 9vw, 6.2rem);
-    font-weight: 500;
-    letter-spacing: -0.065em;
-    line-height: 0.95;
-  }
-
-  .gear-hero > span {
-    display: block;
-    margin-top: var(--pct-space-3);
-    color: var(--pct-color-muted);
-    font-family: var(--pct-font-journal);
-    font-size: 0.92rem;
+    font-size: clamp(1.9rem, 3vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
   }
 
   .gear-category {
     margin-top: var(--pct-space-7);
-    border-top: 2px solid var(--pct-color-pine-glow);
+    border-top: 2px solid var(--gear-category-color);
   }
 
   .gear-category:first-child {
     margin-top: 0;
-  }
-
-  .gear-category--temporary {
-    border-top-color: var(--pct-color-sierra-snow);
   }
 
   .gear-category__header {
@@ -168,11 +153,21 @@ const pageTitle = "Équipement | " + site.title;
   }
 
   .gear-category__header h2 {
+    display: flex;
+    gap: var(--pct-space-3);
+    align-items: center;
     margin: 0;
     color: var(--pct-color-white);
     font-size: 1.45rem;
     font-weight: 700;
     letter-spacing: -0.035em;
+  }
+
+  .gear-category__header h2::before {
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--gear-category-color);
+    content: "";
   }
 
   .gear-category__header span {

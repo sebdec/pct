@@ -9,7 +9,11 @@ import {
   gearProductLinkSchema,
   localizedGearEntrySchema,
 } from "../content/schemas.ts";
-import { buildGearViewModel, formatGearWeight } from "./gearViewModel.ts";
+import {
+  buildGearViewModel,
+  formatGearWeight,
+  formatGearWeightInGrams,
+} from "./gearViewModel.ts";
 
 describe("buildGearViewModel", () => {
   const viewModel = buildGearViewModel(
@@ -26,6 +30,9 @@ describe("buildGearViewModel", () => {
     expect(viewModel.categories[0]?.items[0]?.productUrl).toBe(
       "https://hyperlitemountaingear.com/products/junction",
     );
+    expect(new Set(viewModel.categories.map(({ color }) => color)).size).toBe(
+      8,
+    );
   });
 
   it("derives weights from the neutral source data", () => {
@@ -33,5 +40,8 @@ describe("buildGearViewModel", () => {
     expect(viewModel.sierraWeightGrams).toBe(1_732);
     expect(formatGearWeight(viewModel.sierraWeightGrams)).toBe("1,73 kg");
     expect(formatGearWeight(866)).toBe("866 g");
+    expect(formatGearWeightInGrams(viewModel.sierraWeightGrams)).toBe(
+      "1 732 g",
+    );
   });
 });
