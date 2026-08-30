@@ -1,0 +1,68 @@
+---
+import TextLink from "./TextLink.astro";
+
+interface CreditLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links: CreditLink[];
+  width?: "wide" | "reading";
+}
+
+const { links, width = "wide" } = Astro.props;
+---
+
+<footer class:list={["page-credits", "page-credits--" + width]}>
+  <p>
+    <strong>Credits:</strong>
+    {" "}
+    {
+      links.map((link, index) => (
+        <>
+          {index > 0 && ", "}
+          <TextLink href={link.href} external>
+            {link.label}
+          </TextLink>
+        </>
+      ))
+    }
+  </p>
+</footer>
+
+<style>
+  .page-credits {
+    margin-right: auto;
+    margin-left: auto;
+    padding: var(--pct-space-5) 0 var(--pct-space-7);
+    border-top: 1px solid var(--pct-color-faint);
+    color: var(--pct-color-muted);
+    font-size: 0.55rem;
+    line-height: 1.6;
+  }
+
+  .page-credits--wide {
+    width: min(100% - 3rem, var(--pct-content-wide));
+  }
+
+  .page-credits--reading {
+    width: min(100% - 3rem, 58rem);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    color: var(--pct-color-copy);
+    font-weight: 500;
+  }
+
+  @media (max-width: 46rem) {
+    .page-credits--wide,
+    .page-credits--reading {
+      width: min(100% - 2rem, var(--pct-content-wide));
+    }
+  }
+</style>

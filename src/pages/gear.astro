@@ -1,0 +1,267 @@
+---
+import { getCollection } from "astro:content";
+
+import PageCredits from "../components/PageCredits.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import TextLink from "../components/TextLink.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  buildGearViewModel,
+  formatGearWeight,
+} from "../lib/gear/gearViewModel.ts";
+import { site } from "../lib/site.ts";
+
+const [
+  gearItemEntries,
+  localizedGearEntries,
+  productLinkEntries,
+  summaryEntries,
+] = await Promise.all([
+  getCollection("gearItems"),
+  getCollection("gear"),
+  getCollection("gearProductLinks"),
+  getCollection("gearSummaries"),
+]);
+const summary = summaryEntries[0]?.data;
+
+if (!summary) {
+  throw new Error("Missing equipment summary.");
+}
+
+const gear = buildGearViewModel(
+  gearItemEntries.map(({ data }) => data),
+  localizedGearEntries.map(({ data }) => data),
+  productLinkEntries.map(({ data }) => data),
+);
+const pageTitle = "Équipement | " + site.title;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description="Le matériel emporté sur le Pacific Crest Trail 2026, catégorie par catégorie."
+  bodyClass="trail-shell gear-shell"
+>
+  <SiteHeader />
+
+  <main class="gear-page">
+    <header class="gear-hero">
+      <p>Équipement</p>
+      <h1>{formatGearWeight(summary.baseWeightGrams)}</h1>
+      <span>Poids de base</span>
+    </header>
+
+    <div class="gear-list" aria-label="Liste de l'équipement">
+      {
+        gear.categories.map((category) => (
+          <section
+            class:list={{
+              "gear-category": true,
+              "gear-category--temporary": category.temporary,
+            }}
+            aria-labelledby={category.id + "-title"}
+          >
+            <header class="gear-category__header">
+              <div>
+                <h2 id={category.id + "-title"}>{category.label}</h2>
+                {category.temporary && <span>Temporaire</span>}
+              </div>
+              <p>
+                <strong>{formatGearWeight(category.weightGrams)}</strong>
+              </p>
+            </header>
+
+            <ul>
+              {category.items.map((item) => (
+                <li>
+                  <div class="gear-item">
+                    <h3>
+                      {item.productUrl ? (
+                        <TextLink href={item.productUrl} external>
+                          {item.name}
+                        </TextLink>
+                      ) : (
+                        item.name
+                      )}
+                    </h3>
+                    {item.detail && <p>{item.detail}</p>}
+                  </div>
+                  <p class="gear-item__weight">
+                    {formatGearWeight(item.weightGrams)}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+
+  <PageCredits
+    width="reading"
+    links={[{ href: summary.sourceUrl, label: "LighterPack" }]}
+  />
+</BaseLayout>
+
+<style>
+  .gear-page {
+    width: min(100% - 3rem, 58rem);
+    margin-right: auto;
+    margin-left: auto;
+    padding: clamp(3.5rem, 8vw, 6.5rem) 0 var(--pct-space-8);
+  }
+
+  .gear-hero {
+    margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+  }
+
+  .gear-hero > p {
+    margin: 0 0 var(--pct-space-4);
+    color: var(--pct-color-pine-glow);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--pct-color-white);
+    font-size: clamp(3.8rem, 9vw, 6.2rem);
+    font-weight: 500;
+    letter-spacing: -0.065em;
+    line-height: 0.95;
+  }
+
+  .gear-hero > span {
+    display: block;
+    margin-top: var(--pct-space-3);
+    color: var(--pct-color-muted);
+    font-family: var(--pct-font-journal);
+    font-size: 0.92rem;
+  }
+
+  .gear-category {
+    margin-top: var(--pct-space-7);
+    border-top: 2px solid var(--pct-color-pine-glow);
+  }
+
+  .gear-category:first-child {
+    margin-top: 0;
+  }
+
+  .gear-category--temporary {
+    border-top-color: var(--pct-color-sierra-snow);
+  }
+
+  .gear-category__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--pct-space-5);
+    padding: 1.25rem 0 1.1rem;
+  }
+
+  .gear-category__header > div {
+    display: flex;
+    align-items: baseline;
+    gap: var(--pct-space-3);
+  }
+
+  .gear-category__header h2 {
+    margin: 0;
+    color: var(--pct-color-white);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+  }
+
+  .gear-category__header span {
+    color: var(--pct-color-sierra-snow);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gear-category__header > p {
+    margin: 0;
+    color: var(--pct-color-copy);
+    font-size: 0.78rem;
+  }
+
+  .gear-category__header strong {
+    min-width: 4.5rem;
+    color: var(--pct-color-copy);
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .gear-category ul {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--pct-color-faint);
+    list-style: none;
+  }
+
+  .gear-category li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--pct-space-5);
+    align-items: center;
+    min-height: 3.85rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--pct-color-faint);
+  }
+
+  .gear-item {
+    min-width: 0;
+  }
+
+  .gear-item h3 {
+    margin: 0;
+    color: var(--pct-color-white);
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .gear-item > p {
+    margin: var(--pct-space-1) 0 0;
+    overflow: hidden;
+    color: var(--pct-color-muted);
+    font-family: var(--pct-font-journal);
+    font-size: 0.74rem;
+    line-height: 1.4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .gear-item__weight {
+    min-width: 4.5rem;
+    margin: 0;
+    color: var(--pct-color-copy);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 46rem) {
+    .gear-page {
+      width: min(100% - 2rem, 58rem);
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .gear-category__header {
+      align-items: flex-end;
+    }
+
+    .gear-category__header strong {
+      text-align: right;
+    }
+
+    .gear-item > p {
+      white-space: normal;
+    }
+  }
+</style>

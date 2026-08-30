@@ -375,6 +375,19 @@ export const localizedGearEntrySchema = z.object({
   detail: z.string().min(1).optional(),
 });
 
+export const gearProductLinkSchema = z.object({
+  id: stableIdSchema,
+  gearItemId: stableIdSchema,
+  url: z.url(),
+  sourceUrl: z.url(),
+});
+
+export const gearSummarySchema = z.object({
+  id: stableIdSchema,
+  baseWeightGrams: z.number().nonnegative(),
+  sourceUrl: z.url(),
+});
+
 export const supportingPageKindSchema = z.enum([
   "introduction",
   "analysis",
@@ -438,5 +451,7 @@ export type LocalizedGlossaryEntry = z.infer<
 >;
 export type GearItem = z.infer<typeof gearItemSchema>;
 export type LocalizedGearEntry = z.infer<typeof localizedGearEntrySchema>;
+export type GearProductLink = z.infer<typeof gearProductLinkSchema>;
+export type GearSummary = z.infer<typeof gearSummarySchema>;
 export type SupportingPage = z.infer<typeof supportingPageSchema>;
 export type Correction = z.infer<typeof correctionSchema>;

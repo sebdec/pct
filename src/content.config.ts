@@ -5,6 +5,8 @@ import {
   correctionSchema,
   daySchema,
   gearItemSchema,
+  gearProductLinkSchema,
+  gearSummarySchema,
   glossaryConceptSchema,
   journalEntrySchema,
   localizedGearEntrySchema,
@@ -61,6 +63,16 @@ const gearItems = defineCollection({
   schema: gearItemSchema,
 });
 
+const gearProductLinks = defineCollection({
+  loader: file("src/data/gear/product-links.json"),
+  schema: gearProductLinkSchema,
+});
+
+const gearSummaries = defineCollection({
+  loader: file("src/data/gear/summary.json"),
+  schema: gearSummarySchema,
+});
+
 const photos = defineCollection({
   loader: file("src/data/media/photos.json"),
   schema: photoSchema,
@@ -115,6 +127,8 @@ export const collections = {
   mapAreas,
   glossaryConcepts,
   gearItems,
+  gearProductLinks,
+  gearSummaries,
   photos,
   mediaAssets,
   corrections,
