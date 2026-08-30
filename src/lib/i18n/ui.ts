@@ -30,6 +30,7 @@ const ui = {
     chooseJournalDay: "Choose a journal day",
     journalQuickAccess: "Quick access to journal days",
     mapLabel: "Trail map",
+    mapLoading: "Loading the trail map…",
     mapUnavailable:
       "The map cannot be displayed on this device. Days and statistics remain available.",
     chooseTrailPosition: "Choose a position on the trail",
@@ -72,6 +73,7 @@ const ui = {
     chooseJournalDay: "Choisir une journée du journal",
     journalQuickAccess: "Accès rapide aux journées",
     mapLabel: "Carte du parcours",
+    mapLoading: "Chargement de la carte du parcours…",
     mapUnavailable:
       "La carte ne peut pas être affichée sur cet appareil. Les journées et les statistiques restent disponibles.",
     chooseTrailPosition: "Choisir une position sur le parcours",

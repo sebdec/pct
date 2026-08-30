@@ -35,6 +35,10 @@ const pageDescription =
   title={pageTitle}
   description={pageDescription}
   mainClass="journal-page"
+  journal={{
+    headline: `${labels.day} ${page.day.sequence} ${page.entry.locationLabel}`,
+    datePublished: page.day.date,
+  }}
   {locale}
 >
   <article>

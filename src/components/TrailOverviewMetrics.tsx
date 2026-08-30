@@ -60,29 +60,31 @@ export default function TrailOverviewMetrics({
                 <span>{label}</span>
               </dt>
               <dd>
-                {distanceMiles === undefined ? (
-                  value
-                ) : (
-                  <UnitValue
-                    locale={locale}
-                    distanceMiles={distanceMiles}
-                    suffix={distanceSuffix}
-                  />
-                )}
-              </dd>
-              {detail || detailDistanceMiles !== undefined ? (
-                <small>
-                  {detailDistanceMiles === undefined ? (
-                    detail
+                <span>
+                  {distanceMiles === undefined ? (
+                    value
                   ) : (
                     <UnitValue
                       locale={locale}
-                      distanceMiles={detailDistanceMiles}
-                      suffix={detailDistanceSuffix}
+                      distanceMiles={distanceMiles}
+                      suffix={distanceSuffix}
                     />
                   )}
-                </small>
-              ) : null}
+                </span>
+                {detail || detailDistanceMiles !== undefined ? (
+                  <small>
+                    {detailDistanceMiles === undefined ? (
+                      detail
+                    ) : (
+                      <UnitValue
+                        locale={locale}
+                        distanceMiles={detailDistanceMiles}
+                        suffix={detailDistanceSuffix}
+                      />
+                    )}
+                  </small>
+                ) : null}
+              </dd>
             </div>
           ),
         )}

@@ -27,6 +27,7 @@ import {
   selectMapMile,
   type MapDayViewModel,
 } from "../lib/map/mapExperience.ts";
+import { loadMapPayload, type MapPayload } from "../lib/map/mapPayload.ts";
 import {
   createRouteIndex,
   getCoordinateAtMile,
@@ -42,9 +43,7 @@ import "./TrailMapExperience.css";
 
 interface Props {
   days: readonly MapDayViewModel[];
-  route: TrailRoute;
-  points: readonly MapPoint[];
-  areas: readonly MapArea[];
+  mapPayloadUrl: string;
   mapStyleUrl: string;
   initialDayId?: string;
   locale?: Locale;
@@ -387,7 +386,9 @@ class RouteFitControl implements IControl {
   };
 }
 
-export default function TrailMapExperience({
+interface LoadedProps extends Omit<Props, "mapPayloadUrl">, MapPayload {}
+
+function LoadedTrailMapExperience({
   days,
   route,
   points,
@@ -395,7 +396,7 @@ export default function TrailMapExperience({
   mapStyleUrl,
   initialDayId,
   locale = defaultLocale,
-}: Props) {
+}: LoadedProps) {
   const labels = getUi(locale);
   const numberFormatter = useMemo(
     () =>
@@ -822,4 +823,98 @@ export default function TrailMapExperience({
       </aside>
     </section>
   );
+}
+
+function MapDataPlaceholder({
+  days,
+  initialDayId,
+  locale,
+  failed,
+}: Pick<Props, "days" | "initialDayId" | "locale"> & { failed: boolean }) {
+  const activeLocale = locale ?? defaultLocale;
+  const labels = getUi(activeLocale);
+  const selection = initialMapSelection(days, initialDayId);
+  const selectedDay =
+    days.find(({ id }) => id === selection.dayId) ??
+    getMapDayForMile(days, selection.mile);
+  const numberFormatter = new Intl.NumberFormat(
+    localeFormattingTags[activeLocale],
+    { maximumFractionDigits: 1 },
+  );
+
+  return (
+    <section
+      className="trail-map-experience"
+      aria-label={labels.mapLabel}
+      aria-busy={!failed}
+    >
+      <div className="trail-map-stage">
+        <p className="trail-map-fallback" role={failed ? "alert" : "status"}>
+          {failed ? labels.mapUnavailable : labels.mapLoading}
+        </p>
+      </div>
+
+      <aside className="trail-map-panel">
+        <TrailDaySummary
+          sequence={selectedDay.sequence}
+          locationLabel={selectedDay.locationLabel}
+          date={selectedDay.date}
+          action={{
+            href: selectedDay.journalHref,
+            label: labels.viewInJournal,
+          }}
+          stableLocation
+          locale={activeLocale}
+        />
+        <TrailMetrics
+          className="trail-map-metrics"
+          regionId={selectedDay.regionId}
+          regionLabel={selectedDay.regionLabel}
+          sections={selectedDay.sections}
+          positionMiles={{
+            start: selectedDay.mileStart,
+            end: selectedDay.mileEnd,
+          }}
+          distanceMiles={selectedDay.distanceMiles}
+          ascentLabel={`${numberFormatter.format(selectedDay.ascentMeters)} m`}
+          descentLabel={`${numberFormatter.format(selectedDay.descentMeters)} m`}
+          locale={activeLocale}
+        />
+      </aside>
+    </section>
+  );
+}
+
+export default function TrailMapExperience(props: Props) {
+  const [payload, setPayload] = useState<MapPayload>();
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setPayload(undefined);
+    setFailed(false);
+
+    loadMapPayload(props.mapPayloadUrl, controller.signal)
+      .then(setPayload)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError")
+          return;
+        setFailed(true);
+      });
+
+    return () => controller.abort();
+  }, [props.mapPayloadUrl]);
+
+  if (!payload) {
+    return (
+      <MapDataPlaceholder
+        days={props.days}
+        initialDayId={props.initialDayId}
+        locale={props.locale}
+        failed={failed}
+      />
+    );
+  }
+
+  return <LoadedTrailMapExperience {...props} {...payload} />;
 }

@@ -9,6 +9,11 @@ import {
 
 export const site = {
   title: "Pacific Crest Trail 2026",
+  url: "https://pct.sebdec.com",
+  socialCardPath: "/social-card.png",
+  author: {
+    name: "Sebdec / One Pole",
+  },
   descriptions: {
     en: "A day-by-day journal and interactive map of a 2026 Pacific Crest Trail thru-hike.",
     fr: "Un journal quotidien et une carte interactive d’un thru-hike du Pacific Crest Trail en 2026.",
