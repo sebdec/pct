@@ -1,9 +1,27 @@
-<div class="header-preferences" data-header-preferences>
+---
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { switchLocaleUrl } from "../lib/content/urls.ts";
+import { getUi } from "../lib/i18n/ui.ts";
+
+interface Props {
+  locale?: Locale;
+  currentPath: string;
+}
+
+const { locale = defaultLocale, currentPath } = Astro.props;
+const labels = getUi(locale);
+---
+
+<div
+  class="header-preferences"
+  data-header-preferences
+  data-active-locale={locale}
+>
   <button
     class="header-preferences__trigger"
     type="button"
     popovertarget="display-preferences"
-    aria-label="Réglages"
+    aria-label={labels.settings}
     aria-expanded="false"
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -18,11 +36,11 @@
     class="header-preferences__popover"
     id="display-preferences"
     popover
-    aria-label="Réglages d’affichage"
+    aria-label={labels.displaySettings}
   >
     <form>
       <fieldset class="header-preferences__language">
-        <legend>Langue</legend>
+        <legend>{labels.language}</legend>
         <div class="header-preferences__options">
           <label title="Français">
             <input
@@ -30,32 +48,34 @@
               name="language"
               value="fr"
               aria-label="Français"
-              checked
+              data-href={switchLocaleUrl(currentPath, "fr")}
+              checked={locale === "fr"}
             />
             <span aria-hidden="true">🇫🇷</span>
           </label>
-          <label class="header-preferences__disabled" title="English bientôt">
+          <label title="English">
             <input
               type="radio"
               name="language"
               value="en"
-              aria-label="English, bientôt"
-              disabled
+              aria-label="English"
+              data-href={switchLocaleUrl(currentPath, "en")}
+              checked={locale === "en"}
             />
-            <span aria-hidden="true">🇬🇧</span>
+            <span aria-hidden="true">🇺🇸</span>
           </label>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Distance</legend>
+        <legend>{labels.distance}</legend>
         <div class="header-preferences__options">
           <label>
             <input
               type="radio"
               name="distanceUnit"
               value="km"
-              aria-label="Kilomètres"
+              aria-label={labels.kilometers}
             />
             <span>km</span>
           </label>
@@ -64,7 +84,7 @@
               type="radio"
               name="distanceUnit"
               value="mi"
-              aria-label="Miles"
+              aria-label={labels.miles}
             />
             <span>mi</span>
           </label>
@@ -72,14 +92,14 @@
       </fieldset>
 
       <fieldset>
-        <legend>Poids</legend>
+        <legend>{labels.weight}</legend>
         <div class="header-preferences__options">
           <label>
             <input
               type="radio"
               name="weightUnit"
               value="g"
-              aria-label="Grammes"
+              aria-label={labels.grams}
             />
             <span>g</span>
           </label>
@@ -88,7 +108,7 @@
               type="radio"
               name="weightUnit"
               value="oz"
-              aria-label="Onces"
+              aria-label={labels.ounces}
             />
             <span>oz</span>
           </label>
@@ -108,6 +128,7 @@
     DistanceUnit,
     WeightUnit,
   } from "../lib/preferences/displayPreferences.ts";
+  import type { Locale } from "../lib/content/locales.ts";
 
   document
     .querySelectorAll<HTMLElement>("[data-header-preferences]")
@@ -119,13 +140,14 @@
         ".header-preferences__popover",
       );
       const form = root.querySelector<HTMLFormElement>("form");
+      const activeLocale = root.dataset.activeLocale as Locale;
       if (!trigger || !popover || !form) return;
       const preferencesForm = form;
 
       function synchronizeForm() {
         const preferences = readDisplayPreferences();
         const values = {
-          language: preferences.language,
+          language: activeLocale,
           distanceUnit: preferences.distanceUnit,
           weightUnit: preferences.weightUnit,
         };
@@ -144,14 +166,23 @@
         trigger.setAttribute("aria-expanded", String(isOpen));
         if (isOpen) synchronizeForm();
       });
-      preferencesForm.addEventListener("change", () => {
+      preferencesForm.addEventListener("change", (event) => {
         const data = new FormData(preferencesForm);
+        const language = data.get("language") as Locale;
         writeDisplayPreferences({
           version: 1,
-          language: "fr",
+          language,
           distanceUnit: data.get("distanceUnit") as DistanceUnit,
           weightUnit: data.get("weightUnit") as WeightUnit,
         });
+
+        const target = event.target;
+        if (target instanceof HTMLInputElement && target.name === "language") {
+          const href = target.dataset.href;
+          if (href && href !== window.location.pathname) {
+            window.location.assign(href);
+          }
+        }
       });
       window.addEventListener(displayPreferencesChangeEvent, synchronizeForm);
     });
@@ -260,6 +291,7 @@
     border-bottom: 1px solid transparent;
     color: var(--pct-color-muted);
     font-size: 0.7rem;
+    pointer-events: none;
     transition:
       color 160ms ease,
       border-color 160ms ease;

@@ -1,6 +1,4 @@
-const frenchDateFormatter = new Intl.DateTimeFormat("fr-FR", {
-  dateStyle: "long",
-});
+import { localeFormattingTags, type Locale } from "./locales.ts";
 
 export function parseLocalIsoDate(value: string): Date {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
@@ -23,6 +21,12 @@ export function parseLocalIsoDate(value: string): Date {
   return parsed;
 }
 
+export function formatDate(value: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(localeFormattingTags[locale], {
+    dateStyle: "long",
+  }).format(parseLocalIsoDate(value));
+}
+
 export function formatFrenchDate(value: string): string {
-  return frenchDateFormatter.format(parseLocalIsoDate(value));
+  return formatDate(value, "fr");
 }

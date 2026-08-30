@@ -90,17 +90,40 @@ describe("content model validation", () => {
     );
   });
 
-  it("requires French copy for published neutral content", () => {
+  it("requires every published locale for neutral content", () => {
     const fixture = cloneFixture();
-    fixture.localizedGlossaryEntries = [];
+    fixture.localizedGlossaryEntries = fixture.localizedGlossaryEntries.filter(
+      (entry) => (entry as Record<string, unknown>).locale !== "en",
+    );
 
     const result = validateContentModel(fixture);
 
     expect(result.issues).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          code: "translation.fr.missing",
+          code: "translation.en.missing",
           path: "glossaryConcepts.trail-angel",
+        }),
+      ]),
+    );
+  });
+
+  it("preserves source photos and references in journal translations", () => {
+    const fixture = cloneFixture();
+    const englishEntry = fixture.journalEntries.find(
+      (entry) =>
+        (entry as Record<string, unknown>).locale === "en" &&
+        (entry as Record<string, unknown>).dayId === "day-001",
+    ) as Record<string, unknown>;
+    englishEntry.photoIds = [];
+
+    const result = validateContentModel(fixture);
+
+    expect(result.issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "translation.journal.photo-parity",
+          path: "journalEntries.en:day-001.photoIds",
         }),
       ]),
     );

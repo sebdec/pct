@@ -3,24 +3,45 @@ import { getCollection } from "astro:content";
 
 import GlossaryList from "../components/GlossaryList.astro";
 import EditorialPageLayout from "../layouts/EditorialPageLayout.astro";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import { buildGlossaryViewModel } from "../lib/glossary/glossaryViewModel.ts";
 import { site } from "../lib/site.ts";
 
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+
 const [conceptEntries, localizedEntries] = await Promise.all([
   getCollection("glossaryConcepts"),
-  getCollection("glossary"),
+  getCollection(locale === "fr" ? "glossary" : "glossaryEnglish"),
 ]);
 const glossary = buildGlossaryViewModel(
   conceptEntries.map(({ data }) => data),
   localizedEntries.map(({ data }) => data),
+  locale,
 );
+const copy =
+  locale === "fr"
+    ? {
+        title: "Glossaire",
+        description:
+          "Les mots et expressions de la vie quotidienne sur le Pacific Crest Trail.",
+      }
+    : {
+        title: "Glossary",
+        description:
+          "The words and expressions of everyday life on the Pacific Crest Trail.",
+      };
 ---
 
 <EditorialPageLayout
-  title={`Glossaire | ${site.title}`}
-  description="Les mots et expressions de la vie quotidienne sur le Pacific Crest Trail."
-  heading="Glossaire"
+  title={`${copy.title} | ${site.title}`}
+  description={copy.description}
+  heading={copy.title}
   bodyClass="glossary-shell"
+  {locale}
 >
-  <GlossaryList {glossary} />
+  <GlossaryList {glossary} {locale} />
 </EditorialPageLayout>

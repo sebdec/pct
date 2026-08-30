@@ -1,25 +1,57 @@
 import { dayIdSchema, stableIdSchema } from "./schemas.ts";
+import { defaultLocale, type Locale } from "./locales.ts";
 
-export function homeUrl(): string {
-  return "/";
+export function localizeUrl(path: string, locale: Locale): string {
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  if (locale === defaultLocale) return normalizedPath;
+  if (normalizedPath === "/") return `/${locale}`;
+
+  return `/${locale}${normalizedPath}`;
 }
 
-export function journalDayUrl(dayId: string): string {
-  return `/journal/${dayIdSchema.parse(dayId)}`;
+export function stripLocaleFromUrl(path: string): string {
+  const withoutFrenchPrefix = path.replace(/^\/fr(?=\/|$)/, "");
+  return withoutFrenchPrefix || "/";
 }
 
-export function mapUrl(): string {
-  return "/map";
+export function switchLocaleUrl(path: string, locale: Locale): string {
+  return localizeUrl(stripLocaleFromUrl(path), locale);
 }
 
-export function mapDayUrl(dayId: string): string {
-  return `/map/${dayIdSchema.parse(dayId)}`;
+export function homeUrl(locale: Locale = defaultLocale): string {
+  return localizeUrl("/", locale);
 }
 
-export function glossaryUrl(): string {
-  return "/glossary";
+export function journalDayUrl(
+  dayId: string,
+  locale: Locale = defaultLocale,
+): string {
+  return localizeUrl(`/journal/${dayIdSchema.parse(dayId)}`, locale);
 }
 
-export function glossaryEntryUrl(conceptId: string): string {
-  return `${glossaryUrl()}#${stableIdSchema.parse(conceptId)}`;
+export function mapUrl(locale: Locale = defaultLocale): string {
+  return localizeUrl("/map", locale);
+}
+
+export function mapDayUrl(
+  dayId: string,
+  locale: Locale = defaultLocale,
+): string {
+  return localizeUrl(`/map/${dayIdSchema.parse(dayId)}`, locale);
+}
+
+export function gearUrl(locale: Locale = defaultLocale): string {
+  return localizeUrl("/gear", locale);
+}
+
+export function glossaryUrl(locale: Locale = defaultLocale): string {
+  return localizeUrl("/glossary", locale);
+}
+
+export function glossaryEntryUrl(
+  conceptId: string,
+  locale: Locale = defaultLocale,
+): string {
+  return `${glossaryUrl(locale)}#${stableIdSchema.parse(conceptId)}`;
 }

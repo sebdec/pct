@@ -4,8 +4,14 @@ import {
   formatWeight,
   getDefaultDisplayPreferences,
 } from "../lib/preferences/displayPreferences.ts";
+import {
+  defaultLocale,
+  localeFormattingTags,
+  type Locale,
+} from "../lib/content/locales.ts";
 
 type CommonProps = {
+  locale?: Locale;
   prefix?: string;
   suffix?: string;
   className?: string;
@@ -35,14 +41,21 @@ type WeightProps = CommonProps & {
 
 type Props = DistanceProps | DistanceRangeProps | WeightProps;
 
-const fallbackPreferences = getDefaultDisplayPreferences("fr-FR");
-
 export default function UnitValue(props: Props) {
-  const { prefix = "", suffix = "", className, maximumFractionDigits } = props;
+  const {
+    prefix = "",
+    suffix = "",
+    className,
+    maximumFractionDigits,
+    locale = defaultLocale,
+  } = props;
+  const formattingLocale = localeFormattingTags[locale];
+  const fallbackPreferences = getDefaultDisplayPreferences(formattingLocale);
   let value: string;
 
   if (props.weightGrams !== undefined) {
     value = formatWeight(props.weightGrams, fallbackPreferences.weightUnit, {
+      locale: formattingLocale,
       maximumFractionDigits,
     });
   } else if (props.distanceEndMiles !== undefined) {
@@ -50,7 +63,7 @@ export default function UnitValue(props: Props) {
       props.distanceMiles,
       props.distanceEndMiles,
       fallbackPreferences.distanceUnit,
-      { maximumFractionDigits },
+      { locale: formattingLocale, maximumFractionDigits },
     );
   } else {
     value = formatDistance(
@@ -58,6 +71,7 @@ export default function UnitValue(props: Props) {
       fallbackPreferences.distanceUnit,
       {
         maximumFractionDigits,
+        locale: formattingLocale,
         unitDisplay: props.unitDisplay,
       },
     );

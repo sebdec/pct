@@ -15,6 +15,12 @@ import type {
   TrailRoute,
 } from "../lib/content/schemas.ts";
 import {
+  defaultLocale,
+  localeFormattingTags,
+  type Locale,
+} from "../lib/content/locales.ts";
+import { getUi } from "../lib/i18n/ui.ts";
+import {
   getMapDayForMile,
   initialMapSelection,
   selectMapDay,
@@ -41,18 +47,11 @@ interface Props {
   areas: readonly MapArea[];
   mapStyleUrl: string;
   initialDayId?: string;
+  locale?: Locale;
 }
 
 const baseMapAttribution =
   '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>';
-const numberFormatter = new Intl.NumberFormat("fr-FR", {
-  maximumFractionDigits: 1,
-});
-
-function formatNumber(value: number): string {
-  return numberFormatter.format(value);
-}
-
 interface MapThemeColors {
   page: string;
   land: string;
@@ -351,7 +350,10 @@ class RouteFitControl implements IControl {
   private container?: HTMLDivElement;
   private map?: MapLibreMap;
 
-  constructor(private readonly route: TrailRoute) {}
+  constructor(
+    private readonly route: TrailRoute,
+    private readonly label: string,
+  ) {}
 
   onAdd(map: MapLibreMap): HTMLElement {
     this.map = map;
@@ -361,8 +363,8 @@ class RouteFitControl implements IControl {
     const button = document.createElement("button");
     button.className = "trail-map-fit-button";
     button.type = "button";
-    button.title = "Recentrer sur le PCT";
-    button.setAttribute("aria-label", "Recentrer sur le PCT");
+    button.title = this.label;
+    button.setAttribute("aria-label", this.label);
     button.addEventListener("click", this.fitRoute);
     this.container.append(button);
 
@@ -392,7 +394,16 @@ export default function TrailMapExperience({
   areas,
   mapStyleUrl,
   initialDayId,
+  locale = defaultLocale,
 }: Props) {
+  const labels = getUi(locale);
+  const numberFormatter = useMemo(
+    () =>
+      new Intl.NumberFormat(localeFormattingTags[locale], {
+        maximumFractionDigits: 1,
+      }),
+    [locale],
+  );
   const initialSelection = useMemo(
     () => initialMapSelection(days, initialDayId),
     [days, initialDayId],
@@ -448,7 +459,7 @@ export default function TrailMapExperience({
         const markerElement = document.createElement("span");
         markerElement.className = "trail-map-marker";
         markerElement.setAttribute("role", "img");
-        markerElement.setAttribute("aria-label", "Position sur le parcours");
+        markerElement.setAttribute("aria-label", labels.trailPosition);
         const marker = new maplibre.Marker({
           element: markerElement,
           draggable: true,
@@ -679,7 +690,10 @@ export default function TrailMapExperience({
           }
         });
         map.addControl(new maplibre.NavigationControl({ showCompass: false }));
-        map.addControl(new RouteFitControl(route), "top-right");
+        map.addControl(
+          new RouteFitControl(route, labels.recenterTrail),
+          "top-right",
+        );
         map.once("idle", () => {
           map
             .getContainer()
@@ -708,6 +722,8 @@ export default function TrailMapExperience({
     points,
     route,
     routeIndex,
+    labels.recenterTrail,
+    labels.trailPosition,
   ]);
 
   useEffect(() => {
@@ -735,14 +751,11 @@ export default function TrailMapExperience({
   }
 
   return (
-    <section className="trail-map-experience" aria-label="Carte du parcours">
+    <section className="trail-map-experience" aria-label={labels.mapLabel}>
       <div className="trail-map-stage">
         <div ref={mapContainerRef} className="trail-map-canvas" />
         {mapUnavailable ? (
-          <p className="trail-map-fallback">
-            La carte ne peut pas être affichée sur cet appareil. Les journées et
-            les statistiques restent disponibles.
-          </p>
+          <p className="trail-map-fallback">{labels.mapUnavailable}</p>
         ) : null}
       </div>
 
@@ -753,9 +766,10 @@ export default function TrailMapExperience({
           date={selectedDay.date}
           action={{
             href: selectedDay.journalHref,
-            label: "Voir sur le journal",
+            label: labels.viewInJournal,
           }}
           stableLocation
+          locale={locale}
         />
 
         <TrailProgressControl
@@ -769,12 +783,13 @@ export default function TrailMapExperience({
           step={0.1}
           value={selection.mile}
           controlId="map-mile-progress"
-          controlLabel="Choisir une position sur le parcours"
-          navigationLabel="Navigation sur le parcours"
+          controlLabel={labels.chooseTrailPosition}
+          navigationLabel={labels.trailNavigation}
+          locale={locale}
           previous={
             previousDay
               ? {
-                  ariaLabel: `Jour précédent, jour ${previousDay.sequence}`,
+                  ariaLabel: `${labels.previousDay}, ${labels.day.toLowerCase()} ${previousDay.sequence}`,
                   onClick: () => chooseDay(previousDay.id),
                 }
               : undefined
@@ -782,7 +797,7 @@ export default function TrailMapExperience({
           next={
             nextDay
               ? {
-                  ariaLabel: `Jour suivant, jour ${nextDay.sequence}`,
+                  ariaLabel: `${labels.nextDay}, ${labels.day.toLowerCase()} ${nextDay.sequence}`,
                   onClick: () => chooseDay(nextDay.id),
                 }
               : undefined
@@ -800,8 +815,9 @@ export default function TrailMapExperience({
             end: selectedDay.mileEnd,
           }}
           distanceMiles={selectedDay.distanceMiles}
-          ascentLabel={`${formatNumber(selectedDay.ascentMeters)} m`}
-          descentLabel={`${formatNumber(selectedDay.descentMeters)} m`}
+          ascentLabel={`${numberFormatter.format(selectedDay.ascentMeters)} m`}
+          descentLabel={`${numberFormatter.format(selectedDay.descentMeters)} m`}
+          locale={locale}
         />
       </aside>
     </section>

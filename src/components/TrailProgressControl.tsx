@@ -1,4 +1,6 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { getUi } from "../lib/i18n/ui.ts";
 import { getProgressStop } from "../lib/trail/presentation.ts";
 import UnitValue from "./UnitValue.tsx";
 import "./TrailProgressControl.css";
@@ -26,6 +28,7 @@ interface Props {
   onChange: (value: number) => void;
   onCommit?: (value: number) => void;
   className?: string;
+  locale?: Locale;
 }
 
 export default function TrailProgressControl({
@@ -45,7 +48,9 @@ export default function TrailProgressControl({
   onChange,
   onCommit,
   className,
+  locale = defaultLocale,
 }: Props) {
+  const labels = getUi(locale);
   const progressStop = getProgressStop(value, min, max);
   const commit = () => onCommit?.(value);
 
@@ -60,15 +65,18 @@ export default function TrailProgressControl({
 
       <div className="trail-progress__control">
         <div className="trail-progress__copy" aria-live="polite">
-          <strong>Jour {sequence}</strong>
+          <strong>
+            {labels.day} {sequence}
+          </strong>
           <span>{regionLabel}</span>
           {typeof positionMiles === "number" ? (
             <small>
-              <UnitValue distanceMiles={positionMiles} />
+              <UnitValue locale={locale} distanceMiles={positionMiles} />
             </small>
           ) : positionMiles ? (
             <small>
               <UnitValue
+                locale={locale}
                 distanceMiles={positionMiles.start}
                 distanceEndMiles={positionMiles.end}
               />
@@ -87,13 +95,13 @@ export default function TrailProgressControl({
           max={max}
           step={step}
           value={value}
-          aria-valuetext={[`Jour ${sequence}`, regionLabel].join(", ")}
+          aria-valuetext={[`${labels.day} ${sequence}`, regionLabel].join(", ")}
           data-pct-distance-aria-miles={
             typeof positionMiles === "number"
               ? positionMiles
               : positionMiles?.end
           }
-          data-pct-aria-prefix={`Jour ${sequence}, ${regionLabel}, `}
+          data-pct-aria-prefix={`${labels.day} ${sequence}, ${regionLabel}, `}
           onChange={(event) => onChange(event.target.valueAsNumber)}
           onPointerUp={commit}
           onKeyUp={commit}

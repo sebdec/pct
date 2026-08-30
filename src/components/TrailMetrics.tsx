@@ -1,4 +1,6 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { getUi } from "../lib/i18n/ui.ts";
 import TrailMetricIcon from "./TrailMetricIcon.tsx";
 import UnitValue from "./UnitValue.tsx";
 import "./TrailMetricLabel.css";
@@ -18,6 +20,7 @@ interface Props {
   ascentLabel: string;
   descentLabel: string;
   className?: string;
+  locale?: Locale;
 }
 
 export default function TrailMetrics({
@@ -29,25 +32,27 @@ export default function TrailMetrics({
   ascentLabel,
   descentLabel,
   className,
+  locale = defaultLocale,
 }: Props) {
+  const labels = getUi(locale);
   return (
     <aside
       className={`trail-metrics${className ? ` ${className}` : ""}`}
-      aria-label="Repères de la journée"
+      aria-label={labels.dayMarkers}
       data-region={regionId}
     >
       <dl>
         <div className="trail-metrics__context trail-metrics__region">
           <dt className="trail-metric-label">
             <TrailMetricIcon name="region" />
-            <span>Région</span>
+            <span>{labels.region}</span>
           </dt>
           <dd className="trail-metrics__region-name">{regionLabel}</dd>
         </div>
         <div className="trail-metrics__context trail-metrics__section">
           <dt className="trail-metric-label">
             <TrailMetricIcon name="section" />
-            <span>Section</span>
+            <span>{labels.section}</span>
           </dt>
           <dd
             className="trail-metrics__section-list"
@@ -68,9 +73,10 @@ export default function TrailMetrics({
         <Metric
           className="trail-metrics__position"
           icon="mile"
-          label="Position"
+          label={labels.position}
         >
           <UnitValue
+            locale={locale}
             distanceMiles={positionMiles.start}
             distanceEndMiles={positionMiles.end}
           />
@@ -78,21 +84,21 @@ export default function TrailMetrics({
         <Metric
           className="trail-metrics__distance"
           icon="distance"
-          label="Distance"
+          label={labels.distance}
         >
-          <UnitValue distanceMiles={distanceMiles} />
+          <UnitValue locale={locale} distanceMiles={distanceMiles} />
         </Metric>
         <Metric
           className="trail-metrics__ascent"
           icon="ascent"
-          label="Ascension"
+          label={labels.ascent}
         >
           {ascentLabel}
         </Metric>
         <Metric
           className="trail-metrics__descent"
           icon="descent"
-          label="Descente"
+          label={labels.descent}
         >
           {descentLabel}
         </Metric>

@@ -1,5 +1,5 @@
 ---
-import { getCollection, render, type CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 
 import JournalDayHeader from "../../components/JournalDayHeader.astro";
 import JournalDayNavigator from "../../components/JournalDayNavigator.astro";
@@ -8,89 +8,41 @@ import JournalMetrics from "../../components/JournalMetrics.astro";
 import JournalNavigation from "../../components/JournalNavigation.astro";
 import ReadingPageLayout from "../../layouts/ReadingPageLayout.astro";
 import {
-  buildJournalViewModels,
-  buildJournalNavigatorItems,
-  type JournalNavigatorItem,
-  type JournalPageViewModel,
-} from "../../lib/content/journalViewModel.ts";
-import { defaultLocale } from "../../lib/content/locales.ts";
-import type { TrailSection } from "../../lib/content/schemas.ts";
+  getJournalStaticPaths,
+  type JournalPageProps,
+} from "../../lib/content/journalPages.ts";
+import { getUi } from "../../lib/i18n/ui.ts";
 import { site } from "../../lib/site.ts";
 
-interface Props {
-  page: JournalPageViewModel;
-  journalEntry: CollectionEntry<"journal">;
-  navigatorEntries: readonly JournalNavigatorItem[];
-  sections: readonly TrailSection[];
-}
+type Props = JournalPageProps;
 
 export async function getStaticPaths() {
-  const [dayEntries, journalEntries, photoEntries, sectionEntries] =
-    await Promise.all([
-      getCollection("days"),
-      getCollection("journal"),
-      getCollection("photos"),
-      getCollection("sections"),
-    ]);
-  const frenchEntries = journalEntries.filter(
-    ({ data }) => data.locale === defaultLocale,
-  );
-  const pages = buildJournalViewModels({
-    days: dayEntries.map(({ data }) => data),
-    journalEntries: frenchEntries.map(({ data }) => data),
-    photos: photoEntries.map(({ data }) => data),
-  });
-  const entryByDayId = new Map(
-    frenchEntries.map((entry) => [entry.data.dayId, entry]),
-  );
-  const navigatorEntries = buildJournalNavigatorItems(pages);
-  const sectionById = new Map(
-    sectionEntries.map(({ data }) => [data.id, data]),
-  );
-
-  return pages.map((page) => ({
-    params: { dayId: page.day.id },
-    props: {
-      page,
-      journalEntry: entryByDayId.get(page.day.id),
-      navigatorEntries,
-      sections:
-        page.day.kind === "trail"
-          ? page.day.sectionIds.map((sectionId) => {
-              const section = sectionById.get(sectionId);
-
-              if (!section) {
-                throw new Error(
-                  `Missing section ${sectionId} for ${page.day.id}.`,
-                );
-              }
-
-              return section;
-            })
-          : [],
-    },
-  }));
+  return getJournalStaticPaths("en");
 }
 
-const { page, journalEntry, navigatorEntries, sections } = Astro.props;
+const { locale, page, journalEntry, navigatorEntries, sections } = Astro.props;
+const labels = getUi(locale);
 const { Content } = await render(journalEntry);
-const pageTitle = `Jour ${page.day.sequence} · ${page.entry.locationLabel} | ${site.title}`;
+const pageTitle = `${labels.day} ${page.day.sequence} ${page.entry.locationLabel} | ${site.title}`;
 const pageDescription =
   page.entry.summary ??
-  `Journal du Pacific Crest Trail 2026 à ${page.entry.locationLabel}.`;
+  (locale === "fr"
+    ? `Journal du Pacific Crest Trail 2026 à ${page.entry.locationLabel}.`
+    : `Pacific Crest Trail 2026 journal from ${page.entry.locationLabel}.`);
 ---
 
 <ReadingPageLayout
   title={pageTitle}
   description={pageDescription}
   mainClass="journal-page"
+  {locale}
 >
   <article>
-    <JournalDayHeader page={page} />
-    <JournalDayNavigator page={page} entries={navigatorEntries} />
+    <JournalDayHeader page={page} {locale} />
+    <JournalDayNavigator page={page} entries={navigatorEntries} {locale} />
 
     <div class="journal-transition-surface">
-      <JournalMetrics page={page} sections={sections} />
+      <JournalMetrics page={page} sections={sections} {locale} />
 
       <div class="journal-layout">
         <div class="reading-column">
@@ -98,11 +50,15 @@ const pageDescription =
             <Content />
           </div>
 
-          <JournalMediaSequence photos={page.photos} regionId={page.regionId} />
+          <JournalMediaSequence
+            photos={page.photos}
+            regionId={page.regionId}
+            {locale}
+          />
         </div>
       </div>
 
-      <JournalNavigation previous={page.previous} next={page.next} />
+      <JournalNavigation previous={page.previous} next={page.next} {locale} />
     </div>
   </article>
 </ReadingPageLayout>

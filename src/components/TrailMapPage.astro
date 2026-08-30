@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { defaultLocale } from "../lib/content/locales.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import { buildMapDayViewModels } from "../lib/map/mapExperience.ts";
 import { site } from "../lib/site.ts";
 import PageCredits from "./PageCredits.astro";
@@ -12,9 +12,10 @@ import TrailMapExperience from "./TrailMapExperience";
 
 interface Props {
   initialDayId?: string;
+  locale?: Locale;
 }
 
-const { initialDayId } = Astro.props;
+const { initialDayId, locale = defaultLocale } = Astro.props;
 const [
   dayEntries,
   journalEntries,
@@ -34,7 +35,7 @@ const days = buildMapDayViewModels({
   days: dayEntries.map(({ data }) => data),
   journalEntries: journalEntries.map(({ data }) => data),
   sections: sectionEntries.map(({ data }) => data),
-  locale: defaultLocale,
+  locale,
 });
 const route = routeEntries[0]?.data;
 const points = pointEntries.map(({ data }) => data);
@@ -60,16 +61,20 @@ const mapStyleUrl =
   import.meta.env.PUBLIC_MAP_STYLE_URL ??
   "https://tiles.openfreemap.org/styles/fiord";
 const title = initialDay
-  ? `Jour ${initialDay.sequence} sur la carte | ${site.title}`
-  : `Carte du parcours | ${site.title}`;
+  ? locale === "fr"
+    ? `Jour ${initialDay.sequence} sur la carte | ${site.title}`
+    : `Day ${initialDay.sequence} on the map | ${site.title}`
+  : locale === "fr"
+    ? `Carte du parcours | ${site.title}`
+    : `Trail map | ${site.title}`;
+const description =
+  locale === "fr"
+    ? "Parcourir les 2 656 miles du Pacific Crest Trail jour après jour."
+    : "Explore all 2,656 miles of the Pacific Crest Trail day by day.";
 ---
 
-<BaseLayout
-  title={title}
-  description="Parcourir les 2 656 miles du Pacific Crest Trail jour après jour."
-  bodyClass="trail-shell"
->
-  <SiteHeader />
+<BaseLayout title={title} {description} bodyClass="trail-shell" {locale}>
+  <SiteHeader {locale} />
   <main class="map-page">
     <TrailMapExperience
       days={days}
@@ -78,11 +83,13 @@ const title = initialDay
       areas={areas}
       mapStyleUrl={mapStyleUrl}
       initialDayId={initialDayId}
+      {locale}
       client:load
     />
   </main>
   <PageCredits
     slot="page-supplement"
+    {locale}
     links={[
       {
         href: route.source.centerlineUrl,

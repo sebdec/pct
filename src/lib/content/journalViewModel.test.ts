@@ -24,6 +24,7 @@ describe("journal view models", () => {
       days: source.days,
       journalEntries: source.journalEntries,
       photos: source.photos,
+      locale: "fr",
     });
 
     expect(pages).toHaveLength(3);
@@ -44,7 +45,7 @@ describe("journal view models", () => {
     expect(pages[0].photos.map(({ id }) => id)).toEqual(["photo-001001"]);
     expect(pages[2]).toMatchObject({
       day: { id: "day-003", kind: "post-trail" },
-      regionLabel: "Post trail",
+      regionLabel: "Après le trail",
       metrics: null,
       next: null,
       previous: { dayId: "day-002", sequence: 2 },
@@ -74,7 +75,7 @@ describe("journal view models", () => {
         sequence: 3,
         locationLabel: "Vancouver",
         regionId: null,
-        regionLabel: "Post trail",
+        regionLabel: "Après le trail",
         mileStart: null,
         mileEnd: null,
       },
@@ -89,6 +90,7 @@ describe("journal view models", () => {
         days: source.days,
         journalEntries: source.journalEntries.slice(1),
         photos: source.photos,
+        locale: "fr",
       }),
     ).toThrow("Published day day-001 is missing its fr journal entry.");
   });
@@ -105,6 +107,7 @@ describe("journal view models", () => {
           ...otherEntries,
         ],
         photos: source.photos,
+        locale: "fr",
       }),
     ).toThrow("day-001 references unknown photo photo-001999.");
 
@@ -113,6 +116,7 @@ describe("journal view models", () => {
         days: source.days,
         journalEntries: source.journalEntries,
         photos: [{ ...source.photos[0], dayId: "day-002" }],
+        locale: "fr",
       }),
     ).toThrow("day-001 references photo-001001, which belongs to day-002.");
   });
@@ -125,6 +129,7 @@ describe("journal view models", () => {
         days: source.days,
         journalEntries: [...source.journalEntries, source.journalEntries[0]],
         photos: source.photos,
+        locale: "fr",
       }),
     ).toThrow("Duplicate fr journal entry: day-001");
 
@@ -137,6 +142,7 @@ describe("journal view models", () => {
             : entry,
         ),
         photos: source.photos,
+        locale: "fr",
       }),
     ).toThrow("Duplicate day-001 photo reference: photo-001001");
   });

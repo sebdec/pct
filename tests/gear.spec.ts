@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("renders the simplified equipment chart and complete manifest", async ({
   page,
 }) => {
-  await page.goto("/gear");
+  await page.goto("/fr/gear");
 
   await expect(
     page.getByRole("heading", { name: "Équipement", exact: true }),
@@ -135,14 +135,11 @@ test("renders the simplified equipment chart and complete manifest", async ({
   );
   await expect(page.locator(".gear-credits")).toHaveCount(0);
   await expect(page.locator(".page-credits")).toContainText(
-    "Credits: LighterPack",
+    "Crédits: LighterPack",
   );
   await expect(page.locator(".page-supplement > .page-credits")).toHaveCount(1);
   await expect(page.locator(".page-end .page-credits")).toHaveCount(0);
-  await expect(page.locator(".page-end")).toHaveCSS(
-    "border-top-width",
-    "1px",
-  );
+  await expect(page.locator(".page-end")).toHaveCSS("border-top-width", "1px");
   await expect(page.locator(".page-credits")).toHaveCSS(
     "border-top-width",
     "0px",
@@ -158,7 +155,7 @@ test("renders the simplified equipment chart and complete manifest", async ({
 });
 
 test("keeps the equipment page within narrow viewports", async ({ page }) => {
-  await page.goto("/gear");
+  await page.goto("/fr/gear");
 
   for (const width of [736, 360]) {
     await page.setViewportSize({ width, height: 900 });

@@ -1,3 +1,5 @@
+import type { Locale } from "../content/locales.ts";
+
 export const displayPreferencesStorageKey = "pct.display-preferences.v1";
 
 export type DistanceUnit = "mi" | "km";
@@ -5,7 +7,7 @@ export type WeightUnit = "g" | "oz";
 
 export interface DisplayPreferences {
   version: 1;
-  language: "fr";
+  language: Locale;
   distanceUnit: DistanceUnit;
   weightUnit: WeightUnit;
 }
@@ -28,7 +30,7 @@ export function getDefaultDisplayPreferences(
 
   return {
     version: 1,
-    language: "fr",
+    language: locale.toLowerCase().startsWith("fr") ? "fr" : "en",
     distanceUnit: usesUsUnits ? "mi" : "km",
     weightUnit: usesUsUnits ? "oz" : "g",
   };
@@ -48,7 +50,7 @@ export function parseDisplayPreferences(
     const candidate = parsed as Partial<DisplayPreferences>;
     if (
       candidate.version !== 1 ||
-      candidate.language !== "fr" ||
+      !["fr", "en"].includes(candidate.language ?? "") ||
       !["mi", "km"].includes(candidate.distanceUnit ?? "") ||
       !["g", "oz"].includes(candidate.weightUnit ?? "")
     ) {

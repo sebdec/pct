@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("renders the complete glossary with shared navigation", async ({
   page,
 }) => {
-  await page.goto("/glossary");
+  await page.goto("/fr/glossary");
 
   await expect(
     page.getByRole("heading", { name: "Glossaire", exact: true }),
@@ -17,18 +17,18 @@ test("renders the complete glossary with shared navigation", async ({
     page.locator("a[aria-current='page']:visible", { hasText: "Glossaire" }),
   ).toHaveCount(1);
 
-  await page.goto("/");
+  await page.goto("/fr");
   await expect(
     page
       .locator(".editorial-rich-text")
       .getByRole("link", { name: "Glossaire", exact: true }),
-  ).toHaveAttribute("href", "/glossary");
+  ).toHaveAttribute("href", "/fr/glossary");
 });
 
 test("supports stable direct links to glossary definitions", async ({
   page,
 }) => {
-  await page.goto("/glossary#trail-angel");
+  await page.goto("/fr/glossary#trail-angel");
 
   const entry = page.locator("#trail-angel");
   await expect(entry).toBeVisible();
@@ -50,7 +50,7 @@ test("keeps the full glossary readable without JavaScript", async ({
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
 
-  await page.goto("/glossary");
+  await page.goto("/fr/glossary");
   await expect(page.locator(".glossary-entry")).toHaveCount(39);
   await expect(page.locator(".glossary-entry:visible")).toHaveCount(39);
 
@@ -60,7 +60,7 @@ test("keeps the full glossary readable without JavaScript", async ({
 test("keeps the glossary and shared navigation within narrow viewports", async ({
   page,
 }) => {
-  await page.goto("/glossary");
+  await page.goto("/fr/glossary");
 
   for (const width of [736, 360]) {
     await page.setViewportSize({ width, height: 900 });
@@ -92,7 +92,7 @@ test("keeps the glossary and shared navigation within narrow viewports", async (
 test("shares its page alignment and heading scale with equipment", async ({
   page,
 }) => {
-  await page.goto("/gear");
+  await page.goto("/fr/gear");
   const gearLayout = await page.locator(".editorial-page").evaluate((main) => {
     const bounds = main.getBoundingClientRect();
     const heading = main.querySelector("h1");
@@ -104,7 +104,7 @@ test("shares its page alignment and heading scale with equipment", async ({
     };
   });
 
-  await page.goto("/glossary");
+  await page.goto("/fr/glossary");
   const glossaryLayout = await page
     .locator(".editorial-page")
     .evaluate((main) => {

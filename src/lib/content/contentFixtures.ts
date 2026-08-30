@@ -231,6 +231,30 @@ export function createValidContentModel(): ContentModelSource {
         photoIds: [],
         sourceRefs: [sourceRef],
       },
+      {
+        dayId: "day-001",
+        locale: "en",
+        title: "The start",
+        locationLabel: "Campo",
+        photoIds: ["photo-001001"],
+        sourceRefs: [sourceRef],
+      },
+      {
+        dayId: "day-002",
+        locale: "en",
+        title: "2 sections",
+        locationLabel: "Lake Morena",
+        photoIds: [],
+        sourceRefs: [sourceRef],
+      },
+      {
+        dayId: "day-003",
+        locale: "en",
+        title: "After the terminus",
+        locationLabel: "Vancouver",
+        photoIds: [],
+        sourceRefs: [sourceRef],
+      },
     ],
     photos: [
       {
@@ -316,6 +340,11 @@ export function createValidContentModel(): ContentModelSource {
         locale: "fr",
         alt: "Le monument du terminus sud à Campo",
       },
+      {
+        photoId: "photo-001001",
+        locale: "en",
+        alt: "The southern terminus monument in Campo",
+      },
     ],
     glossaryConcepts: [
       {
@@ -330,6 +359,13 @@ export function createValidContentModel(): ContentModelSource {
         locale: "fr",
         term: "Trail angel",
         definition: "Une personne qui aide les marcheurs sur le parcours.",
+        aliases: [],
+      },
+      {
+        conceptId: "trail-angel",
+        locale: "en",
+        term: "Trail angel",
+        definition: "Someone who helps hikers along the trail.",
         aliases: [],
       },
     ],
@@ -350,6 +386,11 @@ export function createValidContentModel(): ContentModelSource {
         locale: "fr",
         name: "Tente Plex Solo",
       },
+      {
+        gearItemId: "gear-shelter-plex-solo",
+        locale: "en",
+        name: "Plex Solo tent",
+      },
     ],
     supportingPages: [
       {
@@ -357,6 +398,14 @@ export function createValidContentModel(): ContentModelSource {
         locale: "fr",
         kind: "closing",
         title: "Après le chemin",
+        published: true,
+        sourceRefs: [sourceRef],
+      },
+      {
+        pageId: "closing",
+        locale: "en",
+        kind: "closing",
+        title: "After the trail",
         published: true,
         sourceRefs: [sourceRef],
       },

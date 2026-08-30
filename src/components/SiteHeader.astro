@@ -1,28 +1,41 @@
 ---
 import pctMark from "../assets/pct-mark.svg?raw";
-import { site } from "../lib/site";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { stripLocaleFromUrl } from "../lib/content/urls.ts";
+import { getUi } from "../lib/i18n/ui.ts";
+import { getSiteNavigation } from "../lib/site";
 import HeaderPreferences from "./HeaderPreferences.astro";
 
-const currentPath = Astro.url.pathname;
-
-function isActive(href: string): boolean {
-  if (href.startsWith("/journal")) {
-    return currentPath.startsWith("/journal");
-  }
-
-  if (href === "/map") {
-    return currentPath.startsWith("/map");
-  }
-
-  if (href === "/gear" || href === "/glossary") {
-    return currentPath.startsWith(href);
-  }
-
-  return !href.includes("#") && href === currentPath;
+interface Props {
+  locale?: Locale;
 }
 
-function navigationHref(label: string, href: string): string {
-  if (label === "Journal" && currentPath.startsWith("/journal/")) {
+const { locale = defaultLocale } = Astro.props;
+const currentPath = Astro.url.pathname;
+const routePath = stripLocaleFromUrl(currentPath);
+const navigation = getSiteNavigation(locale);
+const labels = getUi(locale);
+
+function isActive(href: string): boolean {
+  const normalizedHref = stripLocaleFromUrl(href);
+
+  if (normalizedHref.startsWith("/journal")) {
+    return routePath.startsWith("/journal");
+  }
+
+  if (normalizedHref === "/map") {
+    return routePath.startsWith("/map");
+  }
+
+  if (normalizedHref === "/gear" || normalizedHref === "/glossary") {
+    return routePath.startsWith(normalizedHref);
+  }
+
+  return !href.includes("#") && normalizedHref === routePath;
+}
+
+function navigationHref(id: string, href: string): string {
+  if (id === "journal" && routePath.startsWith("/journal/")) {
     return currentPath;
   }
 
@@ -33,7 +46,11 @@ function navigationHref(label: string, href: string): string {
 <header class="site-header">
   <div class="site-header__row">
     <div class="site-header__left">
-      <a class="wordmark" href="/" aria-label={`${site.title}, accueil`}>
+      <a
+        class="wordmark"
+        href={navigation[0].href}
+        aria-label={labels.homeAriaLabel}
+      >
         <span class="wordmark__mark" set:html={pctMark} />
         <span class="wordmark__text">
           <span>Pacific Crest Trail</span>
@@ -41,13 +58,13 @@ function navigationHref(label: string, href: string): string {
         </span>
       </a>
 
-      <nav aria-label="Navigation principale">
+      <nav aria-label={labels.primaryNavigation}>
         <ul>
           {
-            site.navigation.map(({ label, href }) => (
+            navigation.map(({ id, label, href }) => (
               <li>
                 <a
-                  href={navigationHref(label, href)}
+                  href={navigationHref(id, href)}
                   class:list={{ active: isActive(href) }}
                   aria-current={isActive(href) ? "page" : undefined}
                 >
@@ -60,14 +77,14 @@ function navigationHref(label: string, href: string): string {
       </nav>
     </div>
 
-    <HeaderPreferences />
+    <HeaderPreferences {locale} currentPath={Astro.url.pathname} />
   </div>
 
-  <nav class="mobile-navigation" aria-label="Navigation principale mobile">
+  <nav class="mobile-navigation" aria-label={labels.mobileNavigation}>
     {
-      site.navigation.map(({ label, href }) => (
+      navigation.map(({ id, label, href }) => (
         <a
-          href={navigationHref(label, href)}
+          href={navigationHref(id, href)}
           class:list={{ active: isActive(href) }}
           aria-current={isActive(href) ? "page" : undefined}
         >

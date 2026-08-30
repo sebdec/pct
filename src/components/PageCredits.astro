@@ -1,5 +1,7 @@
 ---
 import TextLink from "./TextLink.astro";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { getUi } from "../lib/i18n/ui.ts";
 
 interface CreditLink {
   href: string;
@@ -8,14 +10,16 @@ interface CreditLink {
 
 interface Props {
   links: CreditLink[];
+  locale?: Locale;
 }
 
-const { links } = Astro.props;
+const { links, locale = defaultLocale } = Astro.props;
+const labels = getUi(locale);
 ---
 
 <footer class="page-credits">
   <p>
-    <strong>Credits:</strong>
+    <strong>{labels.credits}</strong>
     {" "}
     {
       links.map((link, index) => (

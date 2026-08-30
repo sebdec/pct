@@ -1,23 +1,30 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { getUi } from "../lib/i18n/ui.ts";
 
 interface Props {
   photos: JournalPageViewModel["photos"];
   regionId: JournalPageViewModel["regionId"];
+  locale?: Locale;
 }
 
-const { photos, regionId } = Astro.props;
+const { photos, regionId, locale = defaultLocale } = Astro.props;
+const labels = getUi(locale);
 
-function orientation(width: number, height: number): string {
+function orientation(
+  width: number,
+  height: number,
+): "landscape" | "portrait" | "square" {
   if (width / height > 1.15) {
-    return "paysage";
+    return "landscape";
   }
 
   if (height / width > 1.15) {
     return "portrait";
   }
 
-  return "carré";
+  return "square";
 }
 ---
 
@@ -31,12 +38,13 @@ function orientation(width: number, height: number): string {
       aria-labelledby="media-title"
     >
       <header>
-        <h2 id="media-title">Les images viendront retrouver leur place ici.</h2>
+        <h2 id="media-title">{labels.photoPlaceholderHeading}</h2>
       </header>
 
       <div class="media-grid">
         {photos.map((photo, index) => {
           const photoOrientation = orientation(photo.width, photo.height);
+          const orientationLabel = labels[photoOrientation];
 
           return (
             <figure
@@ -52,11 +60,13 @@ function orientation(width: number, height: number): string {
                   <path d="M-15 193c58-49 107-41 151-10s95 32 177-22" />
                   <circle cx="232" cy="54" r="22" />
                 </svg>
-                <span>Média de développement</span>
+                <span>{labels.photoPlaceholder}</span>
               </div>
               <figcaption>
-                <span>Photo {String(index + 1).padStart(2, "0")}</span>
-                <span>{photoOrientation}</span>
+                <span>
+                  {labels.photo} {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>{orientationLabel}</span>
               </figcaption>
             </figure>
           );
@@ -121,7 +131,7 @@ function orientation(width: number, height: number): string {
     margin: 0;
   }
 
-  figure.paysage,
+  figure.landscape,
   figure.featured {
     grid-column: 1 / -1;
   }
@@ -198,7 +208,7 @@ function orientation(width: number, height: number): string {
       grid-template-columns: 1fr;
     }
 
-    figure.paysage,
+    figure.landscape,
     figure.featured {
       grid-column: auto;
     }

@@ -93,11 +93,12 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 ## Content and media
 
 - Preserve the author's voice when correcting journal text. Separate editorial corrections from technical migrations.
-- Keep French as the initial source language while allowing a future English variant in the content model.
+- Keep French as the source language and English translations reviewable beside it in the content model.
 - Store language-neutral facts in `src/data` and localized editorial copy in `src/content/{area}/{locale}`. Never duplicate trail metrics for a translation.
 - Store short structured gear and glossary translations in 1 keyed JSON file per locale, such as `src/content/gear/fr.json`. Keep long-form journal and supporting pages as separate Markdown files.
 - Keep entity IDs and public slugs locale-neutral. A translated entry must reference the same neutral day, photo, glossary concept or gear item.
-- Keep public content URLs locale-free. Localization remains a content concern and future language selection must preserve the stable route shape.
+- Serve English on unprefixed public URLs and French under `/fr`. Keep equivalent route shapes and locale-neutral entity slugs across both languages.
+- Never render a localized public route from another language as a fallback. Missing translated content must fail validation or prevent that route from being generated.
 - Render date-only values with semantic `time` elements and a deterministic static fallback. Browser-preference formatting may progressively enhance the visible text but must never make content depend on JavaScript.
 - Treat miles as canonical. Derive daily distance, cumulative distance and kilometers through `src/lib/content/metrics.ts`.
 - Treat grams as the canonical equipment weight unit. Pass canonical miles and grams to the shared `UnitValue` presentation instead of formatting unit strings inside routes or components.

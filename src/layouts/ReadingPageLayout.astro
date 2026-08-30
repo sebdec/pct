@@ -1,5 +1,6 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
@@ -7,17 +8,25 @@ interface Props {
   description: string;
   bodyClass?: string;
   mainClass?: string;
+  locale?: Locale;
 }
 
-const { title, description, bodyClass, mainClass } = Astro.props;
+const {
+  title,
+  description,
+  bodyClass,
+  mainClass,
+  locale = defaultLocale,
+} = Astro.props;
 ---
 
 <BaseLayout
   {title}
   {description}
+  {locale}
   bodyClass={`journal-shell ${bodyClass ?? ""}`.trim()}
 >
-  <SiteHeader />
+  <SiteHeader {locale} />
 
   <main class={`reading-page ${mainClass ?? ""}`.trim()}>
     <slot />

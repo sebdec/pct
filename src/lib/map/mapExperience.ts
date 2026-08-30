@@ -1,11 +1,12 @@
-import { formatFrenchDate } from "../content/dates.ts";
+import { formatDate } from "../content/dates.ts";
 import {
   getTrailDayDistanceKilometers,
   getTrailDayDistanceMiles,
   milesToKilometers,
 } from "../content/metrics.ts";
-import { regionLabels } from "../content/regions.ts";
-import type { Locale } from "../content/locales.ts";
+import { getRegionLabels } from "../content/regions.ts";
+import { defaultLocale, type Locale } from "../content/locales.ts";
+import { journalDayUrl } from "../content/urls.ts";
 import type {
   Day,
   JournalEntry,
@@ -66,9 +67,10 @@ export function buildMapDayViewModels({
   days,
   journalEntries,
   sections,
-  locale = "fr",
+  locale = defaultLocale,
 }: BuildMapDaysSource): MapDayViewModel[] {
   const locations = indexLocations(journalEntries, locale);
+  const regionLabels = getRegionLabels(locale);
   const sectionIndex = new Map(
     sections.map((section) => [section.id, section]),
   );
@@ -96,7 +98,7 @@ export function buildMapDayViewModels({
         id: day.id,
         sequence: day.sequence,
         date: day.date,
-        dateLabel: formatFrenchDate(day.date),
+        dateLabel: formatDate(day.date, locale),
         locationLabel,
         regionId: day.regionId,
         regionLabel: regionLabels[day.regionId],
@@ -109,7 +111,7 @@ export function buildMapDayViewModels({
         cumulativeKilometers: milesToKilometers(day.mileEnd),
         ascentMeters: day.ascentMeters,
         descentMeters: day.descentMeters,
-        journalHref: `/journal/${day.id}`,
+        journalHref: journalDayUrl(day.id, locale),
       };
     });
 }

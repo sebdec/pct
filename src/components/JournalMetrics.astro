@@ -1,15 +1,21 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import {
+  defaultLocale,
+  localeFormattingTags,
+  type Locale,
+} from "../lib/content/locales.ts";
 import type { TrailSection } from "../lib/content/schemas.ts";
 import TrailMetrics from "./TrailMetrics.tsx";
 
 interface Props {
   page: JournalPageViewModel;
   sections: readonly TrailSection[];
+  locale?: Locale;
 }
 
-const { page, sections } = Astro.props;
-const integerFormatter = new Intl.NumberFormat("fr-FR", {
+const { page, sections, locale = defaultLocale } = Astro.props;
+const integerFormatter = new Intl.NumberFormat(localeFormattingTags[locale], {
   maximumFractionDigits: 0,
 });
 ---
@@ -27,6 +33,7 @@ const integerFormatter = new Intl.NumberFormat("fr-FR", {
       distanceMiles={page.metrics.distanceMiles}
       ascentLabel={`+${integerFormatter.format(page.metrics.ascentMeters)} m`}
       descentLabel={`−${integerFormatter.format(page.metrics.descentMeters)} m`}
+      {locale}
     />
   )
 }
