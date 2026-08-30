@@ -3,6 +3,17 @@ import { expect, test } from "@playwright/test";
 test("presents the journey and its main entrances", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle("Pacific Crest Trail 2026");
+  await expect(page.locator(".site-footer")).toHaveText(
+    "© 2026 Sebdec / One Pole",
+  );
+  await expect(page.locator(".page-end")).toHaveCSS(
+    "border-top-width",
+    "1px",
+  );
+  await expect(page.locator(".site-footer")).toHaveCSS(
+    "border-top-width",
+    "0px",
+  );
 
   await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
     "href",
@@ -78,7 +89,7 @@ test("presents the journey and its main entrances", async ({ page }) => {
   ]) {
     await expect(page.getByText(reason, { exact: true })).toBeVisible();
   }
-  await expect(figures).toContainText("Sebdec / One Pole");
+  await expect(figures).not.toContainText("Sebdec / One Pole");
   await expect(
     page.getByRole("link", { name: "carte officielle du PCT" }),
   ).toHaveAttribute(
@@ -100,6 +111,15 @@ test("presents the journey and its main entrances", async ({ page }) => {
   await expect(
     page.locator(".site-header a[aria-current='page']:visible"),
   ).toHaveText("Accueil");
+
+  const labelTransforms = await page
+    .locator(
+      ".site-header nav a:visible, .trail-overview-metrics .trail-metric-label",
+    )
+    .evaluateAll((labels) =>
+      labels.map((label) => getComputedStyle(label).textTransform),
+    );
+  expect(new Set(labelTransforms)).toEqual(new Set(["none"]));
 
   await expect(page.locator(".trail-overview-metrics__metric")).toHaveCount(7);
   await expect(
@@ -167,14 +187,20 @@ test("reuses the editorial shell and heading scale", async ({ page }) => {
       const body = getComputedStyle(document.body);
       const heading = document.querySelector("h1");
       const main = document.querySelector(".editorial-page");
+      const footer = document.querySelector(".site-footer");
 
-      if (!heading || !main) throw new Error("Missing editorial shell.");
+      if (!heading || !main || !footer) {
+        throw new Error("Missing editorial shell.");
+      }
 
       return {
         backgroundColor: body.backgroundColor,
         backgroundImage: body.backgroundImage,
         headingSize: getComputedStyle(heading).fontSize,
         mainWidth: main.getBoundingClientRect().width,
+        mainLeft: main.getBoundingClientRect().left,
+        footerWidth: footer.getBoundingClientRect().width,
+        footerLeft: footer.getBoundingClientRect().left,
         centerOffset: Math.abs(
           main.getBoundingClientRect().left -
             (window.innerWidth - main.getBoundingClientRect().right),
@@ -193,7 +219,11 @@ test("reuses the editorial shell and heading scale", async ({ page }) => {
   expect(homeShell.backgroundColor).toBe(glossaryShell.backgroundColor);
   expect(homeShell.backgroundImage).toBe(glossaryShell.backgroundImage);
   expect(homeShell.headingSize).toBe(glossaryShell.headingSize);
-  expect(homeShell.mainWidth).toBeLessThanOrEqual(glossaryShell.mainWidth);
+  expect(homeShell.mainWidth).toBe(glossaryShell.mainWidth);
+  expect(homeShell.footerWidth).toBe(homeShell.mainWidth);
+  expect(homeShell.footerLeft).toBe(homeShell.mainLeft);
+  expect(glossaryShell.footerWidth).toBe(glossaryShell.mainWidth);
+  expect(glossaryShell.footerLeft).toBe(glossaryShell.mainLeft);
   expect(homeShell.centerOffset).toBeLessThan(1);
 });
 

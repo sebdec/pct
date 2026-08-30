@@ -1,5 +1,5 @@
 .trail-day-summary {
-  width: min(100%, var(--pct-content-reading));
+  width: min(100%, var(--pct-content-page));
   margin: 0 auto;
   padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
   text-align: left;

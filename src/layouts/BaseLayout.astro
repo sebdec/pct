@@ -3,6 +3,7 @@ import "../styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
 import pctMarkUrl from "../assets/pct-mark.svg?url";
+import SiteFooter from "../components/SiteFooter.astro";
 import { site } from "../lib/site";
 
 interface Props {
@@ -42,6 +43,14 @@ const themeColor = usesFlatTrailBackground ? "#282c35" : "#191d27";
   </head>
   <body class={bodyClass}>
     <slot />
+    <div class="page-tail">
+      <div class="page-supplement">
+        <slot name="page-supplement" />
+      </div>
+      <div class="page-end">
+        <SiteFooter />
+      </div>
+    </div>
 
     <script>
       import { configureExternalLinks } from "../lib/navigation/externalLinks";
@@ -52,3 +61,20 @@ const themeColor = usesFlatTrailBackground ? "#282c35" : "#191d27";
     </script>
   </body>
 </html>
+
+<style>
+  .page-tail {
+    width: min(100% - 3rem, var(--pct-content-page));
+    margin: var(--pct-space-7) auto 0;
+  }
+
+  .page-end {
+    border-top: 1px solid var(--pct-color-faint);
+  }
+
+  @media (max-width: 46rem) {
+    .page-tail {
+      width: min(100% - 2rem, var(--pct-content-page));
+    }
+  }
+</style>

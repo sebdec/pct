@@ -1,7 +1,7 @@
 .trail-metrics {
   --region-color: var(--pct-color-pine-glow);
 
-  width: min(100%, var(--pct-content-reading));
+  width: min(100%, var(--pct-content-page));
   margin: 0 auto clamp(2.5rem, 5vw, 4rem);
   padding: var(--pct-space-4) 0;
 }
@@ -43,6 +43,10 @@
   border-right: 1px solid var(--pct-color-faint);
 }
 
+.trail-metrics__metric {
+  border-right: 0;
+}
+
 .trail-metrics__position {
   padding-left: 0;
 }
@@ -64,16 +68,6 @@
   grid-column: 1;
   padding-left: 0;
   border-right: 0;
-}
-
-.trail-metrics__region::after {
-  position: absolute;
-  top: var(--pct-space-1);
-  right: 0;
-  bottom: var(--pct-space-2);
-  width: 1px;
-  background: var(--pct-color-faint);
-  content: "";
 }
 
 .trail-metrics__section {

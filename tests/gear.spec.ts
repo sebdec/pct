@@ -137,6 +137,20 @@ test("renders the simplified equipment chart and complete manifest", async ({
   await expect(page.locator(".page-credits")).toContainText(
     "Credits: LighterPack",
   );
+  await expect(page.locator(".page-supplement > .page-credits")).toHaveCount(1);
+  await expect(page.locator(".page-end .page-credits")).toHaveCount(0);
+  await expect(page.locator(".page-end")).toHaveCSS(
+    "border-top-width",
+    "1px",
+  );
+  await expect(page.locator(".page-credits")).toHaveCSS(
+    "border-top-width",
+    "0px",
+  );
+  await expect(page.locator(".site-footer")).toHaveCSS(
+    "border-top-width",
+    "0px",
+  );
   await expect(page.getByRole("heading", { name: "Sierra" })).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Équipement", exact: true }).first(),

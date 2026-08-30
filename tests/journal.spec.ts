@@ -98,8 +98,10 @@ test("places the heading before the sticky navigator on one reading width", asyn
       );
       const metrics = document.querySelector<HTMLElement>(".trail-metrics");
       const article = document.querySelector<HTMLElement>(".journal-layout");
+      const pageShell = document.querySelector<HTMLElement>(".reading-page");
+      const footer = document.querySelector<HTMLElement>(".site-footer");
 
-      if (!heading || !navigator || !metrics || !article) {
+      if (!heading || !navigator || !metrics || !article || !pageShell || !footer) {
         throw new Error("Missing Journal reading layout elements.");
       }
 
@@ -119,6 +121,14 @@ test("places the heading before the sticky navigator on one reading width", asyn
           Node.DOCUMENT_POSITION_FOLLOWING,
         ),
         navigatorPosition: getComputedStyle(navigator).position,
+        shell: {
+          left: pageShell.getBoundingClientRect().left,
+          width: pageShell.getBoundingClientRect().width,
+        },
+        footer: {
+          left: footer.getBoundingClientRect().left,
+          width: footer.getBoundingClientRect().width,
+        },
       };
     });
 
@@ -126,6 +136,11 @@ test("places the heading before the sticky navigator on one reading width", asyn
     expect(layout.navigatorPosition).toBe("sticky");
     expect(new Set(layout.bounds.map(({ left }) => left)).size).toBe(1);
     expect(new Set(layout.bounds.map(({ right }) => right)).size).toBe(1);
+    expect(layout.footer).toEqual(layout.shell);
+    await expect(page.locator(".journal-navigation")).toHaveCSS(
+      "border-top-width",
+      "0px",
+    );
   }
 });
 
@@ -198,7 +213,7 @@ test("aligns the progress fill with the hiker near the end of the journal", asyn
   );
 });
 
-test("keeps region and section aligned without joining their separators", async ({
+test("keeps region and section aligned without a separator", async ({
   page,
 }) => {
   await page.goto("/journal/day-005");
@@ -229,25 +244,29 @@ test("keeps region and section aligned without joining their separators", async 
     const sectionValueBounds = section
       .querySelector("dd")!
       .getBoundingClientRect();
-    const separatorBottom = Number.parseFloat(
-      getComputedStyle(region, "::after").bottom,
-    );
-
     return {
       horizontalBorderWidth: getComputedStyle(region).borderBottomWidth,
+      verticalBorderWidth: getComputedStyle(region).borderRightWidth,
+      separatorContent: getComputedStyle(region, "::after").content,
       regionTop: regionBounds.top,
       sectionTop: sectionBounds.top,
       regionLabelTop: regionLabelBounds.top,
       sectionLabelTop: sectionLabelBounds.top,
       regionValueTop: regionValueBounds.top,
       sectionValueTop: sectionValueBounds.top,
-      separatorBottom,
     };
   });
 
   expect(contextLayout.horizontalBorderWidth).toBe("0px");
+  expect(contextLayout.verticalBorderWidth).toBe("0px");
+  expect(contextLayout.separatorContent).toBe("none");
   expect(contextLayout.regionTop).toBe(contextLayout.sectionTop);
   expect(contextLayout.regionLabelTop).toBe(contextLayout.sectionLabelTop);
   expect(contextLayout.regionValueTop).toBe(contextLayout.sectionValueTop);
-  expect(contextLayout.separatorBottom).toBeGreaterThan(0);
+  const metricBorders = await page
+    .locator(".trail-metrics__metric")
+    .evaluateAll((metrics) =>
+      metrics.map((metric) => getComputedStyle(metric).borderRightWidth),
+    );
+  expect(new Set(metricBorders)).toEqual(new Set(["0px"]));
 });

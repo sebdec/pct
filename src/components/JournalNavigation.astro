@@ -44,11 +44,9 @@ const { previous, next } = Astro.props;
   .journal-navigation {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(100%, var(--pct-content-reading));
+    width: min(100%, var(--pct-content-page));
     margin-inline: auto;
     margin-top: clamp(3.5rem, 7vw, 5.5rem);
-    padding-top: var(--pct-space-5);
-    border-top: 1px solid var(--pct-color-faint);
   }
 
   a {

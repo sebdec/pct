@@ -37,12 +37,6 @@
   color: var(--pct-color-white);
 }
 
-.editorial-rich-text .pct-signature {
-  margin-top: var(--pct-space-8);
-  padding-top: var(--pct-space-5);
-  border-top: 1px solid var(--pct-color-faint);
-}
-
 .editorial-rich-text > :first-child {
   margin-top: 0;
 }
