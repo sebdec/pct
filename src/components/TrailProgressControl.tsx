@@ -107,6 +107,14 @@ function StepAction({
         className="trail-progress__step"
         href={action.href}
         aria-label={action.ariaLabel}
+        onClick={
+          action.onClick
+            ? (event) => {
+                event.preventDefault();
+                action.onClick?.();
+              }
+            : undefined
+        }
       >
         <span aria-hidden="true">{arrow}</span>
       </a>

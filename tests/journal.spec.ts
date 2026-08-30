@@ -130,6 +130,47 @@ test("keeps the current day while scrolling over the navigator", async ({
   await expect(navigator).toContainText("Sierra");
 });
 
+test("accumulates rapid arrow clicks before navigating", async ({ page }) => {
+  async function clickRapidly(
+    direction: "précédent" | "suivant",
+    count: number,
+  ) {
+    await page.evaluate(
+      async ({ direction, count }) => {
+        for (let clickIndex = 0; clickIndex < count; clickIndex += 1) {
+          const link = document.querySelector<HTMLAnchorElement>(
+            `nav[aria-label="Accès rapide aux journées"] a[aria-label^="Jour ${direction}"]`,
+          );
+          if (!link) throw new Error(`Missing ${direction}-day control.`);
+          link.click();
+          await new Promise(requestAnimationFrame);
+        }
+      },
+      { direction, count },
+    );
+  }
+
+  await page.goto("/journal/day-034");
+  await page.waitForFunction(
+    () =>
+      !document
+        .querySelector(".journal-day-navigator astro-island")
+        ?.hasAttribute("ssr"),
+  );
+
+  await clickRapidly("suivant", 3);
+  await expect(page).toHaveURL(/\/journal\/day-037$/);
+
+  await page.waitForFunction(
+    () =>
+      !document
+        .querySelector(".journal-day-navigator astro-island")
+        ?.hasAttribute("ssr"),
+  );
+  await clickRapidly("précédent", 2);
+  await expect(page).toHaveURL(/\/journal\/day-035$/);
+});
+
 test("aligns the progress fill with the hiker near the end of the journal", async ({
   page,
 }) => {
@@ -165,12 +206,14 @@ test("keeps region and section aligned without joining their separators", async 
     );
 
     return {
+      horizontalBorderWidth: getComputedStyle(region).borderBottomWidth,
       regionTop: regionBounds.top,
       sectionTop: sectionBounds.top,
       separatorBottom,
     };
   });
 
+  expect(contextLayout.horizontalBorderWidth).toBe("0px");
   expect(contextLayout.regionTop).toBe(contextLayout.sectionTop);
   expect(contextLayout.separatorBottom).toBeGreaterThan(0);
 });
