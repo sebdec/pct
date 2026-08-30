@@ -3,46 +3,47 @@ import type {
   GearProductLink,
   LocalizedGearEntry,
 } from "../content/schemas.ts";
+import type { Locale } from "../content/locales.ts";
 
 const categoryPresentation = [
   {
     id: "big-4",
-    label: "Big 4",
+    labels: { en: "Big 4", fr: "Big 4" },
     color: "var(--pct-color-pine-glow)",
   },
   {
     id: "vetements",
-    label: "Vêtements",
+    labels: { en: "Clothing", fr: "Vêtements" },
     color: "var(--pct-color-desert-dust)",
   },
   {
     id: "eau-et-cuisine",
-    label: "Eau et cuisine",
+    labels: { en: "Water and cooking", fr: "Eau et cuisine" },
     color: "var(--pct-color-oregon-lake)",
   },
   {
     id: "electronique",
-    label: "Électronique",
+    labels: { en: "Electronics", fr: "Électronique" },
     color: "var(--pct-color-washington-mist)",
   },
   {
     id: "hygiene",
-    label: "Hygiène",
+    labels: { en: "Hygiene", fr: "Hygiène" },
     color: "var(--pct-color-muted)",
   },
   {
     id: "premiers-soins",
-    label: "Premiers soins",
+    labels: { en: "First aid", fr: "Premiers soins" },
     color: "var(--pct-color-norcal-forest)",
   },
   {
     id: "divers",
-    label: "Divers",
+    labels: { en: "Miscellaneous", fr: "Divers" },
     color: "var(--pct-color-copy)",
   },
   {
     id: "sierra",
-    label: "Sierra",
+    labels: { en: "Sierra", fr: "Sierra" },
     color: "var(--pct-color-sierra-snow)",
   },
 ] as const;
@@ -84,6 +85,7 @@ export function buildGearViewModel(
   items: readonly GearItem[],
   localizedEntries: readonly LocalizedGearEntry[],
   productLinks: readonly GearProductLink[] = [],
+  locale: Locale = "fr",
 ): GearViewModel {
   const localizedByItemId = new Map(
     localizedEntries.map((entry) => [entry.gearItemId, entry]),
@@ -93,7 +95,7 @@ export function buildGearViewModel(
     productLinks.map(({ gearItemId, url }) => [gearItemId, url]),
   );
 
-  const categories = categoryPresentation.map(({ id, label, color }) => {
+  const categories = categoryPresentation.map(({ id, labels, color }) => {
     const categoryItems = publishedItems
       .filter(({ categoryId }) => categoryId === id)
       .toSorted((left, right) => sourceOrder(left) - sourceOrder(right))
@@ -115,7 +117,7 @@ export function buildGearViewModel(
 
     return {
       id,
-      label,
+      label: labels[locale],
       color,
       items: categoryItems,
       weightGrams: categoryItems.reduce(

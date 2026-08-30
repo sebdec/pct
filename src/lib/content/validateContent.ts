@@ -1,6 +1,6 @@
 import { z } from "astro/zod";
 
-import { publishedLocales } from "./locales.ts";
+import { publishedLocales, sourceLocale } from "./locales.ts";
 import { getRouteProgressAtMile } from "../map/route.ts";
 import {
   correctionSchema,
@@ -538,7 +538,10 @@ function validateExtractionReport(
     ).length,
     pagePhotoPlacements: content.photos.filter(({ pageId }) => pageId).length,
     trailEntriesWithoutPhotos: content.journalEntries.filter(
-      ({ dayId, photoIds }) => trailDayIds.has(dayId) && photoIds.length === 0,
+      ({ dayId, locale, photoIds }) =>
+        locale === sourceLocale &&
+        trailDayIds.has(dayId) &&
+        photoIds.length === 0,
     ).length,
   };
   for (const [key, actual] of Object.entries(actualCounts) as Array<
@@ -957,19 +960,19 @@ function validatePhotoPlacements(
     }
   });
 
-  const frenchPhotoIdsByDay = new Map<string, Set<string>>();
+  const sourcePhotoIdsByDay = new Map<string, Set<string>>();
   content.journalEntries
-    .filter(({ locale }) => locale === publishedLocales[0])
+    .filter(({ locale }) => locale === sourceLocale)
     .forEach(({ dayId, photoIds }) => {
-      frenchPhotoIdsByDay.set(dayId, new Set(photoIds));
+      sourcePhotoIdsByDay.set(dayId, new Set(photoIds));
     });
   content.photos.forEach(({ id, dayId }) => {
-    if (dayId && !frenchPhotoIdsByDay.get(dayId)?.has(id)) {
+    if (dayId && !sourcePhotoIdsByDay.get(dayId)?.has(id)) {
       addIssue(
         issues,
         "reference.photo.journal",
         `photos.${id}.dayId`,
-        `Photo "${id}" is missing from the French journal entry for "${dayId}".`,
+        `Photo "${id}" is missing from the ${sourceLocale} journal entry for "${dayId}".`,
       );
     }
   });
@@ -1123,11 +1126,10 @@ function validateMediaAssets(
     });
 }
 
-function validateRequiredFrenchCopy(
+function validatePublishedLocaleCoverage(
   content: ParsedContentModel,
   issues: ContentValidationIssue[],
 ): void {
-  const requiredLocale = publishedLocales[0];
   const journalKeys = new Set(
     content.journalEntries.map(({ dayId, locale }) => `${locale}:${dayId}`),
   );
@@ -1147,79 +1149,126 @@ function validateRequiredFrenchCopy(
     ),
   );
 
-  content.days
-    .filter(({ published }) => published)
-    .forEach(({ id }) => {
-      if (!journalKeys.has(`${requiredLocale}:${id}`)) {
-        addIssue(
-          issues,
-          "translation.fr.missing",
-          `days.${id}`,
-          `Published day "${id}" requires a French journal entry.`,
-        );
-      }
-    });
-
-  content.photos
-    .filter(({ published }) => published)
-    .forEach(({ id }) => {
-      if (!photoKeys.has(`${requiredLocale}:${id}`)) {
-        addIssue(
-          issues,
-          "translation.fr.missing",
-          `photos.${id}`,
-          `Published photo "${id}" requires French alternative text.`,
-        );
-      }
-    });
-
-  content.glossaryConcepts
-    .filter(({ published }) => published)
-    .forEach(({ id }) => {
-      if (!glossaryKeys.has(`${requiredLocale}:${id}`)) {
-        addIssue(
-          issues,
-          "translation.fr.missing",
-          `glossaryConcepts.${id}`,
-          `Published glossary concept "${id}" requires a French definition.`,
-        );
-      }
-    });
-
-  content.gearItems
-    .filter(({ published }) => published)
-    .forEach(({ id }) => {
-      if (!gearKeys.has(`${requiredLocale}:${id}`)) {
-        addIssue(
-          issues,
-          "translation.fr.missing",
-          `gearItems.${id}`,
-          `Published gear item "${id}" requires a French entry.`,
-        );
-      }
-    });
-
   const publishedPageIds = new Set(
     content.supportingPages
       .filter(({ published }) => published)
       .map(({ pageId }) => pageId),
   );
-  const frenchPublishedPageIds = new Set(
-    content.supportingPages
-      .filter(({ locale, published }) => locale === requiredLocale && published)
-      .map(({ pageId }) => pageId),
+  for (const requiredLocale of publishedLocales) {
+    const issueCode = `translation.${requiredLocale}.missing`;
+
+    content.days
+      .filter(({ published }) => published)
+      .forEach(({ id }) => {
+        if (!journalKeys.has(`${requiredLocale}:${id}`)) {
+          addIssue(
+            issues,
+            issueCode,
+            `days.${id}`,
+            `Published day "${id}" requires a ${requiredLocale} journal entry.`,
+          );
+        }
+      });
+
+    content.photos
+      .filter(({ published }) => published)
+      .forEach(({ id }) => {
+        if (!photoKeys.has(`${requiredLocale}:${id}`)) {
+          addIssue(
+            issues,
+            issueCode,
+            `photos.${id}`,
+            `Published photo "${id}" requires ${requiredLocale} alternative text.`,
+          );
+        }
+      });
+
+    content.glossaryConcepts
+      .filter(({ published }) => published)
+      .forEach(({ id }) => {
+        if (!glossaryKeys.has(`${requiredLocale}:${id}`)) {
+          addIssue(
+            issues,
+            issueCode,
+            `glossaryConcepts.${id}`,
+            `Published glossary concept "${id}" requires a ${requiredLocale} definition.`,
+          );
+        }
+      });
+
+    content.gearItems
+      .filter(({ published }) => published)
+      .forEach(({ id }) => {
+        if (!gearKeys.has(`${requiredLocale}:${id}`)) {
+          addIssue(
+            issues,
+            issueCode,
+            `gearItems.${id}`,
+            `Published gear item "${id}" requires a ${requiredLocale} entry.`,
+          );
+        }
+      });
+
+    const localizedPublishedPageIds = new Set(
+      content.supportingPages
+        .filter(
+          ({ locale, published }) => locale === requiredLocale && published,
+        )
+        .map(({ pageId }) => pageId),
+    );
+
+    publishedPageIds.forEach((pageId) => {
+      if (!localizedPublishedPageIds.has(pageId)) {
+        addIssue(
+          issues,
+          issueCode,
+          `supportingPages.${pageId}`,
+          `Published supporting page "${pageId}" requires a ${requiredLocale} entry.`,
+        );
+      }
+    });
+  }
+}
+
+function validateLocalizedJournalParity(
+  content: ParsedContentModel,
+  issues: ContentValidationIssue[],
+): void {
+  const sourceEntries = new Map(
+    content.journalEntries
+      .filter(({ locale }) => locale === sourceLocale)
+      .map((entry) => [entry.dayId, entry]),
   );
 
-  publishedPageIds.forEach((pageId) => {
-    if (!frenchPublishedPageIds.has(pageId)) {
-      addIssue(
-        issues,
-        "translation.fr.missing",
-        `supportingPages.${pageId}`,
-        `Published supporting page "${pageId}" requires a French entry.`,
-      );
-    }
-  });
+  content.journalEntries
+    .filter(({ locale }) => locale !== sourceLocale)
+    .forEach((entry) => {
+      const sourceEntry = sourceEntries.get(entry.dayId);
+      if (!sourceEntry) return;
+
+      if (
+        JSON.stringify(entry.photoIds) !== JSON.stringify(sourceEntry.photoIds)
+      ) {
+        addIssue(
+          issues,
+          "translation.journal.photo-parity",
+          `journalEntries.${entry.locale}:${entry.dayId}.photoIds`,
+          `Localized journal entry "${entry.locale}:${entry.dayId}" must preserve the source photo order.`,
+        );
+      }
+
+      if (
+        JSON.stringify(entry.sourceRefs) !==
+        JSON.stringify(sourceEntry.sourceRefs)
+      ) {
+        addIssue(
+          issues,
+          "translation.journal.source-parity",
+          `journalEntries.${entry.locale}:${entry.dayId}.sourceRefs`,
+          `Localized journal entry "${entry.locale}:${entry.dayId}" must preserve the source references.`,
+        );
+      }
+    });
 }
 
 function validateCorrections(
@@ -1267,7 +1316,8 @@ export function validateContentModel(
   validateEditorialReferences(content, issues);
   validatePhotoPlacements(content, issues);
   validateMediaAssets(content, issues);
-  validateRequiredFrenchCopy(content, issues);
+  validatePublishedLocaleCoverage(content, issues);
+  validateLocalizedJournalParity(content, issues);
   validateCorrections(content, issues);
 
   return { valid: issues.length === 0, issues };

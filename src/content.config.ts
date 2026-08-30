@@ -108,8 +108,18 @@ const glossary = defineCollection({
   schema: localizedGlossaryEntrySchema,
 });
 
+const glossaryEnglish = defineCollection({
+  loader: file("src/content/glossary/en.json"),
+  schema: localizedGlossaryEntrySchema,
+});
+
 const gear = defineCollection({
   loader: file("src/content/gear/fr.json"),
+  schema: localizedGearEntrySchema,
+});
+
+const gearEnglish = defineCollection({
+  loader: file("src/content/gear/en.json"),
   schema: localizedGearEntrySchema,
 });
 
@@ -136,6 +146,8 @@ export const collections = {
   journal,
   pages,
   glossary,
+  glossaryEnglish,
   gear,
+  gearEnglish,
   media,
 };

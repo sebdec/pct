@@ -1,0 +1,15 @@
+---
+import JournalPage from "../../journal/[dayId].astro";
+import {
+  getJournalStaticPaths,
+  type JournalPageProps,
+} from "../../../lib/content/journalPages.ts";
+
+export async function getStaticPaths() {
+  return getJournalStaticPaths("fr");
+}
+
+const props = Astro.props as JournalPageProps;
+---
+
+<JournalPage {...props} />

@@ -21,6 +21,7 @@ function fixtureDays() {
     days: daySchema.array().parse(source.days),
     journalEntries: journalEntrySchema.array().parse(source.journalEntries),
     sections: sectionSchema.array().parse(source.sections),
+    locale: "fr",
   });
 }
 
@@ -35,7 +36,7 @@ describe("map experience", () => {
       distanceMiles: 10,
       cumulativeMiles: 10,
       sections: [{ code: "A", properName: "Campo to Lake Morena" }],
-      journalHref: "/journal/day-001",
+      journalHref: "/fr/journal/day-001",
     });
     expect(days.some(({ id }) => id === "day-003")).toBe(false);
   });

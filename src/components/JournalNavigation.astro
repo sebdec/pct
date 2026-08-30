@@ -1,24 +1,28 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import { journalDayUrl } from "../lib/content/urls.ts";
+import { getUi } from "../lib/i18n/ui.ts";
 
 interface Props {
   previous: JournalPageViewModel["previous"];
   next: JournalPageViewModel["next"];
+  locale?: Locale;
 }
 
-const { previous, next } = Astro.props;
+const { previous, next, locale = defaultLocale } = Astro.props;
+const labels = getUi(locale);
 ---
 
-<nav class="journal-navigation" aria-label="Navigation entre les journées">
+<nav class="journal-navigation" aria-label={labels.journalNavigation}>
   {
     previous ? (
       <a
         class="previous"
-        href={journalDayUrl(previous.dayId)}
-        aria-label={`Jour précédent, jour ${previous.sequence}`}
+        href={journalDayUrl(previous.dayId, locale)}
+        aria-label={`${labels.previousDay}, ${labels.day.toLowerCase()} ${previous.sequence}`}
       >
-        <span aria-hidden="true">←</span> Jour {previous.sequence}
+        <span aria-hidden="true">←</span> {labels.day} {previous.sequence}
       </a>
     ) : (
       <span class="boundary" aria-hidden="true" />
@@ -29,10 +33,10 @@ const { previous, next } = Astro.props;
     next ? (
       <a
         class="next"
-        href={journalDayUrl(next.dayId)}
-        aria-label={`Jour suivant, jour ${next.sequence}`}
+        href={journalDayUrl(next.dayId, locale)}
+        aria-label={`${labels.nextDay}, ${labels.day.toLowerCase()} ${next.sequence}`}
       >
-        Jour {next.sequence} <span aria-hidden="true">→</span>
+        {labels.day} {next.sequence} <span aria-hidden="true">→</span>
       </a>
     ) : (
       <span class="boundary" aria-hidden="true" />

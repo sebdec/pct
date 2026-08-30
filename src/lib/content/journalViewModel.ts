@@ -3,7 +3,7 @@ import {
   getTrailDayDistanceKilometers,
   getTrailDayDistanceMiles,
 } from "./metrics.ts";
-import { regionLabels } from "./regions.ts";
+import { getRegionLabels } from "./regions.ts";
 import type { Day, JournalEntry, Photo, TrailDay } from "./schemas.ts";
 
 export interface JournalNavigationItem {
@@ -102,6 +102,7 @@ export function buildJournalViewModels({
     `${locale} journal entry`,
   );
   const photoById = indexUnique(photos, ({ id }) => id, "photo ID");
+  const regionLabels = getRegionLabels(locale);
 
   for (const entry of entriesForLocale) {
     if (!dayById.has(entry.dayId)) {
@@ -171,7 +172,11 @@ export function buildJournalViewModels({
       metrics,
       regionId: day.kind === "trail" ? day.regionId : null,
       regionLabel:
-        day.kind === "trail" ? regionLabels[day.regionId] : "Post trail",
+        day.kind === "trail"
+          ? regionLabels[day.regionId]
+          : locale === "fr"
+            ? "Après le trail"
+            : "Post trail",
       previous: null,
       next: null,
     };

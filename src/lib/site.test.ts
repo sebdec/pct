@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { sectionNames, site } from "./site";
+import { getSiteNavigation, sectionNames } from "./site";
 
 describe("site foundation", () => {
   it("keeps navigation targets unique and local", () => {
-    const targets = site.navigation.map(({ href }) => href);
+    const navigation = getSiteNavigation("en");
+    const targets = navigation.map(({ href }) => href);
 
     expect(new Set(targets).size).toBe(targets.length);
     expect(
@@ -15,7 +16,19 @@ describe("site foundation", () => {
     expect(targets).toContain("/");
     expect(targets).toContain("/journal/day-001");
     expect(targets).toContain("/map");
-    expect(site.navigation.map(({ label }) => label)).not.toContain("Explorer");
+    expect(navigation.map(({ label }) => label)).not.toContain("Explore");
+  });
+
+  it("prefixes French navigation without changing page identity", () => {
+    const targets = getSiteNavigation("fr").map(({ href }) => href);
+
+    expect(targets).toEqual([
+      "/fr",
+      "/fr/journal/day-001",
+      "/fr/map",
+      "/fr/gear",
+      "/fr/glossary",
+    ]);
   });
 
   it("models the five editorial trail sections", () => {

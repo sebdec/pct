@@ -34,14 +34,14 @@ Ce que j’ai aimé sur le PCT ne tient pas à un seul moment. C’est l’ensem
 
 ## Découvrir l’aventure
 
-[Journal](/journal/day-001) raconte les 96 jours, du départ de Campo au terminus canadien.
+[Journal](/fr/journal/day-001) raconte les 96 jours, du départ de Campo au terminus canadien.
 
-[Carte](/map) permet de suivre le tracé, les étapes et les principaux lieux du parcours.
+[Carte](/fr/map) permet de suivre le tracé, les étapes et les principaux lieux du parcours.
 
 La [carte officielle du PCT](https://www.pcta.org/discover-the-trail/maps/overview-maps/) est disponible sur le site de la Pacific Crest Trail Association.
 
-[Équipement](/gear) présente le matériel emporté et son poids.
+[Équipement](/fr/gear) présente le matériel emporté et son poids.
 
-[Glossaire](/glossary) rassemble les mots et les habitudes du thru-hiking.
+[Glossaire](/fr/glossary) rassemble les mots et les habitudes du thru-hiking.
 
-[Commencer par le jour 1](/journal/day-001)
+[Commencer par le jour 1](/fr/journal/day-001)

@@ -1,16 +1,38 @@
 ---
 import TrailOverviewMetrics from "../components/TrailOverviewMetrics.tsx";
 import TextLink from "../components/TextLink.astro";
-import { Content as HomeContent } from "../content/home/fr.md";
-import { homeIntroduction, homeOverview } from "../content/home/fr.ts";
+import { Content as EnglishHomeContent } from "../content/home/en.md";
+import { Content as FrenchHomeContent } from "../content/home/fr.md";
+import {
+  homeIntroduction as englishHomeIntroduction,
+  homeOverview as englishHomeOverview,
+} from "../content/home/en.ts";
+import {
+  homeIntroduction as frenchHomeIntroduction,
+  homeOverview as frenchHomeOverview,
+} from "../content/home/fr.ts";
 import EditorialPageLayout from "../layouts/EditorialPageLayout.astro";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const HomeContent = locale === "fr" ? FrenchHomeContent : EnglishHomeContent;
+const homeIntroduction =
+  locale === "fr" ? frenchHomeIntroduction : englishHomeIntroduction;
+const homeOverview = locale === "fr" ? frenchHomeOverview : englishHomeOverview;
 ---
 
 <EditorialPageLayout
   title="Pacific Crest Trail 2026"
-  description="Le journal, la carte et les chiffres d’un thru-hike de 2 656 miles sur le Pacific Crest Trail en 2026."
+  description={locale === "fr"
+    ? "Le journal, la carte et les chiffres d’un thru-hike de 2 656 miles sur le Pacific Crest Trail en 2026."
+    : "The journal, map and numbers from a 2,656-mile Pacific Crest Trail thru-hike in 2026."}
   heading="Pacific Crest Trail 2026"
   bodyClass="home-shell"
+  {locale}
 >
   <article class="editorial-rich-text">
     <p>
@@ -19,7 +41,7 @@ import EditorialPageLayout from "../layouts/EditorialPageLayout.astro";
         external>{homeIntroduction.linkLabel}</TextLink
       >{homeIntroduction.afterLink}
     </p>
-    <TrailOverviewMetrics {...homeOverview} />
+    <TrailOverviewMetrics {...homeOverview} locale={locale} />
     <HomeContent />
   </article>
 </EditorialPageLayout>

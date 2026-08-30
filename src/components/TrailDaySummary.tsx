@@ -1,4 +1,6 @@
-import { formatFrenchDate } from "../lib/content/dates.ts";
+import { formatDate } from "../lib/content/dates.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { getUi } from "../lib/i18n/ui.ts";
 import "./TrailDaySummary.css";
 
 interface Action {
@@ -14,6 +16,7 @@ interface Props {
   action?: Action;
   stableLocation?: boolean;
   className?: string;
+  locale?: Locale;
 }
 
 export default function TrailDaySummary({
@@ -24,23 +27,27 @@ export default function TrailDaySummary({
   action,
   stableLocation = false,
   className,
+  locale = defaultLocale,
 }: Props) {
+  const labels = getUi(locale);
   return (
     <header
       className={`trail-day-summary${stableLocation ? " trail-day-summary--stable" : ""}${className ? ` ${className}` : ""}`}
     >
-      <h1 aria-label={`Jour ${sequence}, ${locationLabel}`}>
-        <span>Jour {sequence}</span>
+      <h1 aria-label={`${labels.day} ${sequence}, ${locationLabel}`}>
+        <span>
+          {labels.day} {sequence}
+        </span>
         <span className="trail-day-summary__location">{locationLabel}</span>
       </h1>
 
       <div className="trail-day-summary__meta">
         <p className="trail-day-summary__date">
-          <time dateTime={date}>{formatFrenchDate(date)}</time>
+          <time dateTime={date}>{formatDate(date, locale)}</time>
           {endDate ? (
             <>
-              <span> au </span>
-              <time dateTime={endDate}>{formatFrenchDate(endDate)}</time>
+              <span>{locale === "fr" ? " au " : " to "}</span>
+              <time dateTime={endDate}>{formatDate(endDate, locale)}</time>
             </>
           ) : null}
         </p>

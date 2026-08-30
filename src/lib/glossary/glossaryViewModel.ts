@@ -2,11 +2,7 @@ import type {
   GlossaryConcept,
   LocalizedGlossaryEntry,
 } from "../content/schemas.ts";
-
-const frenchCollator = new Intl.Collator("fr", {
-  numeric: true,
-  sensitivity: "base",
-});
+import type { Locale } from "../content/locales.ts";
 
 export interface GlossaryListEntry {
   id: string;
@@ -25,15 +21,19 @@ export interface GlossaryViewModel {
   entryCount: number;
 }
 
-function entryInitial(term: string): string {
-  return term.trim().charAt(0).toLocaleUpperCase("fr");
+function entryInitial(term: string, locale: Locale): string {
+  return term.trim().charAt(0).toLocaleUpperCase(locale);
 }
 
 export function buildGlossaryViewModel(
   concepts: readonly GlossaryConcept[],
   localizedEntries: readonly LocalizedGlossaryEntry[],
-  locale = "fr",
+  locale: Locale = "fr",
 ): GlossaryViewModel {
+  const collator = new Intl.Collator(locale, {
+    numeric: true,
+    sensitivity: "base",
+  });
   const localizedByConceptId = new Map(
     localizedEntries
       .filter((entry) => entry.locale === locale)
@@ -56,12 +56,12 @@ export function buildGlossaryViewModel(
         aliases: localized.aliases,
       };
     })
-    .toSorted((left, right) => frenchCollator.compare(left.term, right.term));
+    .toSorted((left, right) => collator.compare(left.term, right.term));
 
   const groupedEntries = new Map<string, GlossaryListEntry[]>();
 
   for (const entry of entries) {
-    const initial = entryInitial(entry.term);
+    const initial = entryInitial(entry.term, locale);
     const group = groupedEntries.get(initial) ?? [];
     group.push(entry);
     groupedEntries.set(initial, group);

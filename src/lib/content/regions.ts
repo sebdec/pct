@@ -1,9 +1,25 @@
+import type { Locale } from "./locales.ts";
 import type { TrailDay } from "./schemas.ts";
 
-export const regionLabels = {
-  desert: "Désert",
-  sierra: "Sierra",
-  norcal: "Northern California",
-  oregon: "Oregon",
-  washington: "Washington",
-} as const satisfies Record<TrailDay["regionId"], string>;
+const localizedRegionLabels = {
+  en: {
+    desert: "Desert",
+    sierra: "Sierra",
+    norcal: "Northern California",
+    oregon: "Oregon",
+    washington: "Washington",
+  },
+  fr: {
+    desert: "Désert",
+    sierra: "Sierra",
+    norcal: "Northern California",
+    oregon: "Oregon",
+    washington: "Washington",
+  },
+} as const satisfies Record<Locale, Record<TrailDay["regionId"], string>>;
+
+export const regionLabels = localizedRegionLabels.fr;
+
+export function getRegionLabels(locale: Locale) {
+  return localizedRegionLabels[locale];
+}

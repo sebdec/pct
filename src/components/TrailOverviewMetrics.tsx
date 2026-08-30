@@ -1,4 +1,5 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import type { TrailMetricIconName } from "../lib/trail/presentation.ts";
 import TrailMetricIcon from "./TrailMetricIcon.tsx";
 import UnitValue from "./UnitValue.tsx";
@@ -23,12 +24,17 @@ export interface TrailOverviewContent {
   regions: readonly { id: TrailDay["regionId"]; label: string }[];
 }
 
+interface Props extends TrailOverviewContent {
+  locale?: Locale;
+}
+
 export default function TrailOverviewMetrics({
   heading,
   metrics,
   regionsLabel,
   regions,
-}: TrailOverviewContent) {
+  locale = defaultLocale,
+}: Props) {
   return (
     <section
       className="trail-overview-metrics"
@@ -58,6 +64,7 @@ export default function TrailOverviewMetrics({
                   value
                 ) : (
                   <UnitValue
+                    locale={locale}
                     distanceMiles={distanceMiles}
                     suffix={distanceSuffix}
                   />
@@ -69,6 +76,7 @@ export default function TrailOverviewMetrics({
                     detail
                   ) : (
                     <UnitValue
+                      locale={locale}
                       distanceMiles={detailDistanceMiles}
                       suffix={detailDistanceSuffix}
                     />

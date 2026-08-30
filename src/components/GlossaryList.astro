@@ -1,11 +1,14 @@
 ---
 import type { GlossaryViewModel } from "../lib/glossary/glossaryViewModel.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 
 interface Props {
   glossary: GlossaryViewModel;
+  locale?: Locale;
 }
 
-const { glossary } = Astro.props;
+const { glossary, locale = defaultLocale } = Astro.props;
+const aliasesLabel = locale === "fr" ? "Aussi:" : "Also:";
 ---
 
 <section class="glossary">
@@ -13,7 +16,7 @@ const { glossary } = Astro.props;
     {
       glossary.groups.map(({ initial, entries }) => (
         <section class="glossary-group">
-          <h2 id={`letter-${initial.toLocaleLowerCase("fr")}`}>{initial}</h2>
+          <h2 id={`letter-${initial.toLocaleLowerCase(locale)}`}>{initial}</h2>
           <div>
             {entries.map((entry) => (
               <article id={entry.id} class="glossary-entry" tabindex="-1">
@@ -22,7 +25,7 @@ const { glossary } = Astro.props;
                   <p>{entry.definition}</p>
                   {entry.aliases.length > 0 && (
                     <p class="glossary-aliases">
-                      Aussi: {entry.aliases.join(", ")}
+                      {aliasesLabel} {entry.aliases.join(", ")}
                     </p>
                   )}
                 </div>

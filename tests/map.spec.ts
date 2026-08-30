@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("selects the journey without a native day menu or URL changes", async ({
   page,
 }) => {
-  await page.goto("/map");
+  await page.goto("/fr/map");
 
   await expect(page).toHaveURL(/\/map$/);
   await expect(
@@ -16,7 +16,7 @@ test("selects the journey without a native day menu or URL changes", async ({
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Voir sur le journal" }),
-  ).toHaveAttribute("href", "/journal/day-001");
+  ).toHaveAttribute("href", "/fr/journal/day-001");
   await expect(
     page.getByRole("link", { name: "Voir sur le journal" }),
   ).toHaveClass(/pct-text-link/);
@@ -58,7 +58,7 @@ test("selects the journey without a native day menu or URL changes", async ({
 });
 
 test("opens a stable day URL at that day's final mile", async ({ page }) => {
-  await page.goto("/map/day-028");
+  await page.goto("/fr/map/day-028");
 
   await expect(page).toHaveURL(/\/map\/day-028$/);
   await expect(page.getByRole("heading", { name: /Jour 28/ })).toBeVisible();
@@ -118,7 +118,7 @@ test("opens a stable day URL at that day's final mile", async ({ page }) => {
 });
 
 test("keeps the map page within the mobile viewport", async ({ page }) => {
-  await page.goto("/map");
+  await page.goto("/fr/map");
   await expect(page.getByRole("heading", { name: /Jour 1/ })).toBeVisible();
 
   const dimensions = await page.evaluate(() => ({
@@ -132,7 +132,7 @@ test("keeps the map page within the mobile viewport", async ({ page }) => {
   ).toHaveAttribute("aria-current", "page");
   const credits = page.locator(".page-credits");
   await expect(credits).toContainText(
-    "Credits: Pacific Crest Trail Association, CC BY 4.0, OpenFreeMap, OpenMapTiles, OpenStreetMap, Natural Earth",
+    "Crédits: Pacific Crest Trail Association, CC BY 4.0, OpenFreeMap, OpenMapTiles, OpenStreetMap, Natural Earth",
   );
   await expect(credits.getByRole("link")).toHaveCount(6);
   await expect(

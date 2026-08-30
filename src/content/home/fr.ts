@@ -1,5 +1,7 @@
 import type { TrailOverviewContent } from "../../components/TrailOverviewMetrics.tsx";
-import { regionLabels } from "../../lib/content/regions.ts";
+import { getRegionLabels } from "../../lib/content/regions.ts";
+
+const regionLabels = getRegionLabels("fr");
 
 export const homeIntroduction = {
   beforeLink: "Du 18 avril au 23 juillet 2026, j’ai parcouru le ",

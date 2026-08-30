@@ -1,5 +1,6 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
@@ -7,17 +8,25 @@ interface Props {
   description: string;
   heading: string;
   bodyClass?: string;
+  locale?: Locale;
 }
 
-const { title, description, heading, bodyClass } = Astro.props;
+const {
+  title,
+  description,
+  heading,
+  bodyClass,
+  locale = defaultLocale,
+} = Astro.props;
 ---
 
 <BaseLayout
   {title}
   {description}
+  {locale}
   bodyClass={`trail-shell ${bodyClass ?? ""}`.trim()}
 >
-  <SiteHeader />
+  <SiteHeader {locale} />
 
   <main class="editorial-page">
     <header class="editorial-page__hero">

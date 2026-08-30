@@ -1,15 +1,43 @@
 import { expect, test } from "@playwright/test";
 
-test("presents the journey and its main entrances", async ({ page }) => {
+test("publishes reciprocal English and French metadata", async ({ page }) => {
   await page.goto("/");
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(
+    page.getByRole("heading", { name: "Why the PCT?" }),
+  ).toBeVisible();
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://pct.sebdec.com/",
+  );
+  await expect(page.locator('link[hreflang="fr"]')).toHaveAttribute(
+    "href",
+    "https://pct.sebdec.com/fr",
+  );
+  await expect(page.locator('link[hreflang="x-default"]')).toHaveAttribute(
+    "href",
+    "https://pct.sebdec.com/",
+  );
+
+  await page.goto("/fr");
+  await expect(page.locator("html")).toHaveAttribute("lang", "fr");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://pct.sebdec.com/fr",
+  );
+  await expect(page.locator('link[hreflang="en"]')).toHaveAttribute(
+    "href",
+    "https://pct.sebdec.com/",
+  );
+});
+
+test("presents the journey and its main entrances", async ({ page }) => {
+  await page.goto("/fr");
   await expect(page).toHaveTitle("Pacific Crest Trail 2026");
   await expect(page.locator(".site-footer")).toHaveText(
     "© 2026 Sebdec / One Pole",
   );
-  await expect(page.locator(".page-end")).toHaveCSS(
-    "border-top-width",
-    "1px",
-  );
+  await expect(page.locator(".page-end")).toHaveCSS("border-top-width", "1px");
   await expect(page.locator(".site-footer")).toHaveCSS(
     "border-top-width",
     "0px",
@@ -30,11 +58,11 @@ test("presents the journey and its main entrances", async ({ page }) => {
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Commencer par le jour 1" }),
-  ).toHaveAttribute("href", "/journal/day-001");
+  ).toHaveAttribute("href", "/fr/journal/day-001");
   const figures = page.locator(".editorial-rich-text");
   await expect(
     figures.getByRole("link", { name: "Carte", exact: true }),
-  ).toHaveAttribute("href", "/map");
+  ).toHaveAttribute("href", "/fr/map");
 
   await expect(
     page.getByRole("heading", { name: "Le parcours en quelques chiffres" }),
@@ -209,11 +237,11 @@ test("reuses the editorial shell and heading scale", async ({ page }) => {
     });
   }
 
-  await page.goto("/");
+  await page.goto("/fr");
   const homeShell = await readShell();
   await expect(page.locator("body")).toHaveClass(/trail-shell/);
 
-  await page.goto("/glossary");
+  await page.goto("/fr/glossary");
   const glossaryShell = await readShell();
 
   expect(homeShell.backgroundColor).toBe(glossaryShell.backgroundColor);
@@ -228,7 +256,7 @@ test("reuses the editorial shell and heading scale", async ({ page }) => {
 });
 
 test("keeps the header stable across primary navigation", async ({ page }) => {
-  await page.goto("/gear");
+  await page.goto("/fr/gear");
 
   const wordmark = page.locator(".wordmark");
   await page.evaluate(() => {
@@ -264,8 +292,8 @@ test("keeps the header stable across primary navigation", async ({ page }) => {
   });
   expect(wordmarkSpacing).toBeGreaterThanOrEqual(8);
 
-  await page.locator('.site-header a[href="/glossary"]:visible').click();
-  await expect(page).toHaveURL("/glossary");
+  await page.locator('.site-header a[href="/fr/glossary"]:visible').click();
+  await expect(page).toHaveURL("/fr/glossary");
   await expect
     .poll(() =>
       page.evaluate(
@@ -300,7 +328,7 @@ test("keeps the header stable across primary navigation", async ({ page }) => {
 test("keeps the homepage within responsive viewports", async ({ page }) => {
   for (const width of [736, 360]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/");
+    await page.goto("/fr");
 
     const dimensions = await page.evaluate(() => ({
       clientWidth: document.documentElement.clientWidth,

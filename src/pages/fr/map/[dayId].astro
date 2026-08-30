@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+
+import TrailMapPage from "../../../components/TrailMapPage.astro";
+
+interface Props {
+  dayId: string;
+}
+
+export async function getStaticPaths() {
+  const dayEntries = await getCollection("days");
+
+  return dayEntries
+    .map(({ data }) => data)
+    .filter((day) => day.kind === "trail" && day.published)
+    .map((day) => ({
+      params: { dayId: day.id },
+      props: { dayId: day.id },
+    }));
+}
+
+const { dayId } = Astro.props;
+---
+
+<TrailMapPage initialDayId={dayId} locale="fr" />

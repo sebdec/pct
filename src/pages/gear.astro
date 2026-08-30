@@ -6,8 +6,15 @@ import PageCredits from "../components/PageCredits.astro";
 import TextLink from "../components/TextLink.astro";
 import UnitValue from "../components/UnitValue.tsx";
 import EditorialPageLayout from "../layouts/EditorialPageLayout.astro";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import { buildGearViewModel } from "../lib/gear/gearViewModel.ts";
 import { site } from "../lib/site.ts";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
 
 const [
   gearItemEntries,
@@ -16,7 +23,7 @@ const [
   summaryEntries,
 ] = await Promise.all([
   getCollection("gearItems"),
-  getCollection("gear"),
+  getCollection(locale === "fr" ? "gear" : "gearEnglish"),
   getCollection("gearProductLinks"),
   getCollection("gearSummaries"),
 ]);
@@ -30,22 +37,41 @@ const gear = buildGearViewModel(
   gearItemEntries.map(({ data }) => data),
   localizedGearEntries.map(({ data }) => data),
   productLinkEntries.map(({ data }) => data),
+  locale,
 );
-const pageTitle = "Équipement | " + site.title;
+const copy =
+  locale === "fr"
+    ? {
+        title: "Équipement",
+        description:
+          "Le matériel emporté sur le Pacific Crest Trail 2026, catégorie par catégorie.",
+        listLabel: "Liste de l’équipement",
+        temporary: "Temporaire",
+      }
+    : {
+        title: "Gear",
+        description:
+          "The gear carried on the Pacific Crest Trail in 2026, category by category.",
+        listLabel: "Gear list",
+        temporary: "Temporary",
+      };
+const pageTitle = copy.title + " | " + site.title;
 ---
 
 <EditorialPageLayout
   title={pageTitle}
-  description="Le matériel emporté sur le Pacific Crest Trail 2026, catégorie par catégorie."
-  heading="Équipement"
+  description={copy.description}
+  heading={copy.title}
   bodyClass="gear-shell"
+  {locale}
 >
   <GearWeightChart
     baseWeightGrams={summary.baseWeightGrams}
     categories={gear.categories}
+    {locale}
   />
 
-  <div class="gear-list" aria-label="Liste de l'équipement">
+  <div class="gear-list" aria-label={copy.listLabel}>
     {
       gear.categories.map((category) => (
         <section
@@ -59,11 +85,11 @@ const pageTitle = "Équipement | " + site.title;
           <header class="gear-category__header">
             <div>
               <h2 id={category.id + "-title"}>{category.label}</h2>
-              {category.temporary && <span>Temporaire</span>}
+              {category.temporary && <span>{copy.temporary}</span>}
             </div>
             <p>
               <strong>
-                <UnitValue weightGrams={category.weightGrams} />
+                <UnitValue {locale} weightGrams={category.weightGrams} />
               </strong>
             </p>
           </header>
@@ -84,7 +110,7 @@ const pageTitle = "Équipement | " + site.title;
                   {item.detail && <p>{item.detail}</p>}
                 </div>
                 <p class="gear-item__weight">
-                  <UnitValue weightGrams={item.weightGrams} />
+                  <UnitValue {locale} weightGrams={item.weightGrams} />
                 </p>
               </li>
             ))}
@@ -95,7 +121,10 @@ const pageTitle = "Équipement | " + site.title;
   </div>
 
   <Fragment slot="after-main">
-    <PageCredits links={[{ href: summary.sourceUrl, label: "LighterPack" }]} />
+    <PageCredits
+      {locale}
+      links={[{ href: summary.sourceUrl, label: "LighterPack" }]}
+    />
   </Fragment>
 </EditorialPageLayout>
 

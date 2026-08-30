@@ -1,14 +1,34 @@
 ---
 import type { GearCategory } from "../lib/gear/gearViewModel.ts";
-import { formatGearWeightInGrams } from "../lib/gear/gearViewModel.ts";
+import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import { formatWeight } from "../lib/preferences/displayPreferences.ts";
 import UnitValue from "./UnitValue.tsx";
 
 interface Props {
   baseWeightGrams: number;
   categories: readonly GearCategory[];
+  locale?: Locale;
 }
 
-const { baseWeightGrams, categories } = Astro.props;
+const { baseWeightGrams, categories, locale = defaultLocale } = Astro.props;
+const labels =
+  locale === "fr"
+    ? {
+        chart: "Répartition du poids",
+        chartBreakdown: "Répartition du poids par catégorie.",
+        totalSuffix: "au total.",
+        baseWeight: "Poids de base",
+        worn: "Porté",
+        total: "Total",
+      }
+    : {
+        chart: "Weight distribution",
+        chartBreakdown: "Weight distribution by category.",
+        totalSuffix: "in total.",
+        baseWeight: "Base weight",
+        worn: "Worn",
+        total: "Total",
+      };
 const chartCategories = categories.filter(({ temporary }) => !temporary);
 const temporaryCategory = categories.find(({ temporary }) => temporary);
 const totalWeightGrams = chartCategories.reduce(
@@ -32,18 +52,27 @@ const segments = chartCategories.map((category) => {
 const accessibleBreakdown = chartCategories
   .map(
     ({ label, weightGrams }) =>
-      label + " " + formatGearWeightInGrams(weightGrams),
+      label + " " + formatWeight(weightGrams, "g", { locale }),
   )
   .join(", ");
 const accessibleChartLabel =
-  "Répartition du poids par catégorie. " +
-  formatGearWeightInGrams(totalWeightGrams) +
-  " au total. " +
+  labels.chartBreakdown +
+  " " +
+  formatWeight(totalWeightGrams, "g", { locale }) +
+  " " +
+  labels.totalSuffix +
+  " " +
   accessibleBreakdown +
   ".";
 ---
 
-<section class="gear-chart" aria-label="Répartition du poids" data-gear-chart>
+<section
+  class="gear-chart"
+  aria-label={labels.chart}
+  data-gear-chart
+  data-chart-breakdown={labels.chartBreakdown}
+  data-total-suffix={labels.totalSuffix}
+>
   <div
     class="gear-chart__visual"
     role="img"
@@ -107,12 +136,13 @@ const accessibleChartLabel =
               <strong>
                 {category.temporary ? (
                   <UnitValue
+                    {locale}
                     weightGrams={category.weightGrams}
                     prefix="(+"
                     suffix=")"
                   />
                 ) : (
-                  <UnitValue weightGrams={category.weightGrams} />
+                  <UnitValue {locale} weightGrams={category.weightGrams} />
                 )}
               </strong>
             </a>
@@ -123,16 +153,16 @@ const accessibleChartLabel =
 
     <dl class="gear-chart__summary">
       <div class="gear-chart__base-weight">
-        <dt>Poids de base</dt>
-        <dd><UnitValue weightGrams={baseWeightGrams} /></dd>
+        <dt>{labels.baseWeight}</dt>
+        <dd><UnitValue {locale} weightGrams={baseWeightGrams} /></dd>
       </div>
       <div>
-        <dt>Porté</dt>
-        <dd><UnitValue weightGrams={wornWeightGrams} /></dd>
+        <dt>{labels.worn}</dt>
+        <dd><UnitValue {locale} weightGrams={wornWeightGrams} /></dd>
       </div>
       <div>
-        <dt>Total</dt>
-        <dd><UnitValue weightGrams={totalWeightGrams} /></dd>
+        <dt>{labels.total}</dt>
+        <dd><UnitValue {locale} weightGrams={totalWeightGrams} /></dd>
       </div>
     </dl>
   </div>
@@ -162,16 +192,17 @@ const accessibleChartLabel =
           accessibility.dataset.gearChartBreakdown ?? "[]",
         ) as { label: string; weightGrams: number }[];
         const { weightUnit } = readDisplayPreferences();
+        const locale = document.documentElement.lang;
         const details = breakdown
           .map(
             ({ label, weightGrams }) =>
-              `${label} ${formatWeight(weightGrams, weightUnit)}`,
+              `${label} ${formatWeight(weightGrams, weightUnit, { locale })}`,
           )
           .join(", ");
 
         accessibility.setAttribute(
           "aria-label",
-          `Répartition du poids par catégorie. ${formatWeight(total, weightUnit)} au total. ${details}.`,
+          `${chart.dataset.chartBreakdown} ${formatWeight(total, weightUnit, { locale })} ${chart.dataset.totalSuffix} ${details}.`,
         );
       }
 

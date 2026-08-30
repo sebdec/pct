@@ -3,17 +3,17 @@ import { expect, test } from "@playwright/test";
 test("keeps French dates, the current Journal URL and the map deep link", async ({
   page,
 }) => {
-  await page.goto("/journal/day-001");
+  await page.goto("/fr/journal/day-001");
 
   await expect(page.locator("time[datetime='2026-04-18']")).toHaveText(
     "18 avril 2026",
   );
   await expect(
     page.getByRole("link", { name: "Journal", exact: true }).first(),
-  ).toHaveAttribute("href", "/journal/day-001");
+  ).toHaveAttribute("href", "/fr/journal/day-001");
   await expect(
     page.getByRole("link", { name: "Voir sur la carte", exact: true }),
-  ).toHaveAttribute("href", "/map/day-001");
+  ).toHaveAttribute("href", "/fr/map/day-001");
   await expect(
     page.getByRole("link", { name: "Voir sur la carte", exact: true }),
   ).toHaveClass(/pct-text-link/);
@@ -60,7 +60,7 @@ test("keeps French dates, the current Journal URL and the map deep link", async 
 test("removes trail metrics and the map action after day 97", async ({
   page,
 }) => {
-  await page.goto("/journal/day-098");
+  await page.goto("/fr/journal/day-098");
 
   await expect(page.getByRole("heading", { name: "Jour 98" })).toBeVisible();
   await expect(page.getByLabel("Repères de la journée")).toHaveCount(0);
@@ -72,7 +72,7 @@ test("removes trail metrics and the map action after day 97", async ({
 test("keeps the refined Journal inside the viewport", async ({ page }) => {
   for (const width of [736, 360]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/journal/day-034");
+    await page.goto("/fr/journal/day-034");
     await expect(page.getByRole("heading", { name: "Jour 34" })).toBeVisible();
 
     const dimensions = await page.evaluate(() => ({
@@ -89,7 +89,7 @@ test("places the heading before the sticky navigator on one reading width", asyn
 }) => {
   for (const width of [736, 360]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/journal/day-034");
+    await page.goto("/fr/journal/day-034");
 
     const layout = await page.evaluate(() => {
       const heading = document.querySelector<HTMLElement>(".trail-day-summary");
@@ -101,7 +101,14 @@ test("places the heading before the sticky navigator on one reading width", asyn
       const pageShell = document.querySelector<HTMLElement>(".reading-page");
       const footer = document.querySelector<HTMLElement>(".site-footer");
 
-      if (!heading || !navigator || !metrics || !article || !pageShell || !footer) {
+      if (
+        !heading ||
+        !navigator ||
+        !metrics ||
+        !article ||
+        !pageShell ||
+        !footer
+      ) {
         throw new Error("Missing Journal reading layout elements.");
       }
 
@@ -147,7 +154,7 @@ test("places the heading before the sticky navigator on one reading width", asyn
 test("keeps the current day while scrolling over the navigator", async ({
   page,
 }) => {
-  await page.goto("/journal/day-034");
+  await page.goto("/fr/journal/day-034");
 
   const navigator = page.getByLabel("Accès rapide aux journées");
   const range = page.getByRole("slider", {
@@ -181,7 +188,7 @@ test("accumulates rapid arrow clicks before navigating", async ({ page }) => {
     );
   }
 
-  await page.goto("/journal/day-034");
+  await page.goto("/fr/journal/day-034");
   await page.waitForFunction(
     () =>
       !document
@@ -205,7 +212,7 @@ test("accumulates rapid arrow clicks before navigating", async ({ page }) => {
 test("aligns the progress fill with the hiker near the end of the journal", async ({
   page,
 }) => {
-  await page.goto("/journal/day-093");
+  await page.goto("/fr/journal/day-093");
 
   await expect(page.getByLabel("Accès rapide aux journées")).toHaveAttribute(
     "style",
@@ -216,7 +223,7 @@ test("aligns the progress fill with the hiker near the end of the journal", asyn
 test("keeps region and section aligned without a separator", async ({
   page,
 }) => {
-  await page.goto("/journal/day-005");
+  await page.goto("/fr/journal/day-005");
 
   const contextLayout = await page.evaluate(() => {
     const region = document.querySelector<HTMLElement>(
