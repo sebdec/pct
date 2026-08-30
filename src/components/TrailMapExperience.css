@@ -62,7 +62,7 @@
   padding: var(--pct-space-4) 0;
 }
 
-.trail-map-metrics dl {
+.trail-map-metrics.trail-metrics dl {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: var(--pct-space-5);
 }
