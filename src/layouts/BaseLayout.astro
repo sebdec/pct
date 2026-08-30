@@ -12,6 +12,7 @@ import {
   type Locale,
 } from "../lib/content/locales.ts";
 import { getLocalizedLinks } from "../lib/i18n/metadata.ts";
+import { buildStructuredData } from "../lib/seo/structuredData.ts";
 import { site } from "../lib/site";
 
 interface Props {
@@ -19,6 +20,10 @@ interface Props {
   description?: string;
   bodyClass?: string;
   locale?: Locale;
+  journal?: {
+    headline: string;
+    datePublished: string;
+  };
 }
 
 const {
@@ -26,6 +31,7 @@ const {
   locale = defaultLocale,
   description = site.descriptions[locale],
   bodyClass,
+  journal,
 } = Astro.props;
 const usesFlatTrailBackground = ["journal-shell", "trail-shell"].some(
   (className) => bodyClass?.includes(className),
@@ -42,6 +48,19 @@ const alternateOgLocales = publishedLocales.filter(
 if (!canonicalPath) throw new Error(`Missing canonical path for ${locale}.`);
 
 const absoluteUrl = (path: string) => new URL(path, Astro.site);
+const canonicalUrl = absoluteUrl(canonicalPath).toString();
+const socialCardUrl = absoluteUrl(site.socialCardPath).toString();
+const structuredData = buildStructuredData({
+  canonicalUrl,
+  title,
+  description,
+  locale,
+  journal,
+});
+const socialCardAlt =
+  locale === "fr"
+    ? "Pacific Crest Trail 2026, montagnes et sapin"
+    : "Pacific Crest Trail 2026, mountains and pine tree";
 ---
 
 <!doctype html>
@@ -59,10 +78,15 @@ const absoluteUrl = (path: string) => new URL(path, Astro.site);
         <link rel="alternate" hreflang={linkLocale} href={absoluteUrl(path)} />
       ))
     }
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={journal ? "article" : "website"} />
+    <meta property="og:site_name" content={site.title} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={absoluteUrl(canonicalPath)} />
+    <meta property="og:image" content={socialCardUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={socialCardAlt} />
     <meta
       property="og:locale"
       content={localeFormattingTags[locale].replace("-", "_")}
@@ -75,9 +99,24 @@ const absoluteUrl = (path: string) => new URL(path, Astro.site);
         />
       ))
     }
-    <meta name="twitter:card" content="summary" />
+    {
+      journal && (
+        <meta
+          property="article:published_time"
+          content={journal.datePublished}
+        />
+      )
+    }
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialCardUrl} />
+    <meta name="twitter:image:alt" content={socialCardAlt} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
     <link rel="icon" type="image/svg+xml" href={pctMarkUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

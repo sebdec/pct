@@ -5,6 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { defaultLocale, type Locale } from "../lib/content/locales.ts";
 import { buildMapDayViewModels } from "../lib/map/mapExperience.ts";
+import { mapPayloadPath } from "../lib/map/mapPayload.ts";
 import { site } from "../lib/site.ts";
 import PageCredits from "./PageCredits.astro";
 import SiteHeader from "./SiteHeader.astro";
@@ -16,21 +17,14 @@ interface Props {
 }
 
 const { initialDayId, locale = defaultLocale } = Astro.props;
-const [
-  dayEntries,
-  journalEntries,
-  sectionEntries,
-  routeEntries,
-  pointEntries,
-  areaEntries,
-] = await Promise.all([
-  getCollection("days"),
-  getCollection("journal"),
-  getCollection("sections"),
-  getCollection("routes"),
-  getCollection("mapPoints"),
-  getCollection("mapAreas"),
-]);
+const [dayEntries, journalEntries, sectionEntries, routeEntries, areaEntries] =
+  await Promise.all([
+    getCollection("days"),
+    getCollection("journal"),
+    getCollection("sections"),
+    getCollection("routes"),
+    getCollection("mapAreas"),
+  ]);
 const days = buildMapDayViewModels({
   days: dayEntries.map(({ data }) => data),
   journalEntries: journalEntries.map(({ data }) => data),
@@ -38,7 +32,6 @@ const days = buildMapDayViewModels({
   locale,
 });
 const route = routeEntries[0]?.data;
-const points = pointEntries.map(({ data }) => data);
 const areas = areaEntries.map(({ data }) => data);
 const naturalEarthSource = areas[0]?.source;
 const initialDay = initialDayId
@@ -78,9 +71,7 @@ const description =
   <main class="map-page">
     <TrailMapExperience
       days={days}
-      route={route}
-      points={points}
-      areas={areas}
+      mapPayloadUrl={mapPayloadPath}
       mapStyleUrl={mapStyleUrl}
       initialDayId={initialDayId}
       {locale}

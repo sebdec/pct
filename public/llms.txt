@@ -1,0 +1,25 @@
+# Pacific Crest Trail 2026
+
+> A bilingual day-by-day journal, interactive map and practical record of Sebdec / One Pole's 2026 Pacific Crest Trail thru-hike.
+
+English is served on unprefixed URLs. French is served under `/fr`. Trail facts, day identifiers and route positions are shared across both languages.
+
+## English
+
+- [Home](https://pct.sebdec.com/): Introduction, overall figures and main entrances to the journey.
+- [Journal](https://pct.sebdec.com/journal/day-001): The day-by-day trail journal, starting with day 1.
+- [Map](https://pct.sebdec.com/map): Interactive progression along the PCT with daily statistics.
+- [Gear](https://pct.sebdec.com/gear): Equipment list, weights and category breakdown.
+- [Glossary](https://pct.sebdec.com/glossary): Terms used in thru-hiking and on the trail.
+
+## Français
+
+- [Accueil](https://pct.sebdec.com/fr): Introduction, chiffres globaux et accès principaux à l'aventure.
+- [Journal](https://pct.sebdec.com/fr/journal/day-001): Le journal du parcours jour après jour, à partir du jour 1.
+- [Carte](https://pct.sebdec.com/fr/map): Progression interactive sur le PCT avec les statistiques quotidiennes.
+- [Équipement](https://pct.sebdec.com/fr/gear): Liste du matériel, poids et répartition par catégorie.
+- [Glossaire](https://pct.sebdec.com/fr/glossary): Vocabulaire du thru-hiking et de la vie sur le trail.
+
+## Optional
+
+- [Localized sitemap](https://pct.sebdec.com/sitemap.xml): Canonical English and French public URLs with language alternates.

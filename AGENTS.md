@@ -84,6 +84,10 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 
 - Add unit tests for parsing, mapping and other framework-independent behavior.
 - Add browser tests when an interactive island is introduced.
+- Treat `quality-budgets.json` as the enforced source of truth for generated asset and route budgets. Run `pnpm quality:validate` only after a fresh production build.
+- Keep automated axe coverage at WCAG A and AA for representative English and French routes on desktop and 360 px. Fix confirmed violations instead of excluding rules without an approved rationale.
+- Keep `robots.txt`, `llms.txt`, social metadata and JSON-LD aligned with canonical public routes. `llms.txt` is a discovery aid, not a crawler directive or an SEO substitute.
+- Regenerate `public/social-card.png` through `pnpm quality:social-card` after an approved brand change.
 - Every bug fix must include a regression check at the narrowest useful level.
 - Keep GitHub Actions permissions read-only unless an approved workflow needs more.
 - Never commit `dist`, `.astro`, credentials, local environment files or generated media derivatives that can be reproduced.

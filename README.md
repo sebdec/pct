@@ -40,7 +40,7 @@ Run the canonical local and CI quality gate:
 pnpm verify
 ```
 
-It checks formatting, lint rules, Astro and TypeScript diagnostics, unit tests and the static production build.
+It checks formatting, lint rules, Astro and TypeScript diagnostics, content invariants, unit tests, the static production build, quality budgets, generated metadata and Playwright browser coverage.
 
 Individual commands are also available:
 
@@ -51,6 +51,7 @@ pnpm check
 pnpm content:validate
 pnpm test
 pnpm build
+pnpm quality:validate
 pnpm preview
 ```
 
@@ -72,7 +73,7 @@ See `AGENTS.md` for the complete project conventions.
 - `src/data`: language-neutral facts such as regions, sections, days, gear weights, photo metadata and corrections. PCT section mile bounds remain optional until verified route geometry is available.
 - `src/content`: localized editorial copy such as journal prose, page content, glossary definitions, gear labels, alternative text and captions.
 
-French is the required initial locale. English entries reuse the same neutral entity IDs and can be added incrementally. Public routes will use stable locale prefixes and neutral slugs such as `/fr/journal/day-001` and `/en/journal/day-001`.
+French remains the source language. English entries reuse the same neutral entity IDs. English is served from unprefixed public routes and French from `/fr`, with neutral slugs such as `/journal/day-001` and `/fr/journal/day-001`.
 
 Miles are the distance source of truth. Daily distance, cumulative distance and kilometers are derived in `src/lib/content/metrics.ts`.
 
@@ -112,6 +113,20 @@ See `scripts/media/README.md` for the review, generation, validation and dry-run
 The future Explorer uses a committed offline snapshot of the official 2026 Pacific Crest Trail Association centerline and half-mile markers. The public site never depends on ArcGIS at runtime. Journal miles remain canonical and the rounded final mile 2,656 maps explicitly to the official 2,655.84-mile northern terminus.
 
 See `scripts/map/README.md` for source provenance, CC BY 4.0 attribution, deterministic import, validation and static preview commands. Raw GIS responses and review artifacts stay outside Git.
+
+## Quality budgets
+
+`quality-budgets.json` is the versioned source of truth for compressed HTML, JavaScript, CSS and map-data limits plus the maximum generated-image size. `pnpm quality:validate` runs after `pnpm build`, checks every generated HTML route and validates metadata, canonical URLs, language alternates, social tags, JSON-LD, `robots.txt` and `llms.txt`.
+
+The map route and geography live in 1 shared static JSON payload instead of being serialized into every map page. Accessibility coverage uses axe on representative English and French routes at desktop and 360 px. Keyboard and reduced-motion checks cover the primary interactive flows.
+
+Regenerate the default 1200 × 630 social card after an approved brand change with:
+
+```sh
+pnpm quality:social-card
+```
+
+Do not increase a budget or disable an accessibility rule without recording the measured reason in the active Notion issue.
 
 Imported entities keep references to their source blocks in the Word document. Approved editorial changes live in `src/data/source/corrections.json` instead of overwriting source history silently.
 

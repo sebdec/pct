@@ -9,6 +9,10 @@ interface Props {
   bodyClass?: string;
   mainClass?: string;
   locale?: Locale;
+  journal?: {
+    headline: string;
+    datePublished: string;
+  };
 }
 
 const {
@@ -17,6 +21,7 @@ const {
   bodyClass,
   mainClass,
   locale = defaultLocale,
+  journal,
 } = Astro.props;
 ---
 
@@ -24,6 +29,7 @@ const {
   {title}
   {description}
   {locale}
+  {journal}
   bodyClass={`journal-shell ${bodyClass ?? ""}`.trim()}
 >
   <SiteHeader {locale} />

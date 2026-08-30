@@ -27,10 +27,12 @@
     "route:import": "node scripts/map/importPctRoute.ts",
     "route:preview": "node scripts/map/renderRoutePreview.ts",
     "map:geography": "node scripts/map/buildGeography.ts",
+    "quality:social-card": "node scripts/quality/generateSocialCard.ts",
+    "quality:validate": "node scripts/quality/validateBuild.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "test:e2e": "playwright test",
-    "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm content:validate && pnpm test:run && pnpm build && pnpm test:e2e"
+    "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm content:validate && pnpm test:run && pnpm build && pnpm quality:validate && pnpm test:e2e"
   },
   "dependencies": {
     "@astrojs/react": "6.0.4",
@@ -43,6 +45,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
     "@eslint/js": "10.0.1",
     "@playwright/test": "1.62.1",
     "@types/node": "24.13.3",

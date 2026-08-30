@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "compressedBytes": {
+    "nonMapHtml": 16384,
+    "mapHtml": 40960,
+    "nonMapJavaScript": 98304,
+    "mapJavaScript": 389120,
+    "routeCss": 24576,
+    "mapPayload": 266240
+  },
+  "rawBytes": {
+    "generatedImage": 512000
+  }
+}
