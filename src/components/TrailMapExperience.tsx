@@ -23,11 +23,7 @@ import {
   selectMapMile,
   type MapDayViewModel,
 } from "../lib/map/mapExperience.ts";
-import {
-  loadMapPayload,
-  mapPayloadPath,
-  type MapPayload,
-} from "../lib/map/mapPayload.ts";
+import { loadMapPayload, mapPayloadPath } from "../lib/map/mapPayload.ts";
 import {
   createRouteIndex,
   getCoordinateAtMile,
@@ -389,7 +385,14 @@ class RouteFitControl implements IControl {
   };
 }
 
-interface LoadedProps extends Omit<Props, "mapPayloadUrl">, MapPayload {}
+interface LoadedMapPayload {
+  route: TrailRoute;
+  points: readonly MapPoint[];
+  areas: readonly MapArea[];
+}
+
+type LoadedProps = Omit<Props, "mapPayloadUrl" | "route" | "points" | "areas"> &
+  LoadedMapPayload;
 
 function LoadedTrailMapExperience({
   days,
@@ -875,7 +878,7 @@ function MapDataPlaceholder({
 
 export default function TrailMapExperience(props: Props) {
   const hasInlinePayload = !!(props.route && props.points && props.areas);
-  const [payload, setPayload] = useState<MapPayload | undefined>(() =>
+  const [payload, setPayload] = useState<LoadedMapPayload | undefined>(() =>
     hasInlinePayload
       ? {
           route: props.route!,
