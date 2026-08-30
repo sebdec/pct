@@ -46,18 +46,23 @@ export function buildJournalPhotoViewModels({
       .filter((copy) => copy.locale === sourceLocale)
       .map((copy) => [copy.photoId, copy]),
   );
+  const fallbackCopyByPhotoId = new Map(
+    localizedPhotos.map((copy) => [copy.photoId, copy]),
+  );
 
   return photos.map((placement) => {
     const asset = assetByKey.get(placement.assetKey) ?? null;
-    const copy =
-      copyByPhotoId.get(placement.id) ??
+    const copy = copyByPhotoId.get(placement.id) ??
       sourceCopyByPhotoId.get(placement.id) ??
-      null;
+      fallbackCopyByPhotoId.get(placement.id) ?? {
+        photoId: placement.id,
+        locale: sourceLocale,
+        alt: "",
+      };
 
     if (
       placement.published &&
       asset?.published &&
-      copy &&
       hasCompletePublicVariants(asset)
     ) {
       return { state: "published", placement, asset, copy };
