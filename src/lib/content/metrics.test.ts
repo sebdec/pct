@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 
 import { createValidContentModel } from "./contentFixtures.ts";
 import {
-  getCumulativeTrailMiles,
   getTrailDayDistanceKilometers,
   getTrailDayDistanceMiles,
   kilometersPerMile,
@@ -16,10 +15,8 @@ describe("trail distance metrics", () => {
     .filter((result) => result.success)
     .map(({ data }) => data);
 
-  it("derives daily and cumulative distances from canonical mile bounds", () => {
+  it("derives daily distances from canonical mile bounds", () => {
     expect(getTrailDayDistanceMiles(trailDays[0])).toBe(10);
-    expect(getCumulativeTrailMiles(trailDays)).toBe(20);
-    expect(getCumulativeTrailMiles(trailDays, 1)).toBe(10);
   });
 
   it("derives kilometers without storing a second source of truth", () => {

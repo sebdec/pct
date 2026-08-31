@@ -1,16 +1,16 @@
 ---
 import type { GearCategory } from "../lib/gear/gearViewModel.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { formatWeight } from "../lib/preferences/displayPreferences.ts";
 import UnitValue from "./UnitValue.tsx";
 
 interface Props {
   baseWeightGrams: number;
   categories: readonly GearCategory[];
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { baseWeightGrams, categories, locale = defaultLocale } = Astro.props;
+const { baseWeightGrams, categories, locale } = Astro.props;
 const labels =
   locale === "fr"
     ? {

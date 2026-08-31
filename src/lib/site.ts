@@ -52,11 +52,3 @@ export function getSiteNavigation(locale: Locale) {
     { id: "glossary", label: labels.glossary, href: glossaryUrl(locale) },
   ] as const;
 }
-
-export const sectionNames = [
-  "Désert",
-  "Sierra",
-  "Northern California",
-  "Oregon",
-  "Washington",
-] as const;

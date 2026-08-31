@@ -4,882 +4,441 @@
     "categoryId": "big-4",
     "weightGrams": 866,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=1; category=Big 4; item=Sac"
-      }
-    ]
+    "order": 1
   },
   {
     "id": "gear-big-4-tente",
     "categoryId": "big-4",
     "weightGrams": 364,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=2; category=Big 4; item=Tente"
-      }
-    ]
+    "order": 2
   },
   {
     "id": "gear-big-4-sac-de-couchage",
     "categoryId": "big-4",
     "weightGrams": 568,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=3; category=Big 4; item=Sac de couchage"
-      }
-    ]
+    "order": 3
   },
   {
     "id": "gear-big-4-matelas",
     "categoryId": "big-4",
     "weightGrams": 367,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=4; category=Big 4; item=Matelas"
-      }
-    ]
+    "order": 4
   },
   {
     "id": "gear-big-4-sardine-x3",
     "categoryId": "big-4",
     "weightGrams": 21,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=5; category=Big 4; item=Sardine x3"
-      }
-    ]
+    "order": 5
   },
   {
     "id": "gear-big-4-sardine-x5",
     "categoryId": "big-4",
     "weightGrams": 50,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=6; category=Big 4; item=Sardine x5"
-      }
-    ]
+    "order": 6
   },
   {
     "id": "gear-big-4-sac-a-sardines",
     "categoryId": "big-4",
     "weightGrams": 3,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=7; category=Big 4; item=Sac à sardines"
-      }
-    ]
+    "order": 7
   },
   {
     "id": "gear-vetements-chaussettes-x2",
     "categoryId": "vetements",
     "weightGrams": 168,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=8; category=Vêtements; item=Chaussettes x2"
-      }
-    ]
+    "order": 8
   },
   {
     "id": "gear-vetements-sous-vetement-x2",
     "categoryId": "vetements",
     "weightGrams": 64,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=9; category=Vêtements; item=Sous-vêtement x2"
-      }
-    ]
+    "order": 9
   },
   {
     "id": "gear-vetements-t-shirt",
     "categoryId": "vetements",
     "weightGrams": 150,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=10; category=Vêtements; item=T-shirt"
-      }
-    ]
+    "order": 10
   },
   {
     "id": "gear-vetements-short",
     "categoryId": "vetements",
     "weightGrams": 120,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=11; category=Vêtements; item=Short"
-      }
-    ]
+    "order": 11
   },
   {
     "id": "gear-vetements-chemise",
     "categoryId": "vetements",
     "weightGrams": 310,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=12; category=Vêtements; item=Chemise"
-      }
-    ]
+    "order": 12
   },
   {
     "id": "gear-vetements-polaire",
     "categoryId": "vetements",
     "weightGrams": 260,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=13; category=Vêtements; item=Polaire"
-      }
-    ]
+    "order": 13
   },
   {
     "id": "gear-vetements-doudoune",
     "categoryId": "vetements",
     "weightGrams": 246,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=14; category=Vêtements; item=Doudoune"
-      }
-    ]
+    "order": 14
   },
   {
     "id": "gear-vetements-veste-de-pluie",
     "categoryId": "vetements",
     "weightGrams": 222,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=15; category=Vêtements; item=Veste de pluie"
-      }
-    ]
+    "order": 15
   },
   {
     "id": "gear-vetements-pantalon-de-pluie",
     "categoryId": "vetements",
     "weightGrams": 196,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=16; category=Vêtements; item=Pantalon de pluie"
-      }
-    ]
+    "order": 16
   },
   {
     "id": "gear-vetements-sandales-de-camp",
     "categoryId": "vetements",
     "weightGrams": 166,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=17; category=Vêtements; item=Sandales de camp"
-      }
-    ]
+    "order": 17
   },
   {
     "id": "gear-vetements-buff",
     "categoryId": "vetements",
     "weightGrams": 30,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=18; category=Vêtements; item=Buff"
-      }
-    ]
+    "order": 18
   },
   {
     "id": "gear-vetements-casquette-anti-soleil",
     "categoryId": "vetements",
     "weightGrams": 82,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=19; category=Vêtements; item=Casquette anti-soleil"
-      }
-    ]
+    "order": 19
   },
   {
     "id": "gear-vetements-bonnet",
     "categoryId": "vetements",
     "weightGrams": 32,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=20; category=Vêtements; item=Bonnet"
-      }
-    ]
+    "order": 20
   },
   {
     "id": "gear-vetements-gants-de-course",
     "categoryId": "vetements",
     "weightGrams": 62,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=21; category=Vêtements; item=Gants de course"
-      }
-    ]
+    "order": 21
   },
   {
     "id": "gear-vetements-gants-pour-batons",
     "categoryId": "vetements",
     "weightGrams": 45,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=22; category=Vêtements; item=Gants pour bâtons"
-      }
-    ]
+    "order": 22
   },
   {
     "id": "gear-vetements-sac-de-rangement-oreiller",
     "categoryId": "vetements",
     "weightGrams": 41,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=23; category=Vêtements; item=Sac de rangement / oreiller"
-      }
-    ]
+    "order": 23
   },
   {
     "id": "gear-vetements-chaussures",
     "categoryId": "vetements",
     "weightGrams": 632,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=24; category=Vêtements; item=Chaussures"
-      }
-    ]
+    "order": 24
   },
   {
     "id": "gear-vetements-guetres",
     "categoryId": "vetements",
     "weightGrams": 31,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=25; category=Vêtements; item=Guêtres"
-      }
-    ]
+    "order": 25
   },
   {
     "id": "gear-vetements-lunettes-de-soleil",
     "categoryId": "vetements",
     "weightGrams": 38,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=26; category=Vêtements; item=Lunettes de soleil"
-      }
-    ]
+    "order": 26
   },
   {
     "id": "gear-eau-et-cuisine-filtre-a-eau",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 70,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=27; category=Eau et cuisine; item=Filtre à eau"
-      }
-    ]
+    "order": 27
   },
   {
     "id": "gear-eau-et-cuisine-bouteille",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 68,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=28; category=Eau et cuisine; item=Bouteille"
-      }
-    ]
+    "order": 28
   },
   {
     "id": "gear-eau-et-cuisine-cartouche-de-gaz",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 100,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=29; category=Eau et cuisine; item=Cartouche de gaz"
-      }
-    ]
+    "order": 29
   },
   {
     "id": "gear-eau-et-cuisine-popote",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 84,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=30; category=Eau et cuisine; item=Popote"
-      }
-    ]
+    "order": 30
   },
   {
     "id": "gear-eau-et-cuisine-cuillere",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 19,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=31; category=Eau et cuisine; item=Cuillère"
-      }
-    ]
+    "order": 31
   },
   {
     "id": "gear-eau-et-cuisine-couteau-suisse",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 30,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=32; category=Eau et cuisine; item=Couteau suisse"
-      }
-    ]
+    "order": 32
   },
   {
     "id": "gear-eau-et-cuisine-briquet",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 11,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=33; category=Eau et cuisine; item=Briquet"
-      }
-    ]
+    "order": 33
   },
   {
     "id": "gear-eau-et-cuisine-eponge",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 4,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=34; category=Eau et cuisine; item=Éponge"
-      }
-    ]
+    "order": 34
   },
   {
     "id": "gear-eau-et-cuisine-sac-de-nourriture",
     "categoryId": "eau-et-cuisine",
     "weightGrams": 22,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=35; category=Eau et cuisine; item=Sac de nourriture"
-      }
-    ]
+    "order": 35
   },
   {
     "id": "gear-electronique-telephone",
     "categoryId": "electronique",
     "weightGrams": 197,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=36; category=Électronique; item=Téléphone"
-      }
-    ]
+    "order": 36
   },
   {
     "id": "gear-electronique-batterie-externe",
     "categoryId": "electronique",
     "weightGrams": 88,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=37; category=Électronique; item=Batterie externe"
-      }
-    ]
+    "order": 37
   },
   {
     "id": "gear-electronique-batterie-externe-2",
     "categoryId": "electronique",
     "weightGrams": 155,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=38; category=Électronique; item=Batterie externe"
-      }
-    ]
+    "order": 38
   },
   {
     "id": "gear-electronique-chargeur-mural",
     "categoryId": "electronique",
     "weightGrams": 103,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=39; category=Électronique; item=Chargeur mural"
-      }
-    ]
+    "order": 39
   },
   {
     "id": "gear-electronique-frontale",
     "categoryId": "electronique",
     "weightGrams": 85,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=40; category=Électronique; item=Frontale"
-      }
-    ]
+    "order": 40
   },
   {
     "id": "gear-electronique-montre",
     "categoryId": "electronique",
     "weightGrams": 72,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=41; category=Électronique; item=Montre"
-      }
-    ]
+    "order": 41
   },
   {
     "id": "gear-electronique-ecouteurs",
     "categoryId": "electronique",
     "weightGrams": 12,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=42; category=Électronique; item=Écouteurs"
-      }
-    ]
+    "order": 42
   },
   {
     "id": "gear-electronique-cable-usb-c-vers-usb-c-x2",
     "categoryId": "electronique",
     "weightGrams": 20,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=43; category=Électronique; item=Câble USB-C vers USB-C x2"
-      }
-    ]
+    "order": 43
   },
   {
     "id": "gear-electronique-cable-usb-c-garmin",
     "categoryId": "electronique",
     "weightGrams": 10,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=44; category=Électronique; item=Câble USB-C + Garmin"
-      }
-    ]
+    "order": 44
   },
   {
     "id": "gear-electronique-sac-electronique",
     "categoryId": "electronique",
     "weightGrams": 12,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=45; category=Électronique; item=Sac électronique"
-      }
-    ]
+    "order": 45
   },
   {
     "id": "gear-hygiene-serviette",
     "categoryId": "hygiene",
     "weightGrams": 73,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=46; category=Hygiène; item=Serviette"
-      }
-    ]
+    "order": 46
   },
   {
     "id": "gear-hygiene-dentifrice",
     "categoryId": "hygiene",
     "weightGrams": 18,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=47; category=Hygiène; item=Dentifrice"
-      }
-    ]
+    "order": 47
   },
   {
     "id": "gear-hygiene-brosse-a-dents",
     "categoryId": "hygiene",
     "weightGrams": 6,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=48; category=Hygiène; item=Brosse à dents"
-      }
-    ]
+    "order": 48
   },
   {
     "id": "gear-hygiene-gel-hydroalcoolique",
     "categoryId": "hygiene",
     "weightGrams": 33,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=49; category=Hygiène; item=Gel hydroalcoolique"
-      }
-    ]
+    "order": 49
   },
   {
     "id": "gear-hygiene-truelle",
     "categoryId": "hygiene",
     "weightGrams": 25,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=50; category=Hygiène; item=Truelle"
-      }
-    ]
+    "order": 50
   },
   {
     "id": "gear-hygiene-papier-toilette",
     "categoryId": "hygiene",
     "weightGrams": 40,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=51; category=Hygiène; item=Papier toilette"
-      }
-    ]
+    "order": 51
   },
   {
     "id": "gear-premiers-soins-compeed",
     "categoryId": "premiers-soins",
     "weightGrams": 28,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=52; category=Premiers soins; item=Compeed"
-      }
-    ]
+    "order": 52
   },
   {
     "id": "gear-premiers-soins-pastilles-de-purification",
     "categoryId": "premiers-soins",
     "weightGrams": 3,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=53; category=Premiers soins; item=Pastilles de purification"
-      }
-    ]
+    "order": 53
   },
   {
     "id": "gear-premiers-soins-tire-tique",
     "categoryId": "premiers-soins",
     "weightGrams": 1,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=54; category=Premiers soins; item=Tire-tique"
-      }
-    ]
+    "order": 54
   },
   {
     "id": "gear-premiers-soins-loperamide",
     "categoryId": "premiers-soins",
     "weightGrams": 1,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=55; category=Premiers soins; item=Lopéramide"
-      }
-    ]
+    "order": 55
   },
   {
     "id": "gear-premiers-soins-leukotape",
     "categoryId": "premiers-soins",
     "weightGrams": 24,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=56; category=Premiers soins; item=Leukotape"
-      }
-    ]
+    "order": 56
   },
   {
     "id": "gear-divers-batons",
     "categoryId": "divers",
     "weightGrams": 272,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=57; category=Divers; item=Bâtons"
-      }
-    ]
+    "order": 57
   },
   {
     "id": "gear-divers-moustiquaire-de-tete",
     "categoryId": "divers",
     "weightGrams": 27,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=58; category=Divers; item=Moustiquaire de tête"
-      }
-    ]
+    "order": 58
   },
   {
     "id": "gear-divers-patchs-de-reparation",
     "categoryId": "divers",
     "weightGrams": 3,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=59; category=Divers; item=Patchs de réparation"
-      }
-    ]
+    "order": 59
   },
   {
     "id": "gear-divers-portefeuille",
     "categoryId": "divers",
     "weightGrams": 10,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=60; category=Divers; item=Portefeuille"
-      }
-    ]
+    "order": 60
   },
   {
     "id": "gear-divers-passeport-permis-et-cartes",
     "categoryId": "divers",
     "weightGrams": 48,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=61; category=Divers; item=Passeport, permis et cartes"
-      }
-    ]
+    "order": 61
   },
   {
     "id": "gear-divers-sacs-ziploc",
     "categoryId": "divers",
     "weightGrams": 67,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=62; category=Divers; item=Sacs Ziploc"
-      }
-    ]
+    "order": 62
   },
   {
     "id": "gear-divers-sac-etanche",
     "categoryId": "divers",
     "weightGrams": 17,
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=63; category=Divers; item=Sac étanche"
-      }
-    ]
+    "order": 63
   },
   {
     "id": "gear-sierra-piolet",
@@ -887,14 +446,7 @@
     "weightGrams": 232,
     "tripPhase": "sierra",
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=64; category=Sierra; item=Piolet"
-      }
-    ]
+    "order": 64
   },
   {
     "id": "gear-sierra-microspikes",
@@ -902,14 +454,7 @@
     "weightGrams": 338,
     "tripPhase": "sierra",
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=65; category=Sierra; item=Microspikes"
-      }
-    ]
+    "order": 65
   },
   {
     "id": "gear-sierra-bear-canister",
@@ -917,13 +462,6 @@
     "weightGrams": 1162,
     "tripPhase": "sierra",
     "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 44,
-        "detail": "row=66; category=Sierra; item=Bear canister"
-      }
-    ]
+    "order": 66
   }
 ]

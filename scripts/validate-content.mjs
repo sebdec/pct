@@ -128,14 +128,6 @@ const mediaAssets = await readJsonArray(
 );
 
 assertContentModel({
-  sourceDocuments: await readJsonArray(
-    resolve(dataDirectory, "source/word-source.json"),
-  ),
-  extractionReports: [
-    await readJsonObject(
-      resolve(dataDirectory, "source/word-extraction-report.json"),
-    ),
-  ],
   regions: await readJsonArray(resolve(dataDirectory, "trail/regions.json")),
   sections: await readJsonArray(resolve(dataDirectory, "trail/sections.json")),
   days: await readJsonArray(resolve(dataDirectory, "trail/days.json")),
@@ -160,8 +152,5 @@ assertContentModel({
   ),
   supportingPages: await readLocalizedMarkdown(
     resolve(contentDirectory, "pages"),
-  ),
-  corrections: await readJsonArray(
-    resolve(dataDirectory, "source/corrections.json"),
   ),
 });

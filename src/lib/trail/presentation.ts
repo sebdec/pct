@@ -19,6 +19,29 @@ export type TrailMetricIconName =
   | "ascent"
   | "descent";
 
+interface TrailOverviewMetric {
+  icon: TrailMetricIconName;
+  label: string;
+  value?: string;
+  distanceMiles?: number;
+  distanceSuffix?: string;
+  elevationMeters?: number;
+  elevationPrefix?: string;
+  detail?: string;
+  detailDistanceMiles?: number;
+  detailDistanceSuffix?: string;
+  detailElevationMeters?: number;
+  detailElevationPrefix?: string;
+  detailElevationSuffix?: string;
+}
+
+export interface TrailOverviewContent {
+  heading: string;
+  metrics: readonly TrailOverviewMetric[];
+  regionsLabel: string;
+  regions: readonly { id: TrailDay["regionId"]; label: string }[];
+}
+
 export function getProgressStop(
   value: number,
   min: number,

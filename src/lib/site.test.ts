@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { getSiteNavigation, sectionNames } from "./site";
+import { getSiteNavigation } from "./site";
 
 describe("site foundation", () => {
   it("keeps navigation targets unique and local", () => {
@@ -29,11 +29,5 @@ describe("site foundation", () => {
       "/fr/gear",
       "/fr/glossary",
     ]);
-  });
-
-  it("models the five editorial trail sections", () => {
-    expect(sectionNames).toHaveLength(5);
-    expect(sectionNames.at(0)).toBe("Désert");
-    expect(sectionNames.at(-1)).toBe("Washington");
   });
 });

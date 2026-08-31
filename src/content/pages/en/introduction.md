@@ -4,34 +4,6 @@ locale: en
 kind: introduction
 title: Introduction
 published: true
-sourceRefs:
-  - document: PCT 2026 - Sebdec.docx
-    blockType: heading
-    blockIndex: 9
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 10
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 11
-  - document: PCT 2026 - Sebdec.docx
-    blockType: heading
-    blockIndex: 13
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 14
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 15
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 16
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 17
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 18
 ---
 
 This document tells my [Pacific Crest Trail](https://www.pcta.org/) thru-hike, travelled from April 18 to July 23, 2026. I left Campo on the Mexican border and reached the Northern Terminus on the Canadian border 96 days later. The track is approximately 2,656 miles, or 4,274 kilometres and more than 140,000 metres of positive elevation. The course and photos are also available on [Polarsteps](https://www.polarsteps.com/SebastienDecreme/25177443-united-states).

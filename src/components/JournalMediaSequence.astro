@@ -1,15 +1,15 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 
 interface Props {
   photos: JournalPageViewModel["photos"];
   regionId: JournalPageViewModel["regionId"];
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { photos, regionId, locale = defaultLocale } = Astro.props;
+const { photos, regionId, locale } = Astro.props;
 const labels = getUi(locale);
 const priorityPhotoId = photos.find(({ state }) => state === "published")
   ?.placement.id;
@@ -48,10 +48,8 @@ function srcset(
 {
   photos.length > 0 && (
     <section
-      class:list={[
-        "media-sequence",
-        regionId ? `media-${regionId}` : "media-after-trail",
-      ]}
+      class="media-sequence"
+      data-region={regionId ?? "after-trail"}
       aria-label={labels.journalPhotos}
     >
       <div class="media-grid">
@@ -140,31 +138,11 @@ function srcset(
 
 <style>
   .media-sequence {
-    --media-color: var(--pct-color-pine-glow);
+    --media-color: var(--pct-region-color, var(--pct-color-pine-glow));
 
     margin-top: clamp(4rem, 9vw, 7rem);
     padding-top: var(--pct-space-6);
     border-top: 1px solid var(--pct-color-faint);
-  }
-
-  .media-desert {
-    --media-color: var(--pct-color-desert-dust);
-  }
-
-  .media-sierra {
-    --media-color: var(--pct-color-sierra-snow);
-  }
-
-  .media-norcal {
-    --media-color: var(--pct-color-norcal-forest);
-  }
-
-  .media-oregon {
-    --media-color: var(--pct-color-oregon-lake);
-  }
-
-  .media-washington {
-    --media-color: var(--pct-color-washington-mist);
   }
 
   .media-grid {

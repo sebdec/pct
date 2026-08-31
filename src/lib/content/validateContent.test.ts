@@ -44,8 +44,6 @@ describe("content model validation", () => {
         title: "Missing day",
         locationLabel: "Unknown",
         photoIds: [],
-        sourceRefs: (fixture.journalEntries[0] as Record<string, unknown>)
-          .sourceRefs,
       },
     ];
 
@@ -134,7 +132,7 @@ describe("content model validation", () => {
     );
   });
 
-  it("preserves source photos and references in journal translations", () => {
+  it("preserves photo order in journal translations", () => {
     const fixture = cloneFixture();
     const englishEntry = fixture.journalEntries.find(
       (entry) =>
@@ -188,6 +186,21 @@ describe("content model validation", () => {
     );
   });
 
+  it("rejects ambiguous equipment ordering", () => {
+    const fixture = cloneFixture();
+    const item = fixture.gearItems[0] as Record<string, unknown>;
+    item.order = 2;
+
+    expect(validateContentModel(fixture).issues).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "gear.order",
+          path: "gearItems.gear-shelter-plex-solo.order",
+        }),
+      ]),
+    );
+  });
+
   it("rejects route anchors whose mileage is not strictly ordered", () => {
     const fixture = cloneFixture();
     const route = fixture.routes![0] as Record<string, unknown>;
@@ -235,77 +248,48 @@ describe("content model validation", () => {
     );
   });
 
-  it("rejects an extraction report that drifts from generated content", () => {
-    const fixture = cloneFixture();
-    const report = fixture.extractionReports[0] as Record<string, unknown>;
-    report.counts = {
-      ...(report.counts as Record<string, unknown>),
-      photoPlacements: 2,
-    };
-
-    const result = validateContentModel(fixture);
-
-    expect(result.issues).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          code: "extraction-report.count.mismatch",
-          path: "extractionReports[0].counts.photoPlacements",
-        }),
-      ]),
-    );
-  });
-
-  it("allows reused media assets but rejects broken placement order", () => {
+  it("allows multiple photo placements to reuse a media asset", () => {
     const fixture = cloneFixture();
     fixture.photos = [
       ...fixture.photos,
       {
         ...(fixture.photos[0] as Record<string, unknown>),
         id: "photo-001002",
-        order: 2,
       },
     ];
-    const firstJournal = fixture.journalEntries[0] as Record<string, unknown>;
-    firstJournal.photoIds = ["photo-001001", "photo-001002"];
-    const report = fixture.extractionReports[0] as Record<string, unknown>;
-    report.counts = {
-      ...(report.counts as Record<string, unknown>),
-      photoPlacements: 2,
-      reusedMediaAssets: 1,
-      trailPhotoPlacements: 2,
-    };
-    const source = fixture.sourceDocuments[0] as Record<string, unknown>;
-    source.counts = {
-      ...(source.counts as Record<string, unknown>),
-      photoPlacements: 2,
-    };
+    fixture.journalEntries
+      .filter((entry) => (entry as Record<string, unknown>).dayId === "day-001")
+      .forEach((entry) => {
+        (entry as Record<string, unknown>).photoIds = [
+          "photo-001001",
+          "photo-001002",
+        ];
+      });
+    fixture.localizedPhotos = [
+      ...fixture.localizedPhotos,
+      {
+        photoId: "photo-001002",
+        locale: "fr",
+        alt: "Le monument du terminus sud à Campo",
+      },
+      {
+        photoId: "photo-001002",
+        locale: "en",
+        alt: "The southern terminus monument in Campo",
+      },
+    ];
 
-    const result = validateContentModel(fixture);
-
-    expect(result.issues).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ code: "photo.order" }),
-      ]),
-    );
-    expect(result.issues).not.toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ code: "id.duplicate" }),
-      ]),
-    );
+    expect(validateContentModel(fixture)).toEqual({ valid: true, issues: [] });
   });
 
   it("turns diagnostics into an actionable validation error", () => {
     const fixture = cloneFixture();
-    fixture.corrections = [
-      {
-        ...(fixture.corrections[0] as Record<string, unknown>),
-        entityId: "unknown-entry",
-      },
-    ];
+    const entry = fixture.journalEntries[0] as Record<string, unknown>;
+    entry.dayId = "day-999";
 
     expect(() => assertContentModel(fixture)).toThrow(ContentValidationError);
     expect(() => assertContentModel(fixture)).toThrow(
-      '[reference.correction] corrections.correction-0001.entityId: Unknown day correction target "unknown-entry".',
+      '[reference.day] journalEntries.fr:day-999: Unknown day "day-999".',
     );
   });
 });

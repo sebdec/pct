@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import type { JournalNavigatorItem } from "../lib/content/journalViewModel.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { journalDayUrl } from "../lib/content/urls.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 import TrailProgressControl from "./TrailProgressControl.tsx";
@@ -9,7 +9,7 @@ import TrailProgressControl from "./TrailProgressControl.tsx";
 interface Props {
   currentDayId: string;
   entries: readonly JournalNavigatorItem[];
-  locale?: Locale;
+  locale: Locale;
 }
 
 function positionMiles(
@@ -23,7 +23,7 @@ function positionMiles(
 export default function JournalProgressControl({
   currentDayId,
   entries,
-  locale = defaultLocale,
+  locale,
 }: Props) {
   const labels = getUi(locale);
   const currentIndex = entries.findIndex(({ dayId }) => dayId === currentDayId);

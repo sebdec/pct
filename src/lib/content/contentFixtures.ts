@@ -1,99 +1,32 @@
 import type { ContentModelSource } from "./validateContent.ts";
 
-const sourceRef = {
-  document: "PCT 2026 - Sebdec.docx",
-  blockType: "table",
-  blockIndex: 1,
-} as const;
-
 export function createValidContentModel(): ContentModelSource {
   return {
-    sourceDocuments: [
-      {
-        id: "pct-2026-word-source",
-        filename: "PCT 2026 - Sebdec.docx",
-        sha256:
-          "f57f19abb6360609f7f517ea53c1acbd824ef6a69faed3b599911800fd81eb4d",
-        sizeBytes: 109_513_518,
-        counts: {
-          bodyBlocks: 993,
-          paragraphs: 795,
-          tables: 198,
-          documentSections: 1,
-          trailEntries: 2,
-          postTrailEntries: 1,
-          gearItems: 1,
-          glossaryConcepts: 1,
-          photoPlacements: 1,
-          mediaAssets: 1,
-        },
-      },
-    ],
-    extractionReports: [
-      {
-        sourceDocumentId: "pct-2026-word-source",
-        generator:
-          "Word extraction pipeline, retired after the approved import",
-        counts: {
-          trailEntries: 2,
-          postTrailEntries: 1,
-          gearItems: 1,
-          glossaryConcepts: 1,
-          photoPlacements: 1,
-          mediaAssets: 1,
-          reusedMediaAssets: 0,
-          trailPhotoPlacements: 1,
-          postTrailPhotoPlacements: 0,
-          pagePhotoPlacements: 0,
-          trailEntriesWithoutPhotos: 1,
-        },
-        validations: {
-          sourceHashVerified: true,
-          structuralCountsVerified: true,
-          declaredMilesVerified: true,
-          displayedKilometersVerified: true,
-          trailMileageContinuous: true,
-          mediaRelationshipsMatched: true,
-          contentModelValidated: true,
-        },
-        structuralExceptions: [],
-      },
-    ],
     regions: [
       {
         id: "desert",
         order: 1,
-        trailMarkKey: "cactus",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         id: "sierra",
         order: 2,
-        trailMarkKey: "mountain",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         id: "norcal",
         order: 3,
-        trailMarkKey: "bear",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         id: "oregon",
         order: 4,
-        trailMarkKey: "lake-mosquito",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         id: "washington",
         order: 5,
-        trailMarkKey: "mountain-goat",
         published: true,
-        sourceRefs: [sourceRef],
       },
     ],
     sections: [
@@ -105,7 +38,6 @@ export function createValidContentModel(): ContentModelSource {
         mileEnd: 15,
         properName: "Campo to Lake Morena",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         id: "section-california-b",
@@ -115,7 +47,6 @@ export function createValidContentModel(): ContentModelSource {
         mileEnd: 30,
         properName: "Lake Morena to the Sierra",
         published: true,
-        sourceRefs: [sourceRef],
       },
     ],
     days: [
@@ -132,7 +63,6 @@ export function createValidContentModel(): ContentModelSource {
         descentMeters: 684,
         locationId: "campo",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         id: "day-002",
@@ -147,7 +77,6 @@ export function createValidContentModel(): ContentModelSource {
         descentMeters: 200,
         locationId: "lake-morena",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         id: "day-003",
@@ -155,7 +84,6 @@ export function createValidContentModel(): ContentModelSource {
         date: "2026-07-24",
         kind: "post-trail",
         published: true,
-        sourceRefs: [sourceRef],
       },
     ],
     routes: [
@@ -214,7 +142,6 @@ export function createValidContentModel(): ContentModelSource {
         title: "Le départ",
         locationLabel: "Campo",
         photoIds: ["photo-001001"],
-        sourceRefs: [sourceRef],
       },
       {
         dayId: "day-002",
@@ -222,7 +149,6 @@ export function createValidContentModel(): ContentModelSource {
         title: "2 sections",
         locationLabel: "Lake Morena",
         photoIds: [],
-        sourceRefs: [sourceRef],
       },
       {
         dayId: "day-003",
@@ -230,7 +156,6 @@ export function createValidContentModel(): ContentModelSource {
         title: "Après le terminus",
         locationLabel: "Vancouver",
         photoIds: [],
-        sourceRefs: [sourceRef],
       },
       {
         dayId: "day-001",
@@ -238,7 +163,6 @@ export function createValidContentModel(): ContentModelSource {
         title: "The start",
         locationLabel: "Campo",
         photoIds: ["photo-001001"],
-        sourceRefs: [sourceRef],
       },
       {
         dayId: "day-002",
@@ -246,7 +170,6 @@ export function createValidContentModel(): ContentModelSource {
         title: "2 sections",
         locationLabel: "Lake Morena",
         photoIds: [],
-        sourceRefs: [sourceRef],
       },
       {
         dayId: "day-003",
@@ -254,19 +177,16 @@ export function createValidContentModel(): ContentModelSource {
         title: "After the terminus",
         locationLabel: "Vancouver",
         photoIds: [],
-        sourceRefs: [sourceRef],
       },
     ],
     photos: [
       {
         id: "photo-001001",
         dayId: "day-001",
-        order: 0,
         assetKey: "pct-2026-day-001-001",
         width: 1600,
         height: 1200,
         published: true,
-        sourceRefs: [{ ...sourceRef, blockType: "image" }],
       },
     ],
     mediaAssets: [
@@ -351,7 +271,6 @@ export function createValidContentModel(): ContentModelSource {
       {
         id: "trail-angel",
         published: true,
-        sourceRefs: [sourceRef],
       },
     ],
     localizedGlossaryEntries: [
@@ -377,8 +296,8 @@ export function createValidContentModel(): ContentModelSource {
         brand: "Zpacks",
         model: "Plex Solo",
         weightGrams: 395,
+        order: 1,
         published: true,
-        sourceRefs: [sourceRef],
       },
     ],
     localizedGearEntries: [
@@ -400,7 +319,6 @@ export function createValidContentModel(): ContentModelSource {
         kind: "closing",
         title: "Après le chemin",
         published: true,
-        sourceRefs: [sourceRef],
       },
       {
         pageId: "closing",
@@ -408,20 +326,6 @@ export function createValidContentModel(): ContentModelSource {
         kind: "closing",
         title: "After the trail",
         published: true,
-        sourceRefs: [sourceRef],
-      },
-    ],
-    corrections: [
-      {
-        id: "correction-0001",
-        entityType: "day",
-        entityId: "day-001",
-        field: "locationId",
-        sourceValue: "Camp",
-        correctedValue: "Campo",
-        reason: "Correction du nom du terminus sud.",
-        status: "approved",
-        sourceRef,
       },
     ],
   };

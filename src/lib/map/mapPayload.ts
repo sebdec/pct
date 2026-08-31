@@ -11,7 +11,7 @@ import {
 
 export const mapPayloadPath = "/data/pct-map-2026.json";
 
-export interface MapPayload {
+interface MapPayload {
   route: TrailRoute;
   points: MapPoint[];
   areas: MapArea[];

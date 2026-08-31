@@ -1,19 +1,10 @@
-import type { Day, RouteCoordinate, TrailRoute } from "../content/schemas.ts";
+import type { RouteCoordinate, TrailRoute } from "../content/schemas.ts";
 
 const earthRadiusMeters = 6_371_008.8;
 
-export interface RouteIndex {
+interface RouteIndex {
   cumulativeMeters: readonly number[];
   totalMeters: number;
-}
-
-export interface TrailDayRouteRange {
-  dayId: string;
-  mileStart: number;
-  mileEnd: number;
-  startProgress: number;
-  endProgress: number;
-  isPoint: boolean;
 }
 
 function degreesToRadians(value: number): number {
@@ -218,21 +209,4 @@ export function getCoordinateAtMile(
     getRouteProgressAtMile(route, mile),
     routeIndex,
   );
-}
-
-export function getTrailDayRouteRange(
-  day: Day,
-  route: TrailRoute,
-): TrailDayRouteRange | null {
-  if (day.kind === "post-trail") return null;
-  const startProgress = getRouteProgressAtMile(route, day.mileStart);
-  const endProgress = getRouteProgressAtMile(route, day.mileEnd);
-  return {
-    dayId: day.id,
-    mileStart: day.mileStart,
-    mileEnd: day.mileEnd,
-    startProgress,
-    endProgress,
-    isPoint: day.mileStart === day.mileEnd,
-  };
 }

@@ -14,17 +14,10 @@ function isIsoDate(value: string): boolean {
   );
 }
 
-export const stableIdSchema = z
+const stableIdSchema = z
   .string()
   .min(1)
   .regex(stableIdPattern, "Use a lowercase kebab-case identifier.");
-
-const correctionFieldSchema = z
-  .string()
-  .regex(
-    /^[a-z][a-zA-Z0-9]*(?:\.[a-z][a-zA-Z0-9]*)*$/,
-    "Use a camelCase field path such as locationId or sourceRef.detail.",
-  );
 
 export const dayIdSchema = z
   .string()
@@ -43,69 +36,13 @@ const regionIdSchema = z.enum([
   "washington",
 ]);
 
-const sourceReferenceSchema = z.object({
-  document: z.string().min(1),
-  blockType: z.enum(["heading", "paragraph", "table", "image", "manual"]),
-  blockIndex: z.number().int().nonnegative(),
-  detail: z.string().min(1).optional(),
-});
-
-export const sourceDocumentSchema = z.object({
-  id: stableIdSchema,
-  filename: z.string().min(1),
-  sha256: z.string().regex(/^[a-f0-9]{64}$/),
-  sizeBytes: z.number().int().positive(),
-  counts: z.object({
-    bodyBlocks: z.number().int().nonnegative(),
-    paragraphs: z.number().int().nonnegative(),
-    tables: z.number().int().nonnegative(),
-    documentSections: z.number().int().positive(),
-    trailEntries: z.number().int().nonnegative(),
-    postTrailEntries: z.number().int().nonnegative(),
-    gearItems: z.number().int().nonnegative(),
-    glossaryConcepts: z.number().int().nonnegative(),
-    photoPlacements: z.number().int().nonnegative(),
-    mediaAssets: z.number().int().nonnegative(),
-  }),
-});
-
-export const wordExtractionReportSchema = z.object({
-  sourceDocumentId: stableIdSchema,
-  generator: z.string().min(1),
-  counts: z.object({
-    trailEntries: z.number().int().nonnegative(),
-    postTrailEntries: z.number().int().nonnegative(),
-    gearItems: z.number().int().nonnegative(),
-    glossaryConcepts: z.number().int().nonnegative(),
-    photoPlacements: z.number().int().nonnegative(),
-    mediaAssets: z.number().int().nonnegative(),
-    reusedMediaAssets: z.number().int().nonnegative(),
-    trailPhotoPlacements: z.number().int().nonnegative(),
-    postTrailPhotoPlacements: z.number().int().nonnegative(),
-    pagePhotoPlacements: z.number().int().nonnegative(),
-    trailEntriesWithoutPhotos: z.number().int().nonnegative(),
-  }),
-  validations: z.object({
-    sourceHashVerified: z.literal(true),
-    structuralCountsVerified: z.literal(true),
-    declaredMilesVerified: z.literal(true),
-    displayedKilometersVerified: z.literal(true),
-    trailMileageContinuous: z.literal(true),
-    mediaRelationshipsMatched: z.literal(true),
-    contentModelValidated: z.literal(true),
-  }),
-  structuralExceptions: z.array(z.string().min(1)),
-});
-
 const publishedEntityFields = {
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).min(1),
 };
 
 export const regionSchema = z.object({
   id: regionIdSchema,
   order: z.number().int().min(1).max(5),
-  trailMarkKey: stableIdSchema,
   ...publishedEntityFields,
 });
 
@@ -150,7 +87,6 @@ const dayBaseFields = {
   sequence: z.number().int().positive(),
   date: isoDateSchema,
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).min(1),
 };
 
 export const trailDaySchema = z.object({
@@ -183,7 +119,6 @@ export const journalEntrySchema = z.object({
   locationLabel: z.string().min(1),
   summary: z.string().min(1).optional(),
   photoIds: z.array(stableIdSchema).default([]),
-  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
 export const photoSchema = z
@@ -191,12 +126,10 @@ export const photoSchema = z
     id: z.string().regex(photoIdPattern),
     dayId: dayIdSchema.optional(),
     pageId: stableIdSchema.optional(),
-    order: z.number().int().nonnegative(),
     assetKey: stableIdSchema,
     width: z.number().int().positive(),
     height: z.number().int().positive(),
     published: z.boolean().default(false),
-    sourceRefs: z.array(sourceReferenceSchema).min(1),
   })
   .refine(({ dayId, pageId }) => Boolean(dayId) !== Boolean(pageId), {
     message: "Associate a photo with exactly 1 day or supporting page.",
@@ -338,7 +271,6 @@ export const mapAreaSchema = z.object({
 export const glossaryConceptSchema = z.object({
   id: stableIdSchema,
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
 export const localizedGlossaryEntrySchema = z.object({
@@ -351,13 +283,13 @@ export const localizedGlossaryEntrySchema = z.object({
 
 export const gearItemSchema = z.object({
   id: stableIdSchema,
+  order: z.number().int().positive(),
   categoryId: stableIdSchema,
   brand: z.string().min(1).optional(),
   model: z.string().min(1).optional(),
   weightGrams: z.number().nonnegative(),
   tripPhase: regionIdSchema.optional(),
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
 export const localizedGearEntrySchema = z.object({
@@ -396,31 +328,8 @@ export const supportingPageSchema = z.object({
   title: z.string().min(1),
   summary: z.string().min(1).optional(),
   published: z.boolean().default(false),
-  sourceRefs: z.array(sourceReferenceSchema).min(1),
 });
 
-export const correctionSchema = z.object({
-  id: z.string().regex(/^correction-\d{4}$/),
-  entityType: z.enum([
-    "region",
-    "section",
-    "day",
-    "photo",
-    "glossary-concept",
-    "gear-item",
-    "supporting-page",
-  ]),
-  entityId: stableIdSchema,
-  field: correctionFieldSchema,
-  sourceValue: z.json(),
-  correctedValue: z.json(),
-  reason: z.string().min(1),
-  status: z.enum(["proposed", "approved", "rejected"]),
-  sourceRef: sourceReferenceSchema,
-});
-
-export type SourceDocument = z.infer<typeof sourceDocumentSchema>;
-export type WordExtractionReport = z.infer<typeof wordExtractionReportSchema>;
 export type Region = z.infer<typeof regionSchema>;
 export type TrailSection = z.infer<typeof sectionSchema>;
 export type TrailDay = z.infer<typeof trailDaySchema>;
@@ -441,4 +350,3 @@ export type GearItem = z.infer<typeof gearItemSchema>;
 export type LocalizedGearEntry = z.infer<typeof localizedGearEntrySchema>;
 export type GearProductLink = z.infer<typeof gearProductLinkSchema>;
 export type SupportingPage = z.infer<typeof supportingPageSchema>;
-export type Correction = z.infer<typeof correctionSchema>;

@@ -17,14 +17,3 @@ export function getTrailDayDistanceMiles(day: TrailDay): number {
 export function getTrailDayDistanceKilometers(day: TrailDay): number {
   return milesToKilometers(getTrailDayDistanceMiles(day));
 }
-
-export function getCumulativeTrailMiles(
-  days: readonly TrailDay[],
-  throughSequence?: number,
-): number {
-  return days
-    .filter(
-      (day) => throughSequence === undefined || day.sequence <= throughSequence,
-    )
-    .reduce((total, day) => total + getTrailDayDistanceMiles(day), 0);
-}

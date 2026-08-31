@@ -1,470 +1,158 @@
 [
   {
     "id": "at",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=1; term=AT"
-      }
-    ]
+    "published": true
   },
   {
     "id": "bear-box",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=2; term=Bear box"
-      }
-    ]
+    "published": true
   },
   {
     "id": "bear-canister",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=3; term=Bear canister"
-      }
-    ]
+    "published": true
   },
   {
     "id": "blowdown",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=4; term=Blowdown"
-      }
-    ]
+    "published": true
   },
   {
     "id": "boot-track",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=5; term=Boot track"
-      }
-    ]
+    "published": true
   },
   {
     "id": "breakfast-burrito",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=6; term=Breakfast burrito"
-      }
-    ]
+    "published": true
   },
   {
     "id": "bubble",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=7; term=Bubble"
-      }
-    ]
+    "published": true
   },
   {
     "id": "california-campfire-permit-stove",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=8; term=California Campfire Permit / stove"
-      }
-    ]
+    "published": true
   },
   {
     "id": "cdt",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=9; term=CDT"
-      }
-    ]
+    "published": true
   },
   {
     "id": "cowboy-camping",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=10; term=Cowboy camping"
-      }
-    ]
+    "published": true
   },
   {
     "id": "darn-tough",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=11; term=Darn Tough"
-      }
-    ]
+    "published": true
   },
   {
     "id": "farout",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=12; term=FarOut"
-      }
-    ]
+    "published": true
   },
   {
     "id": "filtre-a-eau",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=13; term=Filtre à eau"
-      }
-    ]
+    "published": true
   },
   {
     "id": "flip-flop",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=14; term=Flip-flop"
-      }
-    ]
+    "published": true
   },
   {
     "id": "hanging-bag-bear-hang",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=15; term=Hanging bag / bear hang"
-      }
-    ]
+    "published": true
   },
   {
     "id": "hiker",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=16; term=Hiker"
-      }
-    ]
+    "published": true
   },
   {
     "id": "hiker-box",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=17; term=Hiker box"
-      }
-    ]
+    "published": true
   },
   {
     "id": "hitchhiking",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=18; term=Hitchhiking"
-      }
-    ]
+    "published": true
   },
   {
     "id": "leukotape",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=19; term=Leukotape"
-      }
-    ]
+    "published": true
   },
   {
     "id": "nobo-sobo",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=20; term=NOBO / SOBO"
-      }
-    ]
+    "published": true
   },
   {
     "id": "pct",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=21; term=PCT"
-      }
-    ]
+    "published": true
   },
   {
     "id": "poison-oak",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=22; term=Poison oak"
-      }
-    ]
+    "published": true
   },
   {
     "id": "ranger",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=23; term=Ranger"
-      }
-    ]
+    "published": true
   },
   {
     "id": "resupply",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=24; term=Resupply"
-      }
-    ]
+    "published": true
   },
   {
     "id": "resupply-box-supply-box",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=25; term=Resupply box / supply box"
-      }
-    ]
+    "published": true
   },
   {
     "id": "smartwater",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=26; term=Smartwater"
-      }
-    ]
+    "published": true
   },
   {
     "id": "sun-hoodie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=27; term=Sun hoodie"
-      }
-    ]
+    "published": true
   },
   {
     "id": "thru-hiking",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=28; term=Thru-hiking"
-      }
-    ]
+    "published": true
   },
   {
     "id": "topo-altra",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=29; term=Topo / Altra"
-      }
-    ]
+    "published": true
   },
   {
     "id": "trail-angel",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=30; term=Trail angel"
-      }
-    ]
+    "published": true
   },
   {
     "id": "trailhead",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=31; term=Trailhead"
-      }
-    ]
+    "published": true
   },
   {
     "id": "trail-mix",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=32; term=Trail mix"
-      }
-    ]
+    "published": true
   },
   {
     "id": "trail-hiker-name",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=33; term=Trail/Hiker name"
-      }
-    ]
+    "published": true
   },
   {
     "id": "trail-registry",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=34; term=Trail registry"
-      }
-    ]
+    "published": true
   },
   {
     "id": "tramily",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=35; term=Tramily"
-      }
-    ]
+    "published": true
   },
   {
     "id": "triple-crown",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=36; term=Triple Crown"
-      }
-    ]
+    "published": true
   },
   {
     "id": "ultralight",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=37; term=Ultralight"
-      }
-    ]
+    "published": true
   },
   {
     "id": "water-cache",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=38; term=Water cache"
-      }
-    ]
+    "published": true
   },
   {
     "id": "zero-nero-day",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 47,
-        "detail": "row=39; term=Zero / Nero day"
-      }
-    ]
+    "published": true
   }
 ]

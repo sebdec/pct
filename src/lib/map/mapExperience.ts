@@ -41,7 +41,7 @@ interface BuildMapDaysSource {
   locale?: Locale;
 }
 
-export interface MapSelection {
+interface MapSelection {
   dayId: string;
   mile: number;
 }

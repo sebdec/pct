@@ -5,7 +5,7 @@ import {
 } from "../content/locales.ts";
 import { switchLocaleUrl } from "../content/urls.ts";
 
-export interface LocalizedLink {
+interface LocalizedLink {
   locale: Locale | "x-default";
   path: string;
 }

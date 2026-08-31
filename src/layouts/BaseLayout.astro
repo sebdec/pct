@@ -6,7 +6,6 @@ import Analytics from "@vercel/analytics/astro";
 import pctMarkUrl from "../assets/pct-mark.svg?url";
 import SiteFooter from "../components/SiteFooter.astro";
 import {
-  defaultLocale,
   localeFormattingTags,
   localeLanguageTags,
   publishedLocales,
@@ -20,7 +19,7 @@ interface Props {
   title?: string;
   description?: string;
   bodyClass?: string;
-  locale?: Locale;
+  locale: Locale;
   journal?: {
     headline: string;
     datePublished: string;
@@ -29,7 +28,7 @@ interface Props {
 
 const {
   title = site.title,
-  locale = defaultLocale,
+  locale,
   description = site.descriptions[locale],
   bodyClass,
   journal,

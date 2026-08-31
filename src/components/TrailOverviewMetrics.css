@@ -42,35 +42,12 @@
 }
 
 .trail-overview-metrics__region {
+  color: var(--pct-region-color);
   font-weight: 650;
-}
-
-.trail-overview-metrics__region--desert {
-  color: var(--pct-color-desert-dust);
-}
-
-.trail-overview-metrics__region--sierra {
-  color: var(--pct-color-sierra-snow);
-}
-
-.trail-overview-metrics__region--norcal {
-  color: var(--pct-color-norcal-forest);
-}
-
-.trail-overview-metrics__region--oregon {
-  color: var(--pct-color-oregon-lake);
-}
-
-.trail-overview-metrics__region--washington {
-  color: var(--pct-color-washington-mist);
 }
 
 @media (max-width: 46rem) {
   .trail-overview-metrics__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .trail-overview-metrics__regions {
-    grid-column: 1 / -1;
   }
 }

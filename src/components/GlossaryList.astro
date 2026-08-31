@@ -1,13 +1,13 @@
 ---
 import type { GlossaryViewModel } from "../lib/glossary/glossaryViewModel.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 
 interface Props {
   glossary: GlossaryViewModel;
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { glossary, locale = defaultLocale } = Astro.props;
+const { glossary, locale } = Astro.props;
 const aliasesLabel = locale === "fr" ? "Aussi:" : "Also:";
 ---
 

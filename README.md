@@ -58,24 +58,38 @@ pnpm preview
 ## Architecture
 
 - Astro renders layouts and editorial UI statically.
-- React is installed for future interactive islands such as the map and mile controls. It must not be used for static content.
-- Tailwind CSS 4 is integrated through its Vite plugin.
-- Design decisions live in named CSS custom properties in `src/styles/tokens.css`. Tailwind consumes those variables rather than duplicating values.
+- React powers the map and journal progress islands. Display preferences use small browser scripts and custom elements. Static editorial UI remains in Astro.
+- Tailwind CSS 4 compiles only its shared browser reset through the Vite plugin. The app does not generate Tailwind utilities.
+- Design decisions live in named CSS custom properties in `src/styles/tokens.css` and component styles consume them directly.
 - Vitest covers framework-independent TypeScript behavior.
 - Astro content collections validate each entry at build time. A separate validator enforces references, chronology, mileage continuity and required French copy across collections.
 
 See `AGENTS.md` for the complete project conventions.
 
+## Project structure
+
+- `src/pages`: route entrypoints only.
+- `src/layouts`: shared document and page shells.
+- `src/components`: reusable Astro UI and isolated React interactions.
+- `src/lib`: framework-independent TypeScript, view models and validators.
+- `src/content`: localized editorial text managed through Astro content collections.
+- `src/data`: language-neutral facts shared by routes and locales.
+- `src/styles`: design tokens and global presentation rules.
+- `public`: immutable assets served without transformation.
+- `scripts`: maintained validation and quality gates used by `pnpm verify`.
+
+Repository-wide engineering rules live in `AGENTS.md`. Run `pnpm verify` before every publication handoff.
+
 ## Content architecture
 
 `src/content.config.ts` defines the Astro collections and their Zod schemas. The data is deliberately split into 2 layers:
 
-- `src/data`: language-neutral facts such as regions, sections, days, gear weights, photo metadata and corrections. PCT section mile bounds remain optional until verified route geometry is available.
+- `src/data`: language-neutral facts such as regions, sections, days, gear weights and photo metadata. PCT section mile bounds remain optional until verified route geometry is available.
 - `src/content`: localized editorial copy such as journal prose, page content, glossary definitions, gear labels, alternative text and captions.
 
 French remains the source language. English entries reuse the same neutral entity IDs. English is served from unprefixed public routes and French from `/fr`, with neutral slugs such as `/journal/day-001` and `/fr/journal/day-001`.
 
-Miles are the distance source of truth. Daily distance, cumulative distance and kilometers are derived in `src/lib/content/metrics.ts`.
+Miles are the distance source of truth. Daily distance and kilometers are derived in `src/lib/content/metrics.ts`. Trail position uses the canonical mile bounds stored for each day.
 
 Run the cross-collection validation directly with:
 
@@ -91,7 +105,7 @@ The French journal and media metadata were imported from the approved `PCT 2026 
 
 The production build is deliberately independent from the Word document, original photos, image processing tools and ArcGIS. Keep those private sources outside the repository.
 
-`src/data/source` preserves source identity and extraction evidence. The route manifest preserves the PCTA revision, license and exact attribution. `pnpm content:validate` checks these committed inputs before publication.
+`src/data/source/README.md` preserves the retired import provenance and links to its historical per-entry mapping. The route manifest preserves the PCTA revision, license and exact attribution. `pnpm content:validate` checks the active publication inputs before publication.
 
 ## Quality budgets
 
@@ -100,8 +114,6 @@ The production build is deliberately independent from the Word document, origina
 The map route and geography live in 1 shared static JSON payload instead of being serialized into every map page. Accessibility coverage uses axe on representative English and French routes at desktop and 360 px. Keyboard and reduced-motion checks cover the primary interactive flows.
 
 Do not increase a budget or disable an accessibility rule without recording the measured reason in the active Notion issue.
-
-Imported entities keep references to their source blocks in the Word document. Approved editorial changes live in `src/data/source/corrections.json` instead of overwriting source history silently.
 
 ## Vercel preparation
 

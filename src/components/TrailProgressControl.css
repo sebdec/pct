@@ -1,5 +1,5 @@
 .trail-progress {
-  --navigator-color: var(--pct-color-muted);
+  --navigator-color: var(--pct-region-color, var(--pct-color-muted));
   --progress-color: var(--pct-color-pine-glow);
 
   display: grid;
@@ -11,31 +11,6 @@
   padding: var(--pct-space-3) var(--pct-space-4);
   border-radius: var(--pct-radius-small);
   background: var(--pct-color-night-trail);
-}
-
-.journal-progress {
-  width: 100%;
-  max-width: none;
-}
-
-.trail-progress[data-region="desert"] {
-  --navigator-color: var(--pct-color-desert-dust);
-}
-
-.trail-progress[data-region="sierra"] {
-  --navigator-color: var(--pct-color-sierra-snow);
-}
-
-.trail-progress[data-region="norcal"] {
-  --navigator-color: var(--pct-color-norcal-forest);
-}
-
-.trail-progress[data-region="oregon"] {
-  --navigator-color: var(--pct-color-oregon-lake);
-}
-
-.trail-progress[data-region="washington"] {
-  --navigator-color: var(--pct-color-washington-mist);
 }
 
 .trail-progress__step,

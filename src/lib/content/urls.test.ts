@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  glossaryEntryUrl,
   glossaryUrl,
   homeUrl,
   journalDayUrl,
@@ -27,10 +26,8 @@ describe("content URLs", () => {
     expect(() => mapDayUrl("first-day")).toThrow();
   });
 
-  it("creates stable glossary URLs for explicit journal references", () => {
+  it("creates the default glossary URL", () => {
     expect(glossaryUrl()).toBe("/glossary");
-    expect(glossaryEntryUrl("trail-angel")).toBe("/glossary#trail-angel");
-    expect(() => glossaryEntryUrl("Trail angel")).toThrow();
   });
 
   it("switches locale while preserving the exact page and anchor", () => {

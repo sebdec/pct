@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { createValidContentModel } from "../content/contentFixtures.ts";
-import type { Day, TrailRoute } from "../content/schemas.ts";
+import type { TrailRoute } from "../content/schemas.ts";
 import {
   clampJournalMile,
   createRouteIndex,
@@ -9,7 +9,6 @@ import {
   getJournalMileAtRouteProgress,
   getNearestMileOnRoute,
   getRouteProgressAtMile,
-  getTrailDayRouteRange,
 } from "./route.ts";
 
 function fixtureRoute(): TrailRoute {
@@ -52,43 +51,9 @@ describe("route mileage mapping", () => {
     );
   });
 
-  it("represents a zero-mile trail day as one route position", () => {
+  it("rejects invalid miles", () => {
     const route = fixtureRoute();
-    const day: Day = {
-      id: "day-028",
-      sequence: 28,
-      kind: "trail",
-      date: "2026-05-15",
-      regionId: "sierra",
-      sectionIds: ["section-california-b"],
-      mileStart: 703,
-      mileEnd: 703,
-      ascentMeters: 0,
-      descentMeters: 0,
-      locationId: "kennedy-meadows",
-      published: true,
-      sourceRefs: [
-        {
-          document: "PCT 2026 - Sebdec.docx",
-          blockType: "table",
-          blockIndex: 1,
-        },
-      ],
-    };
 
-    expect(getTrailDayRouteRange(day, route)).toMatchObject({
-      dayId: "day-028",
-      isPoint: true,
-      startProgress: getRouteProgressAtMile(route, 703),
-      endProgress: getRouteProgressAtMile(route, 703),
-    });
-  });
-
-  it("keeps post-trail entries outside the route and rejects invalid miles", () => {
-    const route = fixtureRoute();
-    const postTrail = createValidContentModel().days.at(-1) as Day;
-
-    expect(getTrailDayRouteRange(postTrail, route)).toBeNull();
     expect(() => getRouteProgressAtMile(route, 2655.9)).toThrow(
       "Only journal mile 2656",
     );

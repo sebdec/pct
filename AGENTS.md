@@ -36,6 +36,8 @@ Do not expand an issue's scope silently. Record material product or architecture
 ## Project structure
 
 - `src/components`: reusable Astro and interactive UI components.
+- `src/content`: localized editorial copy and Astro-managed publication entries.
+- `src/data`: language-neutral facts shared by routes and locales.
 - `src/layouts`: page-level document shells.
 - `src/lib`: framework-independent TypeScript and content utilities.
 - `src/pages`: route entrypoints only. Move reusable UI and logic elsewhere.
@@ -59,7 +61,7 @@ Keep content areas aligned with `src/content.config.ts` and the contracts in `sr
 
 - Treat `src/styles/tokens.css` as the only source for palette, typography, spacing and radius values.
 - Give design tokens semantic names. Components must not duplicate approved raw color values.
-- Tailwind theme aliases must point to CSS custom properties.
+- Tailwind is limited to its preflight stylesheet. Do not add generated utilities or theme aliases unless the styling architecture is intentionally revised.
 - Build every route with the existing shared page layout that matches its content. Do not instantiate `BaseLayout` directly or redefine the page background, content width or H1 scale when `EditorialPageLayout` or `ReadingPageLayout` already provides them.
 - Render authored inline editorial links with `TextLink`. Wrap rendered Markdown in `editorial-rich-text` so its native anchors inherit the same shared rules from `src/styles/text-link.css`. Do not create route-specific link colors, hover states or focus treatments.
 - Before introducing a new page-level style, compare the route with at least 2 existing pages. Move any repeated background, width, heading or link rule into the shared layout or component instead of copying it into the route.
@@ -104,14 +106,14 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Serve English on unprefixed public URLs and French under `/fr`. Keep equivalent route shapes and locale-neutral entity slugs across both languages.
 - Never render a localized public route from another language as a fallback. Missing translated content must fail validation or prevent that route from being generated.
 - Render date-only values with semantic `time` elements and a deterministic static fallback. Browser-preference formatting may progressively enhance the visible text but must never make content depend on JavaScript.
-- Treat miles as canonical. Derive daily distance, cumulative distance and kilometers through `src/lib/content/metrics.ts`.
+- Treat miles as canonical. Derive daily distance and kilometers through `src/lib/content/metrics.ts`. Use the canonical day mile bounds for trail position.
 - Treat grams as the canonical equipment weight unit. Pass canonical miles and grams to the shared `UnitValue` presentation instead of formatting unit strings inside routes or components.
 - Keep display preferences versioned and browser-local through `src/lib/preferences`. Keep their controls visually aligned with the existing navigation instead of introducing a separate chip or panel design language.
-- Scope photo placement IDs to their owner. Use `photo-074001` for the first photo of `day-074` and `photo-introduction-001` for the first photo of the introduction page. Keep global source order in the separate `order` field.
-- Mark neutral entities as published only when their required French entry exists.
-- Retain Word block references on imported entities. Record proposed, approved or rejected editorial changes in `src/data/source/corrections.json`.
-- Treat committed content and data as the publication sources of truth. Preserve source references and review broad migrations separately from editorial corrections.
-- Treat the approved source hash and `src/data/source/word-extraction-report.json` as provenance invariants. A source change requires a newly approved issue before updating the hash or structural counts.
+- Scope photo placement IDs to their owner. Use `photo-074001` for the first photo of `day-074` and `photo-introduction-001` for the first photo of the introduction page. Journal entries define display order through their `photoIds` array.
+- Mark neutral entities as published only when entries exist for every published locale.
+- Treat committed content and data as the publication sources of truth. Review broad technical migrations separately from editorial corrections.
+- Keep historical import provenance in `src/data/source/README.md` and Git history. Do not add per-entry extraction metadata to active content.
+- The Word import pipeline is retired. A new source import requires an approved issue and must not silently replace normalized publication content.
 - Run `pnpm content:validate` after every content change. Add a focused invalid fixture whenever a new cross-entry invariant is introduced.
 - Do not place original full-resolution photos in Git. Commit only approved optimized derivatives with stable names and attribution metadata where needed.
 - Never import the Word source or Google Photos export wholesale into this repository.

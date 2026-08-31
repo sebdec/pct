@@ -1,29 +1,9 @@
 .trail-metrics {
-  --region-color: var(--pct-color-pine-glow);
+  --region-color: var(--pct-region-color, var(--pct-color-pine-glow));
 
   width: min(100%, var(--pct-content-page));
   margin: 0 auto clamp(2.5rem, 5vw, 4rem);
   padding: var(--pct-space-4) 0;
-}
-
-.trail-metrics[data-region="desert"] {
-  --region-color: var(--pct-color-desert-dust);
-}
-
-.trail-metrics[data-region="sierra"] {
-  --region-color: var(--pct-color-sierra-snow);
-}
-
-.trail-metrics[data-region="norcal"] {
-  --region-color: var(--pct-color-norcal-forest);
-}
-
-.trail-metrics[data-region="oregon"] {
-  --region-color: var(--pct-color-oregon-lake);
-}
-
-.trail-metrics[data-region="washington"] {
-  --region-color: var(--pct-color-washington-mist);
 }
 
 .trail-metrics dl {
@@ -57,7 +37,6 @@
 }
 
 .trail-metrics__context {
-  grid-template-rows: 1.25rem auto;
   align-content: start;
   margin-bottom: var(--pct-space-4);
   padding-bottom: var(--pct-space-4);
@@ -128,10 +107,6 @@
 
   .trail-metrics__ascent {
     padding-left: 0;
-  }
-
-  .trail-metrics__descent {
-    border-right: 0;
   }
 
   .trail-metrics__section-list {

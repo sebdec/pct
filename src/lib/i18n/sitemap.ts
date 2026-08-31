@@ -8,7 +8,7 @@ import {
   mapUrl,
 } from "../content/urls.ts";
 
-export interface LocalizedSitemapEntry {
+interface LocalizedSitemapEntry {
   en: string;
   fr: string;
 }
