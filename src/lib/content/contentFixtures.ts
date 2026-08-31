@@ -32,7 +32,8 @@ export function createValidContentModel(): ContentModelSource {
     extractionReports: [
       {
         sourceDocumentId: "pct-2026-word-source",
-        generator: "scripts/content/word/extractWordJournal.ts",
+        generator:
+          "Word extraction pipeline, retired after the approved import",
         counts: {
           trailEntries: 2,
           postTrailEntries: 1,

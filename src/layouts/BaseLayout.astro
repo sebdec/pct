@@ -146,7 +146,9 @@ const socialCardAlt =
             "",
             `${url.pathname}${url.search}${url.hash}`,
           );
-        } catch {}
+        } catch {
+          // Ignore unavailable browser storage and malformed URLs.
+        }
       }
 
       function isAnalyticsDisabled() {
@@ -160,9 +162,9 @@ const socialCardAlt =
         }
       }
 
-      function webAnalyticsBeforeSend(event) {
+      window.webAnalyticsBeforeSend = function (event) {
         return isAnalyticsDisabled() ? null : event;
-      }
+      };
 
       configureAnalyticsOptOut();
 

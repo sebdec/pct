@@ -97,7 +97,7 @@ function applyPreferenceAttributes(
   root.dataset.weightUnit = preferences.weightUnit;
 }
 
-export function applyDisplayPreferences(
+function applyDisplayPreferences(
   documentRoot: Document,
   preferences = readDisplayPreferences(),
 ): void {

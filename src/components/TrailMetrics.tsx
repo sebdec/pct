@@ -6,7 +6,7 @@ import UnitValue from "./UnitValue.tsx";
 import "./TrailMetricLabel.css";
 import "./TrailMetrics.css";
 
-export interface TrailSectionLabel {
+interface TrailSectionLabel {
   code: string;
   properName: string;
 }

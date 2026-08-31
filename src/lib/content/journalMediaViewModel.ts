@@ -1,14 +1,14 @@
 import type { LocalizedPhoto, MediaAsset, Photo } from "./schemas.ts";
 import { sourceLocale } from "./locales.ts";
 
-export interface PublishedJournalPhotoViewModel {
+interface PublishedJournalPhotoViewModel {
   state: "published";
   placement: Photo;
   asset: MediaAsset;
   copy: LocalizedPhoto;
 }
 
-export interface PlaceholderJournalPhotoViewModel {
+interface PlaceholderJournalPhotoViewModel {
   state: "placeholder";
   placement: Photo;
   asset: MediaAsset | null;

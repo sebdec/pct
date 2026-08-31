@@ -17,7 +17,7 @@ import type {
   TrailDay,
 } from "./schemas.ts";
 
-export interface JournalNavigationItem {
+interface JournalNavigationItem {
   dayId: string;
   sequence: number;
   locationLabel: string;
@@ -30,7 +30,7 @@ export interface JournalNavigatorItem extends JournalNavigationItem {
   mileEnd: number | null;
 }
 
-export interface JournalTrailMetrics {
+interface JournalTrailMetrics {
   mileStart: number;
   mileEnd: number;
   distanceMiles: number;

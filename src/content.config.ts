@@ -2,7 +2,6 @@ import { defineCollection } from "astro:content";
 import { file, glob } from "astro/loaders";
 
 import {
-  correctionSchema,
   daySchema,
   gearItemSchema,
   gearProductLinkSchema,
@@ -18,8 +17,6 @@ import {
   photoSchema,
   regionSchema,
   sectionSchema,
-  sourceDocumentSchema,
-  supportingPageSchema,
   trailRouteSchema,
 } from "./lib/content/schemas.ts";
 
@@ -83,24 +80,9 @@ const mediaAssets = defineCollection({
   schema: mediaAssetSchema,
 });
 
-const corrections = defineCollection({
-  loader: file("src/data/source/corrections.json"),
-  schema: correctionSchema,
-});
-
-const sourceDocuments = defineCollection({
-  loader: file("src/data/source/word-source.json"),
-  schema: sourceDocumentSchema,
-});
-
 const journal = defineCollection({
   loader: glob({ pattern: "**/day-*.md", base: "./src/content/journal" }),
   schema: journalEntrySchema,
-});
-
-const pages = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/pages" }),
-  schema: supportingPageSchema,
 });
 
 const glossary = defineCollection({
@@ -141,10 +123,7 @@ export const collections = {
   gearSummaries,
   photos,
   mediaAssets,
-  corrections,
-  sourceDocuments,
   journal,
-  pages,
   glossary,
   glossaryEnglish,
   gear,
