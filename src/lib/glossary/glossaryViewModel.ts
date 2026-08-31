@@ -4,14 +4,14 @@ import type {
 } from "../content/schemas.ts";
 import type { Locale } from "../content/locales.ts";
 
-export interface GlossaryListEntry {
+interface GlossaryListEntry {
   id: string;
   term: string;
   definition: string;
   aliases: string[];
 }
 
-export interface GlossaryGroup {
+interface GlossaryGroup {
   initial: string;
   entries: GlossaryListEntry[];
 }

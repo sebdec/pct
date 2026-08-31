@@ -18,8 +18,6 @@ const localizedRegionLabels = {
   },
 } as const satisfies Record<Locale, Record<TrailDay["regionId"], string>>;
 
-export const regionLabels = localizedRegionLabels.fr;
-
 export function getRegionLabels(locale: Locale) {
   return localizedRegionLabels[locale];
 }

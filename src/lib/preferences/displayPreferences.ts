@@ -1,4 +1,5 @@
 import type { Locale } from "../content/locales.ts";
+import { kilometersPerMile } from "../content/metrics.ts";
 
 export const displayPreferencesStorageKey = "pct.display-preferences.v1";
 
@@ -12,9 +13,8 @@ export interface DisplayPreferences {
   weightUnit: WeightUnit;
 }
 
-export const kilometersPerMile = 1.609344;
-export const ouncesPerGram = 0.03527396195;
-export const feetPerMeter = 3.280839895;
+const ouncesPerGram = 0.03527396195;
+const feetPerMeter = 3.280839895;
 
 function isUsLocale(locale: string): boolean {
   try {

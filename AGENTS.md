@@ -87,7 +87,7 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Treat `quality-budgets.json` as the enforced source of truth for generated asset and route budgets. Run `pnpm quality:validate` only after a fresh production build.
 - Keep automated axe coverage at WCAG A and AA for representative English and French routes on desktop and 360 px. Fix confirmed violations instead of excluding rules without an approved rationale.
 - Keep `robots.txt`, `llms.txt`, social metadata and JSON-LD aligned with canonical public routes. `llms.txt` is a discovery aid, not a crawler directive or an SEO substitute.
-- Regenerate `public/social-card.png` through `pnpm quality:social-card` after an approved brand change.
+- Keep `public/social-card.png` aligned with the approved brand after a reviewed visual change.
 - Every bug fix must include a regression check at the narrowest useful level.
 - Keep GitHub Actions permissions read-only unless an approved workflow needs more.
 - Never commit `dist`, `.astro`, credentials, local environment files or generated media derivatives that can be reproduced.
@@ -110,19 +110,16 @@ Passing static data through React is not enough reason to hydrate it. Keep the j
 - Scope photo placement IDs to their owner. Use `photo-074001` for the first photo of `day-074` and `photo-introduction-001` for the first photo of the introduction page. Keep global source order in the separate `order` field.
 - Mark neutral entities as published only when their required French entry exists.
 - Retain Word block references on imported entities. Record proposed, approved or rejected editorial changes in `src/data/source/corrections.json`.
-- Regenerate Word-derived files only through `pnpm content:extract -- --input <path>`. Do not hand-edit generated journal, page, gear, glossary, trail, photo, source-manifest or extraction-report files.
-- Treat the approved source hash and `src/data/source/word-extraction-report.json` as extraction invariants. A source change requires a newly approved issue before updating the hash or structural counts.
+- Treat committed content and data as the publication sources of truth. Preserve source references and review broad migrations separately from editorial corrections.
+- Treat the approved source hash and `src/data/source/word-extraction-report.json` as provenance invariants. A source change requires a newly approved issue before updating the hash or structural counts.
 - Run `pnpm content:validate` after every content change. Add a focused invalid fixture whenever a new cross-entry invariant is introduced.
 - Do not place original full-resolution photos in Git. Commit only approved optimized derivatives with stable names and attribution metadata where needed.
 - Never import the Word source or Google Photos export wholesale into this repository.
-- Keep original photos, matching reports and generated derivatives outside Git. Only approved fingerprint associations, provider-neutral manifests and localized media copy are versioned.
-- Use the images embedded in the approved Word document as the V1 media source. Extract them only into the ignored `.media-workspace` through `media:extract-word`. A later upgrade to higher-resolution originals requires a separate approved issue.
-- Run media work through the separate `media:extract-word`, `media:match`, `media:approve`, `media:generate`, `media:validate` and `media:upload` commands. Matching must never approve ambiguous candidates silently.
-- Keep media paths immutable and content-addressed. Blob upload is dry-run by default and must never overwrite or delete remote content.
-- Upload only asset IDs explicitly listed in `src/data/media/upload-selection.json`. Keep the selection empty until the human approves the exact assets, especially while official PCT logo usage remains unresolved.
-- Use the reviewed PCTA January 2026 centerline and half-mile layers as the route source. Import them only through `pnpm route:import` and commit only the normalized snapshot under `src/data/map`.
+- Keep original photos and generated derivatives outside Git. Only approved provider-neutral manifests and localized media copy are versioned.
+- Keep media paths immutable and content-addressed. Remote upload, overwrite or deletion always requires explicit authorization.
+- Use the committed PCTA January 2026 centerline snapshot under `src/data/map` as the route source.
 - Preserve the exact PCTA attribution from the route manifest wherever the route is rendered. The route is a public reference geometry, not the author's personal GPS trace.
-- Keep raw GIS responses, import reports and route previews in the ignored `.route-workspace`. CI and static builds must never depend on ArcGIS availability.
+- CI and static builds must never depend on ArcGIS availability.
 - Treat PCTA source revision changes as a separate reviewed migration. Do not weaken pinned edit dates or structural counts to accept upstream drift silently.
 - Keep journal mileage canonical. Only journal mile 2,656 may clamp to the official 2,655.84-mile northern terminus. A zero-distance trail day maps to a point without inventing distance.
 

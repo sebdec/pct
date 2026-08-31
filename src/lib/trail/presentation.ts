@@ -1,6 +1,6 @@
 import type { TrailDay } from "../content/schemas.ts";
 
-export const regionColorVariables = {
+const regionColorVariables = {
   desert: "--pct-color-desert-dust",
   sierra: "--pct-color-sierra-snow",
   norcal: "--pct-color-norcal-forest",

@@ -1,7 +1,7 @@
 import { dayIdSchema, stableIdSchema } from "./schemas.ts";
 import { defaultLocale, type Locale } from "./locales.ts";
 
-export function localizeUrl(path: string, locale: Locale): string {
+function localizeUrl(path: string, locale: Locale): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
   if (locale === defaultLocale) return normalizedPath;

@@ -20,7 +20,7 @@ function degreesToRadians(value: number): number {
   return (value * Math.PI) / 180;
 }
 
-export function coordinateDistanceMeters(
+function coordinateDistanceMeters(
   left: RouteCoordinate,
   right: RouteCoordinate,
 ): number {

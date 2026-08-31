@@ -1,6 +1,6 @@
 import { z } from "astro/zod";
 
-export const supportedLocales = ["fr", "en"] as const;
+const supportedLocales = ["fr", "en"] as const;
 export const publishedLocales = ["en", "fr"] as const;
 export const defaultLocale = "en" as const;
 export const sourceLocale = "fr" as const;
@@ -18,7 +18,3 @@ export const localeFormattingTags: Record<Locale, string> = {
   en: "en-US",
   fr: "fr-FR",
 };
-
-export function isLocale(value: string): value is Locale {
-  return localeSchema.safeParse(value).success;
-}

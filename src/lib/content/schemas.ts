@@ -19,7 +19,7 @@ export const stableIdSchema = z
   .min(1)
   .regex(stableIdPattern, "Use a lowercase kebab-case identifier.");
 
-export const correctionFieldSchema = z
+const correctionFieldSchema = z
   .string()
   .regex(
     /^[a-z][a-zA-Z0-9]*(?:\.[a-z][a-zA-Z0-9]*)*$/,
@@ -30,12 +30,12 @@ export const dayIdSchema = z
   .string()
   .regex(dayIdPattern, "Use a day identifier such as day-001.");
 
-export const isoDateSchema = z
+const isoDateSchema = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/, "Use an ISO date in YYYY-MM-DD format.")
   .refine(isIsoDate, "Use a valid calendar date.");
 
-export const regionIdSchema = z.enum([
+const regionIdSchema = z.enum([
   "desert",
   "sierra",
   "norcal",
@@ -43,7 +43,7 @@ export const regionIdSchema = z.enum([
   "washington",
 ]);
 
-export const sourceReferenceSchema = z.object({
+const sourceReferenceSchema = z.object({
   document: z.string().min(1),
   blockType: z.enum(["heading", "paragraph", "table", "image", "manual"]),
   blockIndex: z.number().int().nonnegative(),
@@ -109,7 +109,7 @@ export const regionSchema = z.object({
   ...publishedEntityFields,
 });
 
-export const sectionIdSchema = z
+const sectionIdSchema = z
   .string()
   .regex(/^section-(?:california|oregon|washington)-[a-z0-9]+$/);
 
@@ -165,7 +165,7 @@ export const trailDaySchema = z.object({
   locationId: stableIdSchema,
 });
 
-export const postTrailDaySchema = z.object({
+const postTrailDaySchema = z.object({
   ...dayBaseFields,
   kind: z.literal("post-trail"),
   endDate: isoDateSchema.optional(),
@@ -210,9 +210,9 @@ export const localizedPhotoSchema = z.object({
   caption: z.string().min(1).optional(),
 });
 
-export const mediaVariantFormatSchema = z.enum(["avif", "webp"]);
+const mediaVariantFormatSchema = z.enum(["avif", "webp"]);
 
-export const mediaVariantSchema = z.object({
+const mediaVariantSchema = z.object({
   format: mediaVariantFormatSchema,
   width: z.number().int().positive(),
   height: z.number().int().positive(),
@@ -238,15 +238,7 @@ export const mediaAssetSchema = z.object({
   published: z.boolean().default(false),
 });
 
-export const approvedMediaMatchSchema = z.object({
-  assetKey: stableIdSchema,
-  assetId: stableIdSchema,
-  sourceFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
-  similarity: z.number().min(0).max(1),
-  approval: z.enum(["automatic", "manual"]),
-});
-
-export const routeCoordinateSchema = z.tuple([
+const routeCoordinateSchema = z.tuple([
   z.number().min(-180).max(180),
   z.number().min(-90).max(90),
 ]);
@@ -388,7 +380,7 @@ export const gearSummarySchema = z.object({
   sourceUrl: z.url(),
 });
 
-export const supportingPageKindSchema = z.enum([
+const supportingPageKindSchema = z.enum([
   "introduction",
   "analysis",
   "gear",
@@ -427,20 +419,16 @@ export const correctionSchema = z.object({
   sourceRef: sourceReferenceSchema,
 });
 
-export type SourceReference = z.infer<typeof sourceReferenceSchema>;
 export type SourceDocument = z.infer<typeof sourceDocumentSchema>;
 export type WordExtractionReport = z.infer<typeof wordExtractionReportSchema>;
 export type Region = z.infer<typeof regionSchema>;
 export type TrailSection = z.infer<typeof sectionSchema>;
 export type TrailDay = z.infer<typeof trailDaySchema>;
-export type PostTrailDay = z.infer<typeof postTrailDaySchema>;
 export type Day = z.infer<typeof daySchema>;
 export type JournalEntry = z.infer<typeof journalEntrySchema>;
 export type Photo = z.infer<typeof photoSchema>;
 export type LocalizedPhoto = z.infer<typeof localizedPhotoSchema>;
-export type MediaVariant = z.infer<typeof mediaVariantSchema>;
 export type MediaAsset = z.infer<typeof mediaAssetSchema>;
-export type ApprovedMediaMatch = z.infer<typeof approvedMediaMatchSchema>;
 export type RouteCoordinate = z.infer<typeof routeCoordinateSchema>;
 export type TrailRoute = z.infer<typeof trailRouteSchema>;
 export type MapPoint = z.infer<typeof mapPointSchema>;
@@ -452,6 +440,5 @@ export type LocalizedGlossaryEntry = z.infer<
 export type GearItem = z.infer<typeof gearItemSchema>;
 export type LocalizedGearEntry = z.infer<typeof localizedGearEntrySchema>;
 export type GearProductLink = z.infer<typeof gearProductLinkSchema>;
-export type GearSummary = z.infer<typeof gearSummarySchema>;
 export type SupportingPage = z.infer<typeof supportingPageSchema>;
 export type Correction = z.infer<typeof correctionSchema>;

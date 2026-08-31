@@ -57,7 +57,7 @@ function sourceOrder(item: GearItem): number {
   return row ? Number(row) : Number.MAX_SAFE_INTEGER;
 }
 
-export interface GearListItem {
+interface GearListItem {
   id: string;
   name: string;
   detail?: string;

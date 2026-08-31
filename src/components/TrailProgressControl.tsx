@@ -5,7 +5,7 @@ import { getProgressStop } from "../lib/trail/presentation.ts";
 import UnitValue from "./UnitValue.tsx";
 import "./TrailProgressControl.css";
 
-export interface TrailProgressStepAction {
+interface TrailProgressStepAction {
   ariaLabel: string;
   href?: string;
   onClick?: () => void;

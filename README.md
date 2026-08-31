@@ -85,46 +85,19 @@ pnpm content:validate
 
 See `src/content/README.md` for directory and editing rules.
 
-## Word journal extraction
+## Publication sources
 
-The generated French content comes from the approved `PCT 2026 - Sebdec.docx` source identified by SHA-256 `f57f19abb6360609f7f517ea53c1acbd824ef6a69faed3b599911800fd81eb4d`.
+The French journal and media metadata were imported from the approved `PCT 2026 - Sebdec.docx` source. The normalized content, responsive Blob URLs and PCTA route snapshot are now versioned publication inputs.
 
-Keep the source outside the repository and regenerate with:
+The production build is deliberately independent from the Word document, original photos, image processing tools and ArcGIS. Keep those private sources outside the repository.
 
-```sh
-pnpm content:extract -- --input "/absolute/path/to/PCT 2026 - Sebdec.docx"
-pnpm content:validate
-```
-
-The TypeScript extractor reads ordered OOXML directly. It verifies the source hash and structural counts, validates the complete generated model in memory, stages every output and only then replaces generated paths. Repeating the command against the approved source is byte-for-byte deterministic.
-
-`src/data/source/word-source.json` records source identity and verified structural counts. `src/data/source/word-extraction-report.json` records generated counts, validation results and known source exceptions. Review both files plus representative journal entries after regeneration.
-
-The extractor generates placement metadata for every embedded Word image without writing an image binary. Do not commit the Word source, private exports, original photos, unoptimized source photos or credentials.
-
-## Photo pipeline
-
-The local media pipeline extracts the images embedded in the approved Word source, verifies exact fingerprint associations, creates responsive AVIF and WebP derivatives and prepares immutable Vercel Blob paths. It is independent from the static build and uses synthetic images in automated tests. A future upgrade to higher-resolution originals remains possible through the same neutral manifest but is not a V1 dependency.
-
-See `scripts/media/README.md` for the review, generation, validation and dry-run upload workflow. No real upload is performed without a separate explicit authorization.
-
-## PCT route data
-
-The future Explorer uses a committed offline snapshot of the official 2026 Pacific Crest Trail Association centerline and half-mile markers. The public site never depends on ArcGIS at runtime. Journal miles remain canonical and the rounded final mile 2,656 maps explicitly to the official 2,655.84-mile northern terminus.
-
-See `scripts/map/README.md` for source provenance, CC BY 4.0 attribution, deterministic import, validation and static preview commands. Raw GIS responses and review artifacts stay outside Git.
+`src/data/source` preserves source identity and extraction evidence. The route manifest preserves the PCTA revision, license and exact attribution. `pnpm content:validate` checks these committed inputs before publication.
 
 ## Quality budgets
 
 `quality-budgets.json` is the versioned source of truth for compressed HTML, JavaScript, CSS and map-data limits plus the maximum generated-image size. `pnpm quality:validate` runs after `pnpm build`, checks every generated HTML route and validates metadata, canonical URLs, language alternates, social tags, JSON-LD, `robots.txt` and `llms.txt`.
 
 The map route and geography live in 1 shared static JSON payload instead of being serialized into every map page. Accessibility coverage uses axe on representative English and French routes at desktop and 360 px. Keyboard and reduced-motion checks cover the primary interactive flows.
-
-Regenerate the default 1200 × 630 social card after an approved brand change with:
-
-```sh
-pnpm quality:social-card
-```
 
 Do not increase a budget or disable an accessibility rule without recording the measured reason in the active Notion issue.
 

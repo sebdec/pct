@@ -1331,7 +1331,7 @@ export function assertContentModel(source: ContentModelSource): void {
   }
 }
 
-export function formatContentValidationIssues(
+function formatContentValidationIssues(
   issues: readonly ContentValidationIssue[],
 ): string {
   return issues
