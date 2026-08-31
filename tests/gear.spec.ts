@@ -83,14 +83,18 @@ test("renders the simplified equipment chart and complete manifest", async ({
   );
   expect(activeElementTagName).not.toMatch(/^(a|circle|svg)$/i);
 
+  const chartVisual = page.locator(".gear-chart__visual svg");
+  await chartVisual.scrollIntoViewIfNeeded();
+  const dragChartBox = await chartVisual.boundingBox();
+  expect(dragChartBox).not.toBeNull();
   await page.mouse.move(
-    chartBox!.x + chartBox!.width * 0.87,
-    chartBox!.y + chartBox!.height * 0.5,
+    dragChartBox!.x + dragChartBox!.width * 0.87,
+    dragChartBox!.y + dragChartBox!.height * 0.5,
   );
   await page.mouse.down();
   await page.mouse.move(
-    chartBox!.x + chartBox!.width + 60,
-    chartBox!.y + chartBox!.height + 60,
+    dragChartBox!.x + dragChartBox!.width + 60,
+    dragChartBox!.y + dragChartBox!.height + 60,
     { steps: 8 },
   );
   await page.mouse.up();
