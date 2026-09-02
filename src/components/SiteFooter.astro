@@ -1,5 +1,5 @@
 <footer class="site-footer">
-  <p>© 2026 Sebdec / One Pole</p>
+  <p>© 2026 <a href="https://sebdec.com">Sebdec</a> / One Pole</p>
 </footer>
 
 <style>
@@ -12,5 +12,18 @@
 
   p {
     margin: 0;
+  }
+
+  a {
+    text-decoration-color: var(--pct-color-faint);
+    text-underline-offset: 0.18em;
+    transition:
+      color 160ms ease,
+      text-decoration-color 160ms ease;
+  }
+
+  a:hover {
+    color: var(--pct-color-white);
+    text-decoration-color: currentColor;
   }
 </style>
