@@ -1,6 +1,6 @@
 ---
 import TextLink from "./TextLink.astro";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 
 interface CreditLink {
@@ -10,10 +10,10 @@ interface CreditLink {
 
 interface Props {
   links: CreditLink[];
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { links, locale = defaultLocale } = Astro.props;
+const { links, locale } = Astro.props;
 const labels = getUi(locale);
 ---
 

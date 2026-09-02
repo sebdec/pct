@@ -3,16 +3,16 @@ import type {
   JournalNavigatorItem,
   JournalPageViewModel,
 } from "../lib/content/journalViewModel.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import JournalProgressControl from "./JournalProgressControl.tsx";
 
 interface Props {
   page: JournalPageViewModel;
   entries: readonly JournalNavigatorItem[];
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { page, entries, locale = defaultLocale } = Astro.props;
+const { page, entries, locale } = Astro.props;
 ---
 
 <div class="journal-day-navigator">

@@ -48,15 +48,6 @@ const categoryPresentation = [
   },
 ] as const;
 
-function sourceOrder(item: GearItem): number {
-  const rowReference = item.sourceRefs.find(({ detail }) =>
-    detail?.includes("row="),
-  );
-  const row = rowReference?.detail?.match(/(?:^|; )row=(\d+)/)?.[1];
-
-  return row ? Number(row) : Number.MAX_SAFE_INTEGER;
-}
-
 interface GearListItem {
   id: string;
   name: string;
@@ -74,7 +65,7 @@ export interface GearCategory {
   temporary: boolean;
 }
 
-export interface GearViewModel {
+interface GearViewModel {
   categories: GearCategory[];
   itemCount: number;
   documentedWeightGrams: number;
@@ -98,7 +89,7 @@ export function buildGearViewModel(
   const categories = categoryPresentation.map(({ id, labels, color }) => {
     const categoryItems = publishedItems
       .filter(({ categoryId }) => categoryId === id)
-      .toSorted((left, right) => sourceOrder(left) - sourceOrder(right))
+      .toSorted((left, right) => left.order - right.order)
       .map((item) => {
         const localized = localizedByItemId.get(item.id);
 
@@ -153,21 +144,4 @@ export function buildGearViewModel(
     sierraWeightGrams:
       categories.find(({ id }) => id === "sierra")?.weightGrams ?? 0,
   };
-}
-
-export function formatGearWeight(weightGrams: number): string {
-  if (weightGrams < 1_000) {
-    return weightGrams.toLocaleString("fr-FR") + " g";
-  }
-
-  return (
-    (weightGrams / 1_000).toLocaleString("fr-FR", {
-      maximumFractionDigits: 2,
-      minimumFractionDigits: 2,
-    }) + " kg"
-  );
-}
-
-export function formatGearWeightInGrams(weightGrams: number): string {
-  return weightGrams.toLocaleString("fr-FR") + " g";
 }

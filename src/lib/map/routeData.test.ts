@@ -10,7 +10,7 @@ import {
 import {
   createRouteIndex,
   getCoordinateAtMile,
-  getTrailDayRouteRange,
+  getRouteProgressAtMile,
 } from "./route.ts";
 
 async function readJson(relativePath: string): Promise<unknown> {
@@ -69,24 +69,22 @@ describe("committed PCTA 2026 route snapshot", () => {
     const days = (daysValue as unknown[]).map((value) =>
       daySchema.parse(value),
     );
-    const ranges = days.map((day) => getTrailDayRouteRange(day, route));
-    const trailRanges = ranges.filter(
-      (range): range is NonNullable<typeof range> => range !== null,
-    );
+    const trailDays = days.filter((day) => day.kind === "trail");
+    const postTrailDays = days.filter((day) => day.kind === "post-trail");
 
-    expect(trailRanges).toHaveLength(97);
-    expect(trailRanges.filter(({ isPoint }) => isPoint)).toEqual([
+    expect(trailDays).toHaveLength(97);
+    expect(
+      trailDays.filter(({ mileStart, mileEnd }) => mileStart === mileEnd),
+    ).toEqual([
       expect.objectContaining({
-        dayId: "day-028",
+        id: "day-028",
         mileStart: 703,
         mileEnd: 703,
       }),
     ]);
-    expect(ranges.filter((range) => range === null)).toHaveLength(3);
-    expect(trailRanges.at(-1)).toMatchObject({
-      dayId: "day-097",
-      endProgress: 1,
-    });
+    expect(postTrailDays).toHaveLength(3);
+    expect(trailDays.at(-1)?.id).toBe("day-097");
+    expect(getRouteProgressAtMile(route, trailDays.at(-1)!.mileEnd)).toBe(1);
   });
 
   it("maps official and journal terminal miles to the same coordinate", async () => {

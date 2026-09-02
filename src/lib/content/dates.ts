@@ -26,7 +26,3 @@ export function formatDate(value: string, locale: Locale): string {
     dateStyle: "long",
   }).format(parseLocalIsoDate(value));
 }
-
-export function formatFrenchDate(value: string): string {
-  return formatDate(value, "fr");
-}

@@ -1,16 +1,16 @@
 ---
 import type { JournalPageViewModel } from "../lib/content/journalViewModel.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import type { TrailSection } from "../lib/content/schemas.ts";
 import TrailMetrics from "./TrailMetrics.tsx";
 
 interface Props {
   page: JournalPageViewModel;
   sections: readonly TrailSection[];
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { page, sections, locale = defaultLocale } = Astro.props;
+const { page, sections, locale } = Astro.props;
 ---
 
 {

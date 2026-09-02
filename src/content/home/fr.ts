@@ -1,5 +1,5 @@
-import type { TrailOverviewContent } from "../../components/TrailOverviewMetrics.tsx";
 import { getRegionLabels } from "../../lib/content/regions.ts";
+import type { TrailOverviewContent } from "../../lib/trail/presentation.ts";
 
 const regionLabels = getRegionLabels("fr");
 

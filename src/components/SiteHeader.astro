@@ -1,16 +1,16 @@
 ---
 import pctMark from "../assets/pct-mark.svg?raw";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { stripLocaleFromUrl } from "../lib/content/urls.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 import { getSiteNavigation } from "../lib/site";
 import HeaderPreferences from "./HeaderPreferences.astro";
 
 interface Props {
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { locale = defaultLocale } = Astro.props;
+const { locale } = Astro.props;
 const currentPath = Astro.url.pathname;
 const routePath = stripLocaleFromUrl(currentPath);
 const navigation = getSiteNavigation(locale);

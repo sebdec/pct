@@ -1,22 +1,18 @@
 ---
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { switchLocaleUrl } from "../lib/content/urls.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 
 interface Props {
-  locale?: Locale;
+  locale: Locale;
   currentPath: string;
 }
 
-const { locale = defaultLocale, currentPath } = Astro.props;
+const { locale, currentPath } = Astro.props;
 const labels = getUi(locale);
 ---
 
-<pct-header-preferences
-  class="header-preferences"
-  data-header-preferences
-  data-active-locale={locale}
->
+<pct-header-preferences class="header-preferences" data-active-locale={locale}>
   <button
     class="header-preferences__trigger"
     type="button"
@@ -335,12 +331,6 @@ const labels = getUi(locale);
   label input:focus-visible + span {
     outline: 2px solid var(--pct-color-pine-glow);
     outline-offset: 3px;
-  }
-
-  .header-preferences__disabled {
-    cursor: not-allowed;
-    filter: grayscale(1);
-    opacity: 0.32;
   }
 
   @media (max-width: 48rem) {

@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { formatFrenchDate, parseLocalIsoDate } from "./dates.ts";
+import { formatDate, parseLocalIsoDate } from "./dates.ts";
 
 describe("journal dates", () => {
-  it("formats the deterministic French fallback", () => {
-    expect(formatFrenchDate("2026-04-18")).toBe("18 avril 2026");
+  it("formats localized dates deterministically", () => {
+    expect(formatDate("2026-04-18", "fr")).toBe("18 avril 2026");
+    expect(formatDate("2026-04-18", "en")).toBe("April 18, 2026");
   });
 
   it("parses date-only values without changing the calendar day", () => {

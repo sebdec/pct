@@ -3,9 +3,8 @@ import { getCollection } from "astro:content";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { buildMapDayViewModels } from "../lib/map/mapExperience.ts";
-import { mapPayloadPath } from "../lib/map/mapPayload.ts";
 import { site } from "../lib/site.ts";
 import PageCredits from "./PageCredits.astro";
 import SiteHeader from "./SiteHeader.astro";
@@ -13,10 +12,10 @@ import TrailMapExperience from "./TrailMapExperience";
 
 interface Props {
   initialDayId?: string;
-  locale?: Locale;
+  locale: Locale;
 }
 
-const { initialDayId, locale = defaultLocale } = Astro.props;
+const { initialDayId, locale } = Astro.props;
 const [dayEntries, journalEntries, sectionEntries, routeEntries, areaEntries] =
   await Promise.all([
     getCollection("days"),
@@ -71,7 +70,6 @@ const description =
   <main class="map-page">
     <TrailMapExperience
       days={days}
-      mapPayloadUrl={mapPayloadPath}
       mapStyleUrl={mapStyleUrl}
       initialDayId={initialDayId}
       {locale}

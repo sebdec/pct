@@ -174,6 +174,11 @@ test("keeps the map page within the mobile viewport", async ({ page }) => {
   ).toHaveAttribute("target", "_blank");
   const attribution = page.locator(".maplibregl-ctrl-attrib");
   await expect(attribution).toBeAttached();
+  await expect(page.locator(".maplibregl-map")).toHaveAttribute(
+    "data-map-ready",
+    "true",
+    { timeout: 30_000 },
+  );
   if (
     !(await attribution.evaluate((element) =>
       element.classList.contains("maplibregl-compact-show"),
@@ -181,12 +186,15 @@ test("keeps the map page within the mobile viewport", async ({ page }) => {
   ) {
     await page.locator(".maplibregl-ctrl-attrib-button").click();
   }
-  await expect(
-    attribution.getByRole("link", { name: "OpenStreetMap", exact: true }),
-  ).toBeVisible();
-  await expect(
-    attribution.getByRole("link", { name: "OpenStreetMap", exact: true }),
-  ).toHaveAttribute("href", "https://www.openstreetmap.org/copyright");
+  const openStreetMapAttribution = attribution.getByRole("link", {
+    name: "OpenStreetMap",
+    exact: true,
+  });
+  await expect(openStreetMapAttribution).toBeVisible();
+  await expect(openStreetMapAttribution).toHaveAttribute(
+    "href",
+    "https://www.openstreetmap.org/copyright",
+  );
   await expect(
     attribution.getByRole("link", {
       name: "Trail data © Pacific Crest Trail Association, CC BY 4.0, 2026",

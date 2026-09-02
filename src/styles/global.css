@@ -1,23 +1,26 @@
-@import "tailwindcss";
+@import "tailwindcss/preflight.css" layer(base);
 @import "./tokens.css";
 @import "./text-link.css";
 @import "./editorial-rich-text.css";
 
-@theme inline {
-  --color-night-trail: var(--pct-color-night-trail);
-  --color-deep-camp: var(--pct-color-deep-camp);
-  --color-copy: var(--pct-color-copy);
-  --color-muted: var(--pct-color-muted);
-  --color-faint: var(--pct-color-faint);
-  --color-pine-glow: var(--pct-color-pine-glow);
-  --color-pine-glow-soft: var(--pct-color-pine-glow-soft);
-  --color-desert-dust: var(--pct-color-desert-dust);
-  --color-sierra-snow: var(--pct-color-sierra-snow);
-  --color-norcal-forest: var(--pct-color-norcal-forest);
-  --color-oregon-lake: var(--pct-color-oregon-lake);
-  --color-washington-mist: var(--pct-color-washington-mist);
-  --font-display: var(--pct-font-display);
-  --font-journal: var(--pct-font-journal);
+[data-region="desert"] {
+  --pct-region-color: var(--pct-color-desert-dust);
+}
+
+[data-region="sierra"] {
+  --pct-region-color: var(--pct-color-sierra-snow);
+}
+
+[data-region="norcal"] {
+  --pct-region-color: var(--pct-color-norcal-forest);
+}
+
+[data-region="oregon"] {
+  --pct-region-color: var(--pct-color-oregon-lake);
+}
+
+[data-region="washington"] {
+  --pct-region-color: var(--pct-color-washington-mist);
 }
 
 *,

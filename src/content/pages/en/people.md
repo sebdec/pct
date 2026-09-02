@@ -4,16 +4,6 @@ locale: en
 kind: people
 title: Hikers met on the way (not exhaustive list)
 published: true
-sourceRefs:
-  - document: PCT 2026 - Sebdec.docx
-    blockType: heading
-    blockIndex: 49
-  - document: PCT 2026 - Sebdec.docx
-    blockType: paragraph
-    blockIndex: 50
-  - document: PCT 2026 - Sebdec.docx
-    blockType: table
-    blockIndex: 51
 ---
 
 The trail alternates long hours of loneliness and repeated encounters. Some of the names below are first names, many are trail names. The list follows the overall order of meetings and remains open to completion.

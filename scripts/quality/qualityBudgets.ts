@@ -17,7 +17,7 @@ export interface QualityBudgets {
   };
 }
 
-export interface BuildViolation {
+interface BuildViolation {
   route: string;
   rule: string;
   message: string;

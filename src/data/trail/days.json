@@ -11,20 +11,7 @@
     "ascentMeters": 751,
     "descentMeters": 684,
     "locationId": "campo-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 56
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 57,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-002",
@@ -38,20 +25,7 @@
     "ascentMeters": 1410,
     "descentMeters": 561,
     "locationId": "mount-laguna-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 66
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 67,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-003",
@@ -65,20 +39,7 @@
     "ascentMeters": 902,
     "descentMeters": 1664,
     "locationId": "comte-de-san-diego-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 73
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 74,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-004",
@@ -92,20 +53,7 @@
     "ascentMeters": 868,
     "descentMeters": 821,
     "locationId": "comte-de-san-diego-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 81
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 82,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-005",
@@ -119,20 +67,7 @@
     "ascentMeters": 785,
     "descentMeters": 862,
     "locationId": "warner-springs-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 89
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 90,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-006",
@@ -146,20 +81,7 @@
     "ascentMeters": 1492,
     "descentMeters": 1162,
     "locationId": "anza-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 99
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 100,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-007",
@@ -173,20 +95,7 @@
     "ascentMeters": 1960,
     "descentMeters": 1134,
     "locationId": "san-jacinto-mountain-center-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 107
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 108,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-008",
@@ -200,20 +109,7 @@
     "ascentMeters": 1410,
     "descentMeters": 2453,
     "locationId": "idyllwild-pine-cove-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 116
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 117,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-009",
@@ -227,20 +123,7 @@
     "ascentMeters": 1553,
     "descentMeters": 1465,
     "locationId": "morongo-valley-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 124
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 125,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-010",
@@ -254,20 +137,7 @@
     "ascentMeters": 2126,
     "descentMeters": 1186,
     "locationId": "big-bear-city-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 130
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 131,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-011",
@@ -281,20 +151,7 @@
     "ascentMeters": 435,
     "descentMeters": 312,
     "locationId": "big-bear-lake-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 139
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 140,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-012",
@@ -308,20 +165,7 @@
     "ascentMeters": 750,
     "descentMeters": 1641,
     "locationId": "running-springs-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 147
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 148,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-013",
@@ -335,20 +179,7 @@
     "ascentMeters": 887,
     "descentMeters": 1221,
     "locationId": "hesperia-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 155
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 156,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-014",
@@ -362,20 +193,7 @@
     "ascentMeters": 2007,
     "descentMeters": 1080,
     "locationId": "lytle-creek-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 165
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 166,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-015",
@@ -389,20 +207,7 @@
     "ascentMeters": 1815,
     "descentMeters": 988,
     "locationId": "valyermo-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 176
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 177,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-016",
@@ -416,20 +221,7 @@
     "ascentMeters": 1375,
     "descentMeters": 2465,
     "locationId": "pearblossom-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 185
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 186,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-017",
@@ -443,20 +235,7 @@
     "ascentMeters": 1596,
     "descentMeters": 2073,
     "locationId": "palmdale-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 194
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 195,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-018",
@@ -470,20 +249,7 @@
     "ascentMeters": 1326,
     "descentMeters": 1349,
     "locationId": "agua-dulce-santa-clarita-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 203
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 204,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-019",
@@ -497,20 +263,7 @@
     "ascentMeters": 2006,
     "descentMeters": 1691,
     "locationId": "lake-hughes-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 212
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 213,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-020",
@@ -524,20 +277,7 @@
     "ascentMeters": 1064,
     "descentMeters": 1650,
     "locationId": "lancaster-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 221
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 222,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-021",
@@ -551,20 +291,7 @@
     "ascentMeters": 1328,
     "descentMeters": 414,
     "locationId": "los-angeles-aqueduct-comte-de-kern-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 229
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 230,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-022",
@@ -578,20 +305,7 @@
     "ascentMeters": 1478,
     "descentMeters": 1568,
     "locationId": "mojave-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 238
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 239,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-023",
@@ -605,20 +319,7 @@
     "ascentMeters": 1402,
     "descentMeters": 1382,
     "locationId": "caliente-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 246
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 247,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-024",
@@ -632,20 +333,7 @@
     "ascentMeters": 1507,
     "descentMeters": 1637,
     "locationId": "weldon-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 255
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 256,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-025",
@@ -659,20 +347,7 @@
     "ascentMeters": 1839,
     "descentMeters": 1435,
     "locationId": "comte-de-kern-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 264
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 265,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-026",
@@ -686,20 +361,7 @@
     "ascentMeters": 1824,
     "descentMeters": 1760,
     "locationId": "comte-de-tulare-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 273
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 274,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-027",
@@ -713,20 +375,7 @@
     "ascentMeters": 771,
     "descentMeters": 762,
     "locationId": "kennedy-meadows-inyokern-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 282
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 283,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-028",
@@ -740,20 +389,7 @@
     "ascentMeters": 0,
     "descentMeters": 0,
     "locationId": "kennedy-meadows-inyokern-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 293
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 294,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-029",
@@ -767,20 +403,7 @@
     "ascentMeters": 1967,
     "descentMeters": 1019,
     "locationId": "olancha-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 302
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 303,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-030",
@@ -794,20 +417,7 @@
     "ascentMeters": 1233,
     "descentMeters": 1026,
     "locationId": "comte-de-tulare-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 308
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 309,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-031",
@@ -821,20 +431,7 @@
     "ascentMeters": 1376,
     "descentMeters": 1102,
     "locationId": "comte-de-tulare-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 316
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 317,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-032",
@@ -848,20 +445,7 @@
     "ascentMeters": 1290,
     "descentMeters": 1849,
     "locationId": "independence-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 323
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 324,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-033",
@@ -875,20 +459,7 @@
     "ascentMeters": 1351,
     "descentMeters": 1102,
     "locationId": "big-pine-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 332
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 333,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-034",
@@ -902,20 +473,7 @@
     "ascentMeters": 1277,
     "descentMeters": 1039,
     "locationId": "comte-de-fresno-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 341
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 342,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-035",
@@ -929,20 +487,7 @@
     "ascentMeters": 1152,
     "descentMeters": 1582,
     "locationId": "lakeshore-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 350
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 351,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-036",
@@ -956,20 +501,7 @@
     "ascentMeters": 318,
     "descentMeters": 676,
     "locationId": "vermilion-valley-resort-lakeshore-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 359
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 360,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-037",
@@ -983,20 +515,7 @@
     "ascentMeters": 1539,
     "descentMeters": 1117,
     "locationId": "lakeshore-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 369
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 370,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-038",
@@ -1010,20 +529,7 @@
     "ascentMeters": 1070,
     "descentMeters": 1268,
     "locationId": "comte-de-madera-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 379
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 380,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-039",
@@ -1037,20 +543,7 @@
     "ascentMeters": 1097,
     "descentMeters": 1558,
     "locationId": "yosemite-parc-national-de-yosemite-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 388
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 389,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-040",
@@ -1064,20 +557,7 @@
     "ascentMeters": 1483,
     "descentMeters": 1500,
     "locationId": "comte-de-tuolumne-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 396
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 397,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-041",
@@ -1091,20 +571,7 @@
     "ascentMeters": 1751,
     "descentMeters": 1298,
     "locationId": "bridgeport-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 405
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 406,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-042",
@@ -1118,20 +585,7 @@
     "ascentMeters": 1135,
     "descentMeters": 1059,
     "locationId": "kennedy-meadows-north-pinecrest-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 415
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 416,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-043",
@@ -1145,20 +599,7 @@
     "ascentMeters": 566,
     "descentMeters": 904,
     "locationId": "comte-d-alpine-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 426
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 427,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-044",
@@ -1172,20 +613,7 @@
     "ascentMeters": 1687,
     "descentMeters": 1735,
     "locationId": "markleeville-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 436
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 437,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-045",
@@ -1199,20 +627,7 @@
     "ascentMeters": 1454,
     "descentMeters": 1384,
     "locationId": "kirkwood-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 451
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 452,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-046",
@@ -1226,20 +641,7 @@
     "ascentMeters": 458,
     "descentMeters": 769,
     "locationId": "pause-a-lake-tahoe-echo-lake-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 461
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 462,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-047",
@@ -1253,20 +655,7 @@
     "ascentMeters": 1796,
     "descentMeters": 1620,
     "locationId": "homewood-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 471
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 472,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-048",
@@ -1280,20 +669,7 @@
     "ascentMeters": 1357,
     "descentMeters": 1693,
     "locationId": "truckee-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 480
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 481,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-049",
@@ -1307,20 +683,7 @@
     "ascentMeters": 1459,
     "descentMeters": 2128,
     "locationId": "sierra-city-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 489
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 490,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-050",
@@ -1334,20 +697,7 @@
     "ascentMeters": 1098,
     "descentMeters": 737,
     "locationId": "sierra-city-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 498
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 499,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-051",
@@ -1361,20 +711,7 @@
     "ascentMeters": 1820,
     "descentMeters": 1985,
     "locationId": "little-grass-valley-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 509
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 510,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-052",
@@ -1388,20 +725,7 @@
     "ascentMeters": 2017,
     "descentMeters": 1641,
     "locationId": "meadow-valley-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 518
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 519,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-053",
@@ -1415,20 +739,7 @@
     "ascentMeters": 1976,
     "descentMeters": 1910,
     "locationId": "comte-de-butte-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 528
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 529,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-054",
@@ -1442,20 +753,7 @@
     "ascentMeters": 1545,
     "descentMeters": 1932,
     "locationId": "mi-parcours-chester-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 538
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 539,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-055",
@@ -1469,20 +767,7 @@
     "ascentMeters": 1329,
     "descentMeters": 1644,
     "locationId": "old-station-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 547
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 548,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-056",
@@ -1496,20 +781,7 @@
     "ascentMeters": 674,
     "descentMeters": 1090,
     "locationId": "comte-de-shasta-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 557
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 558,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-057",
@@ -1523,20 +795,7 @@
     "ascentMeters": 619,
     "descentMeters": 632,
     "locationId": "burney-mountain-guest-ranch-big-bend-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 567
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 568,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-058",
@@ -1550,20 +809,7 @@
     "ascentMeters": 1904,
     "descentMeters": 1246,
     "locationId": "big-bend-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 577
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 578,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-059",
@@ -1577,20 +823,7 @@
     "ascentMeters": 1825,
     "descentMeters": 2182,
     "locationId": "dunsmuir-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 586
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 587,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-060",
@@ -1604,20 +837,7 @@
     "ascentMeters": 1959,
     "descentMeters": 1240,
     "locationId": "dunsmuir-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 595
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 596,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-061",
@@ -1631,20 +851,7 @@
     "ascentMeters": 976,
     "descentMeters": 1131,
     "locationId": "gazelle-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 605
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 606,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-062",
@@ -1658,20 +865,7 @@
     "ascentMeters": 2015,
     "descentMeters": 1819,
     "locationId": "etna-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 614
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 615,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-063",
@@ -1685,20 +879,7 @@
     "ascentMeters": 683,
     "descentMeters": 745,
     "locationId": "etna-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 623
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 624,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-064",
@@ -1712,20 +893,7 @@
     "ascentMeters": 1943,
     "descentMeters": 2657,
     "locationId": "seiad-valley-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 633
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 634,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-065",
@@ -1739,20 +907,7 @@
     "ascentMeters": 2586,
     "descentMeters": 2062,
     "locationId": "comte-de-siskiyou-californie",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 642
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 643,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-066",
@@ -1766,20 +921,7 @@
     "ascentMeters": 1919,
     "descentMeters": 1809,
     "locationId": "frontiere-de-l-oregon-ashland-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 653
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 654,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-067",
@@ -1793,20 +935,7 @@
     "ascentMeters": 234,
     "descentMeters": 856,
     "locationId": "ashland-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 662
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 663,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-068",
@@ -1820,20 +949,7 @@
     "ascentMeters": 1418,
     "descentMeters": 1158,
     "locationId": "ashland-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 672
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 673,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-069",
@@ -1847,20 +963,7 @@
     "ascentMeters": 1653,
     "descentMeters": 1402,
     "locationId": "klamath-falls-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 681
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 682,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-070",
@@ -1874,20 +977,7 @@
     "ascentMeters": 1379,
     "descentMeters": 1278,
     "locationId": "comte-de-klamath-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 689
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 690,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-071",
@@ -1901,20 +991,7 @@
     "ascentMeters": 861,
     "descentMeters": 963,
     "locationId": "crescent-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 698
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 699,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-072",
@@ -1928,20 +1005,7 @@
     "ascentMeters": 1697,
     "descentMeters": 1577,
     "locationId": "comte-de-douglas-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 707
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 708,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-073",
@@ -1955,20 +1019,7 @@
     "ascentMeters": 711,
     "descentMeters": 1078,
     "locationId": "crescent-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 716
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 717,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-074",
@@ -1982,20 +1033,7 @@
     "ascentMeters": 1312,
     "descentMeters": 1355,
     "locationId": "blue-river-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 725
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 726,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-075",
@@ -2009,20 +1047,7 @@
     "ascentMeters": 1695,
     "descentMeters": 1399,
     "locationId": "blue-river-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 733
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 734,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-076",
@@ -2036,20 +1061,7 @@
     "ascentMeters": 1232,
     "descentMeters": 1183,
     "locationId": "sisters-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 742
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 743,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-077",
@@ -2063,20 +1075,7 @@
     "ascentMeters": 1749,
     "descentMeters": 1887,
     "locationId": "detroit-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 751
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 752,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-078",
@@ -2090,20 +1089,7 @@
     "ascentMeters": 1135,
     "descentMeters": 1871,
     "locationId": "comte-de-clackamas-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 759
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 760,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-079",
@@ -2117,20 +1103,7 @@
     "ascentMeters": 2289,
     "descentMeters": 2094,
     "locationId": "timberline-lodge-mount-hood-parkdale-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 769
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 770,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-080",
@@ -2144,20 +1117,7 @@
     "ascentMeters": 1323,
     "descentMeters": 2512,
     "locationId": "cascade-locks-oregon",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 779
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 780,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-081",
@@ -2171,20 +1131,7 @@
     "ascentMeters": 2187,
     "descentMeters": 1853,
     "locationId": "carson-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 790
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 791,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-082",
@@ -2198,20 +1145,7 @@
     "ascentMeters": 2095,
     "descentMeters": 995,
     "locationId": "comte-de-skamania-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 798
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 799,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-083",
@@ -2225,20 +1159,7 @@
     "ascentMeters": 1755,
     "descentMeters": 1362,
     "locationId": "comte-de-skamania-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 807
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 808,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-084",
@@ -2252,20 +1173,7 @@
     "ascentMeters": 1951,
     "descentMeters": 1781,
     "locationId": "comte-de-lewis-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 814
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 815,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-085",
@@ -2279,20 +1187,7 @@
     "ascentMeters": 1206,
     "descentMeters": 1798,
     "locationId": "naches-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 824
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 825,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-086",
@@ -2306,20 +1201,7 @@
     "ascentMeters": 2148,
     "descentMeters": 1966,
     "locationId": "naches-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 833
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 834,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-087",
@@ -2333,20 +1215,7 @@
     "ascentMeters": 2085,
     "descentMeters": 2599,
     "locationId": "easton-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 843
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 844,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-088",
@@ -2360,20 +1229,7 @@
     "ascentMeters": 899,
     "descentMeters": 1075,
     "locationId": "snoqualmie-pass-north-bend-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 853
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 854,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-089",
@@ -2387,20 +1243,7 @@
     "ascentMeters": 2566,
     "descentMeters": 1837,
     "locationId": "snoqualmie-pass-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 863
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 864,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-090",
@@ -2414,20 +1257,7 @@
     "ascentMeters": 2001,
     "descentMeters": 1976,
     "locationId": "skykomish-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 872
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 873,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-091",
@@ -2441,20 +1271,7 @@
     "ascentMeters": 2332,
     "descentMeters": 2360,
     "locationId": "comte-de-snohomish-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 881
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 882,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-092",
@@ -2468,20 +1285,7 @@
     "ascentMeters": 2180,
     "descentMeters": 2096,
     "locationId": "darrington-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 890
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 891,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-093",
@@ -2495,20 +1299,7 @@
     "ascentMeters": 1565,
     "descentMeters": 2486,
     "locationId": "darrington-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 899
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 900,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-094",
@@ -2522,20 +1313,7 @@
     "ascentMeters": 1889,
     "descentMeters": 2050,
     "locationId": "stehekin-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 909
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 910,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-095",
@@ -2549,20 +1327,7 @@
     "ascentMeters": 2100,
     "descentMeters": 1076,
     "locationId": "comte-d-okanogan-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 919
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 920,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-096",
@@ -2576,20 +1341,7 @@
     "ascentMeters": 2062,
     "descentMeters": 1865,
     "locationId": "mazama-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 930
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 931,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-097",
@@ -2603,54 +1355,21 @@
     "ascentMeters": 626,
     "descentMeters": 1203,
     "locationId": "terminus-canadien-comte-d-okanogan-washington",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 939
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 940,
-        "detail": "daily metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-098",
     "sequence": 98,
     "kind": "post-trail",
     "date": "2026-07-24",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 954
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 955,
-        "detail": "post-trail metadata"
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-099",
     "sequence": 99,
     "kind": "post-trail",
     "date": "2026-07-25",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 970
-      }
-    ]
+    "published": true
   },
   {
     "id": "day-100",
@@ -2658,19 +1377,6 @@
     "kind": "post-trail",
     "date": "2026-07-26",
     "endDate": "2026-07-27",
-    "published": true,
-    "sourceRefs": [
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "heading",
-        "blockIndex": 977
-      },
-      {
-        "document": "PCT 2026 - Sebdec.docx",
-        "blockType": "table",
-        "blockIndex": 978,
-        "detail": "post-trail metadata"
-      }
-    ]
+    "published": true
   }
 ]

@@ -1,6 +1,6 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
@@ -8,16 +8,10 @@ interface Props {
   description: string;
   heading: string;
   bodyClass?: string;
-  locale?: Locale;
+  locale: Locale;
 }
 
-const {
-  title,
-  description,
-  heading,
-  bodyClass,
-  locale = defaultLocale,
-} = Astro.props;
+const { title, description, heading, bodyClass, locale } = Astro.props;
 ---
 
 <BaseLayout

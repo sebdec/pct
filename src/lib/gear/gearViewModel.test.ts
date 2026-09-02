@@ -9,23 +9,22 @@ import {
   gearProductLinkSchema,
   localizedGearEntrySchema,
 } from "../content/schemas.ts";
-import {
-  buildGearViewModel,
-  formatGearWeight,
-  formatGearWeightInGrams,
-} from "./gearViewModel.ts";
+import { buildGearViewModel } from "./gearViewModel.ts";
 
 describe("buildGearViewModel", () => {
   const viewModel = buildGearViewModel(
-    z.array(gearItemSchema).parse(gearItems),
+    z.array(gearItemSchema).parse([...gearItems].reverse()),
     z.array(localizedGearEntrySchema).parse(Object.values(localizedGear)),
     z.array(gearProductLinkSchema).parse(productLinks),
   );
 
-  it("keeps every published item in its source order", () => {
+  it("keeps every published item in its explicit order", () => {
     expect(viewModel.itemCount).toBe(66);
     expect(viewModel.categories).toHaveLength(8);
     expect(viewModel.categories.flatMap(({ items }) => items)).toHaveLength(66);
+    expect(
+      viewModel.categories.flatMap(({ items }) => items.map(({ id }) => id)),
+    ).toEqual(gearItems.map(({ id }) => id));
     expect(viewModel.categories[0]?.items[0]?.name).toBe("Sac");
     expect(viewModel.categories[0]?.items[0]?.productUrl).toBe(
       "https://hyperlitemountaingear.com/products/junction",
@@ -38,10 +37,5 @@ describe("buildGearViewModel", () => {
   it("derives weights from the neutral source data", () => {
     expect(viewModel.documentedWeightGrams).toBe(8_724);
     expect(viewModel.sierraWeightGrams).toBe(1_732);
-    expect(formatGearWeight(viewModel.sierraWeightGrams)).toBe("1,73 kg");
-    expect(formatGearWeight(866)).toBe("866 g");
-    expect(formatGearWeightInGrams(viewModel.sierraWeightGrams)).toBe(
-      "1 732 g",
-    );
   });
 });

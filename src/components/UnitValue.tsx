@@ -5,17 +5,12 @@ import {
   formatWeight,
   getDefaultDisplayPreferences,
 } from "../lib/preferences/displayPreferences.ts";
-import {
-  defaultLocale,
-  localeFormattingTags,
-  type Locale,
-} from "../lib/content/locales.ts";
+import { localeFormattingTags, type Locale } from "../lib/content/locales.ts";
 
 type CommonProps = {
-  locale?: Locale;
+  locale: Locale;
   prefix?: string;
   suffix?: string;
-  className?: string;
   maximumFractionDigits?: number;
 };
 
@@ -54,13 +49,7 @@ type ElevationProps = CommonProps & {
 type Props = DistanceProps | DistanceRangeProps | WeightProps | ElevationProps;
 
 export default function UnitValue(props: Props) {
-  const {
-    prefix = "",
-    suffix = "",
-    className,
-    maximumFractionDigits,
-    locale = defaultLocale,
-  } = props;
+  const { prefix = "", suffix = "", maximumFractionDigits, locale } = props;
   const formattingLocale = localeFormattingTags[locale];
   const fallbackPreferences = getDefaultDisplayPreferences(formattingLocale);
   let value: string;
@@ -97,7 +86,6 @@ export default function UnitValue(props: Props) {
 
   return (
     <span
-      className={className}
       suppressHydrationWarning
       data-pct-unit-value
       data-pct-distance-miles={

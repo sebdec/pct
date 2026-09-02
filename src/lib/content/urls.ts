@@ -1,4 +1,4 @@
-import { dayIdSchema, stableIdSchema } from "./schemas.ts";
+import { dayIdSchema } from "./schemas.ts";
 import { defaultLocale, type Locale } from "./locales.ts";
 
 function localizeUrl(path: string, locale: Locale): string {
@@ -47,11 +47,4 @@ export function gearUrl(locale: Locale = defaultLocale): string {
 
 export function glossaryUrl(locale: Locale = defaultLocale): string {
   return localizeUrl("/glossary", locale);
-}
-
-export function glossaryEntryUrl(
-  conceptId: string,
-  locale: Locale = defaultLocale,
-): string {
-  return `${glossaryUrl(locale)}#${stableIdSchema.parse(conceptId)}`;
 }

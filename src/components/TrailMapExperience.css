@@ -74,11 +74,9 @@
 }
 
 .trail-map-metrics .trail-metrics__context {
-  grid-template-rows: 1.25rem auto;
   min-height: 0;
   margin-bottom: var(--pct-space-4);
   padding-bottom: 0;
-  border-bottom: 0;
 }
 
 .trail-map-metrics .trail-metrics__region::after {

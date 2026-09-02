@@ -15,7 +15,7 @@ import type {
   RouteCoordinate,
   TrailRoute,
 } from "../lib/content/schemas.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 import {
   getMapDayForMile,
@@ -40,13 +40,9 @@ import "./TrailMapExperience.css";
 
 interface Props {
   days: readonly MapDayViewModel[];
-  route?: TrailRoute;
-  points?: readonly MapPoint[];
-  areas?: readonly MapArea[];
-  mapPayloadUrl?: string;
   mapStyleUrl: string;
   initialDayId?: string;
-  locale?: Locale;
+  locale: Locale;
 }
 
 const baseMapAttribution =
@@ -392,8 +388,7 @@ interface LoadedMapPayload {
   areas: readonly MapArea[];
 }
 
-type LoadedProps = Omit<Props, "mapPayloadUrl" | "route" | "points" | "areas"> &
-  LoadedMapPayload;
+type LoadedProps = Props & LoadedMapPayload;
 
 function LoadedTrailMapExperience({
   days,
@@ -402,7 +397,7 @@ function LoadedTrailMapExperience({
   areas,
   mapStyleUrl,
   initialDayId,
-  locale = defaultLocale,
+  locale,
 }: LoadedProps) {
   const labels = getUi(locale);
   const initialSelection = useMemo(
@@ -828,7 +823,7 @@ function MapDataPlaceholder({
   locale,
   failed,
 }: Pick<Props, "days" | "initialDayId" | "locale"> & { failed: boolean }) {
-  const activeLocale = locale ?? defaultLocale;
+  const activeLocale = locale;
   const labels = getUi(activeLocale);
   const selection = initialMapSelection(days, initialDayId);
   const selectedDay =
@@ -880,26 +875,13 @@ function MapDataPlaceholder({
 }
 
 export default function TrailMapExperience(props: Props) {
-  const hasInlinePayload = !!(props.route && props.points && props.areas);
-  const [payload, setPayload] = useState<LoadedMapPayload | undefined>(() =>
-    hasInlinePayload
-      ? {
-          route: props.route!,
-          points: props.points!,
-          areas: props.areas!,
-        }
-      : undefined,
-  );
+  const [payload, setPayload] = useState<LoadedMapPayload>();
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    if (hasInlinePayload) return;
-
     const controller = new AbortController();
-    setPayload(undefined);
-    setFailed(false);
 
-    loadMapPayload(props.mapPayloadUrl ?? mapPayloadPath, controller.signal)
+    loadMapPayload(mapPayloadPath, controller.signal)
       .then(setPayload)
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === "AbortError")
@@ -908,7 +890,7 @@ export default function TrailMapExperience(props: Props) {
       });
 
     return () => controller.abort();
-  }, [hasInlinePayload, props.mapPayloadUrl]);
+  }, []);
 
   if (!payload) {
     return (

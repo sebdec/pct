@@ -1,5 +1,5 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 import TrailMetricIcon from "./TrailMetricIcon.tsx";
 import UnitValue from "./UnitValue.tsx";
@@ -20,7 +20,7 @@ interface Props {
   ascentMeters: number;
   descentMeters: number;
   className?: string;
-  locale?: Locale;
+  locale: Locale;
 }
 
 export default function TrailMetrics({
@@ -32,7 +32,7 @@ export default function TrailMetrics({
   ascentMeters,
   descentMeters,
   className,
-  locale = defaultLocale,
+  locale,
 }: Props) {
   const labels = getUi(locale);
   return (

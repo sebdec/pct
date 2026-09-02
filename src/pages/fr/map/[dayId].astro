@@ -1,22 +1,15 @@
 ---
 import { getCollection } from "astro:content";
-
 import TrailMapPage from "../../../components/TrailMapPage.astro";
+import { buildMapStaticPaths } from "../../../lib/map/mapPages.ts";
 
 interface Props {
   dayId: string;
 }
 
 export async function getStaticPaths() {
-  const dayEntries = await getCollection("days");
-
-  return dayEntries
-    .map(({ data }) => data)
-    .filter((day) => day.kind === "trail" && day.published)
-    .map((day) => ({
-      params: { dayId: day.id },
-      props: { dayId: day.id },
-    }));
+  const days = (await getCollection("days")).map(({ data }) => data);
+  return buildMapStaticPaths(days);
 }
 
 const { dayId } = Astro.props;

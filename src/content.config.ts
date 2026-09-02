@@ -15,15 +15,9 @@ import {
   mapPointSchema,
   mediaAssetSchema,
   photoSchema,
-  regionSchema,
   sectionSchema,
   trailRouteSchema,
 } from "./lib/content/schemas.ts";
-
-const regions = defineCollection({
-  loader: file("src/data/trail/regions.json"),
-  schema: regionSchema,
-});
 
 const sections = defineCollection({
   loader: file("src/data/trail/sections.json"),
@@ -111,7 +105,6 @@ const media = defineCollection({
 });
 
 export const collections = {
-  regions,
   sections,
   days,
   routes,

@@ -1,5 +1,5 @@
 import { formatDate } from "../lib/content/dates.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 import "./TrailDaySummary.css";
 
@@ -17,7 +17,7 @@ interface Props {
   action?: Action;
   stableLocation?: boolean;
   className?: string;
-  locale?: Locale;
+  locale: Locale;
 }
 
 export default function TrailDaySummary({
@@ -28,7 +28,7 @@ export default function TrailDaySummary({
   action,
   stableLocation = false,
   className,
-  locale = defaultLocale,
+  locale,
 }: Props) {
   const labels = getUi(locale);
   return (

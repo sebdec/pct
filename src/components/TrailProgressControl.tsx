@@ -1,5 +1,5 @@
 import type { TrailDay } from "../lib/content/schemas.ts";
-import { defaultLocale, type Locale } from "../lib/content/locales.ts";
+import type { Locale } from "../lib/content/locales.ts";
 import { getUi } from "../lib/i18n/ui.ts";
 import { getProgressStop } from "../lib/trail/presentation.ts";
 import UnitValue from "./UnitValue.tsx";
@@ -28,7 +28,7 @@ interface Props {
   onChange: (value: number) => void;
   onCommit?: (value: number) => void;
   className?: string;
-  locale?: Locale;
+  locale: Locale;
 }
 
 export default function TrailProgressControl({
@@ -48,7 +48,7 @@ export default function TrailProgressControl({
   onChange,
   onCommit,
   className,
-  locale = defaultLocale,
+  locale,
 }: Props) {
   const labels = getUi(locale);
   const progressStop = getProgressStop(value, min, max);

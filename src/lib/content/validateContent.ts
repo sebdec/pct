@@ -3,7 +3,6 @@ import { z } from "astro/zod";
 import { publishedLocales, sourceLocale } from "./locales.ts";
 import { getRouteProgressAtMile } from "../map/route.ts";
 import {
-  correctionSchema,
   daySchema,
   gearItemSchema,
   glossaryConceptSchema,
@@ -15,11 +14,8 @@ import {
   photoSchema,
   regionSchema,
   sectionSchema,
-  sourceDocumentSchema,
   trailRouteSchema,
-  wordExtractionReportSchema,
   supportingPageSchema,
-  type Correction,
   type Day,
   type GearItem,
   type GlossaryConcept,
@@ -31,9 +27,7 @@ import {
   type Photo,
   type Region,
   type SupportingPage,
-  type SourceDocument,
   type TrailRoute,
-  type WordExtractionReport,
   type TrailDay,
   type TrailSection,
 } from "./schemas.ts";
@@ -41,8 +35,6 @@ import {
 const mileTolerance = 0.001;
 
 export interface ContentModelSource {
-  sourceDocuments: readonly unknown[];
-  extractionReports: readonly unknown[];
   regions: readonly unknown[];
   sections: readonly unknown[];
   days: readonly unknown[];
@@ -56,23 +48,20 @@ export interface ContentModelSource {
   gearItems: readonly unknown[];
   localizedGearEntries: readonly unknown[];
   supportingPages: readonly unknown[];
-  corrections: readonly unknown[];
 }
 
-export interface ContentValidationIssue {
+interface ContentValidationIssue {
   code: string;
   path: string;
   message: string;
 }
 
-export interface ContentValidationResult {
+interface ContentValidationResult {
   valid: boolean;
   issues: ContentValidationIssue[];
 }
 
 interface ParsedContentModel {
-  sourceDocuments: SourceDocument[];
-  extractionReports: WordExtractionReport[];
   regions: Region[];
   sections: TrailSection[];
   days: Day[];
@@ -86,7 +75,6 @@ interface ParsedContentModel {
   gearItems: GearItem[];
   localizedGearEntries: LocalizedGearEntry[];
   supportingPages: SupportingPage[];
-  corrections: Correction[];
 }
 
 export class ContentValidationError extends Error {
@@ -169,18 +157,6 @@ function parseContentModel(
   issues: ContentValidationIssue[],
 ): ParsedContentModel {
   return {
-    sourceDocuments: parseCollection(
-      "sourceDocuments",
-      source.sourceDocuments,
-      sourceDocumentSchema,
-      issues,
-    ),
-    extractionReports: parseCollection(
-      "extractionReports",
-      source.extractionReports,
-      wordExtractionReportSchema,
-      issues,
-    ),
     regions: parseCollection("regions", source.regions, regionSchema, issues),
     sections: parseCollection(
       "sections",
@@ -244,12 +220,6 @@ function parseContentModel(
       supportingPageSchema,
       issues,
     ),
-    corrections: parseCollection(
-      "corrections",
-      source.corrections,
-      correctionSchema,
-      issues,
-    ),
   };
 }
 
@@ -257,18 +227,6 @@ function validateUniqueIdentifiers(
   content: ParsedContentModel,
   issues: ContentValidationIssue[],
 ): void {
-  findDuplicates(
-    content.sourceDocuments,
-    "sourceDocuments",
-    ({ id }) => id,
-    issues,
-  );
-  findDuplicates(
-    content.extractionReports,
-    "extractionReports",
-    ({ sourceDocumentId }) => sourceDocumentId,
-    issues,
-  );
   findDuplicates(content.regions, "regions", ({ id }) => id, issues);
   findDuplicates(content.sections, "sections", ({ id }) => id, issues);
   findDuplicates(content.days, "days", ({ id }) => id, issues);
@@ -288,7 +246,6 @@ function validateUniqueIdentifiers(
     issues,
   );
   findDuplicates(content.gearItems, "gearItems", ({ id }) => id, issues);
-  findDuplicates(content.corrections, "corrections", ({ id }) => id, issues);
   findDuplicates(
     content.journalEntries,
     "journalEntries",
@@ -319,6 +276,25 @@ function validateUniqueIdentifiers(
     ({ pageId, locale }) => `${locale}:${pageId}`,
     issues,
   );
+}
+
+function validateGearOrder(
+  gearItems: readonly GearItem[],
+  issues: ContentValidationIssue[],
+): void {
+  gearItems
+    .toSorted((left, right) => left.order - right.order)
+    .forEach(({ id, order }, index) => {
+      const expected = index + 1;
+      if (order !== expected) {
+        addIssue(
+          issues,
+          "gear.order",
+          `gearItems.${id}.order`,
+          `Expected equipment order ${expected} and received ${order}.`,
+        );
+      }
+    });
 }
 
 function validateSectionReferences(
@@ -418,163 +394,6 @@ function validateDaySequence(
       );
     }
   });
-}
-
-function validateSourceReferences(
-  content: ParsedContentModel,
-  issues: ContentValidationIssue[],
-): void {
-  const sourceFilenames = new Set(
-    content.sourceDocuments.map(({ filename }) => filename),
-  );
-
-  const references: Array<{ path: string; document: string }> = [];
-  const collect = (
-    path: string,
-    values: readonly { document: string }[],
-  ): void => {
-    values.forEach(({ document }, index) => {
-      references.push({ path: `${path}.sourceRefs[${index}]`, document });
-    });
-  };
-
-  content.regions.forEach((item) =>
-    collect(`regions.${item.id}`, item.sourceRefs),
-  );
-  content.sections.forEach((item) =>
-    collect(`sections.${item.id}`, item.sourceRefs),
-  );
-  content.days.forEach((item) => collect(`days.${item.id}`, item.sourceRefs));
-  content.journalEntries.forEach((item) =>
-    collect(`journalEntries.${item.locale}:${item.dayId}`, item.sourceRefs),
-  );
-  content.photos.forEach((item) =>
-    collect(`photos.${item.id}`, item.sourceRefs),
-  );
-  content.glossaryConcepts.forEach((item) =>
-    collect(`glossaryConcepts.${item.id}`, item.sourceRefs),
-  );
-  content.gearItems.forEach((item) =>
-    collect(`gearItems.${item.id}`, item.sourceRefs),
-  );
-  content.supportingPages.forEach((item) =>
-    collect(`supportingPages.${item.locale}:${item.pageId}`, item.sourceRefs),
-  );
-  content.corrections.forEach((item) =>
-    collect(`corrections.${item.id}`, [item.sourceRef]),
-  );
-
-  references.forEach(({ path, document }) => {
-    if (!sourceFilenames.has(document)) {
-      addIssue(
-        issues,
-        "reference.source-document",
-        path,
-        `Unknown source document "${document}".`,
-      );
-    }
-  });
-}
-
-function validateExtractionReport(
-  content: ParsedContentModel,
-  issues: ContentValidationIssue[],
-): void {
-  if (content.sourceDocuments.length !== 1) {
-    addIssue(
-      issues,
-      "source-document.count",
-      "sourceDocuments",
-      `Expected 1 source document and received ${content.sourceDocuments.length}.`,
-    );
-  }
-  if (content.extractionReports.length !== 1) {
-    addIssue(
-      issues,
-      "extraction-report.count",
-      "extractionReports",
-      `Expected 1 extraction report and received ${content.extractionReports.length}.`,
-    );
-  }
-
-  const report = content.extractionReports[0];
-  const sourceDocument = content.sourceDocuments[0];
-  if (!report || !sourceDocument) return;
-  if (report.sourceDocumentId !== sourceDocument.id) {
-    addIssue(
-      issues,
-      "reference.source-document",
-      "extractionReports[0].sourceDocumentId",
-      `Unknown source document "${report.sourceDocumentId}".`,
-    );
-  }
-
-  const trailDayIds = new Set(
-    content.days.filter(({ kind }) => kind === "trail").map(({ id }) => id),
-  );
-  const postTrailDayIds = new Set(
-    content.days
-      .filter(({ kind }) => kind === "post-trail")
-      .map(({ id }) => id),
-  );
-  const assetCounts = new Map<string, number>();
-  content.photos.forEach(({ assetKey }) => {
-    assetCounts.set(assetKey, (assetCounts.get(assetKey) ?? 0) + 1);
-  });
-  const actualCounts: WordExtractionReport["counts"] = {
-    trailEntries: trailDayIds.size,
-    postTrailEntries: postTrailDayIds.size,
-    gearItems: content.gearItems.length,
-    glossaryConcepts: content.glossaryConcepts.length,
-    photoPlacements: content.photos.length,
-    mediaAssets: assetCounts.size,
-    reusedMediaAssets: [...assetCounts.values()].filter((count) => count > 1)
-      .length,
-    trailPhotoPlacements: content.photos.filter(
-      ({ dayId }) => dayId && trailDayIds.has(dayId),
-    ).length,
-    postTrailPhotoPlacements: content.photos.filter(
-      ({ dayId }) => dayId && postTrailDayIds.has(dayId),
-    ).length,
-    pagePhotoPlacements: content.photos.filter(({ pageId }) => pageId).length,
-    trailEntriesWithoutPhotos: content.journalEntries.filter(
-      ({ dayId, locale, photoIds }) =>
-        locale === sourceLocale &&
-        trailDayIds.has(dayId) &&
-        photoIds.length === 0,
-    ).length,
-  };
-  for (const [key, actual] of Object.entries(actualCounts) as Array<
-    [keyof WordExtractionReport["counts"], number]
-  >) {
-    if (report.counts[key] !== actual) {
-      addIssue(
-        issues,
-        "extraction-report.count.mismatch",
-        `extractionReports[0].counts.${key}`,
-        `Expected generated count ${actual} and received ${report.counts[key]}.`,
-      );
-    }
-  }
-
-  const manifestCountKeys = [
-    "trailEntries",
-    "postTrailEntries",
-    "gearItems",
-    "glossaryConcepts",
-    "photoPlacements",
-    "mediaAssets",
-  ] as const;
-  for (const key of manifestCountKeys) {
-    if (sourceDocument.counts[key] !== report.counts[key]) {
-      addIssue(
-        issues,
-        "source-document.count.mismatch",
-        `sourceDocuments[0].counts.${key}`,
-        `Manifest count ${sourceDocument.counts[key]} does not match report count ${report.counts[key]}.`,
-      );
-    }
-  }
 }
 
 function validateTrailDays(
@@ -942,24 +761,10 @@ function validateEditorialReferences(
   });
 }
 
-function validatePhotoPlacements(
+function validateJournalPhotoReferences(
   content: ParsedContentModel,
   issues: ContentValidationIssue[],
 ): void {
-  const ordered = [...content.photos].sort(
-    (left, right) => left.order - right.order,
-  );
-  ordered.forEach((photo, index) => {
-    if (photo.order !== index) {
-      addIssue(
-        issues,
-        "photo.order",
-        `photos.${photo.id}.order`,
-        `Expected placement order ${index} and received ${photo.order}.`,
-      );
-    }
-  });
-
   const sourcePhotoIdsByDay = new Map<string, Set<string>>();
   content.journalEntries
     .filter(({ locale }) => locale === sourceLocale)
@@ -1256,48 +1061,7 @@ function validateLocalizedJournalParity(
           `Localized journal entry "${entry.locale}:${entry.dayId}" must preserve the source photo order.`,
         );
       }
-
-      if (
-        JSON.stringify(entry.sourceRefs) !==
-        JSON.stringify(sourceEntry.sourceRefs)
-      ) {
-        addIssue(
-          issues,
-          "translation.journal.source-parity",
-          `journalEntries.${entry.locale}:${entry.dayId}.sourceRefs`,
-          `Localized journal entry "${entry.locale}:${entry.dayId}" must preserve the source references.`,
-        );
-      }
     });
-}
-
-function validateCorrections(
-  content: ParsedContentModel,
-  issues: ContentValidationIssue[],
-): void {
-  const idsByType: Record<Correction["entityType"], ReadonlySet<string>> = {
-    region: new Set(content.regions.map(({ id }) => id)),
-    section: new Set(content.sections.map(({ id }) => id)),
-    day: new Set(content.days.map(({ id }) => id)),
-    photo: new Set(content.photos.map(({ id }) => id)),
-    "glossary-concept": new Set(content.glossaryConcepts.map(({ id }) => id)),
-    "gear-item": new Set(content.gearItems.map(({ id }) => id)),
-    "supporting-page": new Set(
-      content.supportingPages.map(({ pageId }) => pageId),
-    ),
-  };
-
-  content.corrections.forEach(({ id, entityType, entityId }) => {
-    const entityIds = idsByType[entityType];
-    if (!entityIds.has(entityId)) {
-      addIssue(
-        issues,
-        "reference.correction",
-        `corrections.${id}.entityId`,
-        `Unknown ${entityType} correction target "${entityId}".`,
-      );
-    }
-  });
 }
 
 export function validateContentModel(
@@ -1307,18 +1071,16 @@ export function validateContentModel(
   const content = parseContentModel(source, issues);
 
   validateUniqueIdentifiers(content, issues);
-  validateSourceReferences(content, issues);
-  validateExtractionReport(content, issues);
+  validateGearOrder(content.gearItems, issues);
   validateSectionReferences(content, issues);
   validateDaySequence(content.days, issues);
   validateTrailDays(content, issues);
   if (source.routes !== undefined) validateTrailRoute(content, issues);
   validateEditorialReferences(content, issues);
-  validatePhotoPlacements(content, issues);
+  validateJournalPhotoReferences(content, issues);
   validateMediaAssets(content, issues);
   validatePublishedLocaleCoverage(content, issues);
   validateLocalizedJournalParity(content, issues);
-  validateCorrections(content, issues);
 
   return { valid: issues.length === 0, issues };
 }
