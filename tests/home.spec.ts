@@ -255,6 +255,19 @@ test("reuses the editorial shell and heading scale", async ({ page }) => {
   expect(homeShell.centerOffset).toBeLessThan(1);
 });
 
+test("keeps the previous page painted during first navigation", async ({
+  page,
+}) => {
+  await page.goto("/fr");
+
+  const transitionOpacity = await page.locator("html").evaluate((element) => ({
+    oldRoot: getComputedStyle(element, "::view-transition-old(root)").opacity,
+    newRoot: getComputedStyle(element, "::view-transition-new(root)").opacity,
+  }));
+
+  expect(transitionOpacity).toEqual({ oldRoot: "1", newRoot: "1" });
+});
+
 test("keeps the header stable across primary navigation", async ({ page }) => {
   await page.goto("/fr/gear");
 
