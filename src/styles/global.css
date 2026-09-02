@@ -82,19 +82,11 @@ input {
   navigation: auto;
 }
 
-/* Keep the global shell fixed while journal content changes underneath it. */
+/* Keep both root snapshots painted while journal content changes underneath. */
 ::view-transition-old(root),
 ::view-transition-new(root),
 ::view-transition-group(journal-day) {
   animation: none;
-}
-
-::view-transition-old(root) {
-  opacity: 0;
-}
-
-::view-transition-new(root) {
-  opacity: 1;
 }
 
 /* Crossfade both journal snapshots together to avoid an opacity gap. */
